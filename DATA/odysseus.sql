@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 21 Novembre 2014 à 10:32
+-- Généré le: Ven 21 Novembre 2014 à 11:10
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -29,13 +29,13 @@ USE `odysseus`;
 --
 
 CREATE TABLE IF NOT EXISTS `administrateur` (
-  `idAdministrateur` int(11) NOT NULL AUTO_INCREMENT,
+  `id_administrateur` int(11) NOT NULL AUTO_INCREMENT,
   `prenom` varchar(45) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `estSuperAdmin` tinyint(1) NOT NULL,
+  `est_super_admin` tinyint(1) NOT NULL,
   `mdp` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`idAdministrateur`)
+  PRIMARY KEY (`id_administrateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -45,16 +45,16 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 --
 
 CREATE TABLE IF NOT EXISTS `adresse` (
-  `idAdresse` int(11) NOT NULL AUTO_INCREMENT,
+  `id_adresse` int(11) NOT NULL AUTO_INCREMENT,
   `type` tinyint(1) NOT NULL,
   `adresse` varchar(255) NOT NULL,
   `cp` int(11) NOT NULL,
   `ville` varchar(60) NOT NULL,
   `pays` varchar(45) NOT NULL,
-  `idClient` int(11) NOT NULL,
-  `etatId` tinyint(4) NOT NULL,
-  PRIMARY KEY (`idAdresse`),
-  KEY `fk_Adresse_Etat1_idx` (`etatId`)
+  `id_client` int(11) NOT NULL,
+  `etat_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id_adresse`),
+  KEY `fk_Adresse_Etat1_idx` (`etat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -64,10 +64,10 @@ CREATE TABLE IF NOT EXISTS `adresse` (
 --
 
 CREATE TABLE IF NOT EXISTS `attributproduit` (
-  `idAttributProduit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_attribut_produit` int(11) NOT NULL AUTO_INCREMENT,
   `nom` int(11) NOT NULL,
-  `categorieId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idAttributProduit`)
+  `categorie_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_attribut_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -77,12 +77,12 @@ CREATE TABLE IF NOT EXISTS `attributproduit` (
 --
 
 CREATE TABLE IF NOT EXISTS `attributvaleur` (
-  `idAttributValeur` int(11) NOT NULL AUTO_INCREMENT,
+  `id_attribut_valeur` int(11) NOT NULL AUTO_INCREMENT,
   `nom` int(11) DEFAULT NULL,
-  `AttibutProduitId` int(11) NOT NULL,
-  `AttributProduit_idAttributProduit` int(11) NOT NULL,
-  PRIMARY KEY (`idAttributValeur`),
-  KEY `fk_AttributValeur_AttributProduit1_idx` (`AttributProduit_idAttributProduit`)
+  `attibut_produit_id` int(11) NOT NULL,
+  `attribut_produit_id_attribut_produit` int(11) NOT NULL,
+  PRIMARY KEY (`id_attribut_valeur`),
+  KEY `fk_AttributValeur_AttributProduit1_idx` (`attribut_produit_id_attribut_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -92,9 +92,9 @@ CREATE TABLE IF NOT EXISTS `attributvaleur` (
 --
 
 CREATE TABLE IF NOT EXISTS `categorie` (
-  `idCategorie` int(11) NOT NULL AUTO_INCREMENT,
+  `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) NOT NULL,
-  PRIMARY KEY (`idCategorie`)
+  PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -104,11 +104,11 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 --
 
 CREATE TABLE IF NOT EXISTS `categorie_has_attributproduit` (
-  `Categorie_idCategory` int(11) NOT NULL,
-  `AttributProduit_idAttributProduit` int(11) NOT NULL,
-  PRIMARY KEY (`Categorie_idCategory`,`AttributProduit_idAttributProduit`),
-  KEY `fk_Categorie_has_AttributProduit_AttributProduit1_idx` (`AttributProduit_idAttributProduit`),
-  KEY `fk_Categorie_has_AttributProduit_Categorie1_idx` (`Categorie_idCategory`)
+  `categorie_id_categorie` int(11) NOT NULL,
+  `attribut_produit_id_attribut_produit` int(11) NOT NULL,
+  PRIMARY KEY (`categorie_id_categorie`,`attribut_produit_id_attribut_produit`),
+  KEY `fk_Categorie_has_AttributProduit_AttributProduit1_idx` (`attribut_produit_id_attribut_produit`),
+  KEY `fk_Categorie_has_AttributProduit_Categorie1_idx` (`categorie_id_categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -118,23 +118,23 @@ CREATE TABLE IF NOT EXISTS `categorie_has_attributproduit` (
 --
 
 CREATE TABLE IF NOT EXISTS `client` (
-  `idClient` int(11) NOT NULL AUTO_INCREMENT,
+  `id_client` int(11) NOT NULL AUTO_INCREMENT,
   `civilite` varchar(45) NOT NULL,
-  `nom` varchar(45) NOT NULL,
   `prenom` varchar(45) NOT NULL,
+  `nom` varchar(45) NOT NULL,
   `newsletter` tinyint(1) NOT NULL,
   `premium` tinyint(1) NOT NULL,
   `telephone` varchar(45) DEFAULT NULL,
   `email` varchar(70) NOT NULL,
   `mdp` varchar(45) NOT NULL,
-  `dateNaissance` datetime NOT NULL,
-  `etatId` tinyint(4) NOT NULL,
-  `dateCreation` datetime NOT NULL,
-  `dateModification` datetime DEFAULT NULL,
-  `Adresse_idAdresse` int(11) NOT NULL,
-  PRIMARY KEY (`idClient`,`Adresse_idAdresse`),
-  KEY `fk_Client_Adresse1_idx` (`Adresse_idAdresse`),
-  KEY `fk_Client_Etat1_idx` (`etatId`)
+  `date_naissance` datetime NOT NULL,
+  `etat_id` tinyint(4) NOT NULL,
+  `date_creation` datetime NOT NULL,
+  `date_modification` datetime DEFAULT NULL,
+  `adresse_id_adresse` int(11) NOT NULL,
+  PRIMARY KEY (`id_client`,`adresse_id_adresse`),
+  KEY `fk_Client_Adresse1_idx` (`adresse_id_adresse`),
+  KEY `fk_Client_Etat1_idx` (`etat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -144,17 +144,17 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 CREATE TABLE IF NOT EXISTS `commande` (
-  `idCommande` int(11) NOT NULL AUTO_INCREMENT,
-  `clientId` int(11) NOT NULL,
-  `clientIp` varchar(45) NOT NULL,
-  `dateCommande` datetime NOT NULL,
-  `datePaiement` datetime NOT NULL,
+  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` int(11) NOT NULL,
+  `client_ip` varchar(45) NOT NULL,
+  `date_commande` datetime NOT NULL,
+  `date_paiement` datetime NOT NULL,
   `montant` int(11) NOT NULL,
-  `modePaiement` tinyint(4) NOT NULL,
-  `etatId` tinyint(4) NOT NULL,
-  PRIMARY KEY (`idCommande`),
-  KEY `fk_Commande_modePaiement1_idx` (`modePaiement`),
-  KEY `fk_Commande_etat1_idx` (`etatId`)
+  `mode_paiement` tinyint(4) NOT NULL,
+  `etat_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id_commande`),
+  KEY `fk_Commande_modePaiement1_idx` (`mode_paiement`),
+  KEY `fk_Commande_etat1_idx` (`etat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -164,12 +164,12 @@ CREATE TABLE IF NOT EXISTS `commande` (
 --
 
 CREATE TABLE IF NOT EXISTS `commande_has_produit` (
-  `Commande_idCommande` int(11) NOT NULL,
-  `Produit_idProduit` int(11) NOT NULL,
+  `commande_id_commande` int(11) NOT NULL,
+  `produit_id_produit` int(11) NOT NULL,
   `quantite` int(11) NOT NULL,
-  PRIMARY KEY (`Commande_idCommande`,`Produit_idProduit`),
-  KEY `fk_Commande_has_Produit_Produit1_idx` (`Produit_idProduit`),
-  KEY `fk_Commande_has_Produit_Commande1_idx` (`Commande_idCommande`)
+  PRIMARY KEY (`commande_id_commande`,`produit_id_produit`),
+  KEY `fk_Commande_has_Produit_Produit1_idx` (`produit_id_produit`),
+  KEY `fk_Commande_has_Produit_Commande1_idx` (`commande_id_commande`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -179,9 +179,9 @@ CREATE TABLE IF NOT EXISTS `commande_has_produit` (
 --
 
 CREATE TABLE IF NOT EXISTS `etat` (
-  `idEtat` tinyint(4) NOT NULL,
+  `id_etat` tinyint(4) NOT NULL,
   `nom` varchar(255) NOT NULL,
-  PRIMARY KEY (`idEtat`)
+  PRIMARY KEY (`id_etat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -191,9 +191,9 @@ CREATE TABLE IF NOT EXISTS `etat` (
 --
 
 CREATE TABLE IF NOT EXISTS `modepaiement` (
-  `idModePaiement` tinyint(4) NOT NULL,
+  `id_mode_paiement` tinyint(4) NOT NULL,
   `nom` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idModePaiement`)
+  PRIMARY KEY (`id_mode_paiement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -203,18 +203,18 @@ CREATE TABLE IF NOT EXISTS `modepaiement` (
 --
 
 CREATE TABLE IF NOT EXISTS `produit` (
-  `idProduit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(40) NOT NULL,
   `nom` int(11) NOT NULL,
   `description` varchar(45) NOT NULL,
   `stock` int(11) NOT NULL,
-  `sousCategorieId` int(11) NOT NULL,
-  `categorieId` int(11) NOT NULL,
+  `sous_categorie_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL,
   `image` varchar(45) NOT NULL,
-  `etatId` tinyint(4) NOT NULL,
-  PRIMARY KEY (`idProduit`),
-  KEY `fk_Produit_SousCategorie1_idx` (`sousCategorieId`),
-  KEY `fk_Produit_Etat1_idx` (`etatId`)
+  `etat_id` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id_produit`),
+  KEY `fk_Produit_SousCategorie1_idx` (`sous_categorie_id`),
+  KEY `fk_Produit_Etat1_idx` (`etat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -224,11 +224,11 @@ CREATE TABLE IF NOT EXISTS `produit` (
 --
 
 CREATE TABLE IF NOT EXISTS `souscategorie` (
-  `idSousCategorie` int(11) NOT NULL AUTO_INCREMENT,
-  `categorieId` int(11) NOT NULL,
+  `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT,
+  `categorie_id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
-  PRIMARY KEY (`idSousCategorie`),
-  KEY `fk_SousCategorie_Categorie1_idx` (`categorieId`)
+  PRIMARY KEY (`id_sous_categorie`),
+  KEY `fk_SousCategorie_Categorie1_idx` (`categorie_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -239,54 +239,54 @@ CREATE TABLE IF NOT EXISTS `souscategorie` (
 -- Contraintes pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  ADD CONSTRAINT `fk_Adresse_Etat1` FOREIGN KEY (`etatId`) REFERENCES `etat` (`idEtat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Adresse_Etat1` FOREIGN KEY (`etat_id`) REFERENCES `etat` (`id_etat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `attributvaleur`
 --
 ALTER TABLE `attributvaleur`
-  ADD CONSTRAINT `fk_AttributValeur_AttributProduit1` FOREIGN KEY (`AttributProduit_idAttributProduit`) REFERENCES `attributproduit` (`idAttributProduit`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_AttributValeur_AttributProduit1` FOREIGN KEY (`attribut_produit_id_attribut_produit`) REFERENCES `attributproduit` (`id_attribut_produit`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `categorie_has_attributproduit`
 --
 ALTER TABLE `categorie_has_attributproduit`
-  ADD CONSTRAINT `fk_Categorie_has_AttributProduit_Categorie1` FOREIGN KEY (`Categorie_idCategory`) REFERENCES `categorie` (`idCategorie`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Categorie_has_AttributProduit_AttributProduit1` FOREIGN KEY (`AttributProduit_idAttributProduit`) REFERENCES `attributproduit` (`idAttributProduit`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Categorie_has_AttributProduit_Categorie1` FOREIGN KEY (`categorie_id_categorie`) REFERENCES `categorie` (`id_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Categorie_has_AttributProduit_AttributProduit1` FOREIGN KEY (`attribut_produit_id_attribut_produit`) REFERENCES `attributproduit` (`id_attribut_produit`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `client`
 --
 ALTER TABLE `client`
-  ADD CONSTRAINT `fk_Client_Adresse1` FOREIGN KEY (`Adresse_idAdresse`) REFERENCES `adresse` (`idAdresse`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Client_Etat1` FOREIGN KEY (`etatId`) REFERENCES `etat` (`idEtat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Client_Adresse1` FOREIGN KEY (`adresse_id_adresse`) REFERENCES `adresse` (`id_adresse`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Client_Etat1` FOREIGN KEY (`etat_id`) REFERENCES `etat` (`id_etat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD CONSTRAINT `fk_Commande_modePaiement1` FOREIGN KEY (`modePaiement`) REFERENCES `modepaiement` (`idModePaiement`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Commande_etat1` FOREIGN KEY (`etatId`) REFERENCES `etat` (`idEtat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Commande_modePaiement1` FOREIGN KEY (`mode_paiement`) REFERENCES `modepaiement` (`id_mode_paiement`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Commande_etat1` FOREIGN KEY (`etat_id`) REFERENCES `etat` (`id_etat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `commande_has_produit`
 --
 ALTER TABLE `commande_has_produit`
-  ADD CONSTRAINT `fk_Commande_has_Produit_Commande1` FOREIGN KEY (`Commande_idCommande`) REFERENCES `commande` (`idCommande`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Commande_has_Produit_Produit1` FOREIGN KEY (`Produit_idProduit`) REFERENCES `produit` (`idProduit`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Commande_has_Produit_Commande1` FOREIGN KEY (`commande_id_commande`) REFERENCES `commande` (`id_commande`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Commande_has_Produit_Produit1` FOREIGN KEY (`produit_id_produit`) REFERENCES `produit` (`id_produit`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `produit`
 --
 ALTER TABLE `produit`
-  ADD CONSTRAINT `fk_Produit_Etat1` FOREIGN KEY (`etatId`) REFERENCES `etat` (`idEtat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Produit_SousCategorie1` FOREIGN KEY (`sousCategorieId`) REFERENCES `souscategorie` (`idSousCategorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Produit_SousCategorie1` FOREIGN KEY (`sous_categorie_id`) REFERENCES `souscategorie` (`id_sous_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Produit_Etat1` FOREIGN KEY (`etat_id`) REFERENCES `etat` (`id_etat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `souscategorie`
 --
 ALTER TABLE `souscategorie`
-  ADD CONSTRAINT `fk_SousCategorie_Categorie1` FOREIGN KEY (`categorieId`) REFERENCES `categorie` (`idCategorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_SousCategorie_Categorie1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id_categorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
