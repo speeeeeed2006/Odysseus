@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Etat
 {
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="id_etat", type="boolean", nullable=false)
+     * @ORM\Column(name="id_etat", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -27,13 +27,20 @@ class Etat
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=45, nullable=false)
+     */
+    private $type;
 
 
 
     /**
      * Get idEtat
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIdEtat()
     {
@@ -62,4 +69,27 @@ class Etat
     {
         return $this->nom;
     }
+    
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    function getType() {
+        return $this->type;
+    }
+    
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Etat
+     */
+    function setType($type) {
+        $this->type = $type;
+        
+        return $this;
+    }
+
+
 }

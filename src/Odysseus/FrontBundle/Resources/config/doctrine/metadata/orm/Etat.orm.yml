@@ -3,8 +3,9 @@ Etat:
     table: etat
     id:
         idEtat:
-            type: boolean
+            type: integer
             nullable: false
+            unsigned: false
             comment: ''
             id: true
             column: id_etat

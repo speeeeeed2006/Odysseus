@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Modepaiement
 {
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="id_mode_paiement", type="boolean", nullable=false)
+     * @ORM\Column(name="id_mode_paiement", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

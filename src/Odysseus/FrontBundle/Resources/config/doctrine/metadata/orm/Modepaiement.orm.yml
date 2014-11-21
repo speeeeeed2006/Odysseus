@@ -3,8 +3,9 @@ Modepaiement:
     table: modepaiement
     id:
         idModePaiement:
-            type: boolean
+            type: integer
             nullable: false
+            unsigned: false
             comment: ''
             id: true
             column: id_mode_paiement

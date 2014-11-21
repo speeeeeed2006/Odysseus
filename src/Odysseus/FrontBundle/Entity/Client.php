@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Client
 {
+    
+    const CIVILITE_H = 'M.';
+    const CIVILITE_F = 'Mme';
+ 
     /**
      * @var integer
      *
@@ -24,7 +28,7 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="civilite", type="string", length=45, nullable=false)
+     * @ORM\Column(name="civilite", type="string", columnDefinition="enum('M.', 'Mme')", nullable=false)
      */
     private $civilite;
 
@@ -153,6 +157,9 @@ class Client
      */
     public function setCivilite($civilite)
     {
+        if (!in_array($civilite, array(self::CIVILITE_H, self::CIVILITE_F))) {
+            throw new \InvalidArgumentException("Invalid status");
+        }
         $this->civilite = $civilite;
 
         return $this;
