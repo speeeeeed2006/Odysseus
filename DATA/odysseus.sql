@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 20 Novembre 2014 à 11:43
+-- Généré le: Ven 21 Novembre 2014 à 10:32
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -52,8 +52,6 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `ville` varchar(60) NOT NULL,
   `pays` varchar(45) NOT NULL,
   `idClient` int(11) NOT NULL,
-  `montant` int(11) NOT NULL,
-  `modePaiement` tinyint(4) NOT NULL,
   `etatId` tinyint(4) NOT NULL,
   PRIMARY KEY (`idAdresse`),
   KEY `fk_Adresse_Etat1_idx` (`etatId`)
@@ -122,17 +120,17 @@ CREATE TABLE IF NOT EXISTS `categorie_has_attributproduit` (
 CREATE TABLE IF NOT EXISTS `client` (
   `idClient` int(11) NOT NULL AUTO_INCREMENT,
   `civilite` varchar(45) NOT NULL,
-  `prenom` varchar(45) NOT NULL,
   `nom` varchar(45) NOT NULL,
+  `prenom` varchar(45) NOT NULL,
   `newsletter` tinyint(1) NOT NULL,
   `premium` tinyint(1) NOT NULL,
   `telephone` varchar(45) DEFAULT NULL,
   `email` varchar(70) NOT NULL,
   `mdp` varchar(45) NOT NULL,
-  `dateDeNaissance` datetime NOT NULL,
+  `dateNaissance` datetime NOT NULL,
   `etatId` tinyint(4) NOT NULL,
-  `dateDeCreation` datetime NOT NULL,
-  `dateDeModification` datetime DEFAULT NULL,
+  `dateCreation` datetime NOT NULL,
+  `dateModification` datetime DEFAULT NULL,
   `Adresse_idAdresse` int(11) NOT NULL,
   PRIMARY KEY (`idClient`,`Adresse_idAdresse`),
   KEY `fk_Client_Adresse1_idx` (`Adresse_idAdresse`),
@@ -212,7 +210,6 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `stock` int(11) NOT NULL,
   `sousCategorieId` int(11) NOT NULL,
   `categorieId` int(11) NOT NULL,
-  `Produitcol` varchar(45) NOT NULL,
   `image` varchar(45) NOT NULL,
   `etatId` tinyint(4) NOT NULL,
   PRIMARY KEY (`idProduit`),
@@ -282,8 +279,8 @@ ALTER TABLE `commande_has_produit`
 -- Contraintes pour la table `produit`
 --
 ALTER TABLE `produit`
-  ADD CONSTRAINT `fk_Produit_SousCategorie1` FOREIGN KEY (`sousCategorieId`) REFERENCES `souscategorie` (`idSousCategorie`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Produit_Etat1` FOREIGN KEY (`etatId`) REFERENCES `etat` (`idEtat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Produit_Etat1` FOREIGN KEY (`etatId`) REFERENCES `etat` (`idEtat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Produit_SousCategorie1` FOREIGN KEY (`sousCategorieId`) REFERENCES `souscategorie` (`idSousCategorie`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `souscategorie`
