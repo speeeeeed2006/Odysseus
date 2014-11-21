@@ -1,0 +1,411 @@
+@charset utf-8;
+
+/* couleurs : brun : #ebe4de ; brun foncé : #d3c5b9 - traits : cec0b4 ; bleu : #5fb7c6 */
+@font-face {
+    font-family: 'open_sansbold';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'league_gothicregular';
+    src: url('../fonts/leaguegothic-regular-webfont.eot');
+    src: url('../fonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/leaguegothic-regular-webfont.woff2') format('woff2'),
+         url('../fonts/leaguegothic-regular-webfont.woff') format('woff'),
+         url('../fonts/leaguegothic-regular-webfont.ttf') format('truetype'),
+         url('../fonts/leaguegothic-regular-webfont.svg#league_gothicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ----------------------------- */
+/* Général
+/* ----------------------------- */
+
+/* base font-size corresponds to 10px and is adapted to rem unit */
+html { font-size: 62.5%; }
+body {
+    background-color: #fff;
+    color: #000;
+    font: 1.4em 'open_sansregular', helvetica, arial, sans-serif; /* equiv 14px */
+    line-height: 1.5; /* adapt to your design */
+}
+
+/* font-sizing for content */
+p,
+ul, ol,
+td, th,
+label, textarea,
+caption,
+details, 
+figure, 
+hgroup {
+    font-size: 1em; /* equiv 14px */
+    line-height: 1.5;
+    margin: 1.5em 0 0;
+}
+h1 { font-size: 1.8571em; /* equiv 26px */ font-weight: normal; line-height: 1.6154em; margin: .8077em 0 0 0; }
+h2 { font-size: 1.7143em; /* equiv 24px */ font-weight: normal; line-height: 1.75em; margin: .875em 0 0 0; }
+h3 { font-size: 1.5714em; /* equiv 22px */ font-weight: normal; line-height: 1.909em; margin: .9545em 0 0 0; }
+h4 { font-size: 1.4286em; /* equiv 20px */ font-weight: normal; line-height: 1.05em; margin:  1.05em 0 0 0; }
+h5 { font-size: 1.2857em; /* equiv 18px */ font-weight: normal; line-height: 1.1667em; margin:  1.1667em 0 0 0; }
+h6 { font-size: 1.1429em; /* equiv 16px */ font-weight: normal; line-height: 1.3125em; margin:  1.3125em 0 0 0; }
+
+/* soft reset */
+html,
+body,
+textarea,
+figure,
+label {
+    margin: 0;
+    padding: 0;
+}
+ul,
+ol {
+    padding-left: 0em;
+}
+
+table { margin-bottom: 1.5em; }
+
+/* avoid top margins on first content element */
+p:first-child,
+ul:first-child,
+ol:first-child,
+dl:first-child,
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0;
+}
+
+/* avoid margins on nested elements */
+li p, li ul, li ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* HTML5 tags */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+/* max values */
+img, table, td, blockquote, code, pre, textarea, input, video {
+    max-width: 100%;
+}
+
+/* you shall not pass */
+div, textarea, table, td, th, code, pre, samp {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+}
+
+/* pictures */
+img {
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+}
+a img { border: 0; }
+
+/* Conteneurs sémantiques de HTML 5 */
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section {
+  display: block;
+}
+
+/* ----------------------------- */
+/* Structure
+/* ----------------------------- */
+
+h1, h2, h3, h4, h5 { font-family: 'league_gothicregular', sans-serif; }
+a { text-decoration: none; color: #000000; }
+
+input { border : 1px solid #cec0b4; height: 20px; padding-left: 5px;}
+button { cursor: pointer; background: #5fb7c6;  width: 86px; height: 30px; color: #ffffff; border: none; font-size: 14px; }
+button:hover { }
+
+#container { margin: 0 auto; width: 1250px; min-height:400px; /*background: blue;*/}
+#content { /*background: violet;*/  min-height:400px; }
+#wrap {margin-bottom: 20px;}
+#wrap h2 { border-bottom: 1px solid #cec0b4; margin-bottom: 20px; }
+#wrap h2:before { content: '>>' ; margin-right: 5px; font-size: 18px; color: #5fb7c6;  }
+
+#wrap .prix, #widgets .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin: 0 20px 10px 0; }
+#wrap .prix.barre, #widgets .prix.barre { text-decoration: line-through; margin-right: 20px;}
+
+/* ----------------------------- */
+/* header
+/* ----------------------------- */
+header { height: 220px; margin-bottom: 40px;  }
+header ul {  }
+header ul li { list-style: none; display: inline-block; vertical-align: top; }
+
+#top { height: 140px; margin-bottom: 30px; position: relative;}
+#top #logo, #top #recherche, #top #droite { display: inline-block; vertical-align: top;}
+#top #logo { width: 700px; position: relative; background: blue;}
+#top #logo img { width: 250px; height: 130px; display: block; background: #cccccc; position: absolute; top: 10px; left: 0px;}
+
+#top #recherche { width: 280px; position: relative; }
+#top #recherche form { margin-top: 110px;}
+#top #recherche input { border: 1px solid #5fb7c6; width: 244px; height: 26px; padding-left : 34px; background: url('../images/sprite.png') 4px 3px no-repeat; }
+#top #recherche button { position: absolute; right: -1px; bottom: 0; width: 20px; height: 30px; border: 1px solid #5fb7c6; background: #5fb7c6 url('../images/sprite.png') 0px -18px no-repeat; }
+#top #recherche button:hover { background-position: -20px -18px;}
+
+#top #droite { width: 200px; margin-left: 70px; }
+#top #droite #liens, #top #droite #panier { margin-bottom: 15px; }
+#top #droite #liens { /*height: 50px; */ }
+#top #droite #liens ul, #top #droite #liens #flux_rss { display: inline-block; vertical-align: top; }
+#top #droite #liens ul { margin-top: 28px; padding: 0;}
+#top #droite #liens ul li { font-size : 12px; text-transform: uppercase; }
+#top #droite #liens ul li:first-child:after { content: "|"; margin: 0 6px;  } 
+#top #droite #liens #flux_rss { width: 26px; height: 50px; background: #5fb7c6; /*display: inline-block; vertical-align: top;*/ float: right; }
+#top #droite #liens #flux_rss a { width: 26px; height: 26px; display: block; margin-top: 24px; background: url('../images/sprite.png') 1px -78px no-repeat; }
+
+#top #droite #panier { width: 130px; height: 30px; line-height: 30px; text-align: right; padding: 5px 10px 5px 5px; background: #ebe4de url('../images/sprite.png') 5px -42px no-repeat; float: right; }
+#top #droite #panier a {  text-align: right; font-weight: bold; }
+
+#top #droite #connexion { clear: both; /*height: 20px; */ }
+#top #droite #connexion ul { text-align: right; font-size: 15px; /*line-height: 30px;*/ padding: 0; }
+#top #droite #connexion ul li:first-child:after { content: "|"; margin: 0 6px;  }
+#top #droite #connexion ul li a {  }
+
+nav { height: 50px; background: #5fb7c6;}
+nav ul { margin-left: 20px;  }
+nav ul li { margin-right: 20px; font-size: 17px; }
+nav ul li a { display: inline-block; height: 50px; line-height: 50px; padding: 0 10px; color: #000000; -webkit-transition: color 1s; transition: color 1s; }
+nav ul li a:hover { color: #ffffff; background: #2c93a4;}
+
+/* ----------------------------- */
+/* Contenu index 
+/* ----------------------------- */
+
+#wrap, #widgets,
+#wrap #bas #a_la_une, #wrap #bas #nouveau,
+#wrap #bas #a_la_une .produit { display: inline-block; vertical-align: top; }
+
+#wrap { width: 970px; margin-right: 46px;  /*margin-right: 50px; pb import*/ }
+#wrap #haut { margin-bottom: 45px; }
+#wrap #haut #slider { background: #cccccc; width: 970px; height: 380px; margin-bottom: 10px; }
+#wrap #haut #vignettes {  }
+#wrap #haut #vignettes ul { text-align: center; }
+#wrap #haut #vignettes ul li { width: 8px; height: 8px; background: #000000; display: inline-block; vertical-align: top; margin-right: 4px; border-radius: 8px; }
+#wrap #haut #vignettes ul li:last-child { margin-right: 0; }
+
+#wrap #bas { margin-bottom: 20px;}
+
+#wrap #bas .marque { font-weight: bold; display: block; }
+#wrap #bas .nom_produit { font-weight: bold; display: block; }
+#wrap #bas .descriptif { font-size: 13px; white-space: nowrap; text-overflow: ellipsis; max-height: 20px; overflow: hidden; margin: 10px 0px 20px; }
+/*#wrap #bas .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin-right: 20px; }*/
+#wrap #bas button {/* width: 86px; height: 30px; color: #ffffff; border: none;*/ float: right;}
+#wrap #bas button:before { content: '+' ; margin-right: 5px; font-size: 14px;}
+
+#wrap #bas #a_la_une { background: #ebe4de; width: 570px; margin-right: 40px; padding: 0 25px; }
+#wrap #bas #a_la_une .produit { width: 250px; }
+#wrap #bas #a_la_une .produit:nth-of-type(1) { margin-right: 70px; }
+#wrap #bas #a_la_une .produit { margin:  0 0px 15px 0;}
+#wrap #bas #a_la_une .produit img,
+#wrap #bas #nouveau img { width: 250px; height: 140px; background: #cccccc; display: block;  margin-bottom: 16px;}
+
+
+#wrap #bas #a_la_une #plus_produits { background: #d3c5b9 url('../images/sprite.png') 6px -204px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 0px 0 0px 36px; float: right;}
+#wrap #bas #a_la_une #plus_produits span a { color: #ffffff; text-align: right; }
+#wrap #bas #a_la_une #plus_produits span a:hover { color: #000000;}
+
+#wrap #bas #nouveau { background: #ebe4de; width: 262px; padding: 0 20px 20px; border: 4px solid #5fb7c6; height: 362px;}
+#wrap #bas #nouveau h2 { background: #5fb7c6; color: #ffffff ; display: block; width: 270px; height: 44px; line-height: 44px; letter-spacing: 2px; margin: 0 0 38px -20px; text-indent: 20px; text-transform: uppercase; border: none; }
+#wrap #bas #nouveau h2:before {content: '';}
+
+/* ----------------------------- */
+/* Contenu connexion
+/* ----------------------------- */
+#wrap .sous-titre {  }
+#wrap .fond {  }
+#wrap form {  }
+#wrap form p { margin-bottom: 8px; height: 25px;}
+#wrap label { display: block; width: 140px; line-height: 25px; color: #000000; margin-right: 20px; vertical-align: middle; display: inline-block; }
+#wrap input[type="radio"] { vertical-align: middle; }
+#wrap input[type="text"] {  width: 260px;  height: 25px; line-height: 25px; background-color: #ffffff; border: 1px solid #cec0b4; color: #000000; vertical-align: middle; display: inline-block;}
+
+#wrap #identification button, #wrap #creation button { margin: 20px 0 0 340px;}
+
+#wrap #identification { margin-right: 20px; }
+#wrap #creation {  }
+#wrap #creation span.note { font-style: italic; font-size: 10px; }
+
+#wrap #identification, #wrap #creation {  width: 470px; display: inline-block; vertical-align: top; }
+#wrap #identification .fond , #wrap #creation .fond {  width: 430px; background: #ebe4de; padding: 20px;}
+#wrap #identification .fond .sous-titre, #wrap #creation .fond .sous-titre { background: #d3c5b9; color: #ffffff; width: 200px; height: 24px; padding: 2px 2px 2px 10px; display: block; margin: -20px 0 20px -20px; }
+
+#wrap #infos {  }
+#wrap #infos span { background: #5fb7c6 url('../images/sprite.png') 6px -202px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 5px 10px 5px 36px; color: #ffffff;}
+
+/* ----------------------------- */
+/* Contenu produit
+/* ----------------------------- */
+
+#wrap #photos {   }
+#wrap #photos img {  background: #cccccc; width: 590px; height: 310px; display: inline-block; vertical-align: bottom;  margin-right: 10px;}
+#wrap #photos .vignette { display: inline-block; background: #cccccc; width: 104px; height: 104px; }
+
+#wrap #photos, #wrap #details { margin-bottom: 40px; }
+#wrap #details #gauche, #wrap #details #droite,
+#wrap #complement #savoir, #wrap #complement #avis { display: inline-block; vertical-align: top; }
+#wrap #details #gauche { width: 570px; margin-right: 30px; }
+#wrap #details #gauche .marque { font-weight: bold; display: block; }
+#wrap #details #gauche .nom_produit { font-weight: bold; display: block; font-size: 20px; }
+#wrap #details #gauche .descriptif { font-size: 13px; white-space: nowrap; text-overflow: ellipsis; max-height: 20px; overflow: hidden; margin: 10px 0px 20px; }
+
+#wrap #details #droite { width: 370px; position: relative;}
+#wrap #details #droite .prix, #wrap #details #droite .prix.barre { clear: both; float: none; display: block; text-align: right; }
+#wrap #details #droite .prix {  font-size: 26px; margin-bottom: 8px; }
+#wrap #details #droite .prix.barre { font-size: 21px; margin: 0 0 20px 0; }
+#wrap #details #droite #pourcentage { background: url('../images/sprite.png') 0px -233px no-repeat;  width: 52px; height: 44px; float: right; margin-bottom: 50px; }
+#wrap #details #droite #pourcentage span { color: #ffffff; display: inline-block; line-height: 32px; text-align: center; width: 52px;}
+#wrap #details #droite .nb { text-align: right; clear: both; float: none; display: block; margin-bottom: 10px; }
+#wrap #details button { float: right;}
+#wrap #details button:before { content: '+' ; margin-right: 5px; font-size: 14px;}
+
+
+#wrap #complement {  }
+#wrap #complement p span {font-weight: bold;}
+#wrap #complement #savoir, #wrap #complement #avis { width: 448px;  border: 1px solid #5fb7c6; padding: 10px;}
+#wrap #complement #savoir .titre, #wrap #complement #avis .titre { background: #5fb7c6 url('../images/sprite.png') 6px -202px no-repeat;  width: 128px; height: 22px; line-height: 22px; padding: 5px 10px 5px 36px; color: #ffffff; margin: -10px 0 10px -10px; display: block;}
+#wrap #complement #savoir { margin-right: 30px; }
+#wrap #complement #savoir p, #wrap #complement #avis p { margin:  0 0 5px; }
+#wrap #complement #avis {  }
+#wrap #complement #avis p:nth-of-type(1) { background: #ebe4de;}
+#wrap #complement #avis .pseudo, #wrap #complement #avis .note {  padding: 0 10px;}
+#wrap #complement #avis .note { float: right; }
+
+/* ----------------------------- */
+/* Contenu Panier
+/* ----------------------------- */
+#wrap #menu { margin-bottom: 50px;}
+#wrap #menu ul {}
+#wrap #menu ul li { display: inline-block; vertical-align: top; margin-right: 26px; width: 170px; height: 32px; line-height: 32px; background: #2c93a4; color: #000000; text-align: center;}
+#wrap #menu ul li:first-child {  background: #5fb7c6; color: #ffffff;}
+#wrap #menu ul li:before {content: '>> '; color: #000000; }
+#wrap #menu ul li:first-child:before { color: #ffffff;}
+#wrap #menu ul li:last-child { margin-right: 0;}
+#wrap #panier { margin-bottom: 50px;}
+#wrap #panier p { margin-bottom: 20px;}
+#wrap #panier .table { border-collapse: collapse; display: table; width: 100%; margin-bottom: 50px; }
+#wrap #panier .row { border-bottom: 1px solid #ccc; display: table-row; width: 100%;}
+/*#wrap #panier .row:nth-of-type(2n) { border-left: 1px solid #ccc; }*/
+
+#wrap #panier .row img { display: block; width: 70px; height: 70px; background: #000000; }
+#wrap #panier .cell.head { background: #d3c5b9; color: #000000; margin-left: 5px; text-align: center;}
+/*#wrap #panier .row:first-child { border-top: 1px solid #ccc;}*/
+#wrap #panier .cell { border-right: 1px solid #ccc; padding: 0.5em 0.25em; position: relative; display: table-cell; }
+#wrap #panier .cell:nth-of-type(1) { border-left: 1px solid #ccc;}
+#wrap button.precedent {}
+#wrap button.precedent.continuer { width: 200px;}
+#wrap button.precedent:before {content: '<< '; color: #ffffff; }
+#wrap button.suivant { width: 100px;}
+#wrap button.suivant:before {content: '>> '; color: #ffffff; }
+
+/* ----------------------------- */
+/* Widgets (Colonne droite)
+/* ----------------------------- */
+#widgets { width: 230px; /*min-height: 100px;*/ }
+#widgets .widget { margin-bottom: 15px; }
+
+/* Promotions */
+#widgets #promotions {  }
+#widgets #promotions #promo { background: #ebe4de; padding: 10px 10px 0; position: relative;}
+
+#widgets #promotions #promo img { width: 202px; height: 140px; background: #cccccc; display: block;  margin-bottom: 16px; border: 4px solid #5fb7c6;}
+#widgets #promotions #promo #pourcentage { background: url('../images/sprite.png') 0px -233px no-repeat;  width: 52px; height: 44px;  position: absolute; top: 134px; right: 20px;}
+#widgets #promotions #promo #pourcentage span { color: #ffffff; display: inline-block; line-height: 32px; text-align: center; width: 52px;}
+#widgets #promotions #promo .marque { font-weight: bold; display: block; }
+#widgets #promotions #promo .nom_produit { font-weight: bold; display: block; margin-bottom: 10px; }
+#widgets #promotions #promo .descriptif { font-size: 13px; white-space: nowrap; text-overflow: ellipsis; max-height: 20px; overflow: hidden; margin: 10px 0px 20px; }
+/*#widgets #promotions #promo .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin-bottom: 10px; }
+#widgets #promotions #promo .prix.barre { text-decoration: line-through; margin-right: 20px;}*/
+
+#widgets #promotions #plus_promotions { background: #d3c5b9 url('../images/sprite.png') 6px -204px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 0px 0 0px 36px; clear: both; margin-left: 45px;}
+#widgets #promotions #plus_promotions span a { color: #ffffff; text-align: right; }
+#widgets #promotions #plus_promotions span a:hover { color: #000000;}
+
+/* Catégories */
+#widgets #categories {  }
+#widgets #categories ul { list-style: none; margin-top: 0px; }
+#widgets #categories ul li { border-bottom: 1px dotted #cec0b4; padding: 10px 0 10px; }
+#widgets #categories ul li:first-child { border-top: 1px dotted #cccccc;}
+#widgets #categories ul li:before { content: '>> ';  color: #d3c5b9; }
+
+/* Tags */
+#widgets #tags {  }
+
+/* Newsletter */
+#widgets #newsletter {  }
+#widgets #newsletter form { background: #ebe4de;  padding: 10px; min-height: 95px; }
+#widgets #newsletter p { margin-bottom: 10px; }
+#widgets #newsletter input { width: 200px; margin-bottom: 10px; }
+#widgets #newsletter button { float: right; clear: both; }
+
+/* ----------------------------- */
+/* Footer
+/* ----------------------------- */
+footer { background: #d3c5b9; }
+#footer { width: 1150px; height: 190px; padding: 20px 50px;  margin: 0 auto;}
+footer h3 { font: 30px 'league_gothicregular', sans-serif; }
+footer p, footer ul { margin-top: 1em;}
+footer ul li { list-style: none; margin-bottom: 5px; }
+
+#produits,
+#reseaux, #reseaux #fb_twitter, #reseaux #fb_twitter .facebook, #reseaux #fb_twitter .twitter,
+#informations, #informations #pictos .paypal, #informations #pictos .visa { display: inline-block; vertical-align: top; }
+
+#produits, #reseaux { margin-right: 100px; }
+#produits { width: 230px; }
+
+#reseaux { width: 420px; }
+#reseaux h3 { display: inline; margin-right: 20px; }
+#reseaux p { font-style: italic; }
+#reseaux #fb_twitter { margin-top: -5px; }
+#reseaux #fb_twitter .facebook, #reseaux #fb_twitter .twitter { width: 36px; height: 36px; background: url('../images/sprite.png') no-repeat; } 
+#reseaux #fb_twitter .facebook { background-position: -2px -110px; }
+#reseaux #fb_twitter .twitter { background-position: -46px -110px; }
+#reseaux ul { }
+#reseaux ul li.tweet { margin-bottom: 5px; font-size: 11px; }
+
+#informations { width: 300px; /*background: orange;*/}
+#informations #infos { width: 218px; display: inline-block; margin-right: 10px; }
+#informations #infos h3 { }
+#informations #infos ul {  }
+#informations #infos ul li { }
+
+#informations #pictos { width: 72px; display: inline-block; vertical-align: bottom;  }
+#informations #pictos .paypal, #informations #pictos .visa { width: 72px; height: 44px; background: url('../images/sprite.png') no-repeat; }
+#informations #pictos .paypal { background-position: -2px -155px; margin-bottom: 10px; }
+#informations #pictos .visa { background-position: -75px -155px; }
+
+
+
