@@ -49,6 +49,18 @@ class Souscategorie
     {
         return $this->idSousCategorie;
     }
+    
+    /**
+     * Set idSousCategorie
+     *
+     * @param integer $idSousCategorie
+     * @return Souscategorie
+     */
+    function setIdSousCategorie($idSousCategorie) {
+        $this->idSousCategorie = $idSousCategorie;
+        
+        return $this;
+    }
 
     /**
      * Set nom
@@ -95,4 +107,8 @@ class Souscategorie
     {
         return $this->categorie;
     }
+    
+    
+
+
 }
