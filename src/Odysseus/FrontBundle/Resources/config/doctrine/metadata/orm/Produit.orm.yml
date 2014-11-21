@@ -1,0 +1,83 @@
+Produit:
+    type: entity
+    table: produit
+    indexes:
+        fk_Produit_SousCategorie1_idx:
+            columns:
+                - sous_categorie_id
+        fk_Produit_Etat1_idx:
+            columns:
+                - etat_id
+    id:
+        idProduit:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_produit
+            generator:
+                strategy: IDENTITY
+    fields:
+        reference:
+            type: string
+            nullable: false
+            length: 40
+            fixed: false
+            comment: ''
+        nom:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        description:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        stock:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        categorieId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: categorie_id
+        image:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+    manyToOne:
+        sousCategorie:
+            targetEntity: Souscategorie
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sous_categorie_id:
+                    referencedColumnName: id_sous_categorie
+            orphanRemoval: false
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+    manyToMany:
+        commandeCommande:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: produitProduit
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

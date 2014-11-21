@@ -1,0 +1,53 @@
+<?php
+
+namespace Odysseus\FrontBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Attributproduit
+ *
+ * @ORM\Table(name="attributproduit")
+ * @ORM\Entity
+ */
+class Attributproduit
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_attribut_produit", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAttributProduit;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nom", type="integer", nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="categorie_id", type="integer", nullable=true)
+     */
+    private $categorieId;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Categorie", mappedBy="attributProduitAttributProduit")
+     */
+    private $categorieCategorie;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categorieCategorie = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

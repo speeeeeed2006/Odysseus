@@ -1,0 +1,34 @@
+Attributproduit:
+    type: entity
+    table: attributproduit
+    id:
+        idAttributProduit:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_attribut_produit
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        categorieId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: categorie_id
+    manyToMany:
+        categorieCategorie:
+            targetEntity: Categorie
+            cascade: {  }
+            mappedBy: attributProduitAttributProduit
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

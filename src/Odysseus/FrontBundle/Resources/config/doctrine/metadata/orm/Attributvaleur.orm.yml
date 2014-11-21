@@ -1,0 +1,40 @@
+Attributvaleur:
+    type: entity
+    table: attributvaleur
+    indexes:
+        fk_AttributValeur_AttributProduit1_idx:
+            columns:
+                - attribut_produit_id_attribut_produit
+    id:
+        idAttributValeur:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_attribut_valeur
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        attibutProduitId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: attibut_produit_id
+    manyToOne:
+        attributProduitAttributProduit:
+            targetEntity: Attributproduit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                attribut_produit_id_attribut_produit:
+                    referencedColumnName: id_attribut_produit
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,86 @@
+Commande:
+    type: entity
+    table: commande
+    indexes:
+        fk_Commande_modePaiement1_idx:
+            columns:
+                - mode_paiement
+        fk_Commande_etat1_idx:
+            columns:
+                - etat_id
+    id:
+        idCommande:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_commande
+            generator:
+                strategy: IDENTITY
+    fields:
+        clientId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: client_id
+        clientIp:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: client_ip
+        dateCommande:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: date_commande
+        datePaiement:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: date_paiement
+        montant:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        modePaiement:
+            targetEntity: Modepaiement
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mode_paiement:
+                    referencedColumnName: id_mode_paiement
+            orphanRemoval: false
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+    manyToMany:
+        produitProduit:
+            targetEntity: Produit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: commandeCommande
+            joinTable:
+                name: commande_has_produit
+                joinColumns:
+                    -
+                        name: commande_id_commande
+                        referencedColumnName: id_commande
+                inverseJoinColumns:
+                    -
+                        name: produit_id_produit
+                        referencedColumnName: id_produit
+            orderBy: null
+    lifecycleCallbacks: {  }

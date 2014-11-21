@@ -1,0 +1,49 @@
+<?php
+
+namespace Odysseus\FrontBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Attributvaleur
+ *
+ * @ORM\Table(name="attributvaleur", indexes={@ORM\Index(name="fk_AttributValeur_AttributProduit1_idx", columns={"attribut_produit_id_attribut_produit"})})
+ * @ORM\Entity
+ */
+class Attributvaleur
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_attribut_valeur", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAttributValeur;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nom", type="integer", nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="attibut_produit_id", type="integer", nullable=false)
+     */
+    private $attibutProduitId;
+
+    /**
+     * @var \Attributproduit
+     *
+     * @ORM\ManyToOne(targetEntity="Attributproduit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="attribut_produit_id_attribut_produit", referencedColumnName="id_attribut_produit")
+     * })
+     */
+    private $attributProduitAttributProduit;
+
+
+}

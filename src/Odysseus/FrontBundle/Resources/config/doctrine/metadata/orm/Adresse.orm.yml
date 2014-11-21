@@ -1,0 +1,62 @@
+Adresse:
+    type: entity
+    table: adresse
+    indexes:
+        fk_Adresse_Etat1_idx:
+            columns:
+                - etat_id
+    id:
+        idAdresse:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_adresse
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: boolean
+            nullable: false
+            comment: ''
+        adresse:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        cp:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        ville:
+            type: string
+            nullable: false
+            length: 60
+            fixed: false
+            comment: ''
+        pays:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        idClient:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_client
+    manyToOne:
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

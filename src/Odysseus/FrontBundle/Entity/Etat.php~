@@ -1,0 +1,32 @@
+<?php
+
+namespace Odysseus\FrontBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Etat
+ *
+ * @ORM\Table(name="etat")
+ * @ORM\Entity
+ */
+class Etat
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="id_etat", type="boolean", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEtat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     */
+    private $nom;
+
+
+}

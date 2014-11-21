@@ -1,0 +1,99 @@
+Client:
+    type: entity
+    table: client
+    indexes:
+        fk_Client_Adresse1_idx:
+            columns:
+                - adresse_id_adresse
+        fk_Client_Etat1_idx:
+            columns:
+                - etat_id
+    id:
+        idClient:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_client
+    fields:
+        civilite:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        prenom:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        nom:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        newsletter:
+            type: boolean
+            nullable: false
+            comment: ''
+        premium:
+            type: boolean
+            nullable: false
+            comment: ''
+        telephone:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: false
+            length: 70
+            fixed: false
+            comment: ''
+        mdp:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+        dateNaissance:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: date_naissance
+        dateCreation:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: date_creation
+        dateModification:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: date_modification
+    oneToOne:
+        adresseAdresse:
+            targetEntity: Adresse
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adresse_id_adresse:
+                    referencedColumnName: id_adresse
+            orphanRemoval: false
+    manyToOne:
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

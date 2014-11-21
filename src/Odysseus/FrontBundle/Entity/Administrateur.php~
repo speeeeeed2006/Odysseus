@@ -1,0 +1,60 @@
+<?php
+
+namespace Odysseus\FrontBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Administrateur
+ *
+ * @ORM\Table(name="administrateur")
+ * @ORM\Entity
+ */
+class Administrateur
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_administrateur", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAdministrateur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=45, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="est_super_admin", type="boolean", nullable=false)
+     */
+    private $estSuperAdmin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=32, nullable=true)
+     */
+    private $mdp;
+
+
+}

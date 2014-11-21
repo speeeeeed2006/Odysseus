@@ -1,0 +1,20 @@
+Modepaiement:
+    type: entity
+    table: modepaiement
+    id:
+        idModePaiement:
+            type: boolean
+            nullable: false
+            comment: ''
+            id: true
+            column: id_mode_paiement
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }
