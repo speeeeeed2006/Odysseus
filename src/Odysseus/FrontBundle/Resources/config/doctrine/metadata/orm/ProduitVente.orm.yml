@@ -1,54 +1,36 @@
-Adresse:
+ProduitVente:
     type: entity
-    table: adresse
+    table: produit_vente
     indexes:
-        fk_Adresse_Etat1_idx:
+        fk_Produit_Vente_Produit1_idx:
             columns:
-                - etat_id
-        fk_Adresse_Client1_idx:
+                - produit_id
+        fk_Produit_Vente_Client1_idx:
             columns:
                 - client_id
     id:
-        idAdresse:
+        idproduitVente:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_adresse
+            column: idProduit_Vente
             generator:
                 strategy: IDENTITY
     fields:
-        type:
-            type: boolean
-            nullable: false
-        adresse:
-            type: string
-            nullable: false
-            length: 255
-            fixed: false
-        cp:
+        stock:
             type: integer
             nullable: false
             unsigned: false
-        ville:
-            type: string
-            nullable: false
-            length: 60
-            fixed: false
-        pays:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
     manyToOne:
-        etat:
-            targetEntity: Etat
+        produit:
+            targetEntity: Produit
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                etat_id:
-                    referencedColumnName: id_etat
+                produit_id:
+                    referencedColumnName: id_produit
             orphanRemoval: false
         client:
             targetEntity: Client
@@ -59,4 +41,12 @@ Adresse:
                 client_id:
                     referencedColumnName: id_client
             orphanRemoval: false
+    manyToMany:
+        commandeCommande:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: produitVenteproduitVente
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }

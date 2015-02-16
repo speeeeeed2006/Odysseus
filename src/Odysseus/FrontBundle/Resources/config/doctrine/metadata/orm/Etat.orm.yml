@@ -6,7 +6,6 @@ Etat:
             type: integer
             nullable: false
             unsigned: false
-            comment: ''
             id: true
             column: id_etat
             generator:
@@ -17,5 +16,9 @@ Etat:
             nullable: false
             length: 255
             fixed: false
-            comment: ''
+        type:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
     lifecycleCallbacks: {  }

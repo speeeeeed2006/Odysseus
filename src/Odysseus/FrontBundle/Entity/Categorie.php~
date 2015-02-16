@@ -51,4 +51,70 @@ class Categorie
         $this->attributProduitAttributProduit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Get idCategorie
+     *
+     * @return integer 
+     */
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Categorie
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Add attributProduitAttributProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Attributproduit $attributProduitAttributProduit
+     * @return Categorie
+     */
+    public function addAttributProduitAttributProduit(\Odysseus\FrontBundle\Entity\Attributproduit $attributProduitAttributProduit)
+    {
+        $this->attributProduitAttributProduit[] = $attributProduitAttributProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove attributProduitAttributProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Attributproduit $attributProduitAttributProduit
+     */
+    public function removeAttributProduitAttributProduit(\Odysseus\FrontBundle\Entity\Attributproduit $attributProduitAttributProduit)
+    {
+        $this->attributProduitAttributProduit->removeElement($attributProduitAttributProduit);
+    }
+
+    /**
+     * Get attributProduitAttributProduit
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAttributProduitAttributProduit()
+    {
+        return $this->attributProduitAttributProduit;
+    }
 }

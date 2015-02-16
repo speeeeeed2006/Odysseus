@@ -39,4 +39,76 @@ class Souscategorie
     private $categorie;
 
 
+
+    /**
+     * Get idSousCategorie
+     *
+     * @return integer 
+     */
+    public function getIdSousCategorie()
+    {
+        return $this->idSousCategorie;
+    }
+    
+    /**
+     * Set idSousCategorie
+     *
+     * @param integer $idSousCategorie
+     * @return Souscategorie
+     */
+    function setIdSousCategorie($idSousCategorie) {
+        $this->idSousCategorie = $idSousCategorie;
+        
+        return $this;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Souscategorie
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \Odysseus\FrontBundle\Entity\Categorie $categorie
+     * @return Souscategorie
+     */
+    public function setCategorie(\Odysseus\FrontBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Odysseus\FrontBundle\Entity\Categorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+    
+    
+
+
 }

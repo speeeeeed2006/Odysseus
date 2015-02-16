@@ -1,19 +1,22 @@
-Modepaiement:
+Odysseus\FrontBundle\Entity\Options:
     type: entity
-    table: modepaiement
+    table: options
     id:
-        idModePaiement:
+        idOption:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_mode_paiement
+            column: id_option
             generator:
                 strategy: IDENTITY
     fields:
-        nom:
+        attribut:
             type: string
-            nullable: true
+            nullable: false
             length: 45
             fixed: false
+        valeur:
+            type: boolean
+            nullable: false
     lifecycleCallbacks: {  }

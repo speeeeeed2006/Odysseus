@@ -1,19 +1,24 @@
-Modepaiement:
+Odysseus\FrontBundle\Entity\Etat:
     type: entity
-    table: modepaiement
+    table: etat
     id:
-        idModePaiement:
+        idEtat:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_mode_paiement
+            column: id_etat
             generator:
                 strategy: IDENTITY
     fields:
         nom:
             type: string
-            nullable: true
+            nullable: false
+            length: 255
+            fixed: false
+        type:
+            type: string
+            nullable: false
             length: 45
             fixed: false
     lifecycleCallbacks: {  }

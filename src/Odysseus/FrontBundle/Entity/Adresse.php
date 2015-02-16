@@ -245,4 +245,32 @@ class Adresse
     {
         return $this->etat;
     }
+    /**
+     * @var \Odysseus\FrontBundle\Entity\Client
+     */
+    private $client;
+
+
+    /**
+     * Set client
+     *
+     * @param \Odysseus\FrontBundle\Entity\Client $client
+     * @return Adresse
+     */
+    public function setClient(\Odysseus\FrontBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \Odysseus\FrontBundle\Entity\Client 
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
 }

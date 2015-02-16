@@ -1,4 +1,4 @@
-Attributvaleur:
+Odysseus\FrontBundle\Entity\Attributvaleur:
     type: entity
     table: attributvaleur
     indexes:

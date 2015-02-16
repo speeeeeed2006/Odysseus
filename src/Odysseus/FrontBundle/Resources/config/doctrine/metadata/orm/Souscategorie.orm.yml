@@ -10,7 +10,6 @@ Souscategorie:
             type: integer
             nullable: false
             unsigned: false
-            comment: ''
             id: true
             column: id_sous_categorie
             generator:
@@ -21,7 +20,6 @@ Souscategorie:
             nullable: false
             length: 45
             fixed: false
-            comment: ''
     manyToOne:
         categorie:
             targetEntity: Categorie

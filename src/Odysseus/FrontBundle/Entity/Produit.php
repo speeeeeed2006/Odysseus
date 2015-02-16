@@ -325,4 +325,88 @@ class Produit
     {
         return $this->commandeCommande;
     }
+    /**
+     * @var boolean
+     */
+    private $promotion;
+
+    /**
+     * @var boolean
+     */
+    private $nouveaute;
+
+    /**
+     * @var boolean
+     */
+    private $alaune;
+
+
+    /**
+     * Set promotion
+     *
+     * @param boolean $promotion
+     * @return Produit
+     */
+    public function setPromotion($promotion)
+    {
+        $this->promotion = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Get promotion
+     *
+     * @return boolean 
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
+
+    /**
+     * Set nouveaute
+     *
+     * @param boolean $nouveaute
+     * @return Produit
+     */
+    public function setNouveaute($nouveaute)
+    {
+        $this->nouveaute = $nouveaute;
+
+        return $this;
+    }
+
+    /**
+     * Get nouveaute
+     *
+     * @return boolean 
+     */
+    public function getNouveaute()
+    {
+        return $this->nouveaute;
+    }
+
+    /**
+     * Set alaune
+     *
+     * @param boolean $alaune
+     * @return Produit
+     */
+    public function setAlaune($alaune)
+    {
+        $this->alaune = $alaune;
+
+        return $this;
+    }
+
+    /**
+     * Get alaune
+     *
+     * @return boolean 
+     */
+    public function getAlaune()
+    {
+        return $this->alaune;
+    }
 }

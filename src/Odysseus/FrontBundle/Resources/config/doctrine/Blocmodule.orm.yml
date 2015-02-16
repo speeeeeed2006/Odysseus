@@ -1,19 +1,20 @@
-Modepaiement:
+Odysseus\FrontBundle\Entity\Blocmodule:
     type: entity
-    table: modepaiement
+    table: blocmodule
     id:
-        idModePaiement:
+        idBlocModule:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_mode_paiement
+            column: id_bloc_module
             generator:
                 strategy: IDENTITY
     fields:
-        nom:
+        nomModule:
             type: string
-            nullable: true
+            nullable: false
             length: 45
             fixed: false
+            column: nom_module
     lifecycleCallbacks: {  }

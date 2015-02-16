@@ -1,4 +1,4 @@
-Commande:
+Odysseus\FrontBundle\Entity\Commande:
     type: entity
     table: commande
     indexes:

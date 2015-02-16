@@ -1,54 +1,50 @@
-Adresse:
+Commentaireproduit:
     type: entity
-    table: adresse
+    table: commentaireproduit
     indexes:
-        fk_Adresse_Etat1_idx:
+        fk_CommentaireProduit_Produit1_idx:
             columns:
-                - etat_id
-        fk_Adresse_Client1_idx:
+                - produit_id
+        fk_CommentaireProduit_Client1_idx:
             columns:
                 - client_id
     id:
-        idAdresse:
+        idCommentaireProduit:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_adresse
+            column: id_commentaire_produit
             generator:
                 strategy: IDENTITY
     fields:
-        type:
-            type: boolean
+        texte:
+            type: text
             nullable: false
-        adresse:
-            type: string
-            nullable: false
-            length: 255
+            length: 65535
             fixed: false
-        cp:
-            type: integer
+        note:
+            type: float
             nullable: false
-            unsigned: false
-        ville:
-            type: string
+            precision: 10
+            scale: 0
+        dateCreation:
+            type: datetime
             nullable: false
-            length: 60
-            fixed: false
-        pays:
-            type: string
+            column: date_creation
+        dateModification:
+            type: datetime
             nullable: false
-            length: 45
-            fixed: false
+            column: date_modification
     manyToOne:
-        etat:
-            targetEntity: Etat
+        produit:
+            targetEntity: Produit
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                etat_id:
-                    referencedColumnName: id_etat
+                produit_id:
+                    referencedColumnName: id_produit
             orphanRemoval: false
         client:
             targetEntity: Client

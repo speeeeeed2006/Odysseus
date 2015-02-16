@@ -99,4 +99,208 @@ class Commande
         $this->produitProduit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Get idCommande
+     *
+     * @return integer 
+     */
+    public function getIdCommande()
+    {
+        return $this->idCommande;
+    }
+
+    /**
+     * Set clientId
+     *
+     * @param integer $clientId
+     * @return Commande
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+
+        return $this;
+    }
+
+    /**
+     * Get clientId
+     *
+     * @return integer 
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * Set clientIp
+     *
+     * @param string $clientIp
+     * @return Commande
+     */
+    public function setClientIp($clientIp)
+    {
+        $this->clientIp = $clientIp;
+
+        return $this;
+    }
+
+    /**
+     * Get clientIp
+     *
+     * @return string 
+     */
+    public function getClientIp()
+    {
+        return $this->clientIp;
+    }
+
+    /**
+     * Set dateCommande
+     *
+     * @param \DateTime $dateCommande
+     * @return Commande
+     */
+    public function setDateCommande($dateCommande)
+    {
+        $this->dateCommande = $dateCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCommande
+     *
+     * @return \DateTime 
+     */
+    public function getDateCommande()
+    {
+        return $this->dateCommande;
+    }
+
+    /**
+     * Set datePaiement
+     *
+     * @param \DateTime $datePaiement
+     * @return Commande
+     */
+    public function setDatePaiement($datePaiement)
+    {
+        $this->datePaiement = $datePaiement;
+
+        return $this;
+    }
+
+    /**
+     * Get datePaiement
+     *
+     * @return \DateTime 
+     */
+    public function getDatePaiement()
+    {
+        return $this->datePaiement;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param integer $montant
+     * @return Commande
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return integer 
+     */
+    public function getMontant()
+    {
+        return $this->montant;
+    }
+
+    /**
+     * Set modePaiement
+     *
+     * @param \Odysseus\FrontBundle\Entity\Modepaiement $modePaiement
+     * @return Commande
+     */
+    public function setModePaiement(\Odysseus\FrontBundle\Entity\Modepaiement $modePaiement = null)
+    {
+        $this->modePaiement = $modePaiement;
+
+        return $this;
+    }
+
+    /**
+     * Get modePaiement
+     *
+     * @return \Odysseus\FrontBundle\Entity\Modepaiement 
+     */
+    public function getModePaiement()
+    {
+        return $this->modePaiement;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param \Odysseus\FrontBundle\Entity\Etat $etat
+     * @return Commande
+     */
+    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return \Odysseus\FrontBundle\Entity\Etat 
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Add produitProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $produitProduit
+     * @return Commande
+     */
+    public function addProduitProduit(\Odysseus\FrontBundle\Entity\Produit $produitProduit)
+    {
+        $this->produitProduit[] = $produitProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produitProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $produitProduit
+     */
+    public function removeProduitProduit(\Odysseus\FrontBundle\Entity\Produit $produitProduit)
+    {
+        $this->produitProduit->removeElement($produitProduit);
+    }
+
+    /**
+     * Get produitProduit
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduitProduit()
+    {
+        return $this->produitProduit;
+    }
 }

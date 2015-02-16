@@ -125,4 +125,32 @@ class Attributvaleur
     {
         return $this->attributProduitAttributProduit;
     }
+    /**
+     * @var \Odysseus\FrontBundle\Entity\Attributproduit
+     */
+    private $attributProduit;
+
+
+    /**
+     * Set attributProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Attributproduit $attributProduit
+     * @return Attributvaleur
+     */
+    public function setAttributProduit(\Odysseus\FrontBundle\Entity\Attributproduit $attributProduit = null)
+    {
+        $this->attributProduit = $attributProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get attributProduit
+     *
+     * @return \Odysseus\FrontBundle\Entity\Attributproduit 
+     */
+    public function getAttributProduit()
+    {
+        return $this->attributProduit;
+    }
 }

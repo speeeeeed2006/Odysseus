@@ -1,4 +1,4 @@
-Attributproduit:
+Odysseus\FrontBundle\Entity\Attributproduit:
     type: entity
     table: attributproduit
     id:

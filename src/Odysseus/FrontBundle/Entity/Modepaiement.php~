@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Modepaiement
 {
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="id_mode_paiement", type="boolean", nullable=false)
+     * @ORM\Column(name="id_mode_paiement", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -29,4 +29,37 @@ class Modepaiement
     private $nom;
 
 
+
+    /**
+     * Get idModePaiement
+     *
+     * @return boolean 
+     */
+    public function getIdModePaiement()
+    {
+        return $this->idModePaiement;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Modepaiement
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 }

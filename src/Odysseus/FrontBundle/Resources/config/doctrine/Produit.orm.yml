@@ -1,4 +1,4 @@
-Produit:
+Odysseus\FrontBundle\Entity\Produit:
     type: entity
     table: produit
     indexes:

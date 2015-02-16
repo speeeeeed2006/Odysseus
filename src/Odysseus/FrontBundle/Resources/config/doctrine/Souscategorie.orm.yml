@@ -1,17 +1,17 @@
-Attributvaleur:
+Odysseus\FrontBundle\Entity\Souscategorie:
     type: entity
-    table: attributvaleur
+    table: souscategorie
     indexes:
-        fk_AttributValeur_AttributProduit1_idx:
+        fk_SousCategorie_Categorie1_idx:
             columns:
-                - attribut_produit_id
+                - categorie_id
     id:
-        idAttributValeur:
+        idSousCategorie:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_attribut_valeur
+            column: id_sous_categorie
             generator:
                 strategy: IDENTITY
     fields:
@@ -21,13 +21,13 @@ Attributvaleur:
             length: 45
             fixed: false
     manyToOne:
-        attributProduit:
-            targetEntity: Attributproduit
+        categorie:
+            targetEntity: Categorie
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                attribut_produit_id:
-                    referencedColumnName: id_attribut_produit
+                categorie_id:
+                    referencedColumnName: id_categorie
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -1,4 +1,4 @@
-Modepaiement:
+Odysseus\FrontBundle\Entity\Modepaiement:
     type: entity
     table: modepaiement
     id:

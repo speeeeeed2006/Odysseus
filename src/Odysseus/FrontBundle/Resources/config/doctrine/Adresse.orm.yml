@@ -1,4 +1,4 @@
-Adresse:
+Odysseus\FrontBundle\Entity\Adresse:
     type: entity
     table: adresse
     indexes:

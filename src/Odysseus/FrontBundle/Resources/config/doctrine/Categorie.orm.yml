@@ -1,4 +1,4 @@
-Categorie:
+Odysseus\FrontBundle\Entity\Categorie:
     type: entity
     table: categorie
     id:

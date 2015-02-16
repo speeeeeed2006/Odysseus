@@ -1,24 +1,27 @@
-Produit:
+Odysseus\FrontBundle\Entity\Client:
     type: entity
-    table: produit
+    table: client
     indexes:
-        fk_Produit_SousCategorie1_idx:
-            columns:
-                - sous_categorie_id
-        fk_Produit_Etat1_idx:
+        fk_Client_Etat1_idx:
             columns:
                 - etat_id
     id:
-        idProduit:
+        idClient:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: id_produit
+            column: id_client
             generator:
                 strategy: IDENTITY
     fields:
-        reference:
+        civilite:
+            type: string
+            nullable: false
+            columnDefinition: ENUM('M.', 'Mme')
+            length: 45
+            fixed: false
+        prenom:
             type: string
             nullable: false
             length: 45
@@ -28,40 +31,40 @@ Produit:
             nullable: false
             length: 45
             fixed: false
-        description:
+        newsletter:
+            type: boolean
+            nullable: false
+        premium:
+            type: boolean
+            nullable: false
+        telephone:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 70
+            fixed: false
+        mdp:
             type: string
             nullable: false
             length: 45
             fixed: false
-        categorieId:
-            type: integer
+        dateNaissance:
+            type: datetime
             nullable: false
-            unsigned: false
-            column: categorie_id
-        image:
-            type: string
+            column: date_naissance
+        dateCreation:
+            type: datetime
             nullable: false
-            length: 45
-            fixed: false
-        promotion:
-            type: boolean
-            nullable: false
-        nouveaute:
-            type: boolean
-            nullable: false
-        alaune:
-            type: boolean
-            nullable: false
+            column: date_creation
+        dateModification:
+            type: datetime
+            nullable: true
+            column: date_modification
     manyToOne:
-        sousCategorie:
-            targetEntity: Souscategorie
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                sous_categorie_id:
-                    referencedColumnName: id_sous_categorie
-            orphanRemoval: false
         etat:
             targetEntity: Etat
             cascade: {  }

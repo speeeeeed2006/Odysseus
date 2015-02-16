@@ -117,4 +117,32 @@ class Categorie
     {
         return $this->attributProduitAttributProduit;
     }
+    /**
+     * @var boolean
+     */
+    private $alaune;
+
+
+    /**
+     * Set alaune
+     *
+     * @param boolean $alaune
+     * @return Categorie
+     */
+    public function setAlaune($alaune)
+    {
+        $this->alaune = $alaune;
+
+        return $this;
+    }
+
+    /**
+     * Get alaune
+     *
+     * @return boolean 
+     */
+    public function getAlaune()
+    {
+        return $this->alaune;
+    }
 }

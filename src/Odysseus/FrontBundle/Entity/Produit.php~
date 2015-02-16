@@ -98,4 +98,231 @@ class Produit
         $this->commandeCommande = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Get idProduit
+     *
+     * @return integer 
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     * @return Produit
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string 
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param integer $nom
+     * @return Produit
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return integer 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set stock
+     *
+     * @param integer $stock
+     * @return Produit
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Get stock
+     *
+     * @return integer 
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * Set categorieId
+     *
+     * @param integer $categorieId
+     * @return Produit
+     */
+    public function setCategorieId($categorieId)
+    {
+        $this->categorieId = $categorieId;
+
+        return $this;
+    }
+
+    /**
+     * Get categorieId
+     *
+     * @return integer 
+     */
+    public function getCategorieId()
+    {
+        return $this->categorieId;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Produit
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set sousCategorie
+     *
+     * @param \Odysseus\FrontBundle\Entity\Souscategorie $sousCategorie
+     * @return Produit
+     */
+    public function setSousCategorie(\Odysseus\FrontBundle\Entity\Souscategorie $sousCategorie = null)
+    {
+        $this->sousCategorie = $sousCategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get sousCategorie
+     *
+     * @return \Odysseus\FrontBundle\Entity\Souscategorie 
+     */
+    public function getSousCategorie()
+    {
+        return $this->sousCategorie;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param \Odysseus\FrontBundle\Entity\Etat $etat
+     * @return Produit
+     */
+    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return \Odysseus\FrontBundle\Entity\Etat 
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Add commandeCommande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commandeCommande
+     * @return Produit
+     */
+    public function addCommandeCommande(\Odysseus\FrontBundle\Entity\Commande $commandeCommande)
+    {
+        $this->commandeCommande[] = $commandeCommande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commandeCommande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commandeCommande
+     */
+    public function removeCommandeCommande(\Odysseus\FrontBundle\Entity\Commande $commandeCommande)
+    {
+        $this->commandeCommande->removeElement($commandeCommande);
+    }
+
+    /**
+     * Get commandeCommande
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommandeCommande()
+    {
+        return $this->commandeCommande;
+    }
 }

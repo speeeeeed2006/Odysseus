@@ -303,4 +303,126 @@ class Commande
     {
         return $this->produitProduit;
     }
+    /**
+     * @var integer
+     */
+    private $adresseLivraisonId;
+
+    /**
+     * @var integer
+     */
+    private $adresseFacturationId;
+
+    /**
+     * @var \Odysseus\FrontBundle\Entity\Client
+     */
+    private $clientClient;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $produitVenteproduitVente;
+
+
+    /**
+     * Set adresseLivraisonId
+     *
+     * @param integer $adresseLivraisonId
+     * @return Commande
+     */
+    public function setAdresseLivraisonId($adresseLivraisonId)
+    {
+        $this->adresseLivraisonId = $adresseLivraisonId;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseLivraisonId
+     *
+     * @return integer 
+     */
+    public function getAdresseLivraisonId()
+    {
+        return $this->adresseLivraisonId;
+    }
+
+    /**
+     * Set adresseFacturationId
+     *
+     * @param integer $adresseFacturationId
+     * @return Commande
+     */
+    public function setAdresseFacturationId($adresseFacturationId)
+    {
+        $this->adresseFacturationId = $adresseFacturationId;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseFacturationId
+     *
+     * @return integer 
+     */
+    public function getAdresseFacturationId()
+    {
+        return $this->adresseFacturationId;
+    }
+
+    /**
+     * Set clientClient
+     *
+     * @param \Odysseus\FrontBundle\Entity\Client $clientClient
+     * @return Commande
+     */
+    public function setClientClient(\Odysseus\FrontBundle\Entity\Client $clientClient = null)
+    {
+        $this->clientClient = $clientClient;
+
+        return $this;
+    }
+
+    /**
+     * Get clientClient
+     *
+     * @return \Odysseus\FrontBundle\Entity\Client 
+     */
+    public function getClientClient()
+    {
+        return $this->clientClient;
+    }
+
+    /**
+     * Add produitVenteproduitVente
+     *
+     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
+     * @return Commande
+     */
+    public function addProduitVenteproduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente)
+    {
+        $this->produitVenteproduitVente[] = $produitVenteproduitVente;
+
+        return $this;
+    }
+
+    /**
+     * Remove produitVenteproduitVente
+     *
+     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
+     */
+    public function removeProduitVenteproduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente)
+    {
+        $this->produitVenteproduitVente->removeElement($produitVenteproduitVente);
+    }
+
+    /**
+     * Get produitVenteproduitVente
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduitVenteproduitVente()
+    {
+        return $this->produitVenteproduitVente;
+    }
 }

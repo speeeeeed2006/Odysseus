@@ -1,4 +1,4 @@
-Administrateur:
+Odysseus\FrontBundle\Entity\Administrateur:
     type: entity
     table: administrateur
     id:
