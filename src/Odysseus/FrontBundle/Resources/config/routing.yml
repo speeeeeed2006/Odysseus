@@ -1,3 +1,17 @@
-odysseus_front_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: OdysseusFrontBundle:Default:index }
+#------------ debut Statique
+odysseus_front_plan:
+    path:     /plan-du-site
+    defaults: { _controller: OdysseusFrontBundle:Statique:planSite }
+
+#------------ fin Statique
+#------------ debut Main
+odysseus_front_home:
+    path:     /home
+    defaults: { _controller: OdysseusFrontBundle:Main:home }
+    
+#------------ fin Main
+#------------ debut Client
+odysseus_front_connexion:
+    path:     /connexion
+    defaults: { _controller: OdysseusFrontBundle:Client:connexion }
+#------------ fin Client
