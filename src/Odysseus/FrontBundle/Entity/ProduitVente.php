@@ -12,7 +12,7 @@ class ProduitVente
     /**
      * @var integer
      */
-    private $idproduitVente;
+    private $idProduitVente;
 
     /**
      * @var integer
@@ -43,13 +43,13 @@ class ProduitVente
     }
 
     /**
-     * Get idproduitVente
+     * Get idProduitVente
      *
      * @return integer 
      */
-    public function getIdproduitVente()
+    public function getIdProduitVente()
     {
-        return $this->idproduitVente;
+        return $this->idProduitVente;
     }
 
     /**

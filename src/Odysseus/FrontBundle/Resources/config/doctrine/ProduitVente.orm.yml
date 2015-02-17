@@ -9,12 +9,12 @@ Odysseus\FrontBundle\Entity\ProduitVente:
             columns:
                 - client_id
     id:
-        idproduitVente:
+        idProduitVente:
             type: integer
             nullable: false
             unsigned: false
             id: true
-            column: idProduit_Vente
+            column: id_produit_vente
             generator:
                 strategy: IDENTITY
     fields:

@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commande
  *
- * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement"}), @ORM\Index(name="fk_Commande_etat1_idx", columns={"etat_id"})})
+ * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement"}), 
+ *                                      @ORM\Index(name="fk_Commande_etat1_idx", columns={"etat_id"})
+ *                                      ORM\Index(name="fk_Commande_client1_idx", columns={"client_id"})})
  * @ORM\Entity
  */
 class Commande
@@ -20,13 +22,6 @@ class Commande
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idCommande;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="client_id", type="integer", nullable=false)
-     */
-    private $clientId;
 
     /**
      * @var string
@@ -109,30 +104,7 @@ class Commande
     {
         return $this->idCommande;
     }
-
-    /**
-     * Set clientId
-     *
-     * @param integer $clientId
-     * @return Commande
-     */
-    public function setClientId($clientId)
-    {
-        $this->clientId = $clientId;
-
-        return $this;
-    }
-
-    /**
-     * Get clientId
-     *
-     * @return integer 
-     */
-    public function getClientId()
-    {
-        return $this->clientId;
-    }
-
+    
     /**
      * Set clientIp
      *
@@ -314,9 +286,14 @@ class Commande
     private $adresseFacturationId;
 
     /**
-     * @var \Odysseus\FrontBundle\Entity\Client
+     * @var \Client
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="client_id", referencedColumnName="id_client")
+     * })
      */
-    private $clientClient;
+    private $client;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -371,26 +348,26 @@ class Commande
     }
 
     /**
-     * Set clientClient
+     * Set client
      *
-     * @param \Odysseus\FrontBundle\Entity\Client $clientClient
+     * @param \Odysseus\FrontBundle\Entity\Client $client
      * @return Commande
      */
-    public function setClientClient(\Odysseus\FrontBundle\Entity\Client $clientClient = null)
+    public function setClient(\Odysseus\FrontBundle\Entity\Client $client = null)
     {
-        $this->clientClient = $clientClient;
+        $this->client = $client;
 
         return $this;
     }
 
     /**
-     * Get clientClient
+     * Get client
      *
      * @return \Odysseus\FrontBundle\Entity\Client 
      */
-    public function getClientClient()
+    public function getClient()
     {
-        return $this->clientClient;
+        return $this->client;
     }
 
     /**
