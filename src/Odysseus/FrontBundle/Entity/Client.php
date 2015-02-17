@@ -3,6 +3,7 @@
 namespace Odysseus\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Client
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="client", indexes={@ORM\Index(name="fk_Client_Adresse1_idx", columns={"adresse_id_adresse"}), @ORM\Index(name="fk_Client_Etat1_idx", columns={"etat_id"})})
  * @ORM\Entity
  */
-class Client
+class Client extends BaseUser
 {
     
     const CIVILITE_H = 'M.';
@@ -66,21 +67,6 @@ class Client
      * @ORM\Column(name="telephone", type="string", length=45, nullable=true)
      */
     private $telephone;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=70, nullable=false)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp", type="string", length=45, nullable=false)
-     */
-    private $mdp;
-
     /**
      * @var \DateTime
      *
@@ -311,29 +297,6 @@ class Client
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set mdp
-     *
-     * @param string $mdp
-     * @return Client
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp
-     *
-     * @return string 
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
     }
 
     /**

@@ -42,16 +42,6 @@ Odysseus\FrontBundle\Entity\Client:
             nullable: true
             length: 45
             fixed: false
-        email:
-            type: string
-            nullable: false
-            length: 70
-            fixed: false
-        mdp:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
         dateNaissance:
             type: datetime
             nullable: false
