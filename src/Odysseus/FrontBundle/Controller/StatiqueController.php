@@ -10,4 +10,19 @@ class StatiqueController extends Controller
     {
         return $this->render('OdysseusFrontBundle:Statique:planSite.html.twig');
     }
+
+    public function contactAction()
+    {
+        return $this->render('OdysseusFrontBundle:Statique:contact.html.twig');
+    }
+
+    public function mentionsLegalesAction()
+    {
+        return $this->render('OdysseusFrontBundle:Statique:mentionsLegales.html.twig');
+    }
+
+    public function conditionsVente()
+    {
+        return $this->render('OdysseusFrontBundle:Statique:conditionsVentes.html.twig');
+    }
 }
