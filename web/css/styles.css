@@ -61,7 +61,7 @@ hgroup {
 }
 h1 { font-size: 1.8571em; /* equiv 26px */ font-weight: normal; line-height: 1.6154em; margin: .8077em 0 0 0; }
 h2 { font-size: 1.7143em; /* equiv 24px */ font-weight: normal; line-height: 1.75em; margin: .875em 0 0 0; }
-h3 { font-size: 1.5714em; /* equiv 22px */ font-weight: normal; line-height: 1.909em; margin: .9545em 0 0 0; }
+h3 { font-size: 1.3em; /* equiv 22px */ font-weight: normal; line-height: 1.909em; margin: .9545em 0 0 0; }
 h4 { font-size: 1.4286em; /* equiv 20px */ font-weight: normal; line-height: 1.05em; margin:  1.05em 0 0 0; }
 h5 { font-size: 1.2857em; /* equiv 18px */ font-weight: normal; line-height: 1.1667em; margin:  1.1667em 0 0 0; }
 h6 { font-size: 1.1429em; /* equiv 16px */ font-weight: normal; line-height: 1.3125em; margin:  1.3125em 0 0 0; }
@@ -170,8 +170,8 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 
 #top #recherche { width: 280px; position: relative; }
 #top #recherche form { margin-top: 110px;}
-#top #recherche input { border: 1px solid #5fb7c6; width: 244px; height: 26px; padding-left : 34px; background: url('/images/sprite.png') 4px 3px no-repeat; }
-#top #recherche button { position: absolute; right: -1px; bottom: 0; width: 20px; height: 30px; border: 1px solid #5fb7c6; background: #5fb7c6 url('/images/sprite.png') 0px -18px no-repeat; }
+#top #recherche input { border: 1px solid #5fb7c6; width: 244px; height: 26px; padding-left : 34px; background: url('../images/sprite.png') 4px 3px no-repeat; }
+#top #recherche button { position: absolute; right: -1px; bottom: 0; width: 20px; height: 30px; border: 1px solid #5fb7c6; background: #5fb7c6 url('../images/sprite.png') 0px -18px no-repeat; }
 #top #recherche button:hover { background-position: -20px -18px;}
 
 #top #droite { width: 200px; margin-left: 70px; }
@@ -182,9 +182,9 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 #top #droite #liens ul li { font-size : 12px; text-transform: uppercase; }
 #top #droite #liens ul li:first-child:after { content: "|"; margin: 0 6px;  } 
 #top #droite #liens #flux_rss { width: 26px; height: 50px; background: #5fb7c6; /*display: inline-block; vertical-align: top;*/ float: right; }
-#top #droite #liens #flux_rss a { width: 26px; height: 26px; display: block; margin-top: 24px; background: url('images/sprite.png') 1px -78px no-repeat; }
+#top #droite #liens #flux_rss a { width: 26px; height: 26px; display: block; margin-top: 24px; background: url('../images/sprite.png') 1px -78px no-repeat; }
 
-#top #droite #panier { width: 130px; height: 30px; line-height: 30px; text-align: right; padding: 5px 10px 5px 5px; background: #ebe4de url('images/sprite.png') 5px -42px no-repeat; float: right; }
+#top #droite #panier { width: 130px; height: 30px; line-height: 30px; text-align: right; padding: 5px 10px 5px 5px; background: #ebe4de url('../images/sprite.png') 5px -42px no-repeat; float: right; }
 #top #droite #panier a {  text-align: right; font-weight: bold; }
 
 #top #droite #connexion { clear: both; /*height: 20px; */ }
@@ -300,6 +300,13 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #wrap #complement #avis p:nth-of-type(1) { background: #ebe4de;}
 #wrap #complement #avis .pseudo, #wrap #complement #avis .note {  padding: 0 10px;}
 #wrap #complement #avis .note { float: right; }
+
+/* ----------------------------- */
+/* Contenu Page statique
+/* ----------------------------- */
+.bloc { padding : 0 3em; margin-bottom: 3.5em;}
+.bloc p { margin:0 0 0.5em 0; font-size: 12px;}
+
 
 /* ----------------------------- */
 /* Contenu Panier

@@ -21,7 +21,7 @@ class StatiqueController extends Controller
         return $this->render('OdysseusFrontBundle:Statique:mentionsLegales.html.twig');
     }
 
-    public function conditionsVente()
+    public function conditionsVentesAction()
     {
         return $this->render('OdysseusFrontBundle:Statique:conditionsVentes.html.twig');
     }

@@ -3,6 +3,18 @@ odysseus_front_plan:
     path:     /plan-du-site
     defaults: { _controller: OdysseusFrontBundle:Statique:planSite }
 
+odysseus_front_contact:   
+    path:     /contact
+    defaults: { _controller: OdysseusFrontBundle:Statique:contact }
+
+odysseus_front_cgv:    
+    path:     /conditions-de-vente
+    defaults: { _controller: OdysseusFrontBundle:Statique:conditionsVentes }
+
+odysseus_front_mentions:    
+    path:     /mentions-legales
+    defaults: { _controller: OdysseusFrontBundle:Statique:mentionsLegales }
+
 #------------ fin Statique
 #------------ debut Main
 odysseus_front_home:
