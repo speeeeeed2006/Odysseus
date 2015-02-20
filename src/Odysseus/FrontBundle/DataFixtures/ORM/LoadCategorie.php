@@ -13,16 +13,18 @@ class LoadCategorie extends AbstractFixture implements OrderedFixtureInterface
   public function load(ObjectManager $manager)
   {
     // Liste des noms de catégorie à ajouter
-    $noms = array(
-      'Ordinateur',
-      'Téléphone',
-      'Appareil photos'
+    $categories = array(
+      0 => array('Ordinateur', 1),
+      1 => array('Téléphone', 0),
+      2 => array('Appareil photos', 0)
     );
+    
     $i=1;
-    foreach ($noms as $value) {
+    foreach ($categories as $key => $value) {
         // On crée la catégorie
             $categorie = new Categorie();
-            $categorie->setNom($value);
+            $categorie->setNom($value[0]);
+            $categorie->setAlaune($value[1]);
             
          // On persiste la catégorie
          $manager->persist($categorie);
