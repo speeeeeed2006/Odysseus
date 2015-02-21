@@ -153,8 +153,8 @@ button:hover { }
 #wrap h2 { border-bottom: 1px solid #cec0b4; margin-bottom: 20px; }
 #wrap h2:before { content: '>>' ; margin-right: 5px; font-size: 18px; color: #5fb7c6;  }
 
-#wrap .prix, #widgets .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin: 0 20px 10px 0; }
-#wrap .prix.barre, #widgets .prix.barre { text-decoration: line-through; margin-right: 20px;}
+#wrap .prix, #sidebar .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin: 0 20px 10px 0; }
+#wrap .prix.barre, #sidebar .prix.barre { text-decoration: line-through; margin-right: 20px;}
 
 /* ----------------------------- */
 /* header
@@ -202,7 +202,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 /* Contenu index 
 /* ----------------------------- */
 
-#wrap, #widgets,
+#wrap, #sidebar,
 #wrap #bas #a_la_une, #wrap #bas #nouveau,
 #wrap #bas #a_la_une .produit { display: inline-block; vertical-align: top; }
 
@@ -307,6 +307,15 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 .bloc { padding : 0 3em; margin-bottom: 3.5em;}
 .bloc p { margin:0 0 0.5em 0; font-size: 12px;}
 
+/* Page Contact */
+#form_contact h2 { margin-bottom: 20px;}
+#form_contact p { margin-bottom: 20px;}
+#form_contact form {}
+#form_contact form div { margin-bottom: 20px;}
+#form_contact form label { width: 110px; display: inline-block; font-size: 12px; font-weight: bold; }
+#form_contact form input { width: 230px;}
+#form_contact form textarea{ vertical-align: top; padding: 5px; font : 11px 'open_sansregular', sans-serif;}
+#form_contact form button {margin-left: 275px;}
 
 /* ----------------------------- */
 /* Contenu Panier
@@ -336,44 +345,44 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #wrap button.suivant:before {content: '>> '; color: #ffffff; }
 
 /* ----------------------------- */
-/* Widgets (Colonne droite)
+/* sidebar (Colonne droite)
 /* ----------------------------- */
-#widgets { width: 230px; /*min-height: 100px;*/ }
-#widgets .widget { margin-bottom: 15px; }
+#sidebar { width: 230px; /*min-height: 100px;*/ }
+#sidebar .widget { margin-bottom: 15px; }
 
 /* Promotions */
-#widgets #promotions {  }
-#widgets #promotions #promo { background: #ebe4de; padding: 10px 10px 0; position: relative;}
+#sidebar #promotions {  }
+#sidebar #promotions #promo { background: #ebe4de; padding: 10px 10px 0; position: relative;}
 
-#widgets #promotions #promo img { width: 202px; height: 140px; background: #cccccc; display: block;  margin-bottom: 16px; border: 4px solid #5fb7c6;}
-#widgets #promotions #promo #pourcentage { background: url('../images/sprite.png') 0px -233px no-repeat;  width: 52px; height: 44px;  position: absolute; top: 134px; right: 20px;}
-#widgets #promotions #promo #pourcentage span { color: #ffffff; display: inline-block; line-height: 32px; text-align: center; width: 52px;}
-#widgets #promotions #promo .marque { font-weight: bold; display: block; }
-#widgets #promotions #promo .nom_produit { font-weight: bold; display: block; margin-bottom: 10px; }
-#widgets #promotions #promo .descriptif { font-size: 13px; white-space: nowrap; text-overflow: ellipsis; max-height: 20px; overflow: hidden; margin: 10px 0px 20px; }
-/*#widgets #promotions #promo .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin-bottom: 10px; }
-#widgets #promotions #promo .prix.barre { text-decoration: line-through; margin-right: 20px;}*/
+#sidebar #promotions #promo img { width: 202px; height: 140px; background: #cccccc; display: block;  margin-bottom: 16px; border: 4px solid #5fb7c6;}
+#sidebar #promotions #promo #pourcentage { background: url('../images/sprite.png') 0px -233px no-repeat;  width: 52px; height: 44px;  position: absolute; top: 134px; right: 20px;}
+#sidebar #promotions #promo #pourcentage span { color: #ffffff; display: inline-block; line-height: 32px; text-align: center; width: 52px;}
+#sidebar #promotions #promo .marque { font-weight: bold; display: block; }
+#sidebar #promotions #promo .nom_produit { font-weight: bold; display: block; margin-bottom: 10px; }
+#sidebar #promotions #promo .descriptif { font-size: 13px; white-space: nowrap; text-overflow: ellipsis; max-height: 20px; overflow: hidden; margin: 10px 0px 20px; }
+/*#sidebar #promotions #promo .prix { font: 22px 'league_gothicregular', sans-serif; letter-spacing: 1px; float: right; margin-bottom: 10px; }
+#sidebar #promotions #promo .prix.barre { text-decoration: line-through; margin-right: 20px;}*/
 
-#widgets #promotions #plus_promotions { background: #d3c5b9 url('../images/sprite.png') 6px -204px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 0px 0 0px 36px; clear: both; margin-left: 45px;}
-#widgets #promotions #plus_promotions span a { color: #ffffff; text-align: right; }
-#widgets #promotions #plus_promotions span a:hover { color: #000000;}
+#sidebar #promotions #plus_promotions { background: #d3c5b9 url('../images/sprite.png') 6px -204px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 0px 0 0px 36px; clear: both; margin-left: 45px;}
+#sidebar #promotions #plus_promotions span a { color: #ffffff; text-align: right; }
+#sidebar #promotions #plus_promotions span a:hover { color: #000000;}
 
 /* Catégories */
-#widgets #categories {  }
-#widgets #categories ul { list-style: none; margin-top: 0px; }
-#widgets #categories ul li { border-bottom: 1px dotted #cec0b4; padding: 10px 0 10px; }
-#widgets #categories ul li:first-child { border-top: 1px dotted #cccccc;}
-#widgets #categories ul li:before { content: '>> ';  color: #d3c5b9; }
+#sidebar #categories {  }
+#sidebar #categories ul { list-style: none; margin-top: 0px; }
+#sidebar #categories ul li { border-bottom: 1px dotted #cec0b4; padding: 10px 0 10px; }
+#sidebar #categories ul li:first-child { border-top: 1px dotted #cccccc;}
+#sidebar #categories ul li:before { content: '>> ';  color: #d3c5b9; }
 
 /* Tags */
-#widgets #tags {  }
+#sidebar #tags {  }
 
 /* Newsletter */
-#widgets #newsletter {  }
-#widgets #newsletter form { background: #ebe4de;  padding: 10px; min-height: 95px; }
-#widgets #newsletter p { margin-bottom: 10px; }
-#widgets #newsletter input { width: 200px; margin-bottom: 10px; }
-#widgets #newsletter button { float: right; clear: both; }
+#sidebar #newsletter {  }
+#sidebar #newsletter form { background: #ebe4de;  padding: 10px; min-height: 95px; }
+#sidebar #newsletter p { margin-bottom: 10px; }
+#sidebar #newsletter input { width: 200px; margin-bottom: 10px; }
+#sidebar #newsletter button { float: right; clear: both; }
 
 /* ----------------------------- */
 /* Footer
