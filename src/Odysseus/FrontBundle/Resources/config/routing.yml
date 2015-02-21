@@ -14,12 +14,21 @@ odysseus_front_cgv:
 odysseus_front_mentions:    
     path:     /mentions-legales
     defaults: { _controller: OdysseusFrontBundle:Statique:mentionsLegales }
-
+    
 #------------ fin Statique
 #------------ debut Main
 odysseus_front_home:
     path:     /home
     defaults: { _controller: OdysseusFrontBundle:Main:home }
+    
+#odysseus_front_produit:    
+    #path:     /produit
+    #defaults: { _controller: OdysseusFrontBundle:Main:produit }
+    
+odysseus_front_panier:    
+    path:     /panier
+    defaults: { _controller: OdysseusFrontBundle:Main:panier }
+
     
 #------------ fin Main
 #------------ debut Client
