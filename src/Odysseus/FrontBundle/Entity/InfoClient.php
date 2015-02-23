@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class InfoClient
 {
+    
+    const CIVILITE_H = 'M.';
+    const CIVILITE_F = 'Mme';
     /**
      * @var integer
      *

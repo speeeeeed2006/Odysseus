@@ -2,7 +2,7 @@ Odysseus\FrontBundle\Entity\Client:
     type:  entity
     table: client
     id:
-        idClient:
+        id:
             column: id_client
             type: integer
             generator:
