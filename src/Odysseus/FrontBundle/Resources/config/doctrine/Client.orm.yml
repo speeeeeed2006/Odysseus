@@ -1,67 +1,9 @@
 Odysseus\FrontBundle\Entity\Client:
-    type: entity
+    type:  entity
     table: client
-    indexes:
-        fk_Client_Etat1_idx:
-            columns:
-                - etat_id
     id:
         idClient:
-            type: integer
-            nullable: false
-            unsigned: false
-            id: true
             column: id_client
+            type: integer
             generator:
-                strategy: IDENTITY
-    fields:
-        civilite:
-            type: string
-            nullable: false
-            columnDefinition: ENUM('M.', 'Mme')
-            length: 45
-            fixed: false
-        prenom:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
-        nom:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
-        newsletter:
-            type: boolean
-            nullable: false
-        premium:
-            type: boolean
-            nullable: false
-        telephone:
-            type: string
-            nullable: true
-            length: 45
-            fixed: false
-        dateNaissance:
-            type: datetime
-            nullable: false
-            column: date_naissance
-        dateCreation:
-            type: datetime
-            nullable: false
-            column: date_creation
-        dateModification:
-            type: datetime
-            nullable: true
-            column: date_modification
-    manyToOne:
-        etat:
-            targetEntity: Etat
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                etat_id:
-                    referencedColumnName: id_etat
-            orphanRemoval: false
-    lifecycleCallbacks: {  }
+                strategy: AUTO
