@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Odysseus{% endblock %}</title>
+        
+        {% block stylesheets %}
+            <link href="{{ asset('css/coin-slider-styles.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    	<div id="container">
+            <header>
+                <div id="top">
+                    <div id="logo">
+                            <img src="" alt="Logo société" />
+                    </div><!--
+                    --><div id="recherche">
+                        <form>
+                                <input type="text" name="recherche" id="recherche" placeholder="Recherche"/>
+                                <button type="submit"></button>
+                        </form>
+                    </div><!--
+                --><div id="droite">
+                            <div id="liens">
+                                    <ul>
+                                            <li><a href="./plan-du-site" title="Plan du site">Plan du site </a></li>
+                                            <li><a href="./contact" title="Contact">Contact</a></li>
+                                    </ul><!--
+                                    --><div id="flux_rss"><a href="#" title="Flux RSS"></a></div>
+                            </div>
+                            <div id="panier">
+                                    <a href="./panier" title="Votre panier">Panier (0)</a>
+                            </div>
+                            <div id="connexion">
+                                    <ul>
+                                            <li><a href="connexion.php" title="Se connecter">Se connecter </a></li>
+                                            <li><a href="connexion.php" title="S'identifier">S'identifier</a></li>
+                                    </ul>
+                            </div>
+                 </div>
+                </div> <!-- fin #top-->
+                <nav>
+                    <ul>
+                        <li><a href="./home" title="">Accueil</a></li>
+                        {{ render (controller("OdysseusFrontBundle:Main:menu")) }}
+                    </ul>
+                </nav>
+
+            </header>
+            <div id="content">
+
+                {% block body %}
+                {% endblock %}
+
+            </div> <!-- fin #content -->
+
+	</div> <!-- fin #container -->
+
+        <footer>
+            <div id="footer">
+                <div id="produits">
+                        <h3>Produits</h3>
+                        <ul>
+                            <li><a href="#" title="">Meilleures ventes</a></li>
+                            <li><a href="#" title="">Nouveautés</a></li>
+                            <li><a href="#" title="">Catégorie1</a></li>
+                            <li><a href="#" title="">Catégorie2</a></li>
+                            <li><a href="#" title="">Catégorie3</a></li>
+                        </ul>
+                </div><!--
+                --><div id="reseaux">
+                        <h3>Suivez-nous</h3>
+                        <div id="fb_twitter">
+                            <a href="#" title=""><span class="facebook"></span></a>
+                            <a href="#" title=""><span class="twitter"></span></a>
+                        </div><!--#fb_twitter-->
+                        <p>Les derniers tweets</p>
+                        <ul>
+                            <li class="tweet">Lorem ipsum tsea ei vidisse legendos, ne habemus deterruisset cum. Stet possim eloquentiam qui no  [...] </li>
+                            <li class="tweet">Lorem ipsum tsea ei vidisse legendos set cum. Stet possim eloquentiam qui no  Lorem ipsum sea  [...] </li>
+                        </ul>	
+                </div><!--
+                --><div id="informations">
+                        <div id="infos">
+                            <h3>Informations</h3>
+                            <ul>
+                                    <li><a href="#" title="">Livraison</a></li>
+                                    <li><a href="#" title="">Paiement</a></li>
+                                    <li><a href="./mentions-legales" title="">Mentions légales</a></li>
+                                    <li><a href="./conditions-de-vente" title="">Conditions de vente</a></li>
+                            </ul>
+                        </div><!--
+                        --><div id="pictos">
+                                <span class="paypal"></span>
+                                <span class="visa"></span>
+                        </div>
+                </div> <!--fin #informations-->
+            </div>	<!--fin #footer-->
+	</footer>
+	{% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="{{ asset('js/coin-slider.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -208,11 +208,6 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 
 #wrap { width: 970px; margin-right: 46px;  /*margin-right: 50px; pb import*/ }
 #wrap #haut { margin-bottom: 45px; }
-#wrap #haut #slider { background: #cccccc; width: 970px; height: 380px; margin-bottom: 10px; }
-#wrap #haut #vignettes {  }
-#wrap #haut #vignettes ul { text-align: center; }
-#wrap #haut #vignettes ul li { width: 8px; height: 8px; background: #000000; display: inline-block; vertical-align: top; margin-right: 4px; border-radius: 8px; }
-#wrap #haut #vignettes ul li:last-child { margin-right: 0; }
 
 #wrap #bas { margin-bottom: 20px;}
 
