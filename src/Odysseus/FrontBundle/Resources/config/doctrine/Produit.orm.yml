@@ -52,6 +52,9 @@ Odysseus\FrontBundle\Entity\Produit:
         alaune:
             type: boolean
             nullable: false
+        prix:
+            type: decimal(10,0)
+            nullable: false
     manyToOne:
         sousCategorie:
             targetEntity: Souscategorie

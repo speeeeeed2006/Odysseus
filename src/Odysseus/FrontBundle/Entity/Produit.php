@@ -82,6 +82,11 @@ class Produit
      * })
      */
     private $etat;
+    
+    /**
+     * @var string
+     */
+    private $prix; 
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -292,6 +297,30 @@ class Produit
     {
         return $this->etat;
     }
+    
+    /**
+     * Set prix
+     *
+     * @param string $prix
+     * @return Produit
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return string 
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+    
 
     /**
      * Add commandeCommande
@@ -409,4 +438,5 @@ class Produit
     {
         return $this->alaune;
     }
+   
 }
