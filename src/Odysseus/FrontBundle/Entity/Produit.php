@@ -84,7 +84,9 @@ class Produit
     private $etat;
     
     /**
-     * @var string
+     * @var decimal
+     *
+     * @ORM\Column(name="prix", type="decimal", precision=10, scale=2)
      */
     private $prix; 
 
@@ -301,7 +303,7 @@ class Produit
     /**
      * Set prix
      *
-     * @param string $prix
+     * @param decimal $prix
      * @return Produit
      */
     public function setPrix($prix)
@@ -314,7 +316,7 @@ class Produit
     /**
      * Get prix
      *
-     * @return string 
+     * @return decimal 
      */
     public function getPrix()
     {

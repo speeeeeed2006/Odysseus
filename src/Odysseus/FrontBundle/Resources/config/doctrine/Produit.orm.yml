@@ -53,7 +53,9 @@ Odysseus\FrontBundle\Entity\Produit:
             type: boolean
             nullable: false
         prix:
-            type: decimal(10,0)
+            type: decimal
+            precision: 10
+            scale: 2
             nullable: false
     manyToOne:
         sousCategorie:
