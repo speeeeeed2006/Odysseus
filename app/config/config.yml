@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@OdysseusFrontBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
@@ -77,3 +78,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Odysseus\FrontBundle\Entity\Client
+    registration:
+        form:
+            type: odysseus_user_registration
