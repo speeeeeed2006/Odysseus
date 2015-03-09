@@ -1,0 +1,23 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Supprimer une sous-catégorie - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+	<h2> Supprimer une sous-catégorie </h2>
+
+	<p>Etes-vous certain(e) de vouloir supprimer la sous-catégorie "{{ sousCategorie.nom }}" ?</p>
+        
+        <form method="post" action="{{ path('odysseus_back_supprimer_souscategorie', {id: sousCategorie.idSousCategorie}) }}" >
+
+              <a href="{{ path('odysseus_back_lister_souscategorie') }}" class="btn btn-info">
+                <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des sous-catégories
+              </a>
+             
+		<input type="submit" value="Supprimer" class="btn btn-danger">
+            {{ form_rest(form) }}
+	</form>
+	
+{% endblock %}

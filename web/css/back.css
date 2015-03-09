@@ -1,0 +1,15 @@
+
+.panel-body {
+    padding: 7px;
+    border-bottom: 1px dotted #cccccc;
+}
+
+.panel-body:last-child {
+    border-bottom: none;
+}
+
+
+thead th {
+    background-color: #337AB7;
+    color: white;
+}

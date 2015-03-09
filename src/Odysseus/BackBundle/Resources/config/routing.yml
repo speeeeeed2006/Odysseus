@@ -1,0 +1,39 @@
+odysseus_back_homepage:
+    path:     /
+    defaults: { _controller: OdysseusBackBundle:Back:index }
+
+# --------- Categorie ----------------------- #   
+    
+odysseus_back_lister_categorie:
+    path:     /lister-categorie
+    defaults: { _controller: OdysseusBackBundle:Categorie:lister }
+    
+odysseus_back_ajouter_categorie:
+    path:     /ajouter-categorie
+    defaults: { _controller: OdysseusBackBundle:Categorie:ajouter }
+    
+odysseus_back_modifier_categorie:
+    path:     /modifier-categorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Categorie:modifier }
+    
+odysseus_back_supprimer_categorie:
+    path:     /supprimer-categorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Categorie:supprimer }
+    
+# --------- Sous-categorie ----------------------- #   
+   
+odysseus_back_lister_souscategorie:
+    path:     /lister-souscategorie
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:lister }
+    
+odysseus_back_ajouter_souscategorie:
+    path:     /ajouter-souscategorie
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:ajouter }
+    
+odysseus_back_modifier_souscategorie:
+    path:     /modifier-souscategorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:modifier }
+    
+odysseus_back_supprimer_souscategorie:
+    path:     /supprimer-souscategorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:supprimer }

@@ -1,0 +1,17 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Modifier une catégorie - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+	<h2 class="page-header">Modifier une catégorie</h2>
+
+	{%  include "OdysseusBackBundle:Forms:formCategorie.html.twig" %}
+
+	<p>
+            <a href="{{ path('odysseus_back_lister_categorie') }}" class="btn btn-info"> <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des catégories</a>
+	</p>
+	
+{% endblock %}
