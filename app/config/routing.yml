@@ -2,3 +2,6 @@ odysseus_front:
     resource: "@OdysseusFrontBundle/Resources/config/routing.yml"
     prefix:   /
 
+odysseus_back:
+    resource: "@OdysseusBackBundle/Resources/config/routing.yml"
+    prefix:   /back

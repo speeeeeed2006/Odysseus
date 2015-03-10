@@ -22,6 +22,14 @@ Odysseus\FrontBundle\Entity\ProduitVente:
             type: integer
             nullable: false
             unsigned: false
+        remarque:
+            type: text
+            length: 255
+            nullable: true
+        prix:
+            type: float
+            nullable: false
+            unsigned: false
     manyToOne:
         produit:
             targetEntity: Produit

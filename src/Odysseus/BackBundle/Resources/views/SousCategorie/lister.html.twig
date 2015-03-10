@@ -1,0 +1,42 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les sous-catégories - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des sous-catégories</h2>  
+    
+    <p>
+        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_souscategorie') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter une sous-catégorie</a> 
+    </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th class=" panel-heading">Nom de la sous-catégorie</th>
+                <th class="">Rattachée à la catégorie</th>
+                <th class="">Modifier</th>
+                <th class="">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                {% for sousCategorie in liste_souscategories %} 
+                <tr>
+                    <td>{{ sousCategorie.nom }} </td>
+                    <td> {{ sousCategorie.categorie.nom }} </td>
+                    <td><a href=" {{ path('odysseus_back_modifier_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-edit"></i></a></td> 
+                    <td><a href=" {{ path('odysseus_back_supprimer_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-remove"> </i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+<p class="label label-danger">
+A faire :
+<ul>
+<li> Liste ok - Ajout ok - Modification ok - supprimer ok  </li>
+</ul>  	
+</p>	
+{% endblock %}

@@ -24,7 +24,7 @@ class Produit
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=40, nullable=false)
+     * @ORM\Column(name="reference", type="string", length=40, nullable=true)
      */
     private $reference;
 
@@ -45,23 +45,10 @@ class Produit
     /**
      * @var integer
      *
-     * @ORM\Column(name="stock", type="integer", nullable=false)
-     */
-    private $stock;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="categorie_id", type="integer", nullable=false)
      */
-    private $categorieId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=45, nullable=false)
-     */
-    private $image;
+    private $categorie;
+   
 
     /**
      * @var \Souscategorie
@@ -82,13 +69,6 @@ class Produit
      * })
      */
     private $etat;
-    
-    /**
-     * @var decimal
-     *
-     * @ORM\Column(name="prix", type="decimal", precision=10, scale=2)
-     */
-    private $prix; 
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -96,6 +76,28 @@ class Produit
      * @ORM\ManyToMany(targetEntity="Commande", mappedBy="produitProduit")
      */
     private $commandeCommande;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marque", type="string", length=255)
+     */
+    private $marque;
+    
+        /**
+     * @var boolean
+     */
+    private $promotion;
+
+    /**
+     * @var boolean
+     */
+    private $nouveaute;
+
+    /**
+     * @var boolean
+     */
+    private $alaune;
 
     /**
      * Constructor
@@ -186,37 +188,14 @@ class Produit
     }
 
     /**
-     * Set stock
-     *
-     * @param integer $stock
-     * @return Produit
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock
-     *
-     * @return integer 
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
      * Set categorieId
      *
      * @param integer $categorieId
      * @return Produit
      */
-    public function setCategorieId($categorieId)
+    public function setCategorie($categorie)
     {
-        $this->categorieId = $categorieId;
+        $this->categorie = $categorie;
 
         return $this;
     }
@@ -226,32 +205,9 @@ class Produit
      *
      * @return integer 
      */
-    public function getCategorieId()
+    public function getCategorie()
     {
-        return $this->categorieId;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return Produit
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
+        return $this->categorie;
     }
 
     /**
@@ -299,30 +255,6 @@ class Produit
     {
         return $this->etat;
     }
-    
-    /**
-     * Set prix
-     *
-     * @param decimal $prix
-     * @return Produit
-     */
-    public function setPrix($prix)
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-    /**
-     * Get prix
-     *
-     * @return decimal 
-     */
-    public function getPrix()
-    {
-        return $this->prix;
-    }
-    
 
     /**
      * Add commandeCommande
@@ -356,21 +288,6 @@ class Produit
     {
         return $this->commandeCommande;
     }
-    /**
-     * @var boolean
-     */
-    private $promotion;
-
-    /**
-     * @var boolean
-     */
-    private $nouveaute;
-
-    /**
-     * @var boolean
-     */
-    private $alaune;
-
 
     /**
      * Set promotion

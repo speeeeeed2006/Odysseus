@@ -1,0 +1,18 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajouter un Produit - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+        <h2 class="page-header">Ajouter un produit</h2>
+
+	{%  include "OdysseusBackBundle:Forms:formProduit.html.twig" %}
+	<p>
+            <a href="{{ path('odysseus_back_lister_produit') }}" class="btn btn-info">
+                <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des produits
+            </a>
+	</p>
+	
+{% endblock %}

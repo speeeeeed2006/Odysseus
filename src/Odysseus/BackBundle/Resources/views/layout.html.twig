@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %} Back-office {% endblock %}</title>
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/back.css') }}" />
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>      
+
+    <div class="container-fluid">
+              
+        <div class="row">
+          <nav class="navbar navbar-inverse col-md-12">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Barre de navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Odysseus</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Déconnexion</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+                </div>
+            </div> 
+            </nav>      
+        </div>
+        
+        <div class="row">
+            
+            <!-- colonne gauche -->
+            <div class="col-md-3">
+                <!-- Catégories -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Catégories</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_categorie') }}" title="">Liste des catégories</a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_ajouter_categorie')}}" title="">Ajouter des catégories</a>
+                    </div>
+                </div>
+                
+                <!-- Sous-Catégories -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Sous-Catégories</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_souscategorie') }}" title="">Liste des sous-catégories</a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_ajouter_souscategorie')}}" title="">Ajouter des sous-catégories</a>
+                    </div>
+
+                </div>
+
+                <!-- Etats -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Etats</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_etat')}}" title="">Liste des états</a> 
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_ajouter_etat')}}" title="">Ajouter des états</a>
+                    </div>
+                </div>
+                
+                <!-- Produits -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Produits</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_produit')}}" title="">Liste des produits</a> 
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('odysseus_back_ajouter_produit')}}" title="">Ajouter des produits</a>
+                    </div>
+                </div>
+                
+                
+            </div> <!-- fin colonne gauche -->
+  
+            <!-- colonne droite -->
+            <div class="col-md-9">
+                {% block odysseusback_body %}
+                
+                {% endblock %}
+            </div> <!-- fin colonne droite -->
+        
+        </div>       
+            
+<footer>
+    <p>© {{ "now"|date("Y") }} - Odysseus</p>
+</footer>
+        </div> <!-- fin #container -->
+        <hr> 
+	
+        {% block javascripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

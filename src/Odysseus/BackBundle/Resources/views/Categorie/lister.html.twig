@@ -1,0 +1,50 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les catégories - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des catégories</h2>  
+    
+    <p>
+        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_categorie') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter une catégorie</a>
+    </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Nom de la catégorie</th>
+                <th>A la une</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                {% for categorie in liste_categories %} 
+                <tr>
+                    <td>{{ categorie.nom }} </td>
+                    <td>
+                        {% if categorie.alaune == true %}
+                            oui
+                        {% else %}
+                            non
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ path('odysseus_back_modifier_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                    <td><a href="{{ path('odysseus_back_supprimer_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+<p class="label label-danger">
+A faire :
+<ul>
+<li>Liste ok - Ajout ok - Modification ok - Suppression ok </li>
+<li> alaune ne pouvoir cocher qu'une seule catégorie : mettre une condition</li>
+<li> vérifier les contraintes pour effacer les catégories : pas utiliser par une sous-catégorie et/ou un produit </li>
+</ul>  	
+</p>	
+{% endblock %}

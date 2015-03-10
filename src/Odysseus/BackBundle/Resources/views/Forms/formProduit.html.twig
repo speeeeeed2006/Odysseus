@@ -1,0 +1,84 @@
+<!--<h3>Formulaire d'état</h3>-->
+
+<div class="well">
+	<form method="post" action="" {{ form_enctype(form) }} >
+
+		{# les erreurs générales du form #}
+		{{ form_errors(form) }}
+
+                <div class="row show-grid">
+                    <div class="col-md-3">
+			{# génération du label #}
+			{{ form_label(form.reference, "Référence du produit") }}
+                    </div>
+                    <div class="col-md-6">
+			{# affichage des erreurs pour ce champ #}
+			{{ form_errors(form.reference) }}
+                    </div>
+                    <div class="col-md-6">
+			{# génération de l'input #}
+			{{ form_widget(form.reference) }}
+                    </div>
+		</div>
+                <br/>
+		<div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.nom, "Nom du produit") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.nom) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.nom) }} </div>
+		</div>
+                <br/>
+                
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.categorie, "Catégorie du produit") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.categorie) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.categorie) }} </div>
+		</div>
+                <br/>
+            
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.souscategorie, "Sous-catégorie du produit") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.souscategorie) }} </div>
+                    <div class="col-md-6">  {{ form_widget(form.souscategorie) }}</div>
+		</div>
+                <br/>
+                
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.description, "Description du produit") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.description) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.description) }} </div>
+		</div>
+                <br/>
+                           
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.etat, "Etat du produit") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.etat) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.etat) }} </div>
+		</div>
+                <br/>
+                
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.promotion, "Promotion") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.promotion) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.promotion) }} </div>
+		</div>
+                <br/>
+               
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.nouveaute, "Nouveauté") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.nouveaute) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.nouveaute) }} </div>
+		</div>
+                <br/>
+                
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.alaune, "A la une") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.alaune) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.alaune) }} </div>
+		</div>
+                <br/>
+                
+                {{ form_rest(form) }}
+		<input type="submit" value="Valider" class="btn btn-success">
+                
+	</form>
+</div>	

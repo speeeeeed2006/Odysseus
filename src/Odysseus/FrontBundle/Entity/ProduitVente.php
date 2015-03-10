@@ -30,9 +30,21 @@ class ProduitVente
     private $client;
 
     /**
+     * @var float
+     */
+    private $prix;
+    
+     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $commandeCommande;
+    
+    /**
+     * @var textarea
+     */
+    private $remarque;
+    
+    
 
     /**
      * Constructor
@@ -152,5 +164,51 @@ class ProduitVente
     public function getCommandeCommande()
     {
         return $this->commandeCommande;
+    }
+    
+    /**
+     * Set remarque
+     *
+     * @param string $remarque
+     * @return ProduitVente
+     */
+    public function setRemarque($remarque)
+    {
+        $this->remarque = $remarque;
+
+        return $this;
+    }
+
+    /**
+     * Get remarque
+     *
+     * @return string 
+     */
+    public function getRemarque()
+    {
+        return $this->remarque;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param float $prix
+     * @return ProduitVente
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float 
+     */
+    public function getPrix()
+    {
+        return $this->prix;
     }
 }

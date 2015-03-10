@@ -1,0 +1,75 @@
+odysseus_back_homepage:
+    path:     /
+    defaults: { _controller: OdysseusBackBundle:Back:index }
+
+# --------- Categorie ----------------------- #   
+    
+odysseus_back_lister_categorie:
+    path:     /lister-categorie
+    defaults: { _controller: OdysseusBackBundle:Categorie:lister }
+    
+odysseus_back_ajouter_categorie:
+    path:     /ajouter-categorie
+    defaults: { _controller: OdysseusBackBundle:Categorie:ajouter }
+    
+odysseus_back_modifier_categorie:
+    path:     /modifier-categorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Categorie:modifier }
+    
+odysseus_back_supprimer_categorie:
+    path:     /supprimer-categorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Categorie:supprimer }
+    
+# --------- Sous-categorie ----------------------- #   
+   
+odysseus_back_lister_souscategorie:
+    path:     /lister-souscategorie
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:lister }
+    
+odysseus_back_ajouter_souscategorie:
+    path:     /ajouter-souscategorie
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:ajouter }
+    
+odysseus_back_modifier_souscategorie:
+    path:     /modifier-souscategorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:modifier }
+    
+odysseus_back_supprimer_souscategorie:
+    path:     /supprimer-souscategorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:supprimer }
+    
+# --------- Etats ----------------------- #   
+   
+odysseus_back_lister_etat:
+    path:     /lister-etat
+    defaults: { _controller: OdysseusBackBundle:Etat:lister }
+    
+odysseus_back_ajouter_etat:
+    path:     /ajouter-etat
+    defaults: { _controller: OdysseusBackBundle:Etat:ajouter }
+    
+odysseus_back_modifier_etat:
+    path:     /modifier-etat/{id}
+    defaults: { _controller: OdysseusBackBundle:Etat:modifier }
+    
+odysseus_back_supprimer_etat:
+    path:     /supprimer-etat/{id}
+    defaults: { _controller: OdysseusBackBundle:Etat:supprimer }
+    
+# --------- Produits ----------------------- #   
+   
+odysseus_back_lister_produit:
+    path:     /lister-produit
+    defaults: { _controller: OdysseusBackBundle:Produit:lister }
+    
+odysseus_back_ajouter_produit:
+    path:     /ajouter-produit
+    defaults: { _controller: OdysseusBackBundle:Produit:ajouter }
+    
+odysseus_back_modifier_produit:
+    path:     /modifier-produit/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:modifier }
+    
+odysseus_back_supprimer_produit:
+    path:     /supprimer-produit/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:supprimer }

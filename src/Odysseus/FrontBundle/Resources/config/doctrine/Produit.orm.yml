@@ -20,7 +20,7 @@ Odysseus\FrontBundle\Entity\Produit:
     fields:
         reference:
             type: string
-            nullable: false
+            nullable: true
             length: 45
             fixed: false
         nom:
@@ -33,16 +33,11 @@ Odysseus\FrontBundle\Entity\Produit:
             nullable: false
             length: 45
             fixed: false
-        categorieId:
+        categorie:
             type: integer
             nullable: false
             unsigned: false
             column: categorie_id
-        image:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
         promotion:
             type: boolean
             nullable: false
@@ -51,11 +46,6 @@ Odysseus\FrontBundle\Entity\Produit:
             nullable: false
         alaune:
             type: boolean
-            nullable: false
-        prix:
-            type: decimal
-            precision: 10
-            scale: 2
             nullable: false
     manyToOne:
         sousCategorie:
