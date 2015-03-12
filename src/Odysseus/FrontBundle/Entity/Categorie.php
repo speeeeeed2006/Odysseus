@@ -51,7 +51,16 @@ class Categorie
         $this->attributProduitAttributProduit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
+    /**
+    * Transform to string
+    *
+    * @return string
+    */
+    public function __toString()
+    {
+        return (string) $this->getIdCategorie();
+    }
+    
     /**
      * Get idCategorie
      *

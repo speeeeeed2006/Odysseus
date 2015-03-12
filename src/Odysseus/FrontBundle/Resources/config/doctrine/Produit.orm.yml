@@ -28,6 +28,11 @@ Odysseus\FrontBundle\Entity\Produit:
             nullable: false
             length: 45
             fixed: false
+        marque:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
         description:
             type: string
             nullable: false

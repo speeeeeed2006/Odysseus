@@ -358,4 +358,27 @@ class Produit
         return $this->alaune;
     }
    
+
+    /**
+     * Set marque
+     *
+     * @param string $marque
+     * @return Produit
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * Get marque
+     *
+     * @return string 
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
 }

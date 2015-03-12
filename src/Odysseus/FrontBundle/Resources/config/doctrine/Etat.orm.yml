@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\Etat:
     type: entity
     table: etat
+    repositoryClass: Odysseus\FrontBundle\Repository\EtatRepository
     id:
         idEtat:
             type: integer

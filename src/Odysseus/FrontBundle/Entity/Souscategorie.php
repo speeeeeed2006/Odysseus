@@ -39,6 +39,15 @@ class Souscategorie
     private $categorie;
 
 
+    /**
+    * Transform to string
+    *
+    * @return string
+    */
+    public function __toString()
+    {
+        return (string) $this->getIdSousCategorie();
+    }
 
     /**
      * Get idSousCategorie

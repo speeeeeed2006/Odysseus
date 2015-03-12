@@ -45,6 +45,11 @@ class ProduitVente
     private $remarque;
     
     
+    /**
+     * @var \DateTime
+     */
+    private $dateAjout;
+    
 
     /**
      * Constructor

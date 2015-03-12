@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProduitType extends AbstractType
+class ProduitCatalogueType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,27 +16,30 @@ class ProduitType extends AbstractType
     {
         $builder ->add('reference', 'text', array('required' => false))
                  ->add('nom',       'text')
+                 ->add('marque',    'text')
                  ->add('categorie', 'entity', array(
                                 'class'    => 'OdysseusFrontBundle:Categorie',
                                 'property' => 'nom',
                                 'multiple' => false,
-                                'empty_value' => 'Choisissez la catégorie',
                                 ))
                  //optionnelle selon la categorie choisie
                  ->add('souscategorie', 'entity', array(
                                 'class'    => 'OdysseusFrontBundle:Souscategorie',
                                 'property' => 'nom',
                                 'multiple' => false,
-                                'empty_value' => 'Choisissez une sous-catégorie',))
+                                ))
                 ->add('description', 'textarea')
                         //filter que ceux liés au produit
-                ->add('etat', 'entity', array(
-                                'class'    => 'OdysseusFrontBundle:Etat',
-                                'property' => 'nom',
-                                'multiple' => false))
-                ->add('promotion', 'checkbox')
-                ->add('nouveaute', 'checkbox')
-                ->add('alaune', 'checkbox');
+//                ->add('etat', 'entity', array(
+//                                'class'    => 'OdysseusFrontBundle:Etat',
+//                                'property' => 'nom',
+//                                'multiple' => false,
+//                                'query_builder' => function(EtatRepository $er){
+//                                    return $er->getListeEtatpourProduit();
+//                                }))
+                ->add('promotion', 'checkbox', array('required' => false))
+                ->add('nouveaute', 'checkbox', array('required' => false))
+                ->add('alaune', 'checkbox', array('required' => false));
     }
     
     /**
@@ -54,6 +57,6 @@ class ProduitType extends AbstractType
      */
     public function getName()
     {
-        return 'odysseus_backbundle_produittype';
+        return 'odysseus_backbundle_produitcataloguetype';
     }
 }

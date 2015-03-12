@@ -5,21 +5,22 @@ namespace Odysseus\BackBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Odysseus\FrontBundle\Entity\Produit;
-use Odysseus\BackBundle\Form\ProduitType;
+use Odysseus\BackBundle\Form\ProduitCatalogueType;
 
 
-class ProduitController extends Controller
+class ProduitCatalogueController extends Controller
 {
     
     public function listerAction()
     {
-        $listeProduits =  $this->getDoctrine()
-                                 ->getManager()
-                                 ->getRepository('OdysseusFrontBundle:Produit')
-                                 ->findAll();
+        $em = $this->getDoctrine()->getManager();
         
-        return $this->render('OdysseusBackBundle:Produit:lister.html.twig',
-        	array('liste_produits' => $listeProduits)
+        $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
+                              ->findAll();
+        
+        return $this->render('OdysseusBackBundle:ProduitCatalogue:lister.html.twig',
+        	array('liste_produits' => $listeProduits,
+                       )
         );
     }
     
@@ -28,7 +29,7 @@ class ProduitController extends Controller
         $produit = new Produit();
 
         //le form builder
-        $form = $this->createForm(new ProduitType, $produit);
+        $form = $this->createForm(new ProduitCatalogueType, $produit);
 
         //on récupère la requete
         $request = $this->get('request');
@@ -51,7 +52,7 @@ class ProduitController extends Controller
         }
 
     	//on affiche sinon le form avec les données entrées
-    	return $this->render('OdysseusBackBundle:Produit:ajouter.html.twig', array(
+    	return $this->render('OdysseusBackBundle:ProduitCatalogue:ajouter.html.twig', array(
             'form' => $form->createView(),
         ));
         
@@ -60,7 +61,7 @@ class ProduitController extends Controller
     public function modifierAction(Produit $produit)
     {
         //le form builder
-        $form = $this->createForm(new ProduitType(), $produit);
+        $form = $this->createForm(new ProduitCatalogueType(), $produit);
 
         //on récupère la requete
         $request = $this->getRequest();
@@ -83,7 +84,7 @@ class ProduitController extends Controller
                 return $this->redirect($this->generateUrl('odysseus_back_lister_produit'));
             }   
         }
-        return $this->render('OdysseusBackBundle:Produit:modifier.html.twig', array(
+        return $this->render('OdysseusBackBundle:ProduitCatalogue:modifier.html.twig', array(
             'form' => $form->createView(),
             'produit' =>$produit
         ));
@@ -118,7 +119,7 @@ class ProduitController extends Controller
            }   
       }
        
-      return $this->render('OdysseusBackBundle:Produit:supprimer.html.twig', array(
+      return $this->render('OdysseusBackBundle:ProduitCatalogue:supprimer.html.twig', array(
            'produit' => $produit,
             'form' =>$form->createView()
       ));

@@ -60,16 +60,16 @@ odysseus_back_supprimer_etat:
    
 odysseus_back_lister_produit:
     path:     /lister-produit
-    defaults: { _controller: OdysseusBackBundle:Produit:lister }
+    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:lister }
     
 odysseus_back_ajouter_produit:
     path:     /ajouter-produit
-    defaults: { _controller: OdysseusBackBundle:Produit:ajouter }
+    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:ajouter }
     
 odysseus_back_modifier_produit:
     path:     /modifier-produit/{id}
-    defaults: { _controller: OdysseusBackBundle:Produit:modifier }
+    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:modifier }
     
 odysseus_back_supprimer_produit:
     path:     /supprimer-produit/{id}
-    defaults: { _controller: OdysseusBackBundle:Produit:supprimer }
+    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:supprimer }

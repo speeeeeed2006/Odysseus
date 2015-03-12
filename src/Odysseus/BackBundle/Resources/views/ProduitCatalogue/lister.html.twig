@@ -1,28 +1,29 @@
 {% extends "OdysseusBackBundle::layout.html.twig" %}
 
 {% block title %} 
-	Lister les produits - {{ parent() }}
+	Lister les produits Catalogue - {{ parent() }}
 {% endblock %}
 
 {% block odysseusback_body %}
 	
-    <h2 class="page-header">Liste des produits</h2>  
+    <h2 class="page-header">Liste des produits Catalogue</h2>  
     
     <p>
-        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_produit') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit</a>
+        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_produit') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit au Catalogue</a>
     </p>
         <table class="table table-bordered">
             <thead>
                 <tr>
                 <th>Réf.</th>
                 <th>Nom</th>
+                <th>Marque</th>
                 <th>Catégorie</th>
                 <th>Sous-catégorie</th>
                 <th>Description</th>
-                <th>Etat</th>
+                <!--<th>Etat</th>
                 <th>Promo</th>
                 <th>Nouveau</th>
-                <th>A la une</th>      
+                <th>A la une</th>--> 
                 <th>Modifier</th>
                 <th>Supprimer</th>
                 </tr>
@@ -30,16 +31,18 @@
             <tbody>
               
                 {% for produit in liste_produits %} 
+
                 <tr>
                     <td> {{ produit.reference }} </td>
                     <td> {{ produit.nom }} </td>
+                    <td> {{ produit.marque }} </td>
                     <td> {{ produit.categorie }} </td>
-                    <td> {{ produit.souscategorie }} </td>
+                    <td> {{ produit.sousCategorie }} </td>
                     <td> {{ produit.description }} </td>
-                    <td> {{ produit.etat }} </td>                    
-                    <td> {{ produit.promo }} </td>
-                    <td> {{ produit.nouveau }} </td>
-                    <td> {{ produit.alaune }}</td>
+                    <!--<td> {# produit.etat #} </td>                    
+                    <!--<td> {# produit.promotion #} </td>-->
+                    <!--<td> {# produit.nouveau #} </td>-->
+                    <!--<td> {# produit.alaune #}</td>-->
 
                     <td><a href="{{ path('odysseus_back_modifier_produit', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
                     <td><a href="{{ path('odysseus_back_supprimer_produit', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
@@ -51,8 +54,11 @@
 <p class="label label-danger">
 A faire :
 <ul>
-<li>Liste test - Ajout test - Modification test - Suppression test </li>
-<li> vérifier les contraintes pour effacer les produits </li>
+<li>Liste pb des index - Ajout ok - Modification ok - Suppression ok </li>
+<li> id categorie et sous-categorie </li>
+<li> liaison entre les categorie et sous-categorie </li>
+
+vérifier les contraintes pour effacer les produits </li>
 </ul>  	
 </p>	
 {% endblock %}

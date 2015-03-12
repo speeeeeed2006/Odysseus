@@ -30,6 +30,11 @@ Odysseus\FrontBundle\Entity\ProduitVente:
             type: float
             nullable: false
             unsigned: false
+        dateAjout:
+            type: datetime
+            nullable: false
+            unsigned: false
+            column: date_ajout
     manyToOne:
         produit:
             targetEntity: Produit
