@@ -1,0 +1,18 @@
+services:
+    rs_user.registration_complet:
+        class: Odysseus\UserBundle\EventListener\RegistrationConfirmListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }
+            
+    odysseus.registration.form.type:
+        class: Odysseus\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: odysseus_user_registration }
+    redirect.after.login:
+        class: Odysseus\UserBundle\Redirection\AfterLoginRedirection
+        arguments: [@router]
+ 
+    redirect.after.logout:
+        class: Odysseus\UserBundle\Redirection\AfterLogoutRedirection
+        arguments: [@router, @security.context]

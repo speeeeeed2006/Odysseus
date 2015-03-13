@@ -1,3 +1,7 @@
+odysseus_user:
+    resource: "@OdysseusUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 odysseus_front:
     resource: "@OdysseusFrontBundle/Resources/config/routing.yml"
     prefix:   /

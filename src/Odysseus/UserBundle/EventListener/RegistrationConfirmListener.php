@@ -1,6 +1,6 @@
 <?php
 
-namespace Odysseus\FrontBundle\EventListener;
+namespace Odysseus\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;

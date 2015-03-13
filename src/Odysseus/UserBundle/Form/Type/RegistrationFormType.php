@@ -1,6 +1,6 @@
 <?php
 
-namespace Odysseus\FrontBundle\Form\Type;
+namespace Odysseus\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
