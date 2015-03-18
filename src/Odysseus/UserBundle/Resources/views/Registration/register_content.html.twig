@@ -1,0 +1,32 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div id="form_register" class="bloc">
+    <h2>Formulaire d'inscription</h2>
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+        
+        
+        <div>
+            {{ form_errors(form.email) }}
+            {{ form_label(form.email, "Votre adresse email :") }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div>
+            {{ form_errors(form.username) }}
+            {{ form_label(form.username, "Votre nom d'utilisateur :") }}
+            {{ form_widget(form.username) }}
+        </div>
+        <div>
+            {{ form_errors(form.plainPassword.first) }}
+            {{ form_label(form.plainPassword.first, "Votre mot de passe : ") }}
+            {{ form_widget(form.plainPassword.first) }}           
+        </div>
+        <div>
+            {{ form_errors(form.plainPassword.second) }}
+            {{ form_label(form.plainPassword.second, "Confirmation de votre mot de passe :") }}
+            {{ form_widget(form.plainPassword.second) }}
+        </div>   
+        <div>
+            <button type="submit">S'enregistrer</button>
+        </div>
+    </form>
+</div>
