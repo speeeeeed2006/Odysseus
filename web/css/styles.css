@@ -171,7 +171,7 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 #top #recherche { width: 280px; position: relative; }
 #top #recherche form { margin-top: 110px;}
 #top #recherche input { border: 1px solid #5fb7c6; width: 244px; height: 26px; padding-left : 34px; background: url('../images/sprite.png') 4px 3px no-repeat; }
-#top #recherche button { position: absolute; right: -1px; bottom: 0; width: 20px; height: 30px; border: 1px solid #5fb7c6; background: #5fb7c6 url('../images/sprite.png') 0px -18px no-repeat; }
+#top #recherche button { position: absolute; right: -1px; bottom: 0; width: 20px; height: 30px; border: 1px solid #5fb7c6; background: #5fb7c6 url('../images/sprite.png') 7px -19px no-repeat; }
 #top #recherche button:hover { background-position: -20px -18px;}
 
 #top #droite { width: 200px; margin-left: 70px; }
@@ -243,7 +243,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #wrap form p { margin-bottom: 8px; height: 25px;}
 #wrap label { display: block; width: 140px; line-height: 25px; color: #000000; margin-right: 20px; vertical-align: middle; display: inline-block; }
 #wrap input[type="radio"] { vertical-align: middle; }
-#wrap input[type="text"] {  width: 260px;  height: 25px; line-height: 25px; background-color: #ffffff; border: 1px solid #cec0b4; color: #000000; vertical-align: middle; display: inline-block;}
+#wrap input[type="text"], #wrap input[type="password"], #wrap input[type="email"] {  width: 260px;  height: 25px; line-height: 25px; background-color: #ffffff; border: 1px solid #cec0b4; color: #000000; vertical-align: middle; display: inline-block;}
 
 #wrap #identification button, #wrap #creation button { margin: 20px 0 0 340px;}
 
@@ -302,15 +302,28 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 .bloc { padding : 0 3em; margin-bottom: 3.5em;}
 .bloc p { margin:0 0 0.5em 0; font-size: 12px;}
 
-/* Page Contact */
-#form_contact h2 { margin-bottom: 20px;}
+/* ----------------------------- */
+/* Contenu Forms
+/* ----------------------------- */
+
+form div { margin-bottom: 20px;}
+form label { width: 110px; display: inline-block; font-size: 12px; font-weight: bold; }
+form input { width: 230px;}
+form textarea{ vertical-align: top; padding: 5px; font : 11px 'open_sansregular', sans-serif;}
+form button {margin-left: 275px;   width: auto; padding: 0 15px;}
+form input[type="checkbox"] {   width: auto; display: inline-block; vertical-align: middle;}
+form input[type="checkbox"] > label {  margin-left: 10px; display: inline-block; vertical-align: middle; }
+
+
+#form_contact h2, #form_connexion h2, #form_register h2 { margin-bottom: 20px;}
 #form_contact p { margin-bottom: 20px;}
-#form_contact form {}
-#form_contact form div { margin-bottom: 20px;}
-#form_contact form label { width: 110px; display: inline-block; font-size: 12px; font-weight: bold; }
-#form_contact form input { width: 230px;}
-#form_contact form textarea{ vertical-align: top; padding: 5px; font : 11px 'open_sansregular', sans-serif;}
-#form_contact form button {margin-left: 275px;}
+
+#form_connexion button {margin-left: 150px;}
+
+#form_register label {width: 222px;}
+#form_register button {margin-left: 175px;}
+
+.error { background: #ff0000; padding: 5px 10px; color: #ffffff; margin: 20px 0;}
 
 /* ----------------------------- */
 /* Contenu Panier
@@ -346,7 +359,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 /* ----------------------------- */
 /* sidebar (Colonne droite)
 /* ----------------------------- */
-#sidebar { width: 230px; /*min-height: 100px;*/ }
+#sidebar { width: 230px; display: inline-block; /*min-height: 100px;*/ }
 #sidebar .widget { margin-bottom: 15px; }
 
 /* Promotions */
