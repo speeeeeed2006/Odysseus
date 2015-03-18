@@ -1,0 +1,61 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les produits Vente à valider - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+    <h2 class="page-header">Liste des produits Vente à valider</h2>  
+    {{ ladybug_dump(liste_produits) }}
+    <p>
+        <a class="btn btn-info" href="./"><i class="glyphicon glyphicon-chevron-left"></i> Revenir à l'accueil</a>
+    </p>
+        <table class="table table-bordered">
+            <thead>
+               <!-- <tr>
+                <th>Réf.</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Catégorie</th>
+                <th>Sous-catégorie</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <th>Promo</th>
+                <th>Nouveau</th>
+                <th>A la une</th> 
+                <th>A valider</th>
+                
+                </tr>-->
+            </thead>
+            <tbody>
+              
+                {% for produit in liste_produits %} 
+
+                <tr>
+                   <!-- <td>  </td>
+                    <td> </td>
+                    <td> </td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td>  </td>  -->                  
+                    <!--<td> {# produit.promotion #} </td>-->
+                    <!--<td> {# produit.nouveau #} </td>-->
+                    <!--<td> {# produit.alaune #}</td>-->
+
+                    <td><a href=""><i class="glyphicon glyphicon-ok-circle"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+<p class="label label-danger">
+A faire :
+<ul>
+<li>?? </li>
+<li>  </li>
+<li> </li>
+<li></li>
+</ul>  	
+</p>	
+{% endblock %}

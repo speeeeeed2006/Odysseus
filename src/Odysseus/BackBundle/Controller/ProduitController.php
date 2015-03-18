@@ -5,10 +5,11 @@ namespace Odysseus\BackBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Odysseus\FrontBundle\Entity\Produit;
-use Odysseus\BackBundle\Form\ProduitCatalogueType;
+use Odysseus\FrontBundle\Entity\Etat;
+use Odysseus\BackBundle\Form\ProduitType;
 
 
-class ProduitCatalogueController extends Controller
+class ProduitController extends Controller
 {
     
     public function listerAction()
@@ -18,9 +19,8 @@ class ProduitCatalogueController extends Controller
         $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
                               ->findAll();
         
-        return $this->render('OdysseusBackBundle:ProduitCatalogue:lister.html.twig',
-        	array('liste_produits' => $listeProduits,
-                       )
+        return $this->render('OdysseusBackBundle:Produit:lister.html.twig',
+        	array('liste_produits' => $listeProduits)
         );
     }
     
@@ -29,7 +29,7 @@ class ProduitCatalogueController extends Controller
         $produit = new Produit();
 
         //le form builder
-        $form = $this->createForm(new ProduitCatalogueType, $produit);
+        $form = $this->createForm(new ProduitType, $produit);
 
         //on récupère la requete
         $request = $this->get('request');
@@ -47,12 +47,12 @@ class ProduitCatalogueController extends Controller
                 $em->flush();
 
                 //on redirige vers la page de visualisation des Produit
-                return $this->redirect($this->generateUrl('odysseus_back_lister_produit'));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
             }   
         }
 
     	//on affiche sinon le form avec les données entrées
-    	return $this->render('OdysseusBackBundle:ProduitCatalogue:ajouter.html.twig', array(
+    	return $this->render('OdysseusBackBundle:Produit:ajouter.html.twig', array(
             'form' => $form->createView(),
         ));
         
@@ -61,7 +61,7 @@ class ProduitCatalogueController extends Controller
     public function modifierAction(Produit $produit)
     {
         //le form builder
-        $form = $this->createForm(new ProduitCatalogueType(), $produit);
+        $form = $this->createForm(new ProduitType(), $produit);
 
         //on récupère la requete
         $request = $this->getRequest();
@@ -81,12 +81,12 @@ class ProduitCatalogueController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Produit bien modifié');
 
                 //on redirige vers la page liste des catégories
-                return $this->redirect($this->generateUrl('odysseus_back_lister_produit'));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
             }   
         }
-        return $this->render('OdysseusBackBundle:ProduitCatalogue:modifier.html.twig', array(
+        return $this->render('OdysseusBackBundle:Produit:modifier.html.twig', array(
             'form' => $form->createView(),
-            'produit' =>$produit
+            'produit' => $produit
         ));
 
     }
@@ -112,19 +112,50 @@ class ProduitCatalogueController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Produit bien supprimée');
+                $this->get('session')->getFlashBag()->add('info', 'Produit bien supprimé');
                
                 //on redirige vers la page liste des Produits
-                return $this->redirect($this->generateUrl('odysseus_back_lister_produit'));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
            }   
       }
        
-      return $this->render('OdysseusBackBundle:ProduitCatalogue:supprimer.html.twig', array(
+      return $this->render('OdysseusBackBundle:Produit:supprimer.html.twig', array(
            'produit' => $produit,
             'form' =>$form->createView()
       ));
         
     }
-  
     
+    public function listeProduitsAValiderAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
+                              ->getListeProduitAValider();
+        
+        return $this->render('OdysseusBackBundle:Produit:listerProdCatAValider.html.twig',
+        	array('liste_produits' => $listeProduits,
+                       )
+        );
+    }   
+    
+    public function validerAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $produit = $em->getRepository('OdysseusFrontBundle:Produit')
+                      ->find($id);
+
+        if (!$produit) {
+            throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
+        }
+
+        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
+        
+        $produit->setEtat($etat->find(4));
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
+
+    }
 }

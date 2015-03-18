@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Etat
  *
  * @ORM\Table(name="etat")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Odysseus\FrontBundle\Repository\EtatRepository")
  */
 class Etat
 {
@@ -35,7 +35,15 @@ class Etat
      */
     private $type;
 
-
+    /**
+    * Transform to string
+    *
+    * @return string
+    */
+    public function __toString()
+    {
+        return (string) $this->getIdEtat();
+    }
 
     /**
      * Get idEtat

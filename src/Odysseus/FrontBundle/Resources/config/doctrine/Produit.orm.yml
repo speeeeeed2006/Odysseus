@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\Produit:
     type: entity
     table: produit
+    repositoryClass: Odysseus\FrontBundle\Repository\ProduitRepository
     indexes:
         fk_Produit_SousCategorie1_idx:
             columns:
@@ -37,12 +38,7 @@ Odysseus\FrontBundle\Entity\Produit:
             type: string
             nullable: false
             length: 45
-            fixed: false
-        categorie:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: categorie_id
+            fixed: false  
         promotion:
             type: boolean
             nullable: false
@@ -61,6 +57,15 @@ Odysseus\FrontBundle\Entity\Produit:
             joinColumns:
                 sous_categorie_id:
                     referencedColumnName: id_sous_categorie
+            orphanRemoval: false
+        categorie:
+            targetEntity: Categorie
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categorie_id:
+                    referencedColumnName: id_categorie
             orphanRemoval: false
         etat:
             targetEntity: Etat

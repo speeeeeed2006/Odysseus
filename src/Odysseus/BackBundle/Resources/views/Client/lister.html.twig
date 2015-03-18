@@ -1,0 +1,57 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister des clients - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des clients</h2>  
+        {{ladybug_dump (liste_clients) }}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <!--<th>Réf.</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Catégorie</th>
+                <th>Sous-catégorie</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <th>Promo</th>
+                <th>Nouveau</th>
+                <th>A la une</th> 
+                <th>Modifier</th>
+                <th>Supprimer</th>-->
+                </tr>
+            </thead>
+            <tbody>
+              
+                {# for client in liste_clients #} 
+
+                <tr>
+                    <!--<td>  </td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td> </td>
+                    <td> </td> -->                   
+ 
+
+                    <td><a href="{# path('odysseus_back_modifier_client', {id: client.idClient}) #}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                </tr>
+                {# endfor #}
+            </tbody>
+        </table>
+            
+<p class="label label-danger">
+A faire :
+<ul>
+<li>Liste à voir - Modification à voir </li>
+<li> </li>
+<li>  </li>
+
+</ul>  	
+</p>	
+{% endblock %}

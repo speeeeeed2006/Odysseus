@@ -9,7 +9,7 @@
     <h2 class="page-header">Liste des produits Catalogue</h2>  
     
     <p>
-        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_produit') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit au Catalogue</a>
+        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_produit_catalogue') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit au Catalogue</a>
     </p>
         <table class="table table-bordered">
             <thead>
@@ -20,8 +20,8 @@
                 <th>Catégorie</th>
                 <th>Sous-catégorie</th>
                 <th>Description</th>
-                <!--<th>Etat</th>
-                <th>Promo</th>
+                <th>Etat</th>
+                <!--<th>Promo</th>
                 <th>Nouveau</th>
                 <th>A la une</th>--> 
                 <th>Modifier</th>
@@ -36,29 +36,19 @@
                     <td> {{ produit.reference }} </td>
                     <td> {{ produit.nom }} </td>
                     <td> {{ produit.marque }} </td>
-                    <td> {{ produit.categorie }} </td>
-                    <td> {{ produit.sousCategorie }} </td>
+                    <td> {{ produit.categorie.nom }} </td>
+                    <td> {{ produit.sousCategorie.nom }} </td>
                     <td> {{ produit.description }} </td>
-                    <!--<td> {# produit.etat #} </td>                    
+                    <td> {{ produit.etat.nom }} </td>                    
                     <!--<td> {# produit.promotion #} </td>-->
                     <!--<td> {# produit.nouveau #} </td>-->
                     <!--<td> {# produit.alaune #}</td>-->
 
-                    <td><a href="{{ path('odysseus_back_modifier_produit', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a href="{{ path('odysseus_back_supprimer_produit', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
+                    <td><a href="{{ path('odysseus_back_modifier_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                    <td><a href="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-            
-<p class="label label-danger">
-A faire :
-<ul>
-<li>Liste pb des index - Ajout ok - Modification ok - Suppression ok </li>
-<li> id categorie et sous-categorie </li>
-<li> liaison entre les categorie et sous-categorie </li>
-
-vérifier les contraintes pour effacer les produits </li>
-</ul>  	
-</p>	
+            	
 {% endblock %}

@@ -5,8 +5,9 @@ namespace Odysseus\BackBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Odysseus\FrontBundle\Repository\EtatRepository;
 
-class ProduitCatalogueType extends AbstractType
+class ProduitType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -23,6 +24,7 @@ class ProduitCatalogueType extends AbstractType
                                 'multiple' => false,
                                 ))
                  //optionnelle selon la categorie choisie
+                 ->add('souscategorie')
                  ->add('souscategorie', 'entity', array(
                                 'class'    => 'OdysseusFrontBundle:Souscategorie',
                                 'property' => 'nom',
@@ -30,17 +32,21 @@ class ProduitCatalogueType extends AbstractType
                                 ))
                 ->add('description', 'textarea')
                         //filter que ceux liés au produit
-//                ->add('etat', 'entity', array(
-//                                'class'    => 'OdysseusFrontBundle:Etat',
-//                                'property' => 'nom',
-//                                'multiple' => false,
-//                                'query_builder' => function(EtatRepository $er){
-//                                    return $er->getListeEtatpourProduit();
-//                                }))
+                ->add('etat', 'entity', array(
+                                'class'    => 'OdysseusFrontBundle:Etat',
+                                'property' => 'nom',
+                                'multiple' => false,
+                                'query_builder' => function(EtatRepository $er){
+                                    return $er->getListeEtatpourProduitCat();
+                                }))
                 ->add('promotion', 'checkbox', array('required' => false))
                 ->add('nouveaute', 'checkbox', array('required' => false))
                 ->add('alaune', 'checkbox', array('required' => false));
+        
     }
+    
+ 
+ 
     
     /**
      * @param OptionsResolverInterface $resolver

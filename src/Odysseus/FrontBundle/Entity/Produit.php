@@ -43,9 +43,11 @@ class Produit
     private $description;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="categorie_id", type="integer", nullable=false)
+     * @var \Categorie
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id_categorie")
+     * })
      */
     private $categorie;
    

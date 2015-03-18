@@ -6,11 +6,10 @@ use Doctrine\ORM\EntityRepository;
 class EtatRepository extends EntityRepository
 {
     
-    public function getListeEtatpourProduit()
+    public function getListeEtatpourProduitCat()
     {
-        return $this
-            ->createQueryBuilder('e')
-            ->where('e.type = :param')
-            ->setParameter('param', 'produit');
+        return $this->createQueryBuilder('e')
+                    ->where('e.type = :type')
+                    ->setParameter('type', 'produit');
     }
 }

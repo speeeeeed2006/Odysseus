@@ -56,20 +56,53 @@ odysseus_back_supprimer_etat:
     path:     /supprimer-etat/{id}
     defaults: { _controller: OdysseusBackBundle:Etat:supprimer }
     
-# --------- Produits ----------------------- #   
-   
-odysseus_back_lister_produit:
-    path:     /lister-produit
-    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:lister }
+# --------- Produits Catalogue ----------------------- #   
+odysseus_back_lister_produit_catalogue:
+    path:     /lister-produit-catalogue
+    defaults: { _controller: OdysseusBackBundle:Produit:lister }
     
-odysseus_back_ajouter_produit:
-    path:     /ajouter-produit
-    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:ajouter }
+odysseus_back_ajouter_produit_catalogue:
+    path:     /ajouter-produit-catalogue
+    defaults: { _controller: OdysseusBackBundle:Produit:ajouter }
     
-odysseus_back_modifier_produit:
-    path:     /modifier-produit/{id}
-    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:modifier }
+odysseus_back_modifier_produit_catalogue:
+    path:     /modifier-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:modifier }
     
-odysseus_back_supprimer_produit:
-    path:     /supprimer-produit/{id}
-    defaults: { _controller: OdysseusBackBundle:ProduitCatalogue:supprimer }
+odysseus_back_supprimer_produit_catalogue:
+    path:     /supprimer-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:supprimer }
+#nb de produit catalogue à valider   
+odysseus_back_lister_prod_cat_a_valider:
+    path:     /lister-produit-catalogue-a-valider
+    defaults: { _controller: OdysseusBackBundle:Produit:listeProduitsAValider }
+    
+odysseus_back_valider_produit_catalogue:
+    path:     /valider-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:valider }
+    
+# --------- Produits Vente ----------------------- #  
+odysseus_back_lister_produit_vente:
+    path:     /lister-produit-vente
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:lister }
+odysseus_back_modifier_produit_vente:
+    path:     /modifier-produit-vente/{id}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:modifier }
+    
+odysseus_back_supprimer_produit_vente:
+    path:     /supprimer-produit-vente/{id}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:supprimer }
+#nb de produit catalogue à valider   
+odysseus_back_lister_prod_vente_a_valider:
+    path:     /lister-produit-vente-a-valider
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:listeProduitsAValider }
+    
+    
+# --------- Clients ----------------------- #   
+odysseus_back_lister_client:
+    path:     /lister-client
+    defaults: { _controller: OdysseusBackBundle:Client:lister }
+      
+#odysseus_back_modifier_client:
+    #path:     /modifier-client/{id}
+    #defaults: { _controller: OdysseusBackBundle:Client:modifier }  

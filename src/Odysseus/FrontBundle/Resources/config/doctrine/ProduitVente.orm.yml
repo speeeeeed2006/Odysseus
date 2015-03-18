@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\ProduitVente:
     type: entity
     table: produit_vente
+    repositoryClass: Odysseus\FrontBundle\Repository\ProduitVenteRepository
     indexes:
         fk_Produit_Vente_Produit1_idx:
             columns:
@@ -53,6 +54,15 @@ Odysseus\FrontBundle\Entity\ProduitVente:
             joinColumns:
                 client_id:
                     referencedColumnName: id_client
+            orphanRemoval: false
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
             orphanRemoval: false
     manyToMany:
         commandeCommande:

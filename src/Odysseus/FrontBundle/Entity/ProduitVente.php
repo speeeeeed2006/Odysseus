@@ -23,7 +23,7 @@ class ProduitVente
      * @var \Odysseus\FrontBundle\Entity\Produit
      */
     private $produit;
-
+    
     /**
      * @var \Odysseus\FrontBundle\Entity\Client
      */
@@ -50,6 +50,15 @@ class ProduitVente
      */
     private $dateAjout;
     
+     /**
+     * @var \Etat
+     *
+     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
+     * })
+     */
+    private $etat;
 
     /**
      * Constructor
@@ -215,5 +224,28 @@ class ProduitVente
     public function getPrix()
     {
         return $this->prix;
+    }
+    
+        /**
+     * Set etat
+     *
+     * @param \Odysseus\FrontBundle\Entity\Etat $etat
+     * @return Produit
+     */
+    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return \Odysseus\FrontBundle\Entity\Etat 
+     */
+    public function getEtat()
+    {
+        return $this->etat;
     }
 }

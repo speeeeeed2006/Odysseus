@@ -1,0 +1,50 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Liste des produits Catalogue à valider - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+
+    <h2 class="page-header">Liste des produits Catalogue à valider</h2>   
+   
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Réf.</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Catégorie</th>
+                <th>Sous-catégorie</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <!--<th>Promo</th>
+                <th>Nouveau</th>
+                <th>A la une</th>--> 
+                <th>A valider</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+              
+                {% for produit in liste_produits %} 
+
+                <tr>
+                    <td> {{ produit.reference }} </td>
+                    <td> {{ produit.nom }} </td>
+                    <td> {{ produit.marque }} </td>
+                    <td> {{ produit.categorie.nom }} </td>
+                    <td> {{ produit.sousCategorie.nom }} </td>
+                    <td> {{ produit.description }} </td>
+                    <td> {{ produit.etat.nom }} </td>                    
+                    <!--<td> {# produit.promotion #} </td>-->
+                    <!--<td> {# produit.nouveau #} </td>-->
+                    <!--<td> {# produit.alaune #}</td>-->
+
+                    <td><a href="{{ path('odysseus_back_valider_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-ok-circle"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            	
+{% endblock %}
