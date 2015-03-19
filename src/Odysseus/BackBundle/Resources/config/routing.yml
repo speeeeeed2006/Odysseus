@@ -58,7 +58,7 @@ odysseus_back_supprimer_etat:
     
 # --------- Produits Catalogue ----------------------- #   
 odysseus_back_lister_produit_catalogue:
-    path:     /lister-produit-catalogue
+    path:     /lister-produit-catalogue/{page}
     defaults: { _controller: OdysseusBackBundle:Produit:lister }
     
 odysseus_back_ajouter_produit_catalogue:
@@ -74,7 +74,7 @@ odysseus_back_supprimer_produit_catalogue:
     defaults: { _controller: OdysseusBackBundle:Produit:supprimer }
 #nb de produit catalogue à valider   
 odysseus_back_lister_prod_cat_a_valider:
-    path:     /lister-produit-catalogue-a-valider
+    path:     /lister-produit-catalogue-a-valider/{page}
     defaults: { _controller: OdysseusBackBundle:Produit:listeProduitsAValider }
     
 odysseus_back_valider_produit_catalogue:

@@ -11,7 +11,7 @@
 	{%  include "OdysseusBackBundle:Forms:formProduitCatalogue.html.twig" %}
 
 	<p>
-            <a href="{{ path('odysseus_back_lister_produit_catalogue') }}" class="btn btn-info"> <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des produits du Catalogue</a>
+            <a href="{{ path('odysseus_back_lister_produit_catalogue', {page: 1}) }}" class="btn btn-info"> <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des produits du Catalogue</a>
 	</p>
 	
 {% endblock %}

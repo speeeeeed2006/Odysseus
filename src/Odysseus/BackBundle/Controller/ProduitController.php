@@ -12,15 +12,19 @@ use Odysseus\BackBundle\Form\ProduitType;
 class ProduitController extends Controller
 {
     
-    public function listerAction()
+    public function listerAction($page)
     {
         $em = $this->getDoctrine()->getManager();
         
         $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
-                              ->findAll();
+                             ->getListeProduit(15, $page);
         
         return $this->render('OdysseusBackBundle:Produit:lister.html.twig',
-        	array('liste_produits' => $listeProduits)
+        	array(
+                    'liste_produits' => $listeProduits,
+                    'page'           => $page,
+                    'nombrePage'     => ceil(count($listeProduits)/15)
+                    )
         );
     }
     
@@ -126,16 +130,19 @@ class ProduitController extends Controller
         
     }
     
-    public function listeProduitsAValiderAction()
+    public function listeProduitsAValiderAction($page)
     {
         $em = $this->getDoctrine()->getManager();
         
         $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
-                              ->getListeProduitAValider();
+                              ->getListeProduitAValider(10, $page);
         
         return $this->render('OdysseusBackBundle:Produit:listerProdCatAValider.html.twig',
-        	array('liste_produits' => $listeProduits,
-                       )
+        	array(
+                        'liste_produits' => $listeProduits,
+                        'page'           => $page,
+                        'nombrePage'     => ceil(count($listeProduits)/10)
+                     )
         );
     }   
     
