@@ -24,9 +24,11 @@ class MainController extends Controller
         $categories = $em->getRepository('OdysseusFrontBundle:Categorie')
                          ->findAll(); 
         
+        $sousCategories = $em->getRepository('OdysseusFrontBundle:Souscategorie')
+                                 ->findAll(); 
+
         foreach($categories as $categorie){         
-            $sousCategories = $em->getRepository('OdysseusFrontBundle:Souscategorie')
-                                 ->findAll($categorie->getIdCategorie());  
+              
         } 
         
         return $this->render('OdysseusFrontBundle:Default:menusidebar.html.twig', array(

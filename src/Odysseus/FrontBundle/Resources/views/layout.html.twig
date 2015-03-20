@@ -36,10 +36,7 @@
                                     <a href="./panier" title="Votre panier">Panier (0)</a>
                             </div>
                             <div id="connexion">
-                                    <ul>
-                                            <li><a href="{{ path('fos_user_registration_register')}}" title="Inscription">Inscription </a></li>
-                                            <li><a href="connexion.php" title="S'identifier">S'identifier</a></li>
-                                    </ul>
+                                {% include ('OdysseusFrontBundle:Default:connexion.html.twig') %}    
                             </div>
                  </div>
                 </div> <!-- fin #top-->
