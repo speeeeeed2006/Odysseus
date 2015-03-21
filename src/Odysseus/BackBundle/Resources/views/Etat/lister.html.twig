@@ -8,6 +8,10 @@
 	
     <h2 class="page-header">Liste des états</h2>  
     
+    {% for message in app.session.flashbag.get('info') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
     <p>
         <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_etat') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un état</a>
     </p>
@@ -21,15 +25,16 @@
                 </tr>
             </thead>
             <tbody>
-              
-                {% for etat in liste_etats %} 
-                <tr>
-                    <td>{{ etat.nom }} </td>
-                    <td>{{ etat.type }}</td>
-                    <td><a href="{{ path('odysseus_back_modifier_etat', {id: etat.idEtat}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a href="{{ path('odysseus_back_supprimer_etat', {id: etat.idEtat}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
-                </tr>
-                {% endfor %}
+                {% if(liste_etats) %}
+                    {% for etat in liste_etats %} 
+                    <tr>
+                        <td>{{ etat.nom }} </td>
+                        <td>{{ etat.type }}</td>
+                        <td><a href="{{ path('odysseus_back_modifier_etat', {id: etat.idEtat}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                        <td><a href="{{ path('odysseus_back_supprimer_etat', {id: etat.idEtat}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
             

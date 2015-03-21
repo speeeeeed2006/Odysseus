@@ -7,51 +7,59 @@
 {% block odysseusback_body %}
 	
     <h2 class="page-header">Liste des clients</h2>  
-        {{ladybug_dump (liste_clients) }}
+        
+        {% for message in app.session.flashbag.get('info') %}
+            <p class="bg-success contextual">{{ message }}</p>
+        {% endfor %}
+            
         <table class="table table-bordered">
             <thead>
                 <tr>
-                <!--<th>Réf.</th>
+                <th>Pseudo</th>    
+                <th>Civilité</th>
                 <th>Nom</th>
-                <th>Marque</th>
-                <th>Catégorie</th>
-                <th>Sous-catégorie</th>
-                <th>Description</th>
+                <th>Prénom</th>
+                <th>Naissance</th>
+                <th>Adresse</th>
+                <th>Cp</th>
+                <th>Ville</th>
+                <th>France</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Créa.</th>
+                <th>Modif.</th> 
                 <th>Etat</th>
-                <th>Promo</th>
-                <th>Nouveau</th>
-                <th>A la une</th> 
-                <th>Modifier</th>
-                <th>Supprimer</th>-->
+                <!--<th>Modifier</th>-->
+                <th>Bannir</th>
                 </tr>
             </thead>
             <tbody>
-              
-                {# for client in liste_clients #} 
-
-                <tr>
-                    <!--<td>  </td>
-                    <td>  </td>
-                    <td>  </td>
-                    <td>  </td>
-                    <td>  </td>
-                    <td> </td>
-                    <td> </td> -->                   
- 
-
-                    <td><a href="{# path('odysseus_back_modifier_client', {id: client.idClient}) #}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                </tr>
-                {# endfor #}
+                {% if liste_clients %}
+                    {% for client in liste_clients %} 
+                    
+                        <tr>
+                            <td> {{ client.user.username }} </td>
+                            <td> {{ client.civilite }} </td>
+                            <td> {{ client.nom }} </td>
+                            <td> {{ client.prenom }} </td>
+                            <td> {{ client.dateNaissance|date("d/m/Y") }} </td>
+                            <td> {{ client.adresse.adresse }} </td>
+                            <td> {{ client.adresse.cp }} </td>
+                            <td> {{ client.adresse.ville }} </td>
+                            <td> {{ client.adresse.pays }} </td>
+                            <td> {{ client.telephone }} </td>
+                            <td> {{ client.user.email }} </td>
+                            <td> {% if (client.dateCreation != "null" )%} {{ client.dateCreation|date("d/m/Y") }} {% endif %}</td>
+                            <td> {% if (client.dateModification != "null" )%} {{ client.dateModification|date("d/m/Y") }} {% endif %} </td></td>
+                            <td> {{ client.etat.nom }} </td> 
+                           <!-- <td><a href="{# path('odysseus_back_modifier_client', {id: client.id_client}) #}"><i class="glyphicon glyphicon-edit"></i></a></td>-->
+                            <td>
+                                <a href="{{ path('odysseus_back_bannir_client', {id: client.user.id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
-            
-<p class="label label-danger">
-A faire :
-<ul>
-<li>Liste à voir - Modification à voir </li>
-<li> </li>
-<li>  </li>
-
-</ul>  	
-</p>	
+           	
 {% endblock %}

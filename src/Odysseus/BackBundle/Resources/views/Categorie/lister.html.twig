@@ -6,8 +6,12 @@
 
 {% block odysseusback_body %}
 	
-    <h2 class="page-header">Liste des catégories</h2>  
+    <h2 class="page-header">Liste des catégories</h2>
     
+    {% for message in app.session.flashbag.get('info') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
     <p>
         <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_categorie') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter une catégorie</a>
     </p>
@@ -33,7 +37,7 @@
                         {% endif %}
                     </td>
                     <td><a href="{{ path('odysseus_back_modifier_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a href="{{ path('odysseus_back_supprimer_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
+                    <td><a href="{{ path('odysseus_back_supprimer_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

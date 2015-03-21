@@ -176,7 +176,7 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 
 #top #droite { width: 200px; margin-left: 70px; }
 #top #droite #liens, #top #droite #panier { margin-bottom: 15px; }
-#top #droite #liens { /*height: 50px; */ }
+#top #droite #liens { /*height: 50px; */ float: right;}
 #top #droite #liens ul, #top #droite #liens #flux_rss { display: inline-block; vertical-align: top; }
 #top #droite #liens ul { margin-top: 28px; padding: 0;}
 #top #droite #liens ul li { font-size : 12px; text-transform: uppercase; }
@@ -188,7 +188,7 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 #top #droite #panier a {  text-align: right; font-weight: bold; }
 
 #top #droite #connexion { clear: both; /*height: 20px; */ }
-#top #droite #connexion ul { text-align: right; font-size: 15px; /*line-height: 30px;*/ padding: 0; }
+#top #droite #connexion ul { text-align: right; font-size: 12px; /*line-height: 30px;*/ padding: 0; }
 #top #droite #connexion ul li:first-child:after { content: "|"; margin: 0 6px;  }
 #top #droite #connexion ul li a {  }
 

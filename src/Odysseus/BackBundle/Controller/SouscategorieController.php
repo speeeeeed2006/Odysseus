@@ -51,6 +51,9 @@ class SouscategorieController extends Controller
                 $em->persist($sousCategorie);
                 $em->flush();
 
+                //on affiche un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Sous-catégorie bien ajoutée');
+                
                 //on redirige vers la page de visualisation des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_souscategorie'));
             }   

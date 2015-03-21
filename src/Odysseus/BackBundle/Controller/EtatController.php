@@ -44,6 +44,9 @@ class EtatController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($etat);
                 $em->flush();
+                
+                //on affiche un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Etat bien ajouté');
 
                 //on redirige vers la page de visualisation des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_etat'));

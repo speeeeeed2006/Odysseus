@@ -8,6 +8,10 @@
 	
     <h2 class="page-header">Liste des produits Catalogue</h2>  
     
+    {% for message in app.session.flashbag.get('info') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+    
     <p>
         <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_produit_catalogue') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit au Catalogue</a>
     </p>
@@ -29,25 +33,26 @@
                 </tr>
             </thead>
             <tbody>
-              
-                {% for produit in liste_produits %} 
+                {% if(liste_produits) %}
+                    {% for produit in liste_produits %} 
 
-                <tr>
-                    <td> {{ produit.reference }} </td>
-                    <td> {{ produit.nom }} </td>
-                    <td> {{ produit.marque }} </td>
-                    <td> {{ produit.categorie.nom }} </td>
-                    <td> {{ produit.sousCategorie.nom }} </td>
-                    <td> {{ produit.description }} </td>
-                    <td> {{ produit.etat.nom }} </td>                    
-                    <!--<td> {# produit.promotion #} </td>-->
-                    <!--<td> {# produit.nouveau #} </td>-->
-                    <!--<td> {# produit.alaune #}</td>-->
+                    <tr>
+                        <td> {{ produit.reference }} </td>
+                        <td> {{ produit.nom }} </td>
+                        <td> {{ produit.marque }} </td>
+                        <td> {{ produit.categorie.nom }} </td>
+                        <td> {{ produit.sousCategorie.nom }} </td>
+                        <td> {{ produit.description }} </td>
+                        <td> {{ produit.etat.nom }} </td>                    
+                        <!--<td> {# produit.promotion #} </td>-->
+                        <!--<td> {# produit.nouveau #} </td>-->
+                        <!--<td> {# produit.alaune #}</td>-->
 
-                    <td><a href="{{ path('odysseus_back_modifier_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a href="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-remove"> </i></a></td>
-                </tr>
-                {% endfor %}
+                        <td><a href="{{ path('odysseus_back_modifier_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                        <td><a href="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
         {% if (liste_produits | length) > 0 %}

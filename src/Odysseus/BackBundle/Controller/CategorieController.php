@@ -24,20 +24,20 @@ class CategorieController extends Controller
     }
     
     public function ajouterAction() {
-            //on crée un objet catégorie
+            //on cree un objet categorie
         $categorie = new Categorie();
 
         //le form builder
         $form = $this->createForm(new CategorieType, $categorie);
 
-        //on récupère la requete
+        //on recupere la requete
         $request = $this->get('request');
 
         if ($this->getRequest()->getMethod() == 'POST'){
             //on fait le lien requete ->form
             $form->bind($request);
             
-            //on vérifie que les chps sont corrects
+            //on verifie que les chps sont corrects
             if($form->isValid()) {
                 
                 //on en registre notre objet ds la bdd
@@ -45,12 +45,15 @@ class CategorieController extends Controller
                 $em->persist($categorie);
                 $em->flush();
 
-                //on redirige vers la page de visualisation des catégories
+                //on affiche un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Catégorie bien ajoutée');
+                
+                //on redirige vers la page de visualisation des cat√©gories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_categorie'));
             }   
         }
 
-    	//on affiche sinon le form avec les données entrées
+    	//on affiche sinon le form avec les donn√©es entr√©es
     	return $this->render('OdysseusBackBundle:Categorie:ajouter.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -62,14 +65,14 @@ class CategorieController extends Controller
         //le form builder
         $form = $this->createForm(new CategorieType(), $categorie);
 
-        //on récupère la requete
+        //on r√©cup√®re la requete
         $request = $this->getRequest();
 
         if ($request->getMethod() == 'POST'){
             //on fait le lien requete ->form
             $form->bind($request);
             
-            //on vérifie que les chps sont corrects
+            //on v√©rifie que les chps sont corrects
             if($form->isValid()) {
                 //on en registre notre objet ds la bdd
                 $em = $this->getDoctrine()->getManager();
@@ -79,11 +82,10 @@ class CategorieController extends Controller
                 //on affiche un message flash
                 $this->get('session')->getFlashBag()->add('info', 'Catégorie bien modifiée');
 
-                //on redirige vers la page liste des catégories
-                //return $this->redirect($this->generateUrl('odysseus_back_voir_categorie', array('id' => $categorie>getId())));
                 return $this->redirect($this->generateUrl('odysseus_back_lister_categorie'));
             }   
         }
+        
         return $this->render('OdysseusBackBundle:Categorie:modifier.html.twig', array(
             'form' => $form->createView(),
             'categorie' =>$categorie
@@ -94,17 +96,17 @@ class CategorieController extends Controller
 
     public function supprimerAction(Categorie $categorie)
     {
-       //on crée un champ vide qui ne contiendra que le champ CRSF (permet de protéger la suppression de catégorie)
+       //on cr√©e un champ vide qui ne contiendra que le champ CRSF (permet de prot√©ger la suppression de cat√©gorie)
        $form = $this->createFormBuilder()->getForm();
         
-       //on récupère la requete
+       //on r√©cup√®re la requete
        $request = $this->getRequest();
 
        if ($request->getMethod() == 'POST'){
            //on fait le lien requete ->form
           $form->bind($request);
            
-           //on vérifie que les chps sont corrects
+           //on v√©rifie que les chps sont corrects
            if($form->isValid()) {
               //on supprime l'article
                 $em = $this->getDoctrine()->getManager();
@@ -114,7 +116,7 @@ class CategorieController extends Controller
                 //on affiche un message flash
                 $this->get('session')->getFlashBag()->add('info', 'Catégorie bien supprimée');
                
-                //on redirige vers la page liste des catégories
+                //on redirige vers la page liste des cat√©gories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_categorie'));
            }   
       }

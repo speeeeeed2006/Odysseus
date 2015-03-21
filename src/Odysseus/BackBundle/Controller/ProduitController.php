@@ -50,8 +50,11 @@ class ProduitController extends Controller
                 $em->persist($produit);
                 $em->flush();
 
+                //on affiche un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Produit bien ajouté');
+                
                 //on redirige vers la page de visualisation des Produit
-                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
             }   
         }
 
@@ -85,7 +88,7 @@ class ProduitController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Produit bien modifié');
 
                 //on redirige vers la page liste des catégories
-                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
             }   
         }
         return $this->render('OdysseusBackBundle:Produit:modifier.html.twig', array(
@@ -119,7 +122,7 @@ class ProduitController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Produit bien supprimé');
                
                 //on redirige vers la page liste des Produits
-                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
            }   
       }
        
@@ -161,6 +164,9 @@ class ProduitController extends Controller
         
         $produit->setEtat($etat->find(4));
         $em->flush();
+        
+        //on affiche un message flash
+        $this->get('session')->getFlashBag()->add('info', 'Le produit Catalogue a bien été validé');
 
         return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
 

@@ -102,7 +102,7 @@ odysseus_back_lister_prod_vente_a_valider:
 odysseus_back_lister_client:
     path:     /lister-client
     defaults: { _controller: OdysseusBackBundle:Client:lister }
-      
-#odysseus_back_modifier_client:
-    #path:     /modifier-client/{id}
-    #defaults: { _controller: OdysseusBackBundle:Client:modifier }  
+     
+odysseus_back_bannir_client:
+    path:     /bannir-client/{id}
+    defaults: { _controller: OdysseusBackBundle:Client:bannir } 

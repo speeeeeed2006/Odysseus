@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\Client:
     type: entity
     table: client
+    repositoryClass: Odysseus\FrontBundle\Repository\ClientRepository
     indexes:
         fk_Client_Etat1_idx:
             columns:
