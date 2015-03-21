@@ -17,7 +17,7 @@ Odysseus\FrontBundle\Entity\Client:
             nullable: false
             unsigned: false
             id: true
-            column: id_Client
+            column: id_client
             generator:
                 strategy: IDENTITY
     fields:
