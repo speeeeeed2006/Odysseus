@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 class EtatRepository extends EntityRepository
 {
     
-    public function getListeEtatpourProduitCat()
+    public function getListeEtatpourProduit()
     {
         return $this->createQueryBuilder('e')
                     ->where('e.type = :type')

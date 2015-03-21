@@ -46,7 +46,7 @@ class CategorieController extends Controller
                 $em->flush();
 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Catégorie bien ajoutée');
+                $this->get('session')->getFlashBag()->add('categorie', 'Catégorie bien ajoutée');
                 
                 //on redirige vers la page de visualisation des cat√©gories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_categorie'));
@@ -80,7 +80,7 @@ class CategorieController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Catégorie bien modifiée');
+                $this->get('session')->getFlashBag()->add('categorie', 'Catégorie bien modifiée');
 
                 return $this->redirect($this->generateUrl('odysseus_back_lister_categorie'));
             }   
@@ -114,7 +114,7 @@ class CategorieController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Catégorie bien supprimée');
+                $this->get('session')->getFlashBag()->add('categorie', 'Catégorie bien supprimée');
                
                 //on redirige vers la page liste des cat√©gories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_categorie'));

@@ -52,7 +52,7 @@ class SouscategorieController extends Controller
                 $em->flush();
 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Sous-catégorie bien ajoutée');
+                $this->get('session')->getFlashBag()->add('souscategorie', 'Sous-catégorie bien ajoutée');
                 
                 //on redirige vers la page de visualisation des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_souscategorie'));
@@ -86,7 +86,7 @@ class SouscategorieController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Sous-catégorie bien modifiée');
+                $this->get('session')->getFlashBag()->add('souscategorie', 'Sous-catégorie bien modifiée');
 
                 //on redirige vers la page liste des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_souscategorie'));
@@ -120,7 +120,7 @@ class SouscategorieController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Sous Catégorie bien supprimée');
+                $this->get('session')->getFlashBag()->add('souscategorie', 'Sous Catégorie bien supprimée');
                
                 //on redirige vers la page liste des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_souscategorie'));

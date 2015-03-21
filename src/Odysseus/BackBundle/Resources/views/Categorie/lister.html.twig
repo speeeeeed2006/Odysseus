@@ -8,7 +8,7 @@
 	
     <h2 class="page-header">Liste des catégories</h2>
     
-    {% for message in app.session.flashbag.get('info') %}
+    {% for message in app.session.flashbag.get('categorie') %}
         <p class="bg-success contextual">{{ message }}</p>
     {% endfor %}
         

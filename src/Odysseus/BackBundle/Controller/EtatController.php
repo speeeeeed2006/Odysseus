@@ -46,7 +46,7 @@ class EtatController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Etat bien ajouté');
+                $this->get('session')->getFlashBag()->add('etat', 'Etat bien ajouté');
 
                 //on redirige vers la page de visualisation des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_etat'));
@@ -80,7 +80,7 @@ class EtatController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Etat bien modifié');
+                $this->get('session')->getFlashBag()->add('etat', 'Etat bien modifié');
 
                 //on redirige vers la page liste des etats
                 return $this->redirect($this->generateUrl('odysseus_back_lister_etat'));
@@ -114,7 +114,7 @@ class EtatController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Etat bien supprimé');
+                $this->get('session')->getFlashBag()->add('etat', 'Etat bien supprimé');
                
                 //on redirige vers la page liste des états
                 return $this->redirect($this->generateUrl('odysseus_back_lister_etat'));

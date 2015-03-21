@@ -39,3 +39,8 @@ span.nombre {
     padding : 15px;
     font-weight: bold;
 }
+
+
+input[type="submit"] { 
+    margin-left: 150px;
+}

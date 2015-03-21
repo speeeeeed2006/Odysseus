@@ -8,42 +8,41 @@
 
     <h2 class="page-header">Liste des produits Catalogue à valider</h2>   
    
+    {% for message in app.session.flashbag.get('info') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
         <table class="table table-bordered">
             <thead>
                 <tr>
-                <th>Réf.</th>
-                <th>Nom</th>
-                <th>Marque</th>
-                <th>Catégorie</th>
-                <th>Sous-catégorie</th>
-                <th>Description</th>
-                <th>Etat</th>
-                <!--<th>Promo</th>
-                <th>Nouveau</th>
-                <th>A la une</th>--> 
-                <th>A valider</th>
-                
+                    <th>Réf.</th>
+                    <th>Nom</th>
+                    <th>Marque</th>
+                    <th>Catégorie</th>
+                    <th>Sous-catégorie</th>
+                    <th>Description</th>
+                <!--  <th>Etat</th> -->
+                    <th>Valider</th>
+                    <th>Refuser</th>
                 </tr>
             </thead>
             <tbody>
-              
-                {% for produit in liste_produits %} 
+                {% if(liste_produits) %}
+                    {% for produit in liste_produits %} 
+                    <tr>
+                        <td> {{ produit.reference }} </td>
+                        <td> {{ produit.nom }} </td>
+                        <td> {{ produit.marque }} </td>
+                        <td> {{ produit.categorie.nom }} </td>
+                        <td> {{ produit.sousCategorie.nom }} </td>
+                        <td> {{ produit.description }} </td>
+                       <!-- <td> {{ produit.etat.nom }} </td> -->                   
+                        <td><a href="{{ path('odysseus_back_valider_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-ok-circle"></i></a></td>
+                        <td><a href="{{ path('odysseus_back_refuser_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-thumbs-down"></i></a></td>
 
-                <tr>
-                    <td> {{ produit.reference }} </td>
-                    <td> {{ produit.nom }} </td>
-                    <td> {{ produit.marque }} </td>
-                    <td> {{ produit.categorie.nom }} </td>
-                    <td> {{ produit.sousCategorie.nom }} </td>
-                    <td> {{ produit.description }} </td>
-                    <td> {{ produit.etat.nom }} </td>                    
-                    <!--<td> {# produit.promotion #} </td>-->
-                    <!--<td> {# produit.nouveau #} </td>-->
-                    <!--<td> {# produit.alaune #}</td>-->
-
-                    <td><a href="{{ path('odysseus_back_valider_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-ok-circle"></i></a></td>
-                </tr>
-                {% endfor %}
+                    </tr>
+                    {% endfor %}
+                 {% endif %}
             </tbody>
         </table>
     
@@ -52,7 +51,7 @@
             <ul class="pagination">
             {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
             {% for p in range(1, nombrePage) %}
-                <li{% if p == page %} class="active"{% endif %}>
+                <li {% if p == page %} class="active"{% endif %} >
                 <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
                 </li>
             {% endfor %}

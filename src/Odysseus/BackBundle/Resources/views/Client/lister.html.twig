@@ -8,7 +8,7 @@
 	
     <h2 class="page-header">Liste des clients</h2>  
         
-        {% for message in app.session.flashbag.get('info') %}
+        {% for message in app.session.flashbag.get('client') %}
             <p class="bg-success contextual">{{ message }}</p>
         {% endfor %}
             

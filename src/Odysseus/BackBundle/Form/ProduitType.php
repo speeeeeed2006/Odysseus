@@ -37,7 +37,7 @@ class ProduitType extends AbstractType
                                 'property' => 'nom',
                                 'multiple' => false,
                                 'query_builder' => function(EtatRepository $er){
-                                    return $er->getListeEtatpourProduitCat();
+                                    return $er->getListeEtatpourProduit();
                                 }))
                 ->add('promotion', 'checkbox', array('required' => false))
                 ->add('nouveaute', 'checkbox', array('required' => false))

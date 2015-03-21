@@ -5,6 +5,7 @@ namespace Odysseus\BackBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Odysseus\FrontBundle\Repository\EtatRepository;
 
 class ProduitVenteType extends AbstractType
 {
@@ -16,7 +17,14 @@ class ProduitVenteType extends AbstractType
     {
         $builder ->add('remarque', 'text', array('required' => false))
                  ->add('prix',     'money')
-                 ->add('stock',    'integer'); 
+                 ->add('stock',    'integer')
+                 ->add('etat', 'entity', array(
+                                'class'    => 'OdysseusFrontBundle:Etat',
+                                'property' => 'nom',
+                                'multiple' => false,
+                                'query_builder' => function(EtatRepository $er){
+                                    return $er->getListeEtatpourProduit();
+                                })); 
     }
     
     /**

@@ -42,7 +42,7 @@ class ClientController extends Controller
         $em->flush();
         
         //on affiche un message flash
-        $this->get('session')->getFlashBag()->add('info', 'Le/la client(e) a bien été banni(e).');
+        $this->get('session')->getFlashBag()->add('client', 'Le/la client(e) a bien été banni(e).');
 
         return $this->redirect($this->generateUrl('odysseus_back_lister_client'));
     }

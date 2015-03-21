@@ -51,7 +51,7 @@ class ProduitController extends Controller
                 $em->flush();
 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Produit bien ajouté');
+                $this->get('session')->getFlashBag()->add('produit', 'Produit bien ajouté');
                 
                 //on redirige vers la page de visualisation des Produit
                 return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
@@ -85,7 +85,7 @@ class ProduitController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Produit bien modifié');
+                $this->get('session')->getFlashBag()->add('produit', 'Produit bien modifié');
 
                 //on redirige vers la page liste des catégories
                 return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
@@ -119,7 +119,7 @@ class ProduitController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Produit bien supprimé');
+                $this->get('session')->getFlashBag()->add('produit', 'Produit bien supprimé');
                
                 //on redirige vers la page liste des Produits
                 return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
@@ -139,6 +139,7 @@ class ProduitController extends Controller
         
         $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
                               ->getListeProduitAValider(10, $page);
+        
         
         return $this->render('OdysseusBackBundle:Produit:listerProdCatAValider.html.twig',
         	array(
@@ -166,9 +167,31 @@ class ProduitController extends Controller
         $em->flush();
         
         //on affiche un message flash
-        $this->get('session')->getFlashBag()->add('info', 'Le produit Catalogue a bien été validé');
+        $this->get('session')->getFlashBag()->add('produit', 'Le produit Catalogue a bien été validé');
 
-        return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue'));
-
+        return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
     }
+    
+    public function refuserAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $produit = $em->getRepository('OdysseusFrontBundle:Produit')
+                      ->find($id);
+
+        if (!$produit) {
+            throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
+        }
+
+        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
+        
+        $produit->setEtat($etat->find(5));
+        $em->flush();
+        
+        //on affiche un message flash
+        $this->get('session')->getFlashBag()->add('produit', 'Le produit Catalogue a été refusé');
+
+        return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
+    }
+    
 }

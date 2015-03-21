@@ -4,7 +4,8 @@
 	<form method="post" action="" {{ form_enctype(form) }} id="form_produits">
 
 		{# les erreurs générales du form #}
-		{{ form_errors(form) }}
+                {{ form_errors(form) }}
+
 
                 <div class="row show-grid">
                     <div class="col-md-3">{{ form_label(form.reference, "Référence du produit") }}</div>
