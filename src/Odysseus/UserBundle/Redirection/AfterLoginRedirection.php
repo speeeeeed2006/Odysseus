@@ -38,7 +38,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         }, $roles);
         // S'il s'agit d'un admin ou d'un super admin on le redirige vers le backoffice
         if (in_array('ROLE_ADMIN', $rolesTab, true) || in_array('ROLE_SUPER_ADMIN', $rolesTab, true))
-            $redirection = new RedirectResponse($this->router->generate('odysseus_back_homepage'));
+            $redirection = new RedirectResponse($this->router->generate('odysseus_back_home'));
         // sinon il s'agit d'un client
         else
             $redirection = new RedirectResponse($this->router->generate('odysseus_front_home'));

@@ -1,0 +1,84 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    {{ form_widget(form) }}
+        
+        
+    <div>
+        {{ form_errors(form.civilite) }}
+        {{ form_label(form.civilite, "Votre civilité :") }}
+        {{ form_widget(form.civilite) }}
+    </div>
+
+    <div>
+        {{ form_errors(form.username) }}
+        {{ form_label(form.username, "Votre nom d'utilisateur :") }}
+        {{ form_widget(form.username) }}
+    </div>
+    
+    <div>
+        {{ form_errors(form.prenom) }}
+        {{ form_label(form.prenom, "Votre prénom  :") }}
+        {{ form_widget(form.prenom) }}
+    </div>
+
+    <div>
+        {{ form_errors(form.nom) }}
+        {{ form_label(form.nom, "Votre nom :") }}
+        {{ form_widget(form.nom) }}
+    </div>
+
+    <div>
+        {{ form_errors(form.adresse) }}
+        {{ form_label(form.adresse, "Votre adresse :") }}
+        {{ form_widget(form.adresse) }}
+    </div>
+    
+    <div>
+        {{ form_errors(form.cp) }}
+        {{ form_label(form.cp, "Votre code postal :") }}
+        {{ form_widget(form.cp) }}
+    </div>
+  
+   <div>
+        {{ form_errors(form.ville) }}
+        {{ form_label(form.ville, "Votre ville :") }}
+        {{ form_widget(form.ville) }}
+    </div>
+        
+    <div>
+        {{ form_errors(form.pays) }}
+        {{ form_label(form.pays, "Votre pays :") }}
+        {{ form_widget(form.pays) }}
+    </div>
+    
+    <div>
+        {{ form_errors(form.date) }}
+        {{ form_label(form.date, "Votre date de naissance :") }}
+        {{ form_widget(form.date) }}
+    </div>
+    
+    <div>
+        {{ form_errors(form.telephone) }}
+        {{ form_label(form.telephone, "Votre téléphone :") }}
+        {{ form_widget(form.telephone) }}
+    </div>
+    
+    <div>
+        {{ form_errors(form.email) }}
+        {{ form_label(form.email, "Votre email :") }}
+        {{ form_widget(form.email) }}
+    </div>
+    <div>
+        {{ form_errors(form.mdp) }}
+        {{ form_label(form.mdp, "Votre mot de passe :") }}
+        {{ form_widget(form.mdp) }}
+    </div>
+    modification du mot de passe
+    
+    {{ form_row(form._token) }}
+        
+    <div>
+        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+    </div>
+</form>

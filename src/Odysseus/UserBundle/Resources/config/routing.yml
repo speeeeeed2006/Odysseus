@@ -17,4 +17,16 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-#------------ fin 
+#------------ fin
+
+odysseus_front_home:
+    path:     /home
+    defaults: { _controller: OdysseusFrontBundle:Main:home }
+    
+odysseus_back_home:
+    path:     /
+    defaults: { _controller: OdysseusBackBundle:Back:index }
+    
+odysseus_front_profile:
+    path:     /profile
+    defaults: { _controller: OdysseusUserBundle:Profile:index }

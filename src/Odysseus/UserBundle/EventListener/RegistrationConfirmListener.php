@@ -23,13 +23,13 @@ class RegistrationConfirmListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-                FOSUserEvents::REGISTRATION_CONFIRM => 'onRegistrationConfirm'
+            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationConfirm'
         );
     }
 
-    public function onRegistrationConfirm(GetResponseUserEvent $event)
+    public function onRegistrationConfirm(\FOS\UserBundle\Event\FormEvent $event)
     {
-        $url = $this->router->generate('odysseus_front_home');
+        $url = $this->router->generate('odysseus_front_profile');
 
         $event->setResponse(new RedirectResponse($url));
     }

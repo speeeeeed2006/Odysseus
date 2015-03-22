@@ -22,8 +22,10 @@
         {% endfor %}
     {% endfor %}
 
-    <div>
+        <div id="wrap">
         {% block fos_user_content %}
         {% endblock fos_user_content %}
-    </div>
+        </div>
+    
+{% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
 {% endblock %}

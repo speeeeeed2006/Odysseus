@@ -1,14 +1,5 @@
-services:
-    rs_user.registration_complet:
-        class: Odysseus\UserBundle\EventListener\RegistrationConfirmListener
-        arguments: [@router]
-        tags:
-            - { name: kernel.event_subscriber }
-            
-    odysseus.registration.form.type:
-        class: Odysseus\UserBundle\Form\Type\RegistrationFormType
-        tags:
-            - { name: form.type, alias: odysseus_user_registration }
+services:         
+    #login
     redirect.after.login:
         class: Odysseus\UserBundle\Redirection\AfterLoginRedirection
         arguments: [@router]
@@ -16,3 +7,23 @@ services:
     redirect.after.logout:
         class: Odysseus\UserBundle\Redirection\AfterLogoutRedirection
         arguments: [@router, @security.context]
+        
+    #register
+    odysseus.registration.form.type:
+        class: Odysseus\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: odysseus_user_registration }
+      
+    odysseus.registration_complet:
+        class: Odysseus\UserBundle\EventListener\RegistrationConfirmListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    #profile
+    odysseus.profile.form.type:
+        class: Odysseus\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+             - { name: form.type, alias: odysseus_edition_profile }

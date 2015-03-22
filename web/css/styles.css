@@ -239,13 +239,14 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 /* ----------------------------- */
 #wrap .sous-titre {  }
 #wrap .fond {  }
+.fond ul li { background: #C9302C; color: #ffffff; padding:5px 10px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; list-style:none;}
 #wrap form {  }
 #wrap form p { margin-bottom: 8px; height: 25px;}
-#wrap label { display: block; width: 140px; line-height: 25px; color: #000000; margin-right: 20px; vertical-align: middle; display: inline-block; }
+#wrap label { display: block; width: 300px; line-height: 25px; color: #000000; margin-right: 20px; vertical-align: middle; display: inline-block; }
 #wrap input[type="radio"] { vertical-align: middle; }
 #wrap input[type="text"], #wrap input[type="password"], #wrap input[type="email"] {  width: 260px;  height: 25px; line-height: 25px; background-color: #ffffff; border: 1px solid #cec0b4; color: #000000; vertical-align: middle; display: inline-block;}
 
-#wrap #identification button, #wrap #creation button { margin: 20px 0 0 340px;}
+/*#wrap #identification button, #wrap #creation button { margin: 20px 0 0 340px;}*/
 
 #wrap #identification { margin-right: 20px; }
 #wrap #creation {  }
