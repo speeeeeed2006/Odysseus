@@ -1,0 +1,14 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div id="profil">
+    
+    {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+    
+    <div id="detail">
+        <h2>Mes informations</h2>
+        
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                
+    </div>   
+</div>

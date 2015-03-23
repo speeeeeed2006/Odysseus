@@ -3,6 +3,7 @@
 
    <li> Bonjour {{ app.user.username }}</li>
    <li> <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+   <li> <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
 {% else %}
 	<li><a href="{{ path('fos_user_registration_register')}}" title="Inscription">Inscription </a></li>
     <li><a href="{{ path('fos_user_security_login') }}" title="Connexion">Connexion</a></li>

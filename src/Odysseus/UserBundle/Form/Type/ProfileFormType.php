@@ -12,10 +12,10 @@ class ProfileFormType extends AbstractType
    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildUserForm($builder, $options);
-        
-        $builder->add('username', 'text')
-                ->add('client', new ClientType());
+//        parent::buildUserForm($builder, $options);
+//        
+//        $builder->add('username', 'text')
+//                ->add('client', new ClientType());
     }
     
     public function getParent()

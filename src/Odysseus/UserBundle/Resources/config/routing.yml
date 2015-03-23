@@ -27,6 +27,6 @@ odysseus_back_home:
     path:     /
     defaults: { _controller: OdysseusBackBundle:Back:index }
     
-odysseus_front_profile:
-    path:     /profile
-    defaults: { _controller: OdysseusUserBundle:Profile:index }
+#odysseus_front_profile:
+    #path:     /profile
+    #defaults: { _controller: OdysseusUserBundle:Profile:index }

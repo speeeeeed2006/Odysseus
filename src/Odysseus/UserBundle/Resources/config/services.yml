@@ -15,11 +15,11 @@ services:
         tags:
             - { name: form.type, alias: odysseus_user_registration }
       
-    odysseus.registration_complet:
-        class: Odysseus\UserBundle\EventListener\RegistrationConfirmListener
-        arguments: [@router]
-        tags:
-            - { name: kernel.event_subscriber }
+    #odysseus.registration_complet:
+        #class: Odysseus\UserBundle\EventListener\RegistrationConfirmListener
+        #arguments: [@router]
+        #tags:
+            #- { name: kernel.event_subscriber }
     
     #profile
     odysseus.profile.form.type:

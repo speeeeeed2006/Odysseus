@@ -136,6 +136,8 @@ hgroup, menu, nav, section {
   display: block;
 }
 
+.bold { font-weight: bold; }
+
 /* ----------------------------- */
 /* Structure
 /* ----------------------------- */
@@ -165,7 +167,7 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 
 #top { height: 140px; margin-bottom: 30px; position: relative;}
 #top #logo, #top #recherche, #top #droite { display: inline-block; vertical-align: top;}
-#top #logo { width: 700px; position: relative; background: blue;}
+#top #logo { width: 680px; position: relative; background: blue;}
 #top #logo img { width: 250px; height: 130px; display: block; background: #cccccc; position: absolute; top: 10px; left: 0px;}
 
 #top #recherche { width: 280px; position: relative; }
@@ -174,7 +176,7 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 #top #recherche button { position: absolute; right: -1px; bottom: 0; width: 20px; height: 30px; border: 1px solid #5fb7c6; background: #5fb7c6 url('../images/sprite.png') 7px -19px no-repeat; }
 #top #recherche button:hover { background-position: -20px -18px;}
 
-#top #droite { width: 200px; margin-left: 70px; }
+#top #droite { width: 260px; margin-left: 30px; }
 #top #droite #liens, #top #droite #panier { margin-bottom: 15px; }
 #top #droite #liens { /*height: 50px; */ float: right;}
 #top #droite #liens ul, #top #droite #liens #flux_rss { display: inline-block; vertical-align: top; }
@@ -189,7 +191,8 @@ header ul li { list-style: none; display: inline-block; vertical-align: top; }
 
 #top #droite #connexion { clear: both; /*height: 20px; */ }
 #top #droite #connexion ul { text-align: right; font-size: 12px; /*line-height: 30px;*/ padding: 0; }
-#top #droite #connexion ul li:first-child:after { content: "|"; margin: 0 6px;  }
+#top #droite #connexion ul li:after { content: "|"; margin: 0 6px;  }
+#top #droite #connexion ul li:last-child:after { content: ""; margin: 0;  }
 #top #droite #connexion ul li a {  }
 
 nav { height: 50px; background: #5fb7c6;}
@@ -250,6 +253,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 /*#wrap #identification button, #wrap #creation button { margin: 20px 0 0 340px;}*/
 
 #wrap #identification { margin-right: 20px; }
+#wrap #identification form { margin-bottom: 20px;}
 #wrap #creation {  }
 #wrap #creation span.note { font-style: italic; font-size: 10px; }
 
@@ -257,9 +261,21 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #wrap #identification .fond , #wrap #creation .fond {  width: 430px; background: #ebe4de; padding: 20px;}
 #wrap #identification .fond .sous-titre, #wrap #creation .fond .sous-titre { background: #d3c5b9; color: #ffffff; width: 200px; height: 24px; padding: 2px 2px 2px 10px; display: block; margin: -20px 0 20px -20px; }
 
-#wrap #infos {  }
+#wrap #mdp a { color :#5fb7c6; }
 #wrap #infos span { background: #5fb7c6 url('../images/sprite.png') 6px -202px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 5px 10px 5px 36px; color: #ffffff;}
 
+/* ----------------------------- */
+/* Contenu profil
+/* ----------------------------- */
+#profil .fond, #profil #detail { display: inline-block; vertical-align: top; }
+#profil .fond { background: #EBE4DE; margin-right: 55px; padding: 10px; }
+#profil .fond a { display: block;}
+#profil .fond ul li { border-radius: 0; background: none; font-weight: bold; }
+#profil .fond ul li a:before { content: '> '; color: #5fb7c6; }
+#profil .fond ul li a { margin-bottom: 2px;}
+#profil .fond ul li ul li { font-weight: normal; padding:0 5px;}
+#profil .fond ul li ul li a { padding: 0;}
+#profil .fond ul li ul li a:before  { color: #000000;}
 /* ----------------------------- */
 /* Contenu produit
 /* ----------------------------- */
@@ -441,6 +457,3 @@ footer ul li { list-style: none; margin-bottom: 5px; }
 #informations #pictos .paypal, #informations #pictos .visa { width: 72px; height: 44px; background: url('../images/sprite.png') no-repeat; }
 #informations #pictos .paypal { background-position: -2px -155px; margin-bottom: 10px; }
 #informations #pictos .visa { background-position: -75px -155px; }
-
-
-
