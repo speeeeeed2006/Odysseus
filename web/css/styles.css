@@ -144,7 +144,7 @@ h1, h2, h3, h4, h5 { font-family: 'league_gothicregular', sans-serif; }
 a { text-decoration: none; color: #000000; }
 
 input { border : 1px solid #cec0b4; height: 20px; padding-left: 5px;}
-button { cursor: pointer; background: #5fb7c6;  width: 86px; height: 30px; color: #ffffff; border: none; font-size: 14px; }
+button { cursor: pointer; background: #5fb7c6;  width: auto; height: 30px; color: #ffffff; border: none; font-size: 14px; }
 button:hover { }
 
 #container { margin: 0 auto; width: 1250px; min-height:400px; /*background: blue;*/}
@@ -211,6 +211,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 
 #wrap #bas { margin-bottom: 20px;}
 
+#wrap .infos { background: #5fb7c6; height: 30px; width:auto; padding: 5px; color: #ffffff;}
 #wrap #bas .marque { font-weight: bold; display: block; }
 #wrap #bas .nom_produit { font-weight: bold; display: block; }
 #wrap #bas .descriptif { font-size: 13px; white-space: nowrap; text-overflow: ellipsis; max-height: 20px; overflow: hidden; margin: 10px 0px 20px; }
@@ -311,7 +312,7 @@ form div { margin-bottom: 20px;}
 form label { width: 110px; display: inline-block; font-size: 12px; font-weight: bold; }
 form input { width: 230px;}
 form textarea{ vertical-align: top; padding: 5px; font : 11px 'open_sansregular', sans-serif;}
-form button {margin-left: 275px;   width: auto; padding: 0 15px;}
+form button {/*margin-left: 275px; */ padding: 0 15px;}
 form input[type="checkbox"] {   width: auto; display: inline-block; vertical-align: middle;}
 form input[type="checkbox"] > label {  margin-left: 10px; display: inline-block; vertical-align: middle; }
 
@@ -357,6 +358,13 @@ form input[type="checkbox"] > label {  margin-left: 10px; display: inline-block;
 #wrap button.suivant { width: 100px;}
 #wrap button.suivant:before {content: '>> '; color: #ffffff; }
 
+#wrap #livraison #gauche, #wrap #livraison #droite { width: 49%; display: inline-block; vertical-align: top; } 
+#wrap #livraison h4 { margin-bottom: 10px;}
+#wrap #livraison div { margin-bottom: 10px;}
+#wrap #livraison label  { width: 150px;}
+#wrap #livraison .adresse label { width: auto;}
+#wrap #livraison input[type="radio"] { width:auto;}
+#wrap #livraison button { margin-left : 150px; width: auto;}
 /* ----------------------------- */
 /* sidebar (Colonne droite)
 /* ----------------------------- */

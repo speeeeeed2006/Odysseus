@@ -13,12 +13,14 @@ class ProfileController extends BaseController
     public function showAction(Request $request)
     {
         $formFactory = $this->container->get('odysseus.profile.form.type');
-         
-        $form = $formFactory->createForm(new ProfileFormType());
+        
+        $user = $this->container->get('security.context')->getToken()->getUser(); 
+        $form = $formFactory->createForm(new ProfileFormType(), $user);
          
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:edit_content.html.twig',
             array(
-                   'form' => $form->createView(),
+                'form' => $form->createView(),
+                'user' => $user  
             )); 
 
     }

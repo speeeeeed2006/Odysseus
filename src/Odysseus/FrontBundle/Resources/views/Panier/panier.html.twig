@@ -7,15 +7,7 @@
 
     <h2>Récapitulatif de votre commande</h2>
 
-    <div id="menu">
-        <ul>
-            <li class="etape">Résumé</li> 
-            <li class="etape">Identifiez-vous</li>
-            <li class="etape">Adresse</li>
-            <li class="etape">Frais de port</li>
-            <li class="etape">Paiement</li>
-        </ul>
-    </div>
+    {% include "OdysseusFrontBundle:Default:menuPanier.html.twig" %}
     <div id="panier">
     <p>Votre panier contient :</p>
 
@@ -78,7 +70,7 @@
 
 
             <button type="button" class="precedent continuer">Continuer mes achats</button>
-            <button type="button" class="suivant">Suivant</button>
+            <button type="button" class="suivant">Valider mon panier</button>
     </div><!--#panier-->
     <div id="infos">
             <span>Informations importantes</span>

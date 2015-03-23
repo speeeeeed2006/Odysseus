@@ -1,0 +1,24 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Produit {% endblock %}
+
+{% block body %}
+    <div id="wrap">
+        {% include "OdysseusFrontBundle:Default:menuPanier.html.twig" %}
+        <div id="livraison">
+            <h2>Paiement</h2>
+
+            <form action="" methode="">
+            <div>
+            
+            </div>
+            
+            <div>
+                <button type="submit">Payer</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    {% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+
+{% endblock %}

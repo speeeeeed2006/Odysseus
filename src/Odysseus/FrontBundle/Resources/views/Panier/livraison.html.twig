@@ -1,0 +1,57 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Produit {% endblock %}
+
+{% block body %}
+    <div id="wrap">
+        {% include "OdysseusFrontBundle:Default:menuPanier.html.twig" %}
+        <div id="livraison">
+            <h2>Choisissez votre adresse</h2>
+
+            <form action="{{ path('odysseus_front_frais')}}" methode="post">
+            <div id="gauche">
+                <h4>Adresse de livraison</h4>
+                <div class="adresse">
+                    <input type="radio" checked="checked"><label>15 rue Lucien Sampaix 75010 Paris</label>
+                </div>
+                <div class="adresse"><input type="radio" ><label>15 rue Lucien sAmpaix Bat G 75010 Paris</label></div>
+                <div class="adresse"><input type="radio" ><label>15 rue Lucien sAmpaix 75010 Paris</label></div>
+            </div>
+            <div id="droite">
+                <h4>Adresse de facturation </h4>
+                <div class="adresse"><input type="radio" checked="checked"><label>15 rue Lucien sAmpaix 75010 Paris</label></div>
+                <div class="adresse"><input type="radio" ><label>15 rue Lucien sAmpaix 75010 Paris</label></div>
+                <div class="adresse"><input type="radio" ><label>15 rue Lucien sAmpaix 75010 Paris</label></div> 
+            </div>
+            <br/>
+            <div>
+                <button type="submit">Valider mes adresses </button>
+            </div>
+
+            <h2> ou Ajouter une adresse</h2>
+
+            <div>
+                <label>Adresse</label><input type="text">
+            </div>
+            <br/>
+            <div>
+                <label>Code postal</label><input type="text">
+            </div>
+            <br/>
+            <div>
+                <label>Ville</label><input type="text">
+            </div>
+            <br/>
+            <div>
+                <label>Pays</label><input type="text">
+            </div>
+            <br/>
+            <div>
+                <button type="submit">Ajouter </button>
+            </div>
+            </form>
+        </div>
+    </div>
+    {% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+
+{% endblock %}

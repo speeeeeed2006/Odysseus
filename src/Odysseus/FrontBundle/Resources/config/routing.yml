@@ -21,14 +21,29 @@ odysseus_front_home:
     path:     /home
     defaults: { _controller: OdysseusFrontBundle:Main:home }
     
-#odysseus_front_produit:    
-    #path:     /produit
-    #defaults: { _controller: OdysseusFrontBundle:Main:produit }
+odysseus_front_produit:    
+    path:     /produit
+    defaults: { _controller: OdysseusFrontBundle:Produit:produit }
+    
+odysseus_front_produit_presentation:    
+    path:     /produit-detail
+    defaults: { _controller: OdysseusFrontBundle:Produit:presentation }
     
 odysseus_front_panier:    
     path:     /panier
-    defaults: { _controller: OdysseusFrontBundle:Main:panier }
+    defaults: { _controller: OdysseusFrontBundle:Panier:panier }
+    
+odysseus_front_livraison:    
+    path:     /panier/livraison
+    defaults: { _controller: OdysseusFrontBundle:Panier:livraison }
 
+odysseus_front_frais:    
+    path:     /panier/frais
+    defaults: { _controller: OdysseusFrontBundle:Panier:frais }
+    
+odysseus_front_payer:    
+    path:     /panier/payer
+    defaults: { _controller: OdysseusFrontBundle:Panier:payer }
     
 #------------ fin Main
 #------------ debut Client
