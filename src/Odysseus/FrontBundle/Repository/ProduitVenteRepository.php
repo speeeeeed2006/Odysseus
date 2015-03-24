@@ -56,4 +56,16 @@ class ProduitVenteRepository extends EntityRepository
         // Enfin, on retourne l'objet Paginator correspondant à la requête construite
         return new Paginator($query);
     }
+    
+     public function getProduitbyCategorie($categorie)
+    {
+        return $this->createQueryBuilder('pv')
+                    ->select('pv')
+                    ->join('pv.produit', 'p')
+                    ->where('p.categorie = :categorie')
+                    ->orderBy('p.idProduit')
+                    ->setParameter('categorie', $categorie)
+                    ->getQuery()
+                    ->getResult();
+    }
 }

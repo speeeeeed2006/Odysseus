@@ -119,6 +119,11 @@ class Client
     private $user;
 
 
+    public function __toString()
+    {
+        return (string) $this->getUser();
+    }
+    
     /**
      * Set civilite
      *

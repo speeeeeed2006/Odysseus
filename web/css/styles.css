@@ -247,7 +247,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #wrap form {  }
 #wrap form p { margin-bottom: 8px; height: 25px;}
 #wrap label { display: block; width: 300px; line-height: 25px; color: #000000; margin-right: 20px; vertical-align: middle; display: inline-block; }
-#wrap input[type="radio"] { vertical-align: middle; }
+#wrap input[type="radio"] { vertical-align: middle; width: auto; }
 #wrap input[type="text"], #wrap input[type="password"], #wrap input[type="email"] {  width: 260px;  height: 25px; line-height: 25px; background-color: #ffffff; border: 1px solid #cec0b4; color: #000000; vertical-align: middle; display: inline-block;}
 
 /*#wrap #identification button, #wrap #creation button { margin: 20px 0 0 340px;}*/
@@ -276,6 +276,9 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #profil .fond ul li ul li { font-weight: normal; padding:0 5px;}
 #profil .fond ul li ul li a { padding: 0;}
 #profil .fond ul li ul li a:before  { color: #000000;}
+
+#odysseus_edition_profile_civilite { display: inline-block;}
+#detail ul > label { width: 50px;} 
 /* ----------------------------- */
 /* Contenu produit
 /* ----------------------------- */
@@ -302,6 +305,15 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #wrap #details button { float: right;}
 #wrap #details button:before { content: '+' ; margin-right: 5px; font-size: 14px;}
 
+#categories .produit { width:250px; margin-right:20px; border: 1px solid #cccccc; display: inline-block;padding: 10px;}
+#categories .produit img {width:250px; height:200px; background: #cccccc; display: block; margin-bottom: 10px; }
+#categories .produit .nom_produit, #categories .produit .prix { display: inline-block; height: 30px; vertical-align: bottom; }
+#categories .produit .nom_produit {text-align: left; }
+#categories .produit .prix { margin:0; }
+#categories .produit .boutons { margin-top: 10px; }
+#categories .produit .boutons form, #categories .produit .boutons a { display: inline-block; vertical-align: middle;}
+#categories .produit .boutons form {float: right;}
+#categories .produit .boutons a { height: 30px; margin: 5px 0 -6px;}
 
 #wrap #complement {  }
 #wrap #complement p span {font-weight: bold;}

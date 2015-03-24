@@ -5,23 +5,27 @@ namespace Odysseus\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+//use Odysseus\UserBundle\Form\Type\ClientType;
+//use Odysseus\UserBundle\Form\Type\AdresseType;
 
 class ProfileFormType extends AbstractType
 {
    
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-//        parent::buildUserForm($builder, $options);
-//        
-//        $builder->add('username', 'text')
-//                ->add('client', new ClientType());
-    }
+    {        
+         $builder->add('username','text', array('required' => false))
+                 ->add('email',   'email', array('required' => false));
+                 //->add('client', new ClientType());
+    } 
+
+    
     
     public function getParent()
     {
         return 'fos_user_profile';
     }
+    
+    
 
     public function getName()
     {

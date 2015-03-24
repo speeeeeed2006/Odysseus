@@ -13,22 +13,16 @@ odysseus_front_cgv:
 
 odysseus_front_mentions:    
     path:     /mentions-legales
-    defaults: { _controller: OdysseusFrontBundle:Statique:mentionsLegales }
-    
+    defaults: { _controller: OdysseusFrontBundle:Statique:mentionsLegales } 
 #------------ fin Statique
+
 #------------ debut Main
 odysseus_front_home:
     path:     /home
     defaults: { _controller: OdysseusFrontBundle:Main:home }
-    
-odysseus_front_produit:    
-    path:     /produit
-    defaults: { _controller: OdysseusFrontBundle:Produit:produit }
-    
-odysseus_front_produit_presentation:    
-    path:     /produit-detail
-    defaults: { _controller: OdysseusFrontBundle:Produit:presentation }
-    
+ #------------ fin Main  
+ 
+ #------------ debut Panier
 odysseus_front_panier:    
     path:     /panier
     defaults: { _controller: OdysseusFrontBundle:Panier:panier }
@@ -43,11 +37,24 @@ odysseus_front_frais:
     
 odysseus_front_payer:    
     path:     /panier/payer
-    defaults: { _controller: OdysseusFrontBundle:Panier:payer }
-    
-#------------ fin Main
+    defaults: { _controller: OdysseusFrontBundle:Panier:payer }  
+#------------ fin Panier
+
+
 #------------ debut Client
 odysseus_front_connexion:
     path:     /connexion
     defaults: { _controller: OdysseusFrontBundle:Client:connexion }
 #------------ fin Client
+
+
+#------------ debut Produit
+odysseus_front_categorieProduit:
+    path:     /categorie/{categorie}
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:categorie }
+    
+odysseus_front_produit_presentation:    
+    path:     /produit-detail/{id}
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:presentation }
+    
+#------------ fin Produit

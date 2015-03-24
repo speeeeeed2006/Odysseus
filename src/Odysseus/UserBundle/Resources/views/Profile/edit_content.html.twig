@@ -1,5 +1,7 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% extends "OdysseusUserBundle::layout.html.twig" %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
 <div id="profil">
     
     {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
@@ -8,11 +10,28 @@
         <h2>Modifier mes informations</h2>
         
         <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-            {{ form_widget(form) }}
+            {# form_widget(form) #}
+            
+            {{ form_errors(form) }}
+            
+            
             <div>
+                {{ form_errors(form.username) }}
+                {{ form_label(form.username, "Votre nom d'utilisateur :") }}
+                {{ form_widget(form.username) }}
+            </div>
+            <div>
+                {{ form_errors(form.email) }}
+                {{ form_label(form.email, "Votre adresse email :") }}
+                {{ form_widget(form.email) }}
+            </div>
+           
+            <div>
+                {{ form_row(form._token) }}
                 <button type="submit">{{ 'profile.edit.submit'|trans }}</button>
             </div>
         </form>
 
     </div>   
 </div>
+{% endblock fos_user_content %}
