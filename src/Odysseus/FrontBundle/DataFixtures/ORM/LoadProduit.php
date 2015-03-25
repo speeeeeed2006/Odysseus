@@ -66,7 +66,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
     $manager->persist($produit4); 
     
     $produit5 = new Produit();   
-    $produit5->setCategorie($this->getReference('categorie2'));
+    $produit5->setCategorie($this->getReference('categorie3'));
     $produit5->setSousCategorie($this->getReference('sousCategorie5'));
     $produit5->setEtat($this->getReference('etat4'));
     $produit5->setReference('155977');

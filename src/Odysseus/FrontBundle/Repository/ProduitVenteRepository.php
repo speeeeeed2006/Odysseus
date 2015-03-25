@@ -57,14 +57,16 @@ class ProduitVenteRepository extends EntityRepository
         return new Paginator($query);
     }
     
-     public function getProduitbyCategorie($categorie)
+     public function getProduitValidebyCategorie($categorie)
     {
         return $this->createQueryBuilder('pv')
-                    ->select('pv')
+                    //->select('pv')
                     ->join('pv.produit', 'p')
                     ->where('p.categorie = :categorie')
-                    ->orderBy('p.idProduit')
                     ->setParameter('categorie', $categorie)
+                    ->where('p.etat = :etat')
+                    ->setParameter('etat', 'valide')
+                    ->orderBy('p.idProduit')
                     ->getQuery()
                     ->getResult();
     }

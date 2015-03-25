@@ -18,6 +18,8 @@ class ProduitVenteController extends Controller
         $listeProduits =  $em->getRepository('OdysseusFrontBundle:ProduitVente')
                              ->getListeProduitVente(15, $page);
         
+        //$this->get('ladybug')->log($listeProduits);
+        
         return $this->render('OdysseusBackBundle:ProduitVente:lister.html.twig',
         	array(
                     'liste_produits' => $listeProduits,

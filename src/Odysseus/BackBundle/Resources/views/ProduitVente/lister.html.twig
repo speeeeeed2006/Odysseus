@@ -33,7 +33,7 @@
                 <tr>
                     <td> {{ produit.produit.nom }} </td>
                     <td> {{ produit.produit.marque }} </td>
-                    <td> {{ produit.client.user.username }}</td>
+                    <td> {# produit.client.user.email #}</td>
                     <td> {{ produit.stock }}</td>
                     <td> {% if (produit.remarque != 'null') %}{{ produit.remarque }} {% else %} - {% endif %} </td>
                     <td> {{ produit.prix }} </td>

@@ -21,9 +21,9 @@
                 <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Barre de navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">1</span>
+                    <span class="icon-bar">2</span>
+                    <span class="icon-bar">3</span>
                 </button>
                 <a class="navbar-brand" href="#">Odysseus</a>
                 </div>
@@ -43,6 +43,8 @@
             
             <!-- colonne gauche -->
             <div class="col-md-3">
+   
+                
                 <!-- Catégories -->
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -142,6 +144,57 @@
                     </div>
                 </div>
                 
+                <!-- Pages statiques -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Pages statiques</h3>
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Edition page CGV<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Edition page Mentions légales<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Edition page Mentions légales<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Edition du slider<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Catégorie à la une<!--</a>-->
+                    </div>
+                </div>
+                
+                <!-- Slider -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion du slider</h3>
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Edition du slider<!--</a>-->
+                    </div>
+                    
+                </div>
+            
+                <!-- Produit à la une -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Produits de la home</h3>
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Catégorie à la une<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Choisir produits Catégorie à la une<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Catégorie produit nouveauté<!--</a>-->
+                    </div>
+                </div>
+                
+                
+                
                 
             </div> <!-- fin colonne gauche -->
   
@@ -163,6 +216,8 @@
         {% block javascripts %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         {% endblock %}
     </body>
 </html>
