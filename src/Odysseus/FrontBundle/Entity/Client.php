@@ -66,9 +66,9 @@ class Client
      */
     private $telephone;
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date_naissance", type="datetime", nullable=false)
+     * @ORM\Column(name="date_naissance", type="date", nullable=false)
      */
     private $dateNaissance;
 
@@ -86,17 +86,6 @@ class Client
      */
     private $dateModification;
 
-    /**
-     * @var \Adresse
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Adresse")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="adresse_id_adresse", referencedColumnName="id_adresse")
-     * })
-     */
-    private $adresse;
 
     /**
      * @var \Etat
@@ -355,29 +344,6 @@ class Client
     public function getDateModification()
     {
         return $this->dateModification;
-    }
-
-    /**
-     * Set adresse
-     *
-     * @param \Odysseus\FrontBundle\Entity\Adresse $adresse
-     * @return Client
-     */
-    public function setAdresse(\Odysseus\FrontBundle\Entity\Adresse $adresse)
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return \Odysseus\FrontBundle\Entity\Adresse 
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
     }
 
     /**

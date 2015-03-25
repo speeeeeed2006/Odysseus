@@ -12,27 +12,24 @@ class LoadModePaiement extends AbstractFixture implements OrderedFixtureInterfac
   // Dans l'argument de la méthode load, l'objet $manager est l'EntityManager
   public function load(ObjectManager $manager)
   {
-    // Liste des noms de catégorie à ajouter
-    $noms = array(
-        'Cheque',
-        'Paypal'        
-    );
-    
-    foreach ($noms as $nom) {
-        // On crée le mode paiement
-            $mode = new Modepaiement();
-            $mode->setNom($nom);
-            
-            // On persiste le mode de piement
-            $manager->persist($mode);
-    }
+ 
+        $mode1 = new Modepaiement();
+        $mode1->setNom('Cheque');
+        $manager->persist($mode1);
 
-    // On déclenche l'enregistrement de tous les modes dê paiement
-    $manager->flush();
+        $mode2 = new Modepaiement();
+        $mode2->setNom('Paypal');
+        $manager->persist($mode2);                      
+
+        $manager->flush();
+        
+        $this->addReference('mode1', $mode1);
+        $this->addReference('mode2', $mode2);
   }
   
-  public function getOrder() {
-      return 3;
+  public function getOrder()
+  {
+      return 4;
   }
 
 }
