@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\Adresse:
     type: entity
     table: adresse
+    repositoryClass: Odysseus\FrontBundle\Repository\AdresseRepository
     indexes:
         fk_Adresse_Etat1_idx:
             columns:

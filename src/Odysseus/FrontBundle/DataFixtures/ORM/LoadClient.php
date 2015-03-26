@@ -53,7 +53,7 @@ class LoadClient extends AbstractFixture implements OrderedFixtureInterface
     $manager->persist($client3);
 
     $client4 = new Client();
-    $client4->setUser($this->getReference('user3'));
+    $client4->setUser($this->getReference('user4'));
     $client4->setEtat($this->getReference('etat1'));
     $client4->setCivilite('M.');
     $client4->setPrenom('Slim');

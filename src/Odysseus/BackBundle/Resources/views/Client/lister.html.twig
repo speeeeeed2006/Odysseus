@@ -38,17 +38,17 @@
                     {% for client in liste_clients %} 
                     
                         <tr>
-                            <td> {# client.user.username #} </td>
+                            <td> {{ client.user.username }} </td>
                             <td> {{ client.civilite }} </td>
                             <td> {{ client.nom }} </td>
                             <td> {{ client.prenom }} </td>
                             <td> {{ client.dateNaissance|date("d/m/Y") }} </td>
-                            <td> {# client.adresse.adresse #} </td>
+                            <td> {# adresse.adresse #} </td>
                             <td> {# client.adresse.cp #} </td>
                             <td> {# client.adresse.ville #} </td>
                             <td> {# client.adresse.pays #} </td>
                             <td> {{ client.telephone }} </td>
-                            <td> {# client.user.email #} </td>
+                            <td> {{ client.user.email }} </td>
                             <td> {% if (client.dateCreation != "null" )%} {{ client.dateCreation|date("d/m/Y") }} {% endif %}</td>
                             <td> {% if (client.dateModification != "null" )%} {{ client.dateModification|date("d/m/Y") }} {% endif %} </td></td>
                             <td> {{ client.etat.nom }} </td> 

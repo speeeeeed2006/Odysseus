@@ -113,6 +113,11 @@ class Client
         return (string) $this->getUser();
     }
     
+    public function getId_client()
+    {
+        return $this->id_client;
+    }
+    
     /**
      * Set civilite
      *

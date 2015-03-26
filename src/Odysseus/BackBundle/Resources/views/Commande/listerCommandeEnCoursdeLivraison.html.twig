@@ -1,0 +1,48 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister des commandes en cours de livraison - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des commandes en cours de livraison</h2>  
+            
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Client</th>    
+                <th>Client ip</th>
+                <th>Date de commande</th>
+                <th>Date de paiement</th>
+                <th>Montant</th>
+                <th>Adresse de livraison</th>
+                <th>Adresse de facturation</th>
+                <th>Mode de paiement</th>
+                <th>Etat</th>
+                <th>A été payé</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% if liste_commandes %}
+                    {% for commande in liste_commandes %} 
+                        <tr>
+                            <td> {# client.user.username #} </td>
+                            <td> {{ commande.clientIp }} </td>
+                            <td> {{ commande.dateCommande|date("d/m/Y") }} </td>
+                            <td> {{ commande.datePaiement|date("d/m/Y") }} </td>
+                            <td> {{ commande.montant }} </td>
+                            <td> {# commande.adresseLivraison #} </td>
+                            <td> {# commande.adresseFacturation #} </td>
+                            <td> {# commande.modePaiement #} </td>
+                            <td> {{ commande.etat }} </td>
+                            <td>
+                                <a href="{# path('odysseus_back_', {id: commande.idCommande}) #}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+           	
+{% endblock %}

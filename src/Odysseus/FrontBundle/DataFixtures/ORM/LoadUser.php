@@ -62,8 +62,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user4);
         $user4->setPassword($encoder->encodePassword('secret', $user4->getSalt()));
         $manager->persist($user4);
-        
-        
+           
         $manager->flush();
         
         $this->addReference('user1', $user1);

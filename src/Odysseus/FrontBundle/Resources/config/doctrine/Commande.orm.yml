@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\Commande:
     type: entity
     table: commande
+    repositoryClass: Odysseus\FrontBundle\Repository\CommandeRepository
     indexes:
         fk_Commande_modePaiement1_idx:
             columns:
