@@ -119,15 +119,27 @@ odysseus_back_bannir_client:
 odysseus_back_lister_commande_en_attente:
     path:     /lister-commande-en-attente-de-paiement
     defaults: { _controller: OdysseusBackBundle:Commande:commandeEnAttente }
-
-#odysseus_back_lister_commande_payee:
-    #path:     /lister-commande-payee
-    #defaults: { _controller: OdysseusBackBundle:Commande:commandePayee }
-
-#odysseus_back_lister_commande_en_cours_livraison:
-    #path:     /lister-commande-en-cours-de-livraison
-    #defaults: { _controller: OdysseusBackBundle:Commande:commandeEnCoursDeLivraison }
     
-#odysseus_back_lister_commande_livree:
-    #path:     /lister-commande-livree
-    #defaults: { _controller: OdysseusBackBundle:Commande:commandeLivree }
+odysseus_back_lister_commande_valider_payee:
+    path:     /lister-commande-a-valider-payee/{id}
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeValiderPayee }    
+
+odysseus_back_lister_commande_payee:
+    path:     /lister-commande-payee
+    defaults: { _controller: OdysseusBackBundle:Commande:commandePayee }
+    
+odysseus_back_lister_commande_valider_en_cours_livraison:
+    path:     /lister-commande-a-valider-en-cours-de-livraison/{id}
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeValiderEnCoursLivraison }
+
+odysseus_back_lister_commande_en_cours_livraison:
+    path:     /lister-commande-en-cours-de-livraison
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeEnCoursDeLivraison }
+    
+odysseus_back_lister_commande_valider_livre:
+    path:     /lister-commande-valider-livree/{id}
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeValiderLivre }
+    
+odysseus_back_lister_commande_livree:
+    path:     /lister-commande-livree
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeLivree }

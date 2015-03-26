@@ -7,12 +7,17 @@
 {% block odysseusback_body %}
 	
     <h2 class="page-header">Liste des commandes en attente de paiement</h2>  
-            
+        
+    {% for message in app.session.flashbag.get('commande') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
         <table class="table table-bordered">
             <thead>
                 <tr>
                 <th>Client</th>    
                 <th>Client ip</th>
+                <th>Vendeur</th>
                 <th>Date de commande</th>
                 <th>Date de paiement</th>
                 <th>Montant</th>
@@ -20,7 +25,7 @@
                 <th>Adresse de facturation</th>
                 <th>Mode de paiement</th>
                 <th>Etat</th>
-                <th>A été payé</th> 
+                <th>Valider payée</th> 
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +34,7 @@
                         <tr>
                             <td> {# client.user.username #} </td>
                             <td> {{ commande.clientIp }} </td>
+                            <td>  </td>
                             <td> {{ commande.dateCommande|date("d/m/Y") }} </td>
                             <td> {{ commande.datePaiement|date("d/m/Y") }} </td>
                             <td> {{ commande.montant }} </td>
@@ -37,7 +43,7 @@
                             <td> {# commande.modePaiement #} </td>
                             <td> {{ commande.etat }} </td>
                             <td>
-                                <a href="{# path('odysseus_back_', {id: commande.idCommande}) #}"><i class="glyphicon glyphicon-usd"></i></a> 
+                                <a href="{{ path('odysseus_back_lister_commande_valider_payee', {id: commande.idCommande}) }}"><i class="glyphicon glyphicon-usd"></i></a> 
                             </td>
                         </tr>
                     {% endfor %}

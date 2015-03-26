@@ -6,13 +6,18 @@
 
 {% block odysseusback_body %}
 	
-    <h2 class="page-header">Liste des commandes livrées</h2>  
+    <h2 class="page-header">Liste des commandes livrées</h2> 
+    
+    {% for message in app.session.flashbag.get('commande') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
             
         <table class="table table-bordered">
             <thead>
                 <tr>
                 <th>Client</th>    
                 <th>Client ip</th>
+                <th>Vendeur</th>
                 <th>Date de commande</th>
                 <th>Date de paiement</th>
                 <th>Montant</th>
@@ -28,6 +33,7 @@
                         <tr>
                             <td> {# client.user.username #} </td>
                             <td> {{ commande.clientIp }} </td>
+                            <td>  </td>
                             <td> {{ commande.dateCommande|date("d/m/Y") }} </td>
                             <td> {{ commande.datePaiement|date("d/m/Y") }} </td>
                             <td> {{ commande.montant }} </td>
