@@ -1,0 +1,14 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Modifier une page statique - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+	<h2 class="page-header">Modifier une page</h2>
+
+	{%  include "OdysseusBackBundle:Forms:formPageStatique.html.twig" %}
+
+	
+{% endblock %}

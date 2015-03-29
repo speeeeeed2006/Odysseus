@@ -10,6 +10,18 @@ use Odysseus\FrontBundle\Form\ContactForm;
 
 class StatiqueController extends Controller
 {
+    
+    public function pageAction($id)
+    {
+        $em =  $this->getDoctrine()->getManager();
+        
+        $page = $em->getRepository('OdysseusFrontBundle:Pagestatique')->find($id);
+        
+        return $this->render('OdysseusFrontBundle:Statique:pageStatique.html.twig', array('page' => $page));
+    }
+    
+
+    
     public function planSiteAction()
     {
         return $this->render('OdysseusFrontBundle:Statique:planSite.html.twig');

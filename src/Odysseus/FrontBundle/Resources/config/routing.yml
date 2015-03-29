@@ -8,12 +8,12 @@ odysseus_front_contact:
     defaults: { _controller: OdysseusFrontBundle:Statique:contact }
 
 odysseus_front_cgv:    
-    path:     /conditions-de-vente
-    defaults: { _controller: OdysseusFrontBundle:Statique:conditionsVentes }
+    path:     /conditions-de-vente/{id}
+    defaults: { _controller: OdysseusFrontBundle:Statique:page }
 
 odysseus_front_mentions:    
-    path:     /mentions-legales
-    defaults: { _controller: OdysseusFrontBundle:Statique:mentionsLegales } 
+    path:     /mentions-legales/{id}
+    defaults: { _controller: OdysseusFrontBundle:Statique:page } 
 #------------ fin Statique
 
 #------------ debut Main
@@ -48,7 +48,7 @@ odysseus_front_connexion:
 #------------ fin Client
 
 
-#------------ debut Produit
+#------------ debut ProduitVente
 odysseus_front_categorieProduit:
     path:     /categorie/{categorie}
     defaults: { _controller: OdysseusFrontBundle:ProduitVente:categorie }

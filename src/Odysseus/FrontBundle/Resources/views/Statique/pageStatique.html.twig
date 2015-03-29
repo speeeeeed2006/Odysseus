@@ -1,0 +1,15 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - {{ page.titre }} {% endblock %}
+
+{% block body %}
+
+    <div id="page_statique">
+        <h2>{{ page.titre }}</h2>
+
+        {{ page.contenu | raw}} 
+
+    </div>
+{% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+ 
+{% endblock %}

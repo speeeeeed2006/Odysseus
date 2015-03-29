@@ -5,7 +5,7 @@
 {% block body %}
     <div id="wrap">
         <div id="categories">
-            <h2>Liste des produits de la Catégorie :  {# categorie.nom #} </h2>
+            <h2>Liste des produits de la Catégorie :  {{ categorie.nom }} </h2>
 
             {% for produit in produits %}
                 

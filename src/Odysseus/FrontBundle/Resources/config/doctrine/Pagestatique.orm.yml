@@ -1,0 +1,19 @@
+Odysseus\FrontBundle\Entity\Pagestatique:
+    type: entity
+    table: pagestatique
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        contenu:
+            type: text
+        slug:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

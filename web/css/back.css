@@ -44,3 +44,5 @@ span.nombre {
 input[type="submit"] { 
     margin-left: 150px;
 }
+
+.panel-heading.titre h3 i {float:right;}

@@ -60,12 +60,13 @@ class ProduitVenteRepository extends EntityRepository
      public function getProduitValidebyCategorie($categorie)
     {
         return $this->createQueryBuilder('pv')
-                    //->select('pv')
-                    ->join('pv.produit', 'p')
-                    ->where('p.categorie = :categorie')
-                    ->setParameter('categorie', $categorie)
-                    ->where('p.etat = :etat')
+                    ->select('pv')
+                    ->join('pv.etat', 'e')
+                    ->where('e.nom = :etat')
                     ->setParameter('etat', 'valide')
+                    ->join('pv.produit', 'p')
+                    ->andWhere('p.categorie = :categorie')
+                    ->setParameter('categorie', $categorie) 
                     ->orderBy('p.idProduit')
                     ->getQuery()
                     ->getResult();
