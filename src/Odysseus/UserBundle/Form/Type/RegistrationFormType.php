@@ -15,8 +15,7 @@ class RegistrationFormType extends BaseType
         
         $builder->add('username', 'text')
                 ->add('email', 'email')
-                ->add('password', 'password')
-            ->add('client', new \Odysseus\BackBundle\Form\ClientType()); 
+                ->add('password', 'password'); 
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
