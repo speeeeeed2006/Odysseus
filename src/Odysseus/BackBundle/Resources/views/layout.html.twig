@@ -105,17 +105,17 @@
                         </div>
                         <div class="panel-body">
                             <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">Liste Produits Catalogue à valider</a>
-                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">{# render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) #}</a>
+                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">{{ render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) }}</a>
                         </div>
                         <div class="panel-body">
-                            <a href="{# path('odysseus_back_lister_prod_catalogue_refuse', {page: 1}) #}" title="">Liste Produits Catalogue refusés</a>
+                            <a href="{{ path('odysseus_back_lister_prod_catalogue_refuse', {page: 1}) }}" title="">Liste Produits Catalogue refusés</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{# path('odysseus_back_lister_produit_vente', {page: 1}) #}" title="">Liste des Produits à la vente</a>
+                        <a href="{{ path('odysseus_back_lister_produit_vente', {page: 1}) }}" title="">Liste des Produits à la vente</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{# path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) #}" title="">Liste Produits Vente à valider</a>
-                        <a href="{# path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) #}" title=""> {# render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) #} </a>
+                        <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="">Liste Produits Vente à valider</a>
+                        <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title=""> {{ render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) }} </a>
                         </div>
                         <div class="panel-body">
                         <a href="{{ path('odysseus_back_lister_prod_vente_refuse', {page: 1}) }}" title="">Liste Produits Vente refusés </a>

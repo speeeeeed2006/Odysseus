@@ -346,30 +346,7 @@ class Commande
     {
         return $this->adresseFacturationId;
     }
-
-    /**
-     * Set client
-     *
-     * @param \Odysseus\FrontBundle\Entity\Client $client
-     * @return Commande
-     */
-    public function setClient(\Odysseus\FrontBundle\Entity\Client $client = null)
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return \Odysseus\FrontBundle\Entity\Client 
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
+    
     /**
      * Add produitVenteproduitVente
      *
@@ -402,4 +379,14 @@ class Commande
     {
         return $this->produitVenteproduitVente;
     }
+    
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function setUser(\Odysseus\UserBundle\Entity\User $user) {
+        $this->user = $user;
+    }
+
+
 }

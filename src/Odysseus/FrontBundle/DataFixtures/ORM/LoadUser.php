@@ -44,8 +44,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user1->setTelephone('0102030405');
         $user1->setDateNaissance(new \DateTime('1992-03-10'));
         $user1->setDateCreation(new \DateTime('now'));
-        var_dump($this->getReference('etat1'));
-        $user1->setEtat($this->getReference('etat4'));
+        $user1->setEtat($this->getReference('etat1'));
         $manager->persist($user1);
         
         
@@ -63,7 +62,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user2->setTelephone('0102030405');
         $user2->setDateNaissance(new \DateTime('1982-05-10'));
         $user2->setDateCreation(new \DateTime('now'));
-        $user2->setEtat($this->getReference('etat4'));
+        $user2->setEtat($this->getReference('etat1'));
         $manager->persist($user2);
         
         $user3 = new User();
@@ -80,7 +79,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user3->setTelephone('0102030405');
         $user3->setDateNaissance(new \DateTime('1974-09-01'));
         $user3->setDateCreation(new \DateTime('now'));
-        $user3->setEtat($this->getReference('etat4'));
+        $user3->setEtat($this->getReference('etat1'));
         $manager->persist($user3);
         
         $user4 = new User();
@@ -97,7 +96,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user4->setTelephone('0102030405');
         $user4->setDateNaissance(new \DateTime('1990-02-29'));
         $user4->setDateCreation(new \DateTime('now'));
-        $user4->setEtat($this->getReference('etat4'));
+        $user4->setEtat($this->getReference('etat1'));
         $manager->persist($user4);
            
         $manager->flush();

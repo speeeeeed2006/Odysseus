@@ -20,12 +20,6 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    /**
-     * @ORM\Column(type="string")
-     */
-    
-    private $simpleNom;
 
     /**
      * @var string
@@ -108,12 +102,13 @@ class User extends BaseUser
         // your own logic
     }
     
-    function getClient() {
-    return $this->client;
-    }
-
-    function setClient($client) {
-    $this->client = $client;
+    /**
+    *
+    * @return string String representation of this class
+    */
+    public function __toString()
+    {
+        return (string) $this->id;
     }
     
     function getCivilite() {
@@ -192,7 +187,7 @@ class User extends BaseUser
         $this->dateModification = $dateModification;
     }
 
-    function setEtat(\Etat $etat) {
+    function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat) {
         $this->etat = $etat;
     }
 

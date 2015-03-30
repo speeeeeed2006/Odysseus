@@ -13,6 +13,18 @@ class EtatRepository extends EntityRepository
                     ->setParameter('type', 'produit');
     }
     
+    public function getEtatValide()
+    {
+        return $this->createQueryBuilder('e')  
+                    ->where('e.type = :type')
+                    ->setParameter('type', 'produit')
+                    ->andWhere('e.nom = :nom')
+                    ->setParameter('nom', 'valide')
+                    ->getQuery()
+                    ->getSingleResult();
+                  
+    }
+    
     public function getIdEtatBanni()
     {
         $query = $this->createQueryBuilder('e')
