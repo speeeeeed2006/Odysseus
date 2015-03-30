@@ -172,6 +172,24 @@ class ProduitController extends Controller
         return $this->redirect($this->generateUrl('odysseus_back_lister_produit_catalogue', array('page' => 1)));
     }
     
+    public function listeProduitsRefuseAction($page)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $listeProduits =  $em->getRepository('OdysseusFrontBundle:Produit')
+                              ->getListeProduitRefuse(10, $page);
+        
+        
+        return $this->render('OdysseusBackBundle:Produit:listerProdCatRefuse.html.twig',
+        	array(
+                        'liste_produits' => $listeProduits,
+                        'page'           => $page,
+                        'nombrePage'     => ceil(count($listeProduits)/10)
+                     )
+        );
+    }
+    
+    
     public function refuserAction($id)
     {
         $em = $this->getDoctrine()->getManager();

@@ -9,8 +9,10 @@ class SouscategorieRepository extends EntityRepository
     public function getListeSouscategorieparCategorie($id)
     {
         return $this->createQueryBuilder('s')
-                    ->join('c', 'c.categorie_id = s.categorie_id')
-                    ->where('s.categorie_id = :id')
-                    ->setParameter('id', $id);
+                    ->join('s.categorie', 'c')
+                    ->where('s.categorie = :id')
+                    ->setParameter('id', $id)
+                    ->getQuery()
+                    ->getResult();
     }
 }

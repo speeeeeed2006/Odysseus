@@ -1,0 +1,39 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les pages statiques - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des pages statiques </h2>  
+        
+    {% for message in app.session.flashbag.get('page') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Slug</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if(liste_pages) %}
+            {% for page in liste_pages %} 
+
+            <tr>
+                <td> {{ page.slug }} </td>
+                <td> {{ page.titre }} </td>
+                <td> {{ page.contenu | truncate(200, true, '...') }}</td>
+                <td><a href="{{ path('odysseus_back_modifier_pages', {id: page.id}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+      
+{% endblock %}

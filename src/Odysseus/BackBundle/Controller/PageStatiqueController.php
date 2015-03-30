@@ -13,7 +13,7 @@ class PageStatiqueController extends Controller
       
     
     public function creerAction() {
-            //on crée un objet etat
+          
         $page = new Pagestatique();
 
         //le form builder
@@ -49,8 +49,16 @@ class PageStatiqueController extends Controller
         
     }
     
-    
-    
+    public function listerAction()
+    {
+        $listePages =  $this->getDoctrine()->getManager()
+                              ->getRepository('OdysseusFrontBundle:Pagestatique')
+                              ->findAll(); 
+        
+        return $this->render('OdysseusBackBundle:PageStatique:lister.html.twig',
+        	array('liste_pages' => $listePages)
+        );
+    }
     
     public function modifierAction(Pagestatique $page)
     {

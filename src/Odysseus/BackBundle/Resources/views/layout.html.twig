@@ -105,20 +105,20 @@
                         </div>
                         <div class="panel-body">
                             <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">Liste Produits Catalogue à valider</a>
-                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">{{ render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) }}</a>
+                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">{# render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) #}</a>
                         </div>
                         <div class="panel-body">
-                        <!--<a href="" title="">-->Liste Produits Catalogue refusés ??<!--</a>-->
+                            <a href="{# path('odysseus_back_lister_prod_catalogue_refuse', {page: 1}) #}" title="">Liste Produits Catalogue refusés</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_produit_vente', {page: 1}) }}" title="">Liste des Produits à la vente</a>
+                        <a href="{# path('odysseus_back_lister_produit_vente', {page: 1}) #}" title="">Liste des Produits à la vente</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="">Liste Produits Vente à valider</a>
-                        <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title=""> {{ render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) }} </a>
+                        <a href="{# path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) #}" title="">Liste Produits Vente à valider</a>
+                        <a href="{# path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) #}" title=""> {# render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) #} </a>
                         </div>
                         <div class="panel-body">
-                        <!--<a href="" title="">-->Liste Produits Vente refusés ?? <!--</a>-->
+                        <a href="{{ path('odysseus_back_lister_prod_vente_refuse', {page: 1}) }}" title="">Liste Produits Vente refusés </a>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_client') }}" title="">Liste des clients</a>
+                        <a href="{# path('odysseus_back_lister_client') #}" title="">Liste des clients</a>
                         </div>
                     </div>
                 </div>
@@ -142,16 +142,16 @@
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_en_attente') }}" title="">Commandes en attente de paiement</a>
+                        <a href="{# path('odysseus_back_lister_commande_en_attente') #}" title="">Commandes en attente de paiement</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_payee') }}" title="">Commandes payées</a>
+                        <a href="{# path('odysseus_back_lister_commande_payee') #}" title="">Commandes payées</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_en_cours_livraison') }}" title="">Commandes en cours de livraison</a>
+                        <a href="{# path('odysseus_back_lister_commande_en_cours_livraison') #}" title="">Commandes en cours de livraison</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_livree') }}" title="">Commandes livrées</a>
+                        <a href="{# path('odysseus_back_lister_commande_livree') #}" title="">Commandes livrées</a>
                         </div>
                     </div>
                 </div>
@@ -162,19 +162,10 @@
                         <h3 class="panel-title">Gestion des Pages statiques</h3>
                     </div>
                     <div class="panel-body">
+                       <a href="{{ path('odysseus_back_lister_pages', {page: 1}) }}" title="">Liste des pages Statiques</a>
+                    </div>
+                    <div class="panel-body">
                        <a href="{{ path('odysseus_back_creer_pages', {page: 1}) }}" title="">Créer page Statique</a>
-                    </div>
-                    <div class="panel-body">
-                       <a href="{{ path('odysseus_back_modifier_pages', {page: 1}) }}" title="">Modifier page Mentions légales</a>
-                    </div>
-                    <div class="panel-body">
-                       <!--<a href="" title="">-->Edition page CGV<!--</a>-->
-                    </div>
-                    <div class="panel-body">
-                       <!--<a href="" title="">-->Edition du slider<!--</a>-->
-                    </div>
-                    <div class="panel-body">
-                       <!--<a href="" title="">-->Catégorie à la une<!--</a>-->
                     </div>
                 </div>
                 
@@ -184,7 +175,10 @@
                         <h3 class="panel-title">Gestion du slider</h3>
                     </div>
                     <div class="panel-body">
-                       <!--<a href="" title="">-->Edition du slider<!--</a>-->
+                       <!--<a href="" title="">-->Ajouter images<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Modifier images<!--</a>-->
                     </div>
                     
                 </div>

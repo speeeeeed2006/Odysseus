@@ -1,6 +1,7 @@
 Odysseus\FrontBundle\Entity\Souscategorie:
     type: entity
     table: souscategorie
+    repositoryClass: Odysseus\FrontBundle\Repository\SouscategorieRepository
     indexes:
         fk_SousCategorie_Categorie1_idx:
             columns:

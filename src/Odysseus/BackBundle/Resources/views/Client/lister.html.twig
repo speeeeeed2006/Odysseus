@@ -54,7 +54,7 @@
                             <td> {{ client.etat.nom }} </td> 
                            <!-- <td><a href="{# path('odysseus_back_modifier_client', {id: client.id_client}) #}"><i class="glyphicon glyphicon-edit"></i></a></td>-->
                             <td>
-                                <a href="{# path('odysseus_back_bannir_client', {id: client.user.id}) #}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                                <a href="{{ path('odysseus_back_bannir_client', {id: client.user.id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
                             </td>
                         </tr>
                     {% endfor %}

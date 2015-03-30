@@ -101,6 +101,23 @@ class ProduitVenteController extends Controller
 
     }
     
+    public function listeProduitsRefuseAction($page)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $listeProduits =  $em->getRepository('OdysseusFrontBundle:ProduitVente')
+                             ->getListeProduitVenteRefuse(10, $page);
+        
+        
+        return $this->render('OdysseusBackBundle:ProduitVente:listerProdVenteRefuse.html.twig',
+        	array(
+                        'liste_produits' => $listeProduits,
+                        'page'           => $page,
+                        'nombrePage'     => ceil(count($listeProduits)/10)
+                     )
+        );
+    }
+    
     public function refuserAction($id)
     {
         $em = $this->getDoctrine()->getManager();

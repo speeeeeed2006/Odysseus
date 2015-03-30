@@ -1,0 +1,54 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les produits Vente refusés - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+    <h2 class="page-header">Liste des produits Vente refusés</h2>  
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nom du produit</th>
+                    <th>Marque</th>
+                    <th>Pseudo du client</th>
+                    <th>Stock</th>
+                    <th>Remarque</th>
+                    <th>Prix</th>
+                    <th>Date d'ajout</th>
+                    <!--<th>Etat</th>-->
+                </tr>
+            </thead>
+            <tbody>
+              
+                {% if liste_produits %}
+                    {% for produit in liste_produits %} 
+                    <tr>
+                        <td> {{ produit.produit.nom }} </td>
+                        <td> {{ produit.produit.marque }} </td>
+                        <td> {{ produit.client.user.username }}</td>
+                        <td> {{ produit.stock }}</td>
+                        <td> {% if (produit.remarque != 'null') %}{{ produit.remarque }} {% else %} - {% endif %} </td>
+                        <td> {{ produit.prix }} </td>
+                        <td> {{ produit.dateAjout | date('d/m/Y H:i:s') }} </td>
+                        <!--<td> {{ produit.etat.nom }} </td>   -->              
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    
+        {% if (liste_produits | length) > 0 %}
+        
+            <ul class="pagination">
+            {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+            {% for p in range(1, nombrePage) %}
+                <li {% if p == page %} class="active"{% endif %} >
+                <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {'page': p}) }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+       {% endif %}
+            	
+{% endblock %}
