@@ -9,7 +9,11 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
-
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,7 +22,7 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-                csrf_provider: form.csrf_provider
+                #csrf_provider: form.csrf_provider
                 login_path: /login
                 success_handler: redirect.after.login
             logout:

@@ -24,7 +24,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="civilite", type="string", columnDefinition="enum('M.', 'Mme')", nullable=false)
+     * @ORM\Column(name="civilite", type="string", columnDefinition="enum('M.', 'Mme')", nullable=true)
      */
     private $civilite;
     
