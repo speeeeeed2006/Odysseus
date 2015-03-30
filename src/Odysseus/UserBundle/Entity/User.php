@@ -27,8 +27,8 @@ class User extends BaseUser
      * @ORM\Column(name="civilite", type="string", columnDefinition="enum('M.', 'Mme')", nullable=false)
      */
     private $civilite;
-
-    /**
+    
+     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=45, nullable=false)
@@ -109,6 +109,87 @@ class User extends BaseUser
     function setClient($client) {
     $this->client = $client;
     }
+    
+    function getCivilite() {
+        return $this->civilite;
+    }
+
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function getNom() {
+        return $this->nom;
+    }
+
+    function getNewsletter() {
+        return $this->newsletter;
+    }
+
+    function getPremium() {
+        return $this->premium;
+    }
+
+    function getTelephone() {
+        return $this->telephone;
+    }
+
+    function getDateNaissance() {
+        return $this->dateNaissance;
+    }
+
+    function getDateCreation() {
+        return $this->dateCreation;
+    }
+
+    function getDateModification() {
+        return $this->dateModification;
+    }
+
+    function getEtat() {
+        return $this->etat;
+    }
+
+    function setCivilite($civilite) {
+        $this->civilite = $civilite;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    function setNewsletter($newsletter) {
+        $this->newsletter = $newsletter;
+    }
+
+    function setPremium($premium) {
+        $this->premium = $premium;
+    }
+
+    function setTelephone($telephone) {
+        $this->telephone = $telephone;
+    }
+
+    function setDateNaissance($dateNaissance) {
+        $this->dateNaissance = $dateNaissance;
+    }
+
+    function setDateCreation(\DateTime $dateCreation) {
+        $this->dateCreation = $dateCreation;
+    }
+
+    function setDateModification(\DateTime $dateModification) {
+        $this->dateModification = $dateModification;
+    }
+
+    function setEtat(\Etat $etat) {
+        $this->etat = $etat;
+    }
+
 }
 
 
