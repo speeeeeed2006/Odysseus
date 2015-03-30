@@ -37,28 +37,28 @@ class User extends BaseUser
      /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=45, nullable=false)
+     * @ORM\Column(name="prenom", type="string", length=45, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=45, nullable=true)
      */
     private $nom;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="newsletter", type="boolean", nullable=false)
+     * @ORM\Column(name="newsletter", type="boolean", nullable=true)
      */
     private $newsletter;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="premium", type="boolean", nullable=false)
+     * @ORM\Column(name="premium", type="boolean", nullable=true)
      */
     private $premium;
 
@@ -71,14 +71,14 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="date_naissance", type="date", nullable=false)
+     * @ORM\Column(name="date_naissance", type="date", nullable=true)
      */
     private $dateNaissance;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
     private $dateCreation;
 
@@ -95,7 +95,7 @@ class User extends BaseUser
      *
      * @ORM\ManyToOne(targetEntity="Odysseus\FrontBundle\Entity\Etat")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
+     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat", nullable=true)
      * })
      */
     private $etat;
