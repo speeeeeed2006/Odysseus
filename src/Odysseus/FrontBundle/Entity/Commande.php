@@ -346,7 +346,11 @@ class Commande
     {
         return $this->adresseFacturationId;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/predev2
     /**
      * Add produitVenteproduitVente
      *
@@ -379,11 +383,20 @@ class Commande
     {
         return $this->produitVenteproduitVente;
     }
+<<<<<<< HEAD
     function getUser() {
         return $this->user;
     }
 
     function setUser(\Odysseus\UserBundle\Entity\User $user) {
+=======
+    
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function setUser(\Odysseus\UserBundle\Entity\User $user) {
+>>>>>>> origin/predev2
         $this->user = $user;
     }
 

@@ -102,12 +102,13 @@ class User extends BaseUser
         // your own logic
     }
     
-    function getClient() {
-    return $this->client;
-    }
-
-    function setClient($client) {
-    $this->client = $client;
+    /**
+    *
+    * @return string String representation of this class
+    */
+    public function __toString()
+    {
+        return (string) $this->id;
     }
     
     function getCivilite() {
