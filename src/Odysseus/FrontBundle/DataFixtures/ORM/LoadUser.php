@@ -44,11 +44,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user1->setTelephone('0102030405');
         $user1->setDateNaissance(new \DateTime('1992-03-10'));
         $user1->setDateCreation(new \DateTime('now'));
-<<<<<<< HEAD
-        $user1->setEtat($this->getReference('etat4'));
-=======
         $user1->setEtat($this->getReference('etat1'));
->>>>>>> origin/predev2
         $manager->persist($user1);
         
         

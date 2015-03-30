@@ -346,59 +346,20 @@ class Commande
     {
         return $this->adresseFacturationId;
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> origin/predev2
-    /**
-     * Add produitVenteproduitVente
-     *
-     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
-     * @return Commande
-     */
-    public function addProduitVenteproduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente)
-    {
-        $this->produitVenteproduitVente[] = $produitVenteproduitVente;
-
-        return $this;
-    }
-
-    /**
-     * Remove produitVenteproduitVente
-     *
-     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
-     */
-    public function removeProduitVenteproduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente)
-    {
-        $this->produitVenteproduitVente->removeElement($produitVenteproduitVente);
-    }
-
-    /**
-     * Get produitVenteproduitVente
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProduitVenteproduitVente()
-    {
-        return $this->produitVenteproduitVente;
-    }
-<<<<<<< HEAD
     function getUser() {
         return $this->user;
     }
 
-    function setUser(\Odysseus\UserBundle\Entity\User $user) {
-=======
-    
-    public function getUser() {
-        return $this->user;
+    function getProduitVenteproduitVente() {
+        return $this->produitVenteproduitVente;
     }
 
-    public function setUser(\Odysseus\UserBundle\Entity\User $user) {
->>>>>>> origin/predev2
+    function setProduitVenteproduitVente(\Doctrine\Common\Collections\Collection $produitVenteproduitVente) {
+        $this->produitVenteproduitVente = $produitVenteproduitVente;
+    }
+
+    function setUser(\Odysseus\UserBundle\Entity\User $user) {
         $this->user = $user;
     }
-
 
 }
