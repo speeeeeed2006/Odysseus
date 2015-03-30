@@ -6,9 +6,9 @@ Odysseus\FrontBundle\Entity\Adresse:
         fk_Adresse_Etat1_idx:
             columns:
                 - etat_id
-        fk_Adresse_Client1_idx:
+        fk_Adresse_User1_idx:
             columns:
-                - client_id
+                - user_id
     id:
         idAdresse:
             type: integer
@@ -51,13 +51,13 @@ Odysseus\FrontBundle\Entity\Adresse:
                 etat_id:
                     referencedColumnName: id_etat
             orphanRemoval: false
-        client:
-            targetEntity: Client
+        user:
+            targetEntity: Odysseus\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                client_id:
-                    referencedColumnName: id_client
+                user_id:
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

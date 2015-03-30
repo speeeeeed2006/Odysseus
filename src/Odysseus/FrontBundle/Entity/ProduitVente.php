@@ -25,9 +25,14 @@ class ProduitVente
     private $produit;
     
     /**
-     * @var \Odysseus\FrontBundle\Entity\Client
+     * @var \User
+     *
+     * @ORM\ManyToMany(targetEntity="Odysseus\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id_user")
+     * })
      */
-    private $client;
+    private $user;
 
     /**
      * @var float
@@ -125,26 +130,26 @@ class ProduitVente
     }
 
     /**
-     * Set client
+     * Set user
      *
-     * @param \Odysseus\FrontBundle\Entity\Client $client
+     * @param \Odysseus\UserBundle\Entity\User $user
      * @return ProduitVente
      */
-    public function setClient(\Odysseus\FrontBundle\Entity\Client $client = null)
+    public function setUser(\Odysseus\UserBundle\Entity\User $user = null)
     {
-        $this->client = $client;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get client
+     * Get user
      *
-     * @return \Odysseus\FrontBundle\Entity\Client 
+     * @return \Odysseus\UserBundle\Entity\User 
      */
-    public function getClient()
+    public function getUser()
     {
-        return $this->client;
+        return $this->user;
     }
 
     /**

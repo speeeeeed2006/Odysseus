@@ -35,14 +35,24 @@ class Commentaireclient
     private $dateModification;
 
     /**
-     * @var \Odysseus\FrontBundle\Entity\Client
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="Odysseus\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="acheteur_user_id", referencedColumnName="id_user")
+     * })
      */
-    private $acheteurClient;
+    private $acheteurUser;
 
     /**
-     * @var \Odysseus\FrontBundle\Entity\Client
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="Odysseus\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vendeur_user_id", referencedColumnName="id_user")
+     * })
      */
-    private $vendeurClient;
+    private $vendeurUser;
 
 
     /**
@@ -148,48 +158,48 @@ class Commentaireclient
     }
 
     /**
-     * Set acheteurClient
+     * Set acheteurUser
      *
-     * @param \Odysseus\FrontBundle\Entity\Client $acheteurClient
+     * @param \Odysseus\UserBundle\Entity\USer $acheteurUser
      * @return Commentaireclient
      */
-    public function setAcheteurClient(\Odysseus\FrontBundle\Entity\Client $acheteurClient = null)
+    public function setAcheteurUser(\Odysseus\UserBundle\Entity\User $acheteurUser = null)
     {
-        $this->acheteurClient = $acheteurClient;
+        $this->acheteurUser = $acheteurUser;
 
         return $this;
     }
 
     /**
-     * Get acheteurClient
+     * Get acheteurUser
      *
-     * @return \Odysseus\FrontBundle\Entity\Client 
+     * @return \Odysseus\UserBundle\Entity\User 
      */
-    public function getAcheteurClient()
+    public function getAcheteurUser()
     {
-        return $this->acheteurClient;
+        return $this->acheteurUser;
     }
 
     /**
-     * Set vendeurClient
+     * Set vendeurUser
      *
-     * @param \Odysseus\FrontBundle\Entity\Client $vendeurClient
+     * @param \Odysseus\UserBundle\Entity\User $vendeurUser
      * @return Commentaireclient
      */
-    public function setVendeurClient(\Odysseus\FrontBundle\Entity\Client $vendeurClient = null)
+    public function setVendeurUser(\Odysseus\UserBundle\Entity\Client $vendeurUser = null)
     {
-        $this->vendeurClient = $vendeurClient;
+        $this->vendeurUser = $vendeurUser;
 
         return $this;
     }
 
     /**
-     * Get vendeurClient
+     * Get vendeurUser
      *
-     * @return \Odysseus\FrontBundle\Entity\Client 
+     * @return \Odysseus\UserBundle\Entity\User 
      */
-    public function getVendeurClient()
+    public function getVendeurUser()
     {
-        return $this->vendeurClient;
+        return $this->vendeurUser;
     }
 }

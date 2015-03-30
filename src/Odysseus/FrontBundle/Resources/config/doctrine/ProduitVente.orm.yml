@@ -6,9 +6,9 @@ Odysseus\FrontBundle\Entity\ProduitVente:
         fk_Produit_Vente_Produit1_idx:
             columns:
                 - produit_id
-        fk_Produit_Vente_Client1_idx:
+        fk_Produit_Vente_User1_idx:
             columns:
-                - client_id
+                - user_id
     id:
         idProduitVente:
             type: integer
@@ -46,14 +46,14 @@ Odysseus\FrontBundle\Entity\ProduitVente:
                 produit_id:
                     referencedColumnName: id_produit
             orphanRemoval: false
-        client:
-            targetEntity: Client
+        user:
+            targetEntity: Odysseus\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                client_id:
-                    referencedColumnName: id_client
+                user_id:
+                    referencedColumnName: id
             orphanRemoval: false
         etat:
             targetEntity: Etat

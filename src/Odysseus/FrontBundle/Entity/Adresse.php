@@ -57,11 +57,14 @@ class Adresse
     private $pays;
 
     /**
-     * @var integer
+     * @var \User
      *
-     * @ORM\Column(name="id_client", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Odysseus\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id_user")
+     * })
      */
-    private $idClient;
+    private $user;
 
     /**
      * @var \Etat
@@ -201,26 +204,26 @@ class Adresse
     }
 
     /**
-     * Set idClient
+     * Set User
      *
-     * @param integer $idClient
+     * @param integer $User
      * @return Adresse
      */
-    public function setIdClient($idClient)
+    public function setUser($User)
     {
-        $this->idClient = $idClient;
+        $this->User = $User;
 
         return $this;
     }
 
     /**
-     * Get idClient
+     * Get User
      *
      * @return integer 
      */
-    public function getIdClient()
+    public function getUser()
     {
-        return $this->idClient;
+        return $this->User;
     }
 
     /**
@@ -244,33 +247,5 @@ class Adresse
     public function getEtat()
     {
         return $this->etat;
-    }
-    /**
-     * @var \Odysseus\FrontBundle\Entity\Client
-     */
-    private $client;
-
-
-    /**
-     * Set client
-     *
-     * @param \Odysseus\FrontBundle\Entity\Client $client
-     * @return Adresse
-     */
-    public function setClient(\Odysseus\FrontBundle\Entity\Client $client = null)
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return \Odysseus\FrontBundle\Entity\Client 
-     */
-    public function getClient()
-    {
-        return $this->client;
     }
 }

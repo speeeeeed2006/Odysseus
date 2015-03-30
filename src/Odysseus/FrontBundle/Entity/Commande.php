@@ -286,14 +286,14 @@ class Commande
     private $adresseFacturationId;
 
     /**
-     * @var \Client
+     * @var \User
      *
-     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\ManyToOne(targetEntity="Odysseus\UserBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client_id", referencedColumnName="id_client")
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id_user")
      * })
      */
-    private $client;
+    private $user;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

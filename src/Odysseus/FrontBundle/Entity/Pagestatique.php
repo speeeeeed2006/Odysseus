@@ -12,7 +12,7 @@ class Pagestatique
     /**
      * @var integer
      */
-    private $id;
+    private $idPageStatique;
 
     /**
      * @var string
@@ -31,13 +31,13 @@ class Pagestatique
 
 
     /**
-     * Get id
+     * Get idPageStatique
      *
      * @return integer 
      */
-    public function getId()
+    public function getIdPageStatique()
     {
-        return $this->id;
+        return $this->idPageStatique;
     }
 
     /**

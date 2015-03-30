@@ -2,11 +2,14 @@ Odysseus\FrontBundle\Entity\Pagestatique:
     type: entity
     table: pagestatique
     id:
-        id:
+        idPageStatique:
             type: integer
+            nullable: false
+            unsigned: false
             id: true
+            column: id_page_statique
             generator:
-                strategy: AUTO
+                strategy: IDENTITY
     fields:
         titre:
             type: string
