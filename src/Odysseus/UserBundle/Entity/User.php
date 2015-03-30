@@ -20,12 +20,6 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    /**
-     * @ORM\Column(type="string")
-     */
-    
-    private $simpleNom;
 
     /**
      * @var string
@@ -192,7 +186,7 @@ class User extends BaseUser
         $this->dateModification = $dateModification;
     }
 
-    function setEtat(\Etat $etat) {
+    function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat) {
         $this->etat = $etat;
     }
 

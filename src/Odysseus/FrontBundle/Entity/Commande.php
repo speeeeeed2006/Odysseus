@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement"}), 
  *                                      @ORM\Index(name="fk_Commande_etat1_idx", columns={"etat_id"})
- *                                      ORM\Index(name="fk_Commande_client1_idx", columns={"client_id"})})
+ *                                     })
  * @ORM\Entity
  */
 class Commande
@@ -348,29 +348,6 @@ class Commande
     }
 
     /**
-     * Set client
-     *
-     * @param \Odysseus\FrontBundle\Entity\Client $client
-     * @return Commande
-     */
-    public function setClient(\Odysseus\FrontBundle\Entity\Client $client = null)
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return \Odysseus\FrontBundle\Entity\Client 
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
      * Add produitVenteproduitVente
      *
      * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
@@ -402,4 +379,13 @@ class Commande
     {
         return $this->produitVenteproduitVente;
     }
+    function getUser() {
+        return $this->user;
+    }
+
+    function setUser(\Odysseus\UserBundle\Entity\User $user) {
+        $this->user = $user;
+    }
+
+
 }
