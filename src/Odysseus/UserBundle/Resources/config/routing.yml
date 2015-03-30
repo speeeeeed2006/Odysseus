@@ -31,6 +31,6 @@ odysseus_front_profile:
     path:     /profile/edit
     defaults: { _controller: OdysseusUserBundle:Profile:edit }
     
-#odysseus_front_profile_view:
-    #path:     /profile
-    #defaults: { _controller: OdysseusUserBundle:Profile:show }
+odysseus_front_profile_view:
+    path:     /profile
+    defaults: { _controller: OdysseusUserBundle:Profile:show }
