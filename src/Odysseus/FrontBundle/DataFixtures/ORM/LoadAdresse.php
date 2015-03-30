@@ -15,7 +15,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface
        
         $adresse1 = new Adresse();
         $adresse1->setEtat($this->getReference('etat7'));
-        $adresse1->setClient($this->getReference('client1'));
+        $adresse1->setUser($this->getReference('user1'));
         $adresse1->setType('livraison');
         $adresse1->setAdresse('22 rue de la carpe');
         $adresse1->setCp('13200');
@@ -25,7 +25,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface
         
         $adresse2 = new Adresse();
         $adresse2->setEtat($this->getReference('etat7'));
-        $adresse2->setClient($this->getReference('client2'));
+        $adresse2->setUser($this->getReference('user2'));
         $adresse2->setType('livraison');
         $adresse2->setAdresse('35 rue de la mare');
         $adresse2->setCp('75001');
@@ -35,7 +35,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface
         
         $adresse3 = new Adresse();
         $adresse3->setEtat($this->getReference('etat7'));
-        $adresse3->setClient($this->getReference('client3'));
+        $adresse3->setUser($this->getReference('user3'));
         $adresse3->setType('livraison');
         $adresse3->setAdresse('52 avenue de la gare');
         $adresse3->setCp('67215');
@@ -45,7 +45,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface
         
         $adresse4 = new Adresse();
         $adresse4->setEtat($this->getReference('etat7'));
-        $adresse4->setClient($this->getReference('client4'));
+        $adresse4->setUser($this->getReference('user4'));
         $adresse4->setType('livraison');
         $adresse4->setAdresse('51 rue Saint Anne');
         $adresse4->setCp('75012');

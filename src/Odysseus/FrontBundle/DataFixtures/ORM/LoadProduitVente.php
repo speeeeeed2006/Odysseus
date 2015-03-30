@@ -15,7 +15,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
  
     $produitVente1 = new ProduitVente();   
     $produitVente1->setProduit($this->getReference('produit1'));
-    $produitVente1->setClient($this->getReference('client2'));
+    $produitVente1->setUser($this->getReference('user2'));
     $produitVente1->setEtat($this->getReference('etat4'));
     $produitVente1->setStock(3);
     $produitVente1->setRemarque('En très bon état');
@@ -25,7 +25,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     
     $produitVente2= new ProduitVente();   
     $produitVente2->setProduit($this->getReference('produit2'));
-    $produitVente2->setClient($this->getReference('client2'));
+    $produitVente2->setUser($this->getReference('user2'));
     $produitVente2->setEtat($this->getReference('etat4'));
     $produitVente2->setStock(10);
     $produitVente2->setRemarque('Une rayure sur le côté');
@@ -35,7 +35,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
             
     $produitVente3 = new ProduitVente();   
     $produitVente3->setProduit($this->getReference('produit3'));
-    $produitVente3->setClient($this->getReference('client3'));
+    $produitVente3->setUser($this->getReference('user3'));
     $produitVente3->setEtat($this->getReference('etat4'));
     $produitVente3->setStock(3);
     $produitVente3->setRemarque('Bon état');
@@ -45,7 +45,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     
     $produitVente4 = new ProduitVente();   
     $produitVente4->setProduit($this->getReference('produit4'));
-    $produitVente4->setClient($this->getReference('client2'));
+    $produitVente4->setUser($this->getReference('user2'));
     $produitVente4->setEtat($this->getReference('etat4'));
     $produitVente4->setStock(3);
     $produitVente4->setRemarque('Rien à dire');
@@ -55,15 +55,13 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     
     $produitVente5 = new ProduitVente();   
     $produitVente5->setProduit($this->getReference('produit5'));
-    $produitVente5->setClient($this->getReference('client4'));
+    $produitVente5->setUser($this->getReference('user4'));
     $produitVente5->setEtat($this->getReference('etat4'));
     $produitVente5->setStock(1);
     $produitVente5->setRemarque('Parfait');
     $produitVente5->setPrix('562,00');
     $produitVente5->setDateAjout(new \DateTime('now'));
     $manager->persist($produitVente5);
-    
-
     
     $manager->flush();
     

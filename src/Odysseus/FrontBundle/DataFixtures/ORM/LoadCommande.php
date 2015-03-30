@@ -16,7 +16,7 @@ class LoadCommande extends AbstractFixture implements OrderedFixtureInterface
     $commande1 = new Commande();   
     $commande1->setModePaiement($this->getReference('mode1'));
     $commande1->setEtat($this->getReference('etat9'));
-    $commande1->setClient($this->getReference('client2'));
+    $commande1->setUser($this->getReference('user2'));
     $commande1->setClientIp('192.168.10.2');
     $commande1->setDateCommande(new \DateTime('now'));
     $commande1->setDatePaiement(new \DateTime('now'));
@@ -28,7 +28,7 @@ class LoadCommande extends AbstractFixture implements OrderedFixtureInterface
     $commande2 = new Commande();   
     $commande2->setModePaiement($this->getReference('mode1'));
     $commande2->setEtat($this->getReference('etat10'));
-    $commande2->setClient($this->getReference('client3'));
+    $commande2->setUser($this->getReference('user3'));
     $commande2->setClientIp('192.168.10.50');
     $commande2->setDateCommande(new \DateTime('now'));
     $commande2->setDatePaiement(new \DateTime('now'));
@@ -40,7 +40,7 @@ class LoadCommande extends AbstractFixture implements OrderedFixtureInterface
     $commande3 = new Commande();   
     $commande3->setModePaiement($this->getReference('mode1'));
     $commande3->setEtat($this->getReference('etat9'));
-    $commande3->setClient($this->getReference('client4'));
+    $commande3->setUser($this->getReference('user4'));
     $commande3->setClientIp('192.168.10.40');
     $commande3->setDateCommande(new \DateTime('now'));
     $commande3->setDatePaiement(new \DateTime('now'));

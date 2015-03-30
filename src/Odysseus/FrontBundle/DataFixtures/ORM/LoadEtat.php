@@ -93,23 +93,24 @@ class LoadEtat extends AbstractFixture implements OrderedFixtureInterface
     $etat12->setNom('livre');
     $etat12->setType('commande');
     $manager->persist($etat12);
-
-    $this->addReference("etat1", $etat1);
-    $this->addReference("etat2", $etat2);
-    $this->addReference("etat3", $etat3);
-    $this->addReference("etat4", $etat4);
-    $this->addReference("etat5", $etat5);
-    $this->addReference("etat6", $etat6);
-    $this->addReference("etat7", $etat7);
-    $this->addReference("etat8", $etat8);
-    $this->addReference("etat9", $etat9);
-    $this->addReference("etat10", $etat10);
-    $this->addReference("etat11", $etat11);
-    $this->addReference("etat12", $etat12);
-       
-
+    
     // On déclenche l'enregistrement de toutes les etats
     $manager->flush();
+
+    $this->addReference('etat1', $etat1);
+    $this->addReference('etat2', $etat2);
+    $this->addReference('etat3', $etat3);
+    $this->addReference('etat4', $etat4);
+    $this->addReference('etat5', $etat5);
+    $this->addReference('etat6', $etat6);
+    $this->addReference('etat7', $etat7);
+    $this->addReference('etat8', $etat8);
+    $this->addReference('etat9', $etat9);
+    $this->addReference('etat10', $etat10);
+    $this->addReference('etat11', $etat11);
+    $this->addReference('etat12', $etat12);
+       
+
   }
   
   public function getOrder()
