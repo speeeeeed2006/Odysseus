@@ -5,9 +5,9 @@ Odysseus\FrontBundle\Entity\Commentaireproduit:
         fk_CommentaireProduit_Produit1_idx:
             columns:
                 - produit_id
-        fk_CommentaireProduit_Client1_idx:
+        fk_CommentaireProduit_User1_idx:
             columns:
-                - client_id
+                - user_id
     id:
         idCommentaireProduit:
             type: integer
@@ -46,13 +46,13 @@ Odysseus\FrontBundle\Entity\Commentaireproduit:
                 produit_id:
                     referencedColumnName: id_produit
             orphanRemoval: false
-        client:
-            targetEntity: Client
+        user:
+            targetEntity: Odysseus\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                client_id:
-                    referencedColumnName: id_client
+                user_id:
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

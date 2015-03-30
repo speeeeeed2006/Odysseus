@@ -9,9 +9,9 @@ Odysseus\FrontBundle\Entity\Commande:
         fk_Commande_etat1_idx:
             columns:
                 - etat_id
-        fk_Commande_Client1_idx:
+        fk_Commande_User1_idx:
             columns:
-                - client_id
+                - user_id
     id:
         idCommande:
             type: integer
@@ -69,14 +69,14 @@ Odysseus\FrontBundle\Entity\Commande:
                 etat_id:
                     referencedColumnName: id_etat
             orphanRemoval: false
-        client:
-            targetEntity: Client
+        user:
+            targetEntity: Odysseus\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                client_id:
-                    referencedColumnName: id_client
+                user_id:
+                    referencedColumnName: id
             orphanRemoval: false
     manyToMany:
         produitVenteproduitVente:
