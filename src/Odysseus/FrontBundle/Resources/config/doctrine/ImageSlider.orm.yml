@@ -1,0 +1,20 @@
+Odysseus\FrontBundle\Entity\ImageSlider:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        extension:
+            type: string
+            length: '3'
+        alt:
+            type: string
+            length: 255
+        tempFileName:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

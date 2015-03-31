@@ -78,7 +78,7 @@ class ProduitVenteRepository extends EntityRepository
         return new Paginator($query);
     }
     
-     public function getProduitValidebyCategorie($categorie)
+    public function getProduitValidebyCategorie($categorie)
     {
         return $this->createQueryBuilder('pv')
                     ->select('pv')
@@ -92,4 +92,18 @@ class ProduitVenteRepository extends EntityRepository
                     ->getQuery()
                     ->getResult();
     }
+    
+     public function recherche($chaine)
+    {
+         return $this->createQueryBuilder('pv')
+                     ->select('pv')
+                     ->join('pv.produit', 'p')
+                     ->where('p.nom like :chaine')
+                     ->orWhere('p.marque like :chaine')
+                     ->orWhere('p.description like :chaine')
+                     ->orderBy('pv.idProduitVente')
+                     ->setParameter('chaine', $chaine)
+                     ->getQuery()
+                     ->getResult();  
+     }
 }
