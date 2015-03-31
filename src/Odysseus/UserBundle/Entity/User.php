@@ -6,9 +6,10 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Odysseus\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="user")
  */
+
 class User extends BaseUser
 {
     const CIVILITE_H = 'M.';

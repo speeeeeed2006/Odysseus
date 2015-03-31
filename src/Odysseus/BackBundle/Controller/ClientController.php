@@ -18,15 +18,27 @@ class ClientController extends Controller
         $listeClients = $em->getRepository('OdysseusUserBundle:User')
                            ->findAll();
         
-        //foreach($listeAdresse as $adresse){
-            //$adresse->getUser();                               
-        //}
+        $listeAdresses = array();
         
-            //->getListeAdresseFacturation($client->getId());
+        foreach($listeClients as $client){  
+           
+            $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($client);     
+            //ladybug_dump_die($adresse)  ;
+            var_dump($adresse);
+            die();
+            array_push($listeAdresses, $adresse);
+            
+            
+        }
+        
+            
 
-        ladybug_dump($listeClients);
+        //ladybug_dump($listeAdresse);
+        //die();
         return $this->render('OdysseusBackBundle:Client:lister.html.twig',
-        	array('liste_clients' => $listeClients)
+        	array('liste_clients' => $listeClients,
+                      'liste_adresses' => $listeAdresses  
+                    )
         );
     }
     

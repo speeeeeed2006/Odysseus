@@ -55,7 +55,7 @@ Odysseus\FrontBundle\Entity\Adresse:
             targetEntity: Odysseus\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: user
             joinColumns:
                 user_id:
                     referencedColumnName: id

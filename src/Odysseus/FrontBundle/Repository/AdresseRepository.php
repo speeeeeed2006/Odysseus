@@ -6,15 +6,15 @@ use Doctrine\ORM\EntityRepository;
 class AdresseRepository extends EntityRepository
 { 
 
-    public function getListeAdresseFacturation($id)
-    {
+    public function getListeAdresseFacturation($user)
+    {   
         return $this->createQueryBuilder('a')
-                    ->join('a.user', 'u') 
                     ->where('a.type = :type')
                     ->setParameter('type', 0)
-                    ->andWhere('a.user' , $id)
+                    ->andWhere('a.user = :user')
+                    ->setParameter('user' , $user->getId()) 
                     ->getQuery()
-                    ->getSingleResult();
+                    ->getResult();
     }
     
 }

@@ -1,4 +1,4 @@
-{% extends "OdysseusBackBundle::layout.html.twig" %}
+    {% extends "OdysseusBackBundle::layout.html.twig" %}
 
 {% block title %} 
 	Lister des clients - {{ parent() }}
@@ -35,14 +35,16 @@
             </thead>
             <tbody>
                 {% if (liste_clients | length) > 0 %}
-                    {% for client in liste_clients %} 
+                    {% for client in liste_clients %}
+                    
+                    {{ liste_adresses|ladybug_dump }}
                         <tr>
                             <td> {# client.user.username #} </td>
                             <td> {# if (client.civilite != null )%} {# client.user.civilite #} {# endif #}</td>
                             <td> {# if (client.nom != null )%} {# client.user.nom #} {# endif #}</td>
                             <td> {# if (client.prenom != null )%} {# client.user.prenom #} {# endif #}</td>
                             <td> {# client.user.dateNaissance|date("d/m/Y") #} </td>
-                            <td> {# client.adresse #} </td>
+                            <td> {# adresse.id.adresse #} </td>
                             <td> {# client.cp #} </td>
                             <td> {# client.ville #} </td>
                             <td> {# client.pays #} </td>
