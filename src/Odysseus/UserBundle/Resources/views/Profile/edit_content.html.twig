@@ -11,19 +11,15 @@
         
         <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
             {# form_widget(form) #}
-            
-            {{ form_errors(form) }}
-            
-            
-            <div>
-                {{ form_errors(form.username) }}
-                {{ form_label(form.username, "Votre nom d'utilisateur :") }}
-                {{ form_widget(form.username) }}
-            </div>
             <div>
                 {{ form_errors(form.email) }}
                 {{ form_label(form.email, "Votre adresse email :") }}
                 {{ form_widget(form.email) }}
+            </div>
+            <div>
+                {{ form_errors(form.prenom) }}
+                {{ form_label(form.prenom, "Votre prénom :") }}
+                {{ form_widget(form.prenom) }}
             </div>
            
             <div>

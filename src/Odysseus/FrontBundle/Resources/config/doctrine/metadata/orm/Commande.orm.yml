@@ -8,9 +8,9 @@ Commande:
         fk_Commande_etat1_idx:
             columns:
                 - etat_id
-        fk_Commande_Client1_idx:
+        fk_Commande_User1_idx:
             columns:
-                - client_id_client
+                - user_id
     id:
         idCommande:
             type: integer
@@ -50,6 +50,15 @@ Commande:
             unsigned: false
             column: adresse_facturation_id
     manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
         modePaiement:
             targetEntity: Modepaiement
             cascade: {  }
@@ -68,17 +77,8 @@ Commande:
                 etat_id:
                     referencedColumnName: id_etat
             orphanRemoval: false
-        clientClient:
-            targetEntity: Client
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                client_id_client:
-                    referencedColumnName: id_client
-            orphanRemoval: false
     manyToMany:
-        produitVenteproduitVente:
+        produitVenteProduitVente:
             targetEntity: ProduitVente
             cascade: {  }
             mappedBy: null
@@ -91,7 +91,7 @@ Commande:
                         referencedColumnName: id_commande
                 inverseJoinColumns:
                     -
-                        name: Produit_Vente_idProduit_Vente
-                        referencedColumnName: idProduit_Vente
+                        name: Produit_Vente_id_Produit_Vente
+                        referencedColumnName: id_produit_vente
             orderBy: null
     lifecycleCallbacks: {  }

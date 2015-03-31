@@ -33,7 +33,7 @@ class Modepaiement
     /**
      * Get idModePaiement
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getIdModePaiement()
     {

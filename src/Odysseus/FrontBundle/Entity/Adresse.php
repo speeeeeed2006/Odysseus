@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Adresse
  *
- * @ORM\Table(name="adresse", indexes={@ORM\Index(name="fk_Adresse_Etat1_idx", columns={"etat_id"})})
- * @ORM\Entity(repositoryClass="Odysseus\FrontBundle\Repository\AdresseRepository")
+ * @ORM\Table(name="adresse", indexes={@ORM\Index(name="fk_Adresse_Etat1_idx", columns={"etat_id"}), @ORM\Index(name="fk_Adresse_User1_idx", columns={"user_id"})})
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\AdresseRepository");
  */
 class Adresse
 {
@@ -57,12 +57,10 @@ class Adresse
     private $pays;
 
     /**
-     * @var \User
+     * @var \Odysseus\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="Odysseus\UserBundle\Entity\User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id_user")
-     * })
+     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User", inversedBy="adresse")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -204,26 +202,26 @@ class Adresse
     }
 
     /**
-     * Set User
+     * Set user
      *
-     * @param integer $User
+     * @param \Odysseus\UserBundle\Entity\User $user
      * @return Adresse
      */
-    public function setUser($User)
+    public function setUser(\Odysseus\UserBundle\Entity\User $user = null)
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get User
+     * Get user
      *
-     * @return integer 
+     * @return \Odysseus\FrontBundle\Entity\User 
      */
     public function getUser()
     {
-        return $this->User;
+        return $this->user;
     }
 
     /**

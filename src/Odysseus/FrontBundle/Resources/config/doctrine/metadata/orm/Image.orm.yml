@@ -1,11 +1,10 @@
-Odysseus\FrontBundle\Entity\Image:
+Image:
     type: entity
     table: image
     indexes:
         fk_Image_ProduitVente1_idx:
             columns:
                 - produit_vente_id
-
     id:
         idImage:
             type: integer
@@ -18,21 +17,25 @@ Odysseus\FrontBundle\Entity\Image:
     fields:
         extension:
             type: string
-            length: 255
             nullable: false
+            length: 255
+            fixed: false
         alt:
             type: string
             nullable: false
             length: 255
+            fixed: false
         file:
             type: string
-            length: 255
             nullable: false
-
-        tempFileName:
-            type: string
             length: 255
-            nullable: false      
+            fixed: false
+        tempfilename:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: tempFileName
     manyToOne:
         produitVente:
             targetEntity: ProduitVente
@@ -42,6 +45,5 @@ Odysseus\FrontBundle\Entity\Image:
             joinColumns:
                 produit_vente_id:
                     referencedColumnName: id_produit_vente
-            orphanRemoval: false 
+            orphanRemoval: false
     lifecycleCallbacks: {  }
-

@@ -1,6 +1,6 @@
 <?php
 
-namespace Odysseus\BackBundle\Form;
+namespace Odysseus\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,7 +33,7 @@ class ClientType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Odysseus\FrontBundle\Entity\Client',
+            'data_class' => 'Odysseus\UserBundle\Entity\User',
             'cascade_validation' => true
         ));
     }

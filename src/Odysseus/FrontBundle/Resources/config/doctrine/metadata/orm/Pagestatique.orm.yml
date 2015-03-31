@@ -1,4 +1,4 @@
-Odysseus\FrontBundle\Entity\Pagestatique:
+Pagestatique:
     type: entity
     table: pagestatique
     id:
@@ -13,10 +13,17 @@ Odysseus\FrontBundle\Entity\Pagestatique:
     fields:
         titre:
             type: string
+            nullable: false
             length: 255
+            fixed: false
         contenu:
             type: text
+            nullable: false
+            length: null
+            fixed: false
         slug:
             type: string
+            nullable: false
             length: 255
+            fixed: false
     lifecycleCallbacks: {  }

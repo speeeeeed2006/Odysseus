@@ -14,7 +14,7 @@ class AdresseRepository extends EntityRepository
                     ->andWhere('a.user = :user')
                     ->setParameter('user' , $user->getId()) 
                     ->getQuery()
-                    ->getResult();
+                    ->getSingleResult();
     }
     
 }
