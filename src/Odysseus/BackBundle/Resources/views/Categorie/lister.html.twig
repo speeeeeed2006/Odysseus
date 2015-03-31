@@ -18,28 +18,33 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                <th>Nom de la catégorie</th>
-                <th>A la une</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
+                    <th>Nom de la catégorie</th>
+                    <th>A la une</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
                 </tr>
             </thead>
             <tbody>
-              
-                {% for categorie in liste_categories %} 
-                <tr>
-                    <td>{{ categorie.nom }} </td>
-                    <td>
-                        {% if categorie.alaune == true %}
-                            oui
-                        {% else %}
-                            non
-                        {% endif %}
-                    </td>
-                    <td><a href="{{ path('odysseus_back_modifier_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a href="{{ path('odysseus_back_supprimer_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
-                </tr>
-                {% endfor %}
+                {% if (liste_categories | length) > 0%}
+                    {% for categorie in liste_categories %} 
+                    <tr>
+                        <td>{{ categorie.nom }} </td>
+                        <td>
+                            {% if categorie.alaune == true %}
+                                oui
+                            {% else %}
+                                non
+                            {% endif %}
+                        </td>
+                        <td><a href="{{ path('odysseus_back_modifier_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                        <td><a href="{{ path('odysseus_back_supprimer_categorie', {id: categorie.idCategorie}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr> 
+                        <td colspan="4">Pas de catégories.</td>
+                    </tr>
+                {% endif %}   
             </tbody>
         </table>
            

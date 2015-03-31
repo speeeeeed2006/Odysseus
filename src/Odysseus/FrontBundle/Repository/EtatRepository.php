@@ -25,18 +25,16 @@ class EtatRepository extends EntityRepository
                   
     }
     
-    public function getIdEtatBanni()
+    public function getEtatBanni()
     {
-        $query = $this->createQueryBuilder('e')
-                      ->select('e.idEtat')
-                      ->where('e.type = :type')
-                      ->setParameter('type', 'client')
-                      ->andWhere('e.nom = :nom')
-                      ->setParameter('nom', 'banni')
-                      ->getQuery()
-                      ->getSingleResult();
+        return $this->createQueryBuilder('e')
+                    ->where('e.type = :type')
+                    ->setParameter('type', 'client')
+                    ->andWhere('e.nom = :nom')
+                    ->setParameter('nom', 'banni')
+                    ->getQuery()
+                    ->getSingleResult();
    
     }
     
-    //select id
 }

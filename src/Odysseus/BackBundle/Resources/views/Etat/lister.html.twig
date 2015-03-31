@@ -18,14 +18,14 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                <th>Nom de l'état</th>
-                <th>Type de l'état</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
+                    <th>Nom de l'état</th>
+                    <th>Type de l'état</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
                 </tr>
             </thead>
             <tbody>
-                {% if(liste_etats) %}
+                {% if (liste_etats | length) > 0 %}
                     {% for etat in liste_etats %} 
                     <tr>
                         <td>{{ etat.nom }} </td>
@@ -34,10 +34,12 @@
                         <td><a href="{{ path('odysseus_back_supprimer_etat', {id: etat.idEtat}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
                     </tr>
                     {% endfor %}
+                {% else %}
+                    <tr> 
+                        <td colspan="4">Pas d'états.</td>
+                    </tr>
                 {% endif %}
             </tbody>
         </table>
-            
-<!-- Liste ok - Ajout ok - Modification ok - Suppression ok -->
-	
+            	
 {% endblock %}

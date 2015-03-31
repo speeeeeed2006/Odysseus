@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% if(liste_produits) %}
+                {% if (liste_produits | length) > 0 %}
                     {% for produit in liste_produits %} 
                     <tr>
                         <td> {{ produit.reference }} </td>
@@ -36,26 +36,28 @@
                         <td> {{ produit.categorie.nom }} </td>
                         <td> {{ produit.sousCategorie.nom }} </td>
                         <td> {{ produit.description }} </td>
-                       <!-- <td> {{ produit.etat.nom }} </td> -->                   
+                       <!-- <td> {# produit.etat.nom #} </td> -->                   
                         <td><a href="{{ path('odysseus_back_valider_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-ok-circle"></i></a></td>
                         <td><a href="{{ path('odysseus_back_refuser_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-thumbs-down"></i></a></td>
-
                     </tr>
                     {% endfor %}
+                    
+                    <ul class="pagination">
+                    {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+                    {% for p in range(1, nombrePage) %}
+                        <li {% if p == page %} class="active"{% endif %} >
+                        <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+            
+                 {% else %}
+                    <tr> 
+                        <td colspan="8">Pas de produits Catalogue à valider.</td>
+                    </tr>
                  {% endif %}
+                    
             </tbody>
         </table>
-    
-        {% if (liste_produits | length) > 0 %}
-        
-            <ul class="pagination">
-            {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
-            {% for p in range(1, nombrePage) %}
-                <li {% if p == page %} class="active"{% endif %} >
-                <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
-                </li>
-            {% endfor %}
-            </ul>
-       {% endif %}
             	
 {% endblock %}

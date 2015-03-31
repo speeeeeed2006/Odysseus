@@ -22,16 +22,19 @@
             </tr>
         </thead>
         <tbody>
-            {% if(liste_pages) %}
-            {% for page in liste_pages %} 
-
-            <tr>
-                <td> {{ page.slug }} </td>
-                <td> {{ page.titre }} </td>
-                <td> {{ page.contenu | truncate(200, true, '...') }}</td>
-                <td><a href="{{ path('odysseus_back_modifier_pages', {id: page.id}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-            </tr>
-            {% endfor %}
+            {% if (liste_pages | length) > 0 %}
+                {% for page in liste_pages %} 
+                <tr>
+                    <td> {{ page.slug }} </td>
+                    <td> {{ page.titre }} </td>
+                    <td> {{ page.contenu | truncate(200, true, '...') }}</td>
+                    <td><a href="{{ path('odysseus_back_modifier_pages', {id: page.id}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr> 
+                    <td colspan="4">Pas de pages statiques.</td>
+                </tr>
             {% endif %}
         </tbody>
     </table>

@@ -25,15 +25,19 @@
                 </tr>
             </thead>
             <tbody>
-                {% if(liste_souscategories) %}
-                {% for sousCategorie in liste_souscategories %} 
-                <tr>
-                    <td>{{ sousCategorie.nom }} </td>
-                    <td> {{ sousCategorie.categorie.nom }} </td>
-                    <td><a href=" {{ path('odysseus_back_modifier_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-edit"></i></a></td> 
-                    <td><a href=" {{ path('odysseus_back_supprimer_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-trash"> </i></a></td>
-                </tr>
-                {% endfor %}
+                {% if (liste_souscategories | length) > 0 %}
+                    {% for sousCategorie in liste_souscategories %} 
+                    <tr>
+                        <td>{{ sousCategorie.nom }} </td>
+                        <td> {{ sousCategorie.categorie.nom }} </td>
+                        <td><a href=" {{ path('odysseus_back_modifier_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-edit"></i></a></td> 
+                        <td><a href=" {{ path('odysseus_back_supprimer_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-trash"> </i></a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr> 
+                        <td colspan="4">Pas de sous-catégories.</td>
+                    </tr>
                 {% endif %}
             </tbody>
         </table>

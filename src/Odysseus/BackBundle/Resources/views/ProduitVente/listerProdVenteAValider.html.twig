@@ -24,27 +24,30 @@
             </thead>
             <tbody>
               
-                {% if liste_produits %}
+                {% if (liste_produits | length) > 0%}
                     {% for produit in liste_produits %} 
                     <tr>
                         <td> {{ produit.produit.nom }} </td>
                         <td> {{ produit.produit.marque }} </td>
-                        <td> {{ produit.client.user.username }}</td>
+                        <td> {{ produit.user.username }}</td>
                         <td> {{ produit.stock }}</td>
                         <td> {% if (produit.remarque != 'null') %}{{ produit.remarque }} {% else %} - {% endif %} </td>
                         <td> {{ produit.prix }} </td>
                         <td> {{ produit.dateAjout | date('d/m/Y H:i:s') }} </td>
-                        <!--<td> {{ produit.etat.nom }} </td>   -->              
+                        <!--<td> {# produit.etat.nom #} </td>   -->              
                         <td><a href="{{ path('odysseus_back_valider_produit_vente', {id: produit.idProduitVente}) }}"><i class="glyphicon glyphicon-ok-circle"></i></a></td>
                         <td><a href="{{ path('odysseus_back_refuser_produit_vente', {id: produit.idProduitVente} )}}"><i class="glyphicon glyphicon-thumbs-down"></i></a></td>
                     </tr>
                     {% endfor %}
+                {% else %}
+                <tr> 
+                    <td colspan="9">Pas de produits Vente à valider.</td>
+                </tr>
                 {% endif %}
             </tbody>
         </table>
-    
-        {% if (liste_produits | length) > 0 %}
         
+        {% if (liste_produits | length) >= 15%}
             <ul class="pagination">
             {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
             {% for p in range(1, nombrePage) %}

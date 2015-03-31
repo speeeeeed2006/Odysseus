@@ -30,9 +30,8 @@
                 </tr>
             </thead>
             <tbody>
-                {% if(liste_produits) %}
+                {% if (liste_produits | length) > 0 %}
                     {% for produit in liste_produits %} 
-
                     <tr>
                         <td> {{ produit.reference }} </td>
                         <td> {{ produit.nom }} </td>
@@ -44,11 +43,16 @@
                         <td><a href="{{ path('odysseus_back_modifier_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
                         <td><a href="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
                     </tr>
-                    {% endfor %}
+                    {% endfor %}              
+                {% else %}
+                    <tr> 
+                        <td colspan="9">Pas de produits Catalogue.</td>
+                    </tr>
                 {% endif %}
             </tbody>
         </table>
-        {% if (liste_produits | length) > 0 %}
+    
+        {% if (liste_produits | length) >= 15 %}
             <ul class="pagination">
             {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
             {% for p in range(1, nombrePage) %}
@@ -57,5 +61,5 @@
                 </li>
             {% endfor %}
             </ul>
-       {% endif %}    	
+    	{% endif %}
 {% endblock %}

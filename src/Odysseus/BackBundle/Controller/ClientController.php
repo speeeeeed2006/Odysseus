@@ -10,19 +10,21 @@ use Odysseus\UserBundle\Entity\User;
 class ClientController extends Controller
 {
     
+    //revoir la function pour récupéerer le user + adresse
     public function listerAction()
     {
-        $listeClients =  $this->getDoctrine()->getManager()
-                              ->getRepository('OdysseusUserBundle:User')
-                              ->findAll();
+        $em = $this->getDoctrine()->getManager();
         
-        /*foreach ($listeClients as $client) {
-              $client['adresse']  =   $this->getDoctrine()->getManager()
-                                           ->getRepository('OdysseusFrontBundle:Adresse')
-                                           ->getAdresseFacturationClient($client->getId_client(), 1);          
-        }*/     
+        $listeClients = $em->getRepository('OdysseusUserBundle:User')
+                           ->findAll();
         
-        //$this->get('ladybug')->log($listeClients);
+        //foreach($listeAdresse as $adresse){
+            //$adresse->getUser();                               
+        //}
+        
+            //->getListeAdresseFacturation($client->getId());
+
+        ladybug_dump($listeClients);
         return $this->render('OdysseusBackBundle:Client:lister.html.twig',
         	array('liste_clients' => $listeClients)
         );
@@ -30,30 +32,23 @@ class ClientController extends Controller
     
     public function bannirAction($id)
     {
-        //$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         
         $client = $em->getRepository('OdysseusUserBundle:User')
-                     ->findOneByUser($id);
+                     ->find($id);
         
-//        if (!$client) {
-//            throw $this->createNotFoundException('Aucun client trouvé pour cet id : '.$id);
-//        }
-
+        if (!$client) {
+            throw $this->createNotFoundException('Aucun client trouvé pour cet id : '.$id);
+        }
+        
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        ladybug_dump($etat->findOneBy(array('nom' => 'banni')));
-        die();
+        $client->setEtat($etat->getEtatBanni());
+        $client->setDateModification(new \DateTime('now'));
         
-        //change son etat et sa date de modification
-        //$client->setEtat($etat->getIdEtatBanni());
+        $em->flush();
         
-        
-       
-        //$client->setDateModification(new \DateTime('now'));
-        //$em->flush();
-        
-        //on affiche un message flash
-        //$this->get('session')->getFlashBag()->add('client', 'Le/la client(e) a bien été banni(e).');
+        $this->get('session')->getFlashBag()->add('client', 'Le/la client(e) a bien été banni(e).');
 
         return $this->redirect($this->generateUrl('odysseus_back_lister_client'));
     }   

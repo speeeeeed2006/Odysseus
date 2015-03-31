@@ -34,30 +34,32 @@
                 </tr>
             </thead>
             <tbody>
-                {% if liste_clients %}
+                {% if (liste_clients | length) > 0 %}
                     {% for client in liste_clients %} 
-                    
                         <tr>
-                            <td> {{ client.user.username }} </td>
-                            <td> {{ client.civilite }} </td>
-                            <td> {{ client.nom }} </td>
-                            <td> {{ client.prenom }} </td>
-                            <td> {{ client.dateNaissance|date("d/m/Y") }} </td>
-                            <td> {# adresse.adresse #} </td>
-                            <td> {# client.adresse.cp #} </td>
-                            <td> {# client.adresse.ville #} </td>
-                            <td> {# client.adresse.pays #} </td>
-                            <td> {{ client.telephone }} </td>
-                            <td> {{ client.user.email }} </td>
-                            <td> {% if (client.dateCreation != "null" )%} {{ client.dateCreation|date("d/m/Y") }} {% endif %}</td>
-                            <td> {% if (client.dateModification != "null" )%} {{ client.dateModification|date("d/m/Y") }} {% endif %} </td></td>
-                            <td> {{ client.etat.nom }} </td> 
-                           <!-- <td><a href="{# path('odysseus_back_modifier_client', {id: client.id_client}) #}"><i class="glyphicon glyphicon-edit"></i></a></td>-->
+                            <td> {# client.user.username #} </td>
+                            <td> {# if (client.civilite != null )%} {# client.user.civilite #} {# endif #}</td>
+                            <td> {# if (client.nom != null )%} {# client.user.nom #} {# endif #}</td>
+                            <td> {# if (client.prenom != null )%} {# client.user.prenom #} {# endif #}</td>
+                            <td> {# client.user.dateNaissance|date("d/m/Y") #} </td>
+                            <td> {# client.adresse #} </td>
+                            <td> {# client.cp #} </td>
+                            <td> {# client.ville #} </td>
+                            <td> {# client.pays #} </td>
+                            <td> {# if (client.user.telephone != null )%} {# client.user.telephone #} {# endif %}</td>
+                            <td> {# client.user.email #} </td>
+                            <td> {# if (client.user.dateCreation != null )%} {# client.user.dateCreation|date("d/m/Y") #} {# endif %}</td>
+                            <td> {# if (client.user.dateModification != null )%} {# client.user.dateModification|date("d/m/Y") #} {# endif #} </td></td>
+                            <td> {# if (client.user.etat != null )%} {# client.user.etat.nom #} {# endif #}</td> 
                             <td>
-                                <a href="{{ path('odysseus_back_bannir_client', {id: client.user.id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                                <a href="{# path('odysseus_back_bannir_client', {id: client.id}) #}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
                             </td>
                         </tr>
                     {% endfor %}
+                {% else %}
+                    <tr> 
+                        <td colspan="15">Pas de clients.</td>
+                    </tr>
                 {% endif %}
             </tbody>
         </table>

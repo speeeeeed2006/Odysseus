@@ -6,7 +6,7 @@
 
 {% block odysseusback_body %}
 
-    <h2 class="page-header">Liste des produits Catalogue réfusés</h2>   
+    <h2 class="page-header">Liste des produits Catalogue refusés</h2>   
    
     {% for message in app.session.flashbag.get('info') %}
         <p class="bg-success contextual">{{ message }}</p>
@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% if(liste_produits) %}
+                {% if (liste_produits | length) > 0 %}
                     {% for produit in liste_produits %} 
                     <tr>
                         <td> {{ produit.reference }} </td>
@@ -37,20 +37,27 @@
                        <!-- <td> {{ produit.etat.nom }} </td> -->                   
                     </tr>
                     {% endfor %}
-                 {% endif %}
+                    
+                    <ul class="pagination">
+                    {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+                    {% for p in range(1, nombrePage) %}
+                        <li {% if p == page %} class="active"{% endif %} >
+                        <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                
+                {% else %}
+                <tr> 
+                    <td colspan="6">Pas de produits Catalogue refusés.</td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
     
         {% if (liste_produits | length) > 0 %}
         
-            <ul class="pagination">
-            {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
-            {% for p in range(1, nombrePage) %}
-                <li {% if p == page %} class="active"{% endif %} >
-                <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
-                </li>
-            {% endfor %}
-            </ul>
+            
        {% endif %}
             	
 {% endblock %}

@@ -15,21 +15,21 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                <th>Client</th>    
-                <th>Client ip</th>
-                <th>Vendeur</th>
-                <th>Date de commande</th>
-                <th>Date de paiement</th>
-                <th>Montant</th>
-                <th>Adresse de livraison</th>
-                <th>Adresse de facturation</th>
-                <th>Mode de paiement</th>
-                <th>Etat</th>
-                <th>Valider payée</th> 
+                    <th>Client</th>    
+                    <th>Client ip</th>
+                    <th>Vendeur</th>
+                    <th>Date de commande</th>
+                    <th>Date de paiement</th>
+                    <th>Montant</th>
+                    <th>Adresse de livraison</th>
+                    <th>Adresse de facturation</th>
+                    <th>Mode de paiement</th>
+                    <th>Etat</th>
+                    <th>Valider payée</th> 
                 </tr>
             </thead>
             <tbody>
-                {% if liste_commandes %}
+                {% if (liste_commandess | length) > 0 %}
                     {% for commande in liste_commandes %} 
                         <tr>
                             <td> {# client.user.username #} </td>
@@ -47,7 +47,12 @@
                             </td>
                         </tr>
                     {% endfor %}
-                {% endif %}
+                        
+               {% else %}
+                    <tr> 
+                            <td colspan="11">Pas de commandes en attente de paiement.</td>
+                    </tr>
+               {% endif %}
             </tbody>
         </table>
            	

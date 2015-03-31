@@ -113,7 +113,7 @@
                         <div class="panel-body">
                         <a href="{{ path('odysseus_back_lister_produit_vente', {page: 1}) }}" title="">Liste des Produits à la vente</a>
                         </div>
-                        <div class="panel-body"> revoir à partir d'ici
+                        <div class="panel-body">
                         <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="">Liste Produits Vente à valider</a>
                         <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title=""> {{ render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) }} </a>
                         </div>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                        <a href="{# path('odysseus_back_lister_client') #}" title="">Liste des clients</a>
+                        <a href="{{ path('odysseus_back_lister_client') }}" title="">Liste des clients</a>
                         </div>
                     </div>
                 </div>
