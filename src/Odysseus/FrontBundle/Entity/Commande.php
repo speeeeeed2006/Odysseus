@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement"}), 
  *                                      @ORM\Index(name="fk_Commande_etat1_idx", columns={"etat_id"})
- *                                      ORM\Index(name="fk_Commande_client1_idx", columns={"client_id"})})
+ *                                     })
  * @ORM\Entity
  */
 class Commande
@@ -346,47 +346,20 @@ class Commande
     {
         return $this->adresseFacturationId;
     }
-    
-    /**
-     * Add produitVenteproduitVente
-     *
-     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
-     * @return Commande
-     */
-    public function addProduitVenteproduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente)
-    {
-        $this->produitVenteproduitVente[] = $produitVenteproduitVente;
-
-        return $this;
-    }
-
-    /**
-     * Remove produitVenteproduitVente
-     *
-     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente
-     */
-    public function removeProduitVenteproduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVenteproduitVente)
-    {
-        $this->produitVenteproduitVente->removeElement($produitVenteproduitVente);
-    }
-
-    /**
-     * Get produitVenteproduitVente
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProduitVenteproduitVente()
-    {
-        return $this->produitVenteproduitVente;
-    }
-    
-    public function getUser() {
+    function getUser() {
         return $this->user;
     }
 
-    public function setUser(\Odysseus\UserBundle\Entity\User $user) {
-        $this->user = $user;
+    function getProduitVenteproduitVente() {
+        return $this->produitVenteproduitVente;
     }
 
+    function setProduitVenteproduitVente(\Doctrine\Common\Collections\Collection $produitVenteproduitVente) {
+        $this->produitVenteproduitVente = $produitVenteproduitVente;
+    }
+
+    function setUser(\Odysseus\UserBundle\Entity\User $user) {
+        $this->user = $user;
+    }
 
 }
