@@ -22,6 +22,11 @@
                 {{ form_widget(form.prenom) }}
             </div>
             <div>
+                {{ form_errors(form.civilite) }}
+                {{ form_label(form.civilite, "Votre prénom :") }}
+                {{ form_widget(form.civilite) }}
+            </div>
+            <div>
                 {{ form_errors(form.adresse) }}
                 {{ form_label(form.adresse, "Votre adresse :") }}
                 {{ form_widget(form.adresse) }}

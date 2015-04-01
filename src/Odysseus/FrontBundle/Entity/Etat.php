@@ -3,6 +3,7 @@
 namespace Odysseus\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Etat
@@ -39,10 +40,31 @@ class Etat
      * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commande", mappedBy="etat")
      */
     protected $commande;
-
-
-
+    
     /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Adresse", mappedBy="etat")
+     */
+    protected $adresse;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Produit", mappedBy="etat")
+     */
+    protected $produit;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\ProduitVente", mappedBy="etat")
+     */
+    protected $produitVente;
+    
+    
+    function __construct() {
+        $this->commande = new ArrayCollection();
+        $this->adresse = new ArrayCollection();
+        $this->produit = new ArrayCollection();
+        $this->produitVente = new ArrayCollection();
+    }
+
+        /**
      * Get idEtat
      *
      * @return integer 

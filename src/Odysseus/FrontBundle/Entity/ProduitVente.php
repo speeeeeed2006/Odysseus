@@ -62,7 +62,7 @@ class ProduitVente
     /**
      * @var \Etat
      *
-     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\ManyToOne(targetEntity="Etat", inversedBy="produitVente")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
      * })
