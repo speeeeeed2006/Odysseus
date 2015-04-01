@@ -101,12 +101,18 @@ class User extends BaseUser
      */
     protected $adresse;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commande", mappedBy="user")
+     */
+    protected $commande;
+    
     
     
     public function __construct()
     {
         parent::__construct();
         $this->adresse = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commande = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**

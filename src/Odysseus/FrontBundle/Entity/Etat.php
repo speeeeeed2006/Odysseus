@@ -34,6 +34,11 @@ class Etat
      * @ORM\Column(name="type", type="string", length=45, nullable=false)
      */
     private $type;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commande", mappedBy="etat")
+     */
+    protected $commande;
 
 
 

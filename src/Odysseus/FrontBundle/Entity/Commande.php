@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Commande
  *
  * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement_id"}), @ORM\Index(name="fk_Commande_etat1_idx", columns={"etat_id"}), @ORM\Index(name="fk_Commande_User1_idx", columns={"user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\CommandeRepository");
  */
 class Commande
 {
@@ -66,7 +66,7 @@ class Commande
     /**
      * @var \Odysseus\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User", inversedBy="commande")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -86,7 +86,7 @@ class Commande
     /**
      * @var \Etat
      *
-     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\ManyToOne(targetEntity="Etat", inversedBy="commande")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
      * })
