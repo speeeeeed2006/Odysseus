@@ -21,7 +21,7 @@
                     <th>Catégorie</th>
                     <th>Sous-catégorie</th>
                     <th>Description</th>
-                <!--  <th>Etat</th> -->
+                    <!--<th>Etat</th>-->
                 </tr>
             </thead>
             <tbody>
@@ -34,19 +34,10 @@
                         <td> {{ produit.categorie.nom }} </td>
                         <td> {{ produit.sousCategorie.nom }} </td>
                         <td> {{ produit.description }} </td>
-                       <!-- <td> {{ produit.etat.nom }} </td> -->                   
+                       <!-- <td> {{ produit.etat }} </td> -->                 
                     </tr>
                     {% endfor %}
-                    
-                    <ul class="pagination">
-                    {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
-                    {% for p in range(1, nombrePage) %}
-                        <li {% if p == page %} class="active"{% endif %} >
-                        <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                
+                  
                 {% else %}
                 <tr> 
                     <td colspan="6">Pas de produits Catalogue refusés.</td>
@@ -55,9 +46,15 @@
             </tbody>
         </table>
     
-        {% if (liste_produits | length) > 0 %}
-        
-            
+        {% if (liste_produits | length) >= 15 %}
+            <ul class="pagination">
+            {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+            {% for p in range(1, nombrePage) %}
+                <li {% if p == page %} class="active"{% endif %} >
+                <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+            </ul>    
        {% endif %}
             	
 {% endblock %}

@@ -18,13 +18,11 @@ class ProduitVenteType extends AbstractType
         $builder ->add('remarque', 'text', array('required' => false))
                  ->add('prix',     'money')
                  ->add('stock',    'integer')
-                 ->add('etat', 'entity', array(
-                                'class'    => 'OdysseusFrontBundle:Etat',
-                                'property' => 'nom',
-                                'multiple' => false,
-                                'query_builder' => function(EtatRepository $er){
-                                    return $er->getListeEtatpourProduit();
-                                })); 
+                 ->add('etat', 'choice', array(
+                                'choices'    => array('à valider' => 'à valider',
+                                                      'validé'    => 'validé',
+                                                      'refusé'    => 'refusé',
+                                                      'désactivé' => 'désactivé'))); 
     }
     
     /**

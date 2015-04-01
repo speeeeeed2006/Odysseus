@@ -23,7 +23,7 @@
                 <th>Adresse</th>
                 <th>Cp</th>
                 <th>Ville</th>
-                <th>France</th>
+                <th>Pays</th>
                 <th>Téléphone</th>
                 <th>Email</th>
                 <th>Créa.</th>
@@ -47,9 +47,13 @@
                             <td> {% if (data['client'].telephone != null )%} {{ data['client'].telephone }} {% endif %}</td>
                             <td> {{ data['client'].email }} </td>
                             <td> {% if (data['client'].dateCreation != null )%} {{ data['client'].dateCreation|date("d/m/Y") }} {% endif %}</td>
-                            <td> {% if (data['client'].etat != null )%} {{ data['client'].etat.nom }} {% endif %}</td> 
+                            <td> {% if (data['client'].etat != null )%} {{ data['client'].etat }} {% endif %}</td> 
                             <td>
-                                <a href="{{ path('odysseus_back_bannir_client', {id: data['client'].id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                                {% if (data['client'].etat != 'banni') %}
+                                    <a href="{{ path('odysseus_back_bannir_client', {id: data['client'].id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                                {% else %}
+                                    -
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

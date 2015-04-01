@@ -5,25 +5,29 @@
 {% block body %}
     <div id="wrap">
         <div id="categories">
-            <h2>Liste des produits de la Catégorie :  {{ categorie.nom }} </h2>
+            <h2>Liste des produits de la Catégorie :  {{ categorie.nom }} </h2>       
+            
+            {% if (produits | length) > 0 %}
+                {% for produit in produits %}
 
-            {% for produit in produits %}
-                
-            <div class="produit" >
-                    <div class="detail">
-                        <img src="{# produit.image.path#}" alt="" class="vignette" style=" "/>
-                        <span class="nom_produit">{{ produit.produit.nom }}</span>
-                        <span class="prix">{{ produit.prix }}€ HT </span>
-                    </div>
+                <div class="produit" >
+                        <div class="detail">
+                            <img src="{# produit.image.path#}" alt="" class="vignette" style=" "/>
+                            <span class="nom_produit">{{ produit.produit.nom }}</span>
+                            <span class="prix">{{ produit.prix }}€ HT </span>
+                        </div>
 
-                    <div class="boutons">
-                        <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">Plus d'infos</span></a>
-                        <form action="{{ path('odysseus_front_panier')}}" method="post">
-                            <button type="button">Ajouter au panier</button>
-                        </form>
-                    </div>
-            </div> <!--#details-->
-            {% endfor %}
+                        <div class="boutons">
+                            <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">Plus d'infos</span></a>
+                            <form action="{{ path('odysseus_front_panier')}}" method="post">
+                                <button type="button">Ajouter au panier</button>
+                            </form>
+                        </div>
+                </div> <!--#details-->
+                {% endfor %}
+            {% else %}
+                <div >Pas de produits dans cette catégorie.</div>
+            {% endif %}
         </div> <!--#produit-->
     </div><!--#wrap -->
     {% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}

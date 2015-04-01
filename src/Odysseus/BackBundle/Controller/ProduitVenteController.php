@@ -91,7 +91,7 @@ class ProduitVenteController extends Controller
 
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $produit->setEtat($etat->getEtatValide());
+        $produit->setEtat(ProduitVente::VALIDE);
         $em->flush();
         
         //on affiche un message flash
@@ -131,7 +131,7 @@ class ProduitVenteController extends Controller
 
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $produit->setEtat($etat->find(5));
+        $produit->setEtat(ProduitVente::REFUSE);
         $em->flush();
         
         //on affiche un message flash

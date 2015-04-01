@@ -5,7 +5,7 @@
 {% block body %}
     <div id="wrap">
         <div id="categories">
-            <h2>Liste des produits correspondant à votre recherche :  {# mot recherche #} </h2>
+            <h2>Liste des produits correspondant à votre recherche : " {{ recherche }} "</h2>
 
             {% if (liste_produits | length) > 0 %}
             {% for produit in liste_produits %}

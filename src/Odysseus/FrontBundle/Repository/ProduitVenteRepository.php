@@ -14,11 +14,8 @@ class ProduitVenteRepository extends EntityRepository
         }
         
         $query = $this->createQueryBuilder('p')
-                      ->join('p.etat', 'e')
-                      ->where('e.type = :type')
-                      ->setParameter('type', 'produit')
-                      ->andWhere('e.nom = :nom')
-                      ->setParameter('nom', 'a_valider')
+                      ->where('p.etat = :etat')
+                      ->setParameter('etat', 'à valider')
                       ->getQuery();
     
         // On définit le produit à partir duquel commencer la liste et le nb par page
@@ -35,11 +32,8 @@ class ProduitVenteRepository extends EntityRepository
         }
         
         $query = $this->createQueryBuilder('p')
-                      ->join('p.etat', 'e')
-                      ->where('e.type = :type')
-                      ->setParameter('type', 'produit')
-                      ->andWhere('e.nom = :nom')
-                      ->setParameter('nom', 'refuse')
+                      ->where('p.etat = :etat')
+                      ->setParameter('etat', 'refusé')
                       ->getQuery();
     
         // On définit le produit à partir duquel commencer la liste et le nb par page
@@ -53,11 +47,8 @@ class ProduitVenteRepository extends EntityRepository
     {
         return $this->createQueryBuilder('p')
                     ->select('COUNT(p)')
-                    ->join('p.etat', 'e')
-                    ->where('e.type = :type')
-                    ->setParameter('type', 'produit')
-                    ->andWhere('e.nom = :nom')
-                    ->setParameter('nom', 'a_valider')
+                    ->where('p.etat = :etat')
+                    ->setParameter('etat', 'à valider')
                     ->getQuery()
                     ->getSingleResult();
     }
@@ -82,18 +73,17 @@ class ProduitVenteRepository extends EntityRepository
     {
         return $this->createQueryBuilder('pv')
                     ->select('pv')
-                    ->join('pv.etat', 'e')
-                    ->where('e.nom = :etat')
+                    ->where('pv.etat = :etat')
                     ->setParameter('etat', 'valide')
                     ->join('pv.produit', 'p')
                     ->andWhere('p.categorie = :categorie')
                     ->setParameter('categorie', $categorie) 
-                    ->orderBy('p.idProduit')
+                    ->orderBy('pv.idProduitVente')
                     ->getQuery()
                     ->getResult();
     }
     
-     public function recherche($chaine)
+    public function recherche($chaine)
     {
          return $this->createQueryBuilder('pv')
                      ->select('pv')

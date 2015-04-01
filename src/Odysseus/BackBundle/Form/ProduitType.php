@@ -32,21 +32,16 @@ class ProduitType extends AbstractType
                                 ))
                 ->add('description', 'textarea')
                         //filter que ceux liés au produit
-                ->add('etat', 'entity', array(
-                                'class'    => 'OdysseusFrontBundle:Etat',
-                                'property' => 'nom',
-                                'multiple' => false,
-                                'query_builder' => function(EtatRepository $er){
-                                    return $er->getListeEtatpourProduit();
-                                }))
+                ->add('etat', 'choice', array(
+                                'choices'    => array('à valider' => 'à valider',
+                                                      'validé'    => 'validé',
+                                                      'refusé'    => 'refusé',
+                                                      'désactivé' => 'désactivé')))
                 ->add('promotion', 'checkbox', array('required' => false))
                 ->add('nouveaute', 'checkbox', array('required' => false))
                 ->add('alaune', 'checkbox', array('required' => false));
         
     }
-    
- 
- 
     
     /**
      * @param OptionsResolverInterface $resolver

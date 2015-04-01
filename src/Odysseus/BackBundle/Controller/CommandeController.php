@@ -14,7 +14,15 @@ class CommandeController extends Controller
         $listeCommandes =  $this->getDoctrine()
                                  ->getManager()
                                  ->getRepository('OdysseusFrontBundle:Commande')
-                                 ->getCommandeEnAttentePaiement();
+                                 ->getCommandeEnAttentePaiement();   
+        
+//        $listeCommandesClient = array();
+//        foreach($listeCommandes as $commande){ 
+//            $client = $em->getRepository('OdysseusUserBundle:User')->getClientCommande($commande);
+//            
+//            array_push($listeCommandesClient, array('commande'=> $commande,'client' => $client));
+//           
+//        }
         
         return $this->render('OdysseusBackBundle:Commande:listerCommandeEnAttente.html.twig',
         	array('liste_commandes' => $listeCommandes)
@@ -36,7 +44,7 @@ class CommandeController extends Controller
         
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $commande->setEtat($etat->find('10'));
+        $commande->setEtat(Commande::PAYE);
         $em->flush();
         
         //on affiche un message flash
@@ -75,7 +83,7 @@ class CommandeController extends Controller
         
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $commande->setEtat($etat->find('11'));
+        $commande->setEtat(Commande::EN_LIVRAISON);
         $em->flush();
         
         //on affiche un message flash
@@ -112,7 +120,7 @@ class CommandeController extends Controller
         
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $commande->setEtat($etat->find('12'));
+        $commande->setEtat(Commande::LIVRE);
         $em->flush();
         
         //on affiche un message flash
@@ -127,9 +135,7 @@ class CommandeController extends Controller
                                  ->getManager()
                                  ->getRepository('OdysseusFrontBundle:Commande')
                                  ->getCommandeLivree();
-        
-        //$this->get('ladybug')->log($listeCommandes);
-        
+                
         return $this->render('OdysseusBackBundle:Commande:listerCommandeLivree.html.twig',
         	array('liste_commandes' => $listeCommandes)
         );

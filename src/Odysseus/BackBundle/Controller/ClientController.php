@@ -46,7 +46,7 @@ class ClientController extends Controller
         
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $client->setEtat($etat->getEtatBanni());
+        $client->setEtat(User::BANNI);
         $client->setDateModification(new \DateTime('now'));
         
         $em->flush();

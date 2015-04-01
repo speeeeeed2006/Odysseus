@@ -39,7 +39,7 @@
                         <td> {{ produit.categorie.nom }} </td>
                         <td> {{ produit.sousCategorie.nom }} </td>
                         <td> {{ produit.description }} </td>
-                        <td> {{ produit.etat.nom }} </td>                    
+                        <td> {{ produit.etat }} </td>                    
                         <td><a href="{{ path('odysseus_back_modifier_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
                         <td><a href="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
                     </tr>

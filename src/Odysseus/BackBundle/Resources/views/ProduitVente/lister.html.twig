@@ -37,7 +37,7 @@
                     <td> {% if (produit.remarque != 'null') %}{{ produit.remarque }} {% else %} - {% endif %} </td>
                     <td> {{ produit.prix }} </td>
                     <td> {{ produit.dateAjout | date('d/m/Y H:i:s') }} </td>
-                    <td> {{ produit.etat.nom }} </td> 
+                    <td> {{ produit.etat }} </td> 
                     <td><a href="{{ path('odysseus_back_modifier_produit_vente', {id: produit.idProduitVente}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
                 </tr>
                 {% endfor %}

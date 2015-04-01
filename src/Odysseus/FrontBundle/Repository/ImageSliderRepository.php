@@ -25,12 +25,8 @@ class ImageSliderRepository extends EntityRepository
     public function getImageActive()
     {
         return $this->createQueryBuilder('i')
-                    ->select('i')
-                    ->join('i.etat', 'e')
-                    ->where('e.type = :type')
-                    ->setParameter('type', 'image')
-                    ->andWhere('e.nom = :nom')
-                    ->setParameter('nom', 'active')
+                    ->where('i.etat = :etat')
+                    ->setParameter('etat', 'valide')
                     ->getQuery()
                     ->getResult();
     }

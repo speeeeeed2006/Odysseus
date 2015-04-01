@@ -41,15 +41,6 @@
                         <td><a href="{{ path('odysseus_back_refuser_produit_catalogue', {id: produit.idProduit} )}}"><i class="glyphicon glyphicon-thumbs-down"></i></a></td>
                     </tr>
                     {% endfor %}
-                    
-                    <ul class="pagination">
-                    {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
-                    {% for p in range(1, nombrePage) %}
-                        <li {% if p == page %} class="active"{% endif %} >
-                        <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
             
                  {% else %}
                     <tr> 
@@ -59,5 +50,15 @@
                     
             </tbody>
         </table>
+        {% if (liste_produits | length) >= 15 %}
+        <ul class="pagination">
+        {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+        {% for p in range(1, nombrePage) %}
+            <li {% if p == page %} class="active"{% endif %} >
+            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {'page': p}) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
             	
 {% endblock %}

@@ -44,13 +44,17 @@ class ProduitVenteController extends Controller
         if ($this->get('request')->getMethod() == 'POST'){
             
             $form->bind($this->get('request'));
-            //echo $form['recherche']->getData();
             $em = $this->getDoctrine()->getManager();
             $listeProduits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->recherche($form['recherche']->getData());
+        
+            $recherche = $form['recherche']->getData();  
         }
         
-        //ladybug_dump_die($produits);              
-        return $this->render('OdysseusFrontBundle:ProduitVente:produitsRecherche.html.twig', array('liste_produits'  => $listeProduits));
+                     
+        return $this->render('OdysseusFrontBundle:ProduitVente:produitsRecherche.html.twig',
+                array('liste_produits'  => $listeProduits,
+                      'recherche'       => $recherche
+                    ));
     }
     
 }

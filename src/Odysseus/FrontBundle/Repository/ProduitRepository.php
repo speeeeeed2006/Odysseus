@@ -15,11 +15,8 @@ class ProduitRepository extends EntityRepository
         }
         
         $query = $this->createQueryBuilder('p')
-                      ->join('p.etat', 'e')
-                      ->where('e.type = :type')
-                      ->setParameter('type', 'produit')
-                      ->andWhere('e.nom = :nom')
-                      ->setParameter('nom', 'a_valider')
+                      ->where('p.etat = :etat')
+                      ->setParameter('etat', 'à valider')
                       ->getQuery();
     
         // On définit le produit à partir duquel commencer la liste et le nb par page
@@ -34,11 +31,8 @@ class ProduitRepository extends EntityRepository
     {
         return $this->createQueryBuilder('p')
                     ->select('COUNT(p)')
-                    ->join('p.etat', 'e')
-                    ->where('e.type = :type')
-                    ->setParameter('type', 'produit')
-                    ->andWhere('e.nom = :nom')
-                    ->setParameter('nom', 'a_valider')
+                    ->where('p.etat = :etat')
+                    ->setParameter('etat', 'à valider')
                     ->getQuery()
                     ->getSingleResult();
     }
@@ -68,11 +62,8 @@ class ProduitRepository extends EntityRepository
         }
         
         $query = $this->createQueryBuilder('p')
-                      ->join('p.etat', 'e')
-                      ->where('e.type = :type')
-                      ->setParameter('type', 'produit')
-                      ->andWhere('e.nom = :nom')
-                      ->setParameter('nom', 'refuse')
+                      ->where('p.etat = :etat')
+                      ->setParameter('etat', 'refuse')
                       ->getQuery();
     
         // On définit le produit à partir duquel commencer la liste et le nb par page
