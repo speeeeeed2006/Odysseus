@@ -27,14 +27,9 @@ class ClientController extends Controller
             var_dump($adresse);
             die();
             array_push($listeAdresses, $adresse);
-            
-            
+                
         }
         
-            
-
-        //ladybug_dump($listeAdresse);
-        //die();
         return $this->render('OdysseusBackBundle:Client:lister.html.twig',
         	array('liste_clients' => $listeClients,
                       'liste_adresses' => $listeAdresses  
