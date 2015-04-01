@@ -14,15 +14,8 @@ class ProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($user);
         
-        // replace findAll() with a more restrictive query if you need to
-        $adresse = $this->getDoctrine()->getManager()
-            ->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($user);
-
-        $form = $this->createForm(
-            new \MultiAdresseType(),
-            array('adresse' => $adresse)
-        );
-        $form = $this->createForm(new ClientType, $user);
+       
+        $form = $this->createForm(new ClientType(), $user);
         
         if ($this->getRequest()->getMethod() == 'POST'){
             //on fait le lien requete ->form
@@ -47,8 +40,7 @@ class ProfileController extends Controller
                 return $this->redirect($this->generateUrl('fos_user_'));
             } */  
        }
-        
-        
+       
         return $this->render('OdysseusUserBundle:Profile:edit_content.html.twig', 
                 array('form' => $form->createView())
                 );

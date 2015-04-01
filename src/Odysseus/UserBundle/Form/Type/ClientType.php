@@ -21,10 +21,10 @@ class ClientType extends AbstractType
                                             'required'  => true))
                 ->add('prenom','text')
                 ->add('nom','text')
-                ->add('adresse', new AdresseType()) 
                 ->add('dateNaissance','datetime')
                 ->add('telephone', 'text', array('max_length' => 10))
-                ->add('email', 'email');
+                ->add('email', 'email')
+                ->add('adresse', 'collection', array('type' => new AdresseType()));
     }
     
     /**
