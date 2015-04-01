@@ -1,16 +1,12 @@
 <?php
 
-<<<<<<< HEAD
-namespace Odysseus\UserBundle\Form\Type;
-=======
-namespace Odysseus\BackBundle\Form\Type;
->>>>>>> origin/predev2
+namespace Odysseus\BackBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AdresseType extends AbstractType
+class ImageSliderType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,11 +14,7 @@ class AdresseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('adresse',    'text')
-            ->add('cp', 'integer', array('max_length' => 5))
-            ->add('ville','text')
-            ->add('pays','text');
+        $builder->add('file', 'file');
     }
     
     /**
@@ -31,7 +23,7 @@ class AdresseType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Odysseus\FrontBundle\Entity\Adresse'
+            'data_class' => 'Odysseus\BackBundle\Entity\ImageSlider'
         ));
     }
 
@@ -40,6 +32,7 @@ class AdresseType extends AbstractType
      */
     public function getName()
     {
-        return 'odysseus_userbundle_adresse';
+        return 'odysseus_backbundle_imageslidertype';
     }
+    
 }

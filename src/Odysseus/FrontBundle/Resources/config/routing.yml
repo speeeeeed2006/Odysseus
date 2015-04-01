@@ -20,6 +20,7 @@ odysseus_front_mentions:
 odysseus_front_home:
     path:     /home
     defaults: { _controller: OdysseusFrontBundle:Main:home }
+       
  #------------ fin Main  
  
  #------------ debut Panier
@@ -56,5 +57,9 @@ odysseus_front_categorieProduit:
 odysseus_front_produit_presentation:    
     path:     /produit-detail/{id}
     defaults: { _controller: OdysseusFrontBundle:ProduitVente:presentation }
+    
+odysseus_front_recherche:
+    path:     /recherche
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:rechercheTraitement }
     
 #------------ fin Produit
