@@ -10,11 +10,8 @@ class CommandeRepository extends EntityRepository
     public function getCommandeEnAttentePaiement()
     {
         return $this->createQueryBuilder('c')
-                    ->join('c.etat', 'e')
-                    ->where('e.type = :type')
-                    ->setParameter('type', 'commande')
-                    ->andWhere('e.nom = :nom')
-                    ->setParameter('nom', 'en_attente_paiement')
+                    ->where('c.etat = :etat')
+                    ->setParameter('etat', 'en attente paiement')
                     ->getQuery()
                     ->getResult();
     }

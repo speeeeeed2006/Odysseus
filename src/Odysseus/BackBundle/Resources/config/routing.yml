@@ -163,6 +163,27 @@ odysseus_back_modifier_pages:
     defaults: { _controller: OdysseusBackBundle:PageStatique:modifier }
 
 # --------- Slider ----------------------- #
-odysseus_back_creer_pages:
-    path:     /creer-pages
-    defaults: { _controller: OdysseusBackBundle:PageStatique:creer }
+odysseus_back_ajouter_image_slider:
+    path:     /ajouter-image-slider
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:ajouter }
+    
+odysseus_back_lister_image_slider:
+    path:     /lister-image-slider
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:lister }
+    
+odysseus_back_activer_image_slider:
+    path:     /activer-image-slider/{id}
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:activer }
+    
+odysseus_back_desactiver_image_slider:
+    path:     /desactiver-image-slider/{id}
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:desactiver }
+    
+odysseus_back_supprimer_image_slider:
+    path:     /supprimer-image-slider/{id}
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:supprimer }
+    
+# --------- Home ----------------------- #
+#odysseus_back_categorie_a_la_une:
+    #path:     choisir-produits-a-la-une
+    #defaults: { _controller: OdysseusBackBundle:Home:choisirCategorie }

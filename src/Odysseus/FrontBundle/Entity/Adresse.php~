@@ -7,11 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Adresse
  *
- * @ORM\Table(name="adresse", indexes={@ORM\Index(name="fk_Adresse_Etat1_idx", columns={"etat_id"}), @ORM\Index(name="fk_Adresse_User1_idx", columns={"user_id"})})
+ * @ORM\Table(name="adresse", indexes={@ORM\Index(name="fk_Adresse_User1_idx", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\AdresseRepository");
  */
 class Adresse
 {
+    
+    const VALIDE = 'validé';
+    const OBSOLETE = 'obsolète';
     /**
      * @var integer
      *
@@ -65,12 +68,8 @@ class Adresse
     private $user;
 
     /**
-     * @var \Etat
-     *
-     * @ORM\ManyToOne(targetEntity="Etat")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
-     * })
+     * @var string
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
 
@@ -227,12 +226,11 @@ class Adresse
     /**
      * Set etat
      *
-     * @param \Odysseus\FrontBundle\Entity\Etat $etat
      * @return Adresse
      */
-    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    public function setEtat($value)
     {
-        $this->etat = $etat;
+        $this->etat = $value;
 
         return $this;
     }
@@ -240,7 +238,7 @@ class Adresse
     /**
      * Get etat
      *
-     * @return \Odysseus\FrontBundle\Entity\Etat 
+     * @return string
      */
     public function getEtat()
     {

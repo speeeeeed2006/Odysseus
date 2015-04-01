@@ -16,7 +16,6 @@ class CommandeController extends Controller
                                  ->getRepository('OdysseusFrontBundle:Commande')
                                  ->getCommandeEnAttentePaiement();
         
-                         ladybug_dump($listeCommandes);
         return $this->render('OdysseusBackBundle:Commande:listerCommandeEnAttente.html.twig',
         	array('liste_commandes' => $listeCommandes)
         );

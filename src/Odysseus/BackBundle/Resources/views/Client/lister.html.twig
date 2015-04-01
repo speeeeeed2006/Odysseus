@@ -27,9 +27,7 @@
                 <th>Téléphone</th>
                 <th>Email</th>
                 <th>Créa.</th>
-                <th>Modif.</th> 
                 <th>Etat</th>
-                <!--<th>Modifier</th>-->
                 <th>Bannir</th>
                 </tr>
             </thead>
@@ -49,7 +47,6 @@
                             <td> {% if (data['client'].telephone != null )%} {{ data['client'].telephone }} {% endif %}</td>
                             <td> {{ data['client'].email }} </td>
                             <td> {% if (data['client'].dateCreation != null )%} {{ data['client'].dateCreation|date("d/m/Y") }} {% endif %}</td>
-                            <td> {% if (data['client'].dateModification != null )%} {{ data['client'].dateModification|date("d/m/Y") }} {% endif %} </td></td>
                             <td> {% if (data['client'].etat != null )%} {{ data['client'].etat.nom }} {% endif %}</td> 
                             <td>
                                 <a href="{{ path('odysseus_back_bannir_client', {id: data['client'].id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 

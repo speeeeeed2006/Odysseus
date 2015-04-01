@@ -160,4 +160,136 @@ class Etat
     {
         return $this->commande;
     }
+
+    /**
+     * Add adresse
+     *
+     * @param \Odysseus\FrontBundle\Entity\Adresse $adresse
+     * @return Etat
+     */
+    public function addAdresse(\Odysseus\FrontBundle\Entity\Adresse $adresse)
+    {
+        $this->adresse[] = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Remove adresse
+     *
+     * @param \Odysseus\FrontBundle\Entity\Adresse $adresse
+     */
+    public function removeAdresse(\Odysseus\FrontBundle\Entity\Adresse $adresse)
+    {
+        $this->adresse->removeElement($adresse);
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $produit
+     * @return Etat
+     */
+    public function addProduit(\Odysseus\FrontBundle\Entity\Produit $produit)
+    {
+        $this->produit[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\Odysseus\FrontBundle\Entity\Produit $produit)
+    {
+        $this->produit->removeElement($produit);
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
+
+    /**
+     * Add produitVente
+     *
+     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVente
+     * @return Etat
+     */
+    public function addProduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVente)
+    {
+        $this->produitVente[] = $produitVente;
+
+        return $this;
+    }
+
+    /**
+     * Remove produitVente
+     *
+     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVente
+     */
+    public function removeProduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVente)
+    {
+        $this->produitVente->removeElement($produitVente);
+    }
+
+    /**
+     * Get produitVente
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProduitVente()
+    {
+        return $this->produitVente;
+    }
+
+    /**
+     * Add imageSlider
+     *
+     * @param \Odysseus\FrontBundle\Entity\ImageSlider $imageSlider
+     * @return Etat
+     */
+    public function addImageSlider(\Odysseus\FrontBundle\Entity\ImageSlider $imageSlider)
+    {
+        $this->imageSlider[] = $imageSlider;
+
+        return $this;
+    }
+
+    /**
+     * Remove imageSlider
+     *
+     * @param \Odysseus\FrontBundle\Entity\ImageSlider $imageSlider
+     */
+    public function removeImageSlider(\Odysseus\FrontBundle\Entity\ImageSlider $imageSlider)
+    {
+        $this->imageSlider->removeElement($imageSlider);
+    }
+
+    /**
+     * Get imageSlider
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImageSlider()
+    {
+        return $this->imageSlider;
+    }
 }

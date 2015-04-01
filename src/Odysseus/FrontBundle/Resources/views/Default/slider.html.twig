@@ -1,27 +1,18 @@
 <!-- slider -->
 <div id='coin-slider'>
-    <a href="#" title="">
-        <img src="http://lorempixel.com/970/380/nature/1/" >
-        <span>
-            Description image 1
-        </span>
-    </a>
-    <a href="#" title="">
-        <img src="http://lorempixel.com/970/380/nature/2/" >
-        <span>
-            Description image 2
-        </span>
-    </a>
-    <a href="#" title="">
-        <img src="http://lorempixel.com/970/380/nature/3/" >
-        <span>
-            Description image 3
-        </span>
-    </a>
-    <a href="#" title="">
-        <img src="http://lorempixel.com/970/380/nature/4/" >
-        <span>
-            Description image 4
-        </span>
-    </a>
+    
+    {% if (liste_imagesSlider | length) > 0 %}
+    
+        {% for image in liste_imagesSlider %}
+            <a href="#" title="">
+                <img src="{{ asset('uploads/slider/' ~ image.idImageSlider ~ "." ~ image.path) }}" alt="{{ image.nom }}" >
+                <span>
+                       {{ image.nom }}
+                </span>
+            </a>
+
+        {% endfor %}
+    {% else %}
+        Pas d'image disponible pour le slider.
+    {% endif %}  
 </div>

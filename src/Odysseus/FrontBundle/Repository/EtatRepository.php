@@ -21,8 +21,7 @@ class EtatRepository extends EntityRepository
                     ->andWhere('e.nom = :nom')
                     ->setParameter('nom', 'valide')
                     ->getQuery()
-                    ->getSingleResult();
-                  
+                    ->getSingleResult();             
     }
     
     public function getEtatBanni()
@@ -34,7 +33,28 @@ class EtatRepository extends EntityRepository
                     ->setParameter('nom', 'banni')
                     ->getQuery()
                     ->getSingleResult();
-   
+    }
+    
+    public function getEtatActive()
+    {
+        return $this->createQueryBuilder('e')  
+                    ->where('e.type = :type')
+                    ->setParameter('type', 'image')
+                    ->andWhere('e.nom = :nom')
+                    ->setParameter('nom', 'active')
+                    ->getQuery()
+                    ->getSingleResult();             
+    }
+    
+    public function getEtatDesactive()
+    {
+        return $this->createQueryBuilder('e')  
+                    ->where('e.type = :type')
+                    ->setParameter('type', 'image')
+                    ->andWhere('e.nom = :nom')
+                    ->setParameter('nom', 'desactive')
+                    ->getQuery()
+                    ->getSingleResult();             
     }
     
 }

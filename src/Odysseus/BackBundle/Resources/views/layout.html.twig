@@ -83,10 +83,10 @@
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                            <a href="{{ path('odysseus_back_lister_etat')}}" title="">Liste des états</a> 
+                            <a href="{# path('odysseus_back_lister_etat')#}" title="">Liste des états</a> 
                         </div>
                         <div class="panel-body">
-                            <a href="{{ path('odysseus_back_ajouter_etat')}}" title="">Ajouter un état</a>
+                            <a href="{# path('odysseus_back_ajouter_etat')#}" title="">Ajouter un état</a>
                         </div>
                     </div>
                 </div>
@@ -98,27 +98,27 @@
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                            <a href="{{ path('odysseus_back_lister_produit_catalogue', {page: 1}) }}" title="">Liste des produits Catalogue</a> 
+                            <a href="{# path('odysseus_back_lister_produit_catalogue', {page: 1}) #}" title="">Liste des produits Catalogue</a> 
                         </div>
                         <div class="panel-body">
-                            <a href="{{ path('odysseus_back_ajouter_produit_catalogue') }}" title="">Ajouter un produit au Catologue</a>
+                            <a href="{# path('odysseus_back_ajouter_produit_catalogue') #}" title="">Ajouter un produit au Catologue</a>
                         </div>
                         <div class="panel-body">
-                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">Liste Produits Catalogue à valider</a>
-                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">{{ render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) }}</a>
+                            <a href="{# path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) #}" title="">Liste Produits Catalogue à valider</a>
+                            <a href="{# path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) #}" title="">{# render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) #}</a>
                         </div>
                         <div class="panel-body">
-                            <a href="{{ path('odysseus_back_lister_prod_catalogue_refuse', {page: 1}) }}" title="">Liste Produits Catalogue refusés</a>
+                            <a href="{# path('odysseus_back_lister_prod_catalogue_refuse', {page: 1}) #}" title="">Liste Produits Catalogue refusés</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_produit_vente', {page: 1}) }}" title="">Liste des Produits à la vente</a>
+                        <a href="{# path('odysseus_back_lister_produit_vente', {page: 1}) #}" title="">Liste des Produits à la vente</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="">Liste Produits Vente à valider</a>
-                        <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title=""> {{ render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) }} </a>
+                        <a href="{# path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) #}" title="">Liste Produits Vente à valider</a>
+                        <a href="{# path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) #}" title=""> {# render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) #} </a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_prod_vente_refuse', {page: 1}) }}" title="">Liste Produits Vente refusés </a>
+                        <a href="{# path('odysseus_back_lister_prod_vente_refuse', {page: 1}) #}" title="">Liste Produits Vente refusés </a>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_client') }}" title="">Liste des clients -----> pb</a>
+                        <a href="{# path('odysseus_back_lister_client') #}" title="">Liste des clients</a>
                         </div>
                     </div>
                 </div>
@@ -145,13 +145,13 @@
                         <a href="{{ path('odysseus_back_lister_commande_en_attente') }}" title="">Commandes en attente de paiement ---> à compl.</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_payee') }}" title="">Commandes payées ---> à compl.</a>
+                        <a href="{# path('odysseus_back_lister_commande_payee') #}" title="">Commandes payées ---> à compl.</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_en_cours_livraison') }}" title="">Commandes en cours de livraison ---> à compl.</a>
+                        <a href="{# path('odysseus_back_lister_commande_en_cours_livraison') #}" title="">Commandes en cours de livraison ---> à compl.</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_livree') }}" title="">Commandes livrées ---> à compl.</a>
+                        <a href="{# path('odysseus_back_lister_commande_livree') #}" title="">Commandes livrées ---> à compl.</a>
 
                         </div>
                     </div>
@@ -176,10 +176,10 @@
                         <h3 class="panel-title">Gestion du slider</h3>
                     </div>
                     <div class="panel-body">
-                       <a href="{{ path('odysseus_back_ajouter_image_slider') }}" title="">Ajouter image pour le slider</a>
+                       <a href="{# path('odysseus_back_ajouter_image_slider') #}" title="">Ajouter image pour le slider</a>
                     </div>
                     <div class="panel-body">
-                       <a href="{{ path('odysseus_back_lister_image_slider') }}" title="">Lister images Slider </a>
+                       <a href="{# path('odysseus_back_lister_image_slider') #}" title="">Lister images Slider </a>
                     </div>
                     
                 </div>

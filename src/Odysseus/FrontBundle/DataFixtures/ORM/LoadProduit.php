@@ -16,7 +16,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
     $produit1 = new Produit();   
     $produit1->setCategorie($this->getReference('categorie1'));
     $produit1->setSousCategorie($this->getReference('sousCategorie1'));
-    $produit1->setEtat($this->getReference('etat4'));
+    $produit1->setEtat(Produit::A_VALIDER);
     $produit1->setReference('3456');
     $produit1->setMarque('Apple');
     $produit1->setNom('Mac Book Pro');
@@ -29,7 +29,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
     $produit2 = new Produit();   
     $produit2->setCategorie($this->getReference('categorie1'));
     $produit2->setSousCategorie($this->getReference('sousCategorie1'));
-    $produit2->setEtat($this->getReference('etat4'));
+    $produit2->setEtat(Produit::DESACTIVE);
     $produit2->setReference('123456');
     $produit2->setMarque('Acer');
     $produit2->setNom('Aspire ES15');
@@ -42,7 +42,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
     $produit3 = new Produit();   
     $produit3->setCategorie($this->getReference('categorie1'));
     $produit3->setSousCategorie($this->getReference('sousCategorie2'));
-    $produit3->setEtat($this->getReference('etat4'));
+    $produit3->setEtat(Produit::REFUSE);
     $produit3->setReference('234556');
     $produit3->setMarque('Apple');
     $produit3->setNom('iBook i7');
@@ -55,7 +55,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
     $produit4 = new Produit();   
     $produit4->setCategorie($this->getReference('categorie2'));
     $produit4->setSousCategorie($this->getReference('sousCategorie4'));
-    $produit4->setEtat($this->getReference('etat3'));
+    $produit4->setEtat(Produit::VALIDE);
     $produit4->setReference('125689');
     $produit4->setMarque('Gigaset');
     $produit4->setNom('Gigaset 125');
@@ -68,7 +68,7 @@ class LoadProduit extends AbstractFixture implements OrderedFixtureInterface
     $produit5 = new Produit();   
     $produit5->setCategorie($this->getReference('categorie3'));
     $produit5->setSousCategorie($this->getReference('sousCategorie5'));
-    $produit5->setEtat($this->getReference('etat4'));
+    $produit5->setEtat(Produit::VALIDE);
     $produit5->setReference('155977');
     $produit5->setMarque('Pentax');
     $produit5->setNom('Super Reflex 25');

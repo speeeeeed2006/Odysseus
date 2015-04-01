@@ -16,6 +16,9 @@ class User extends BaseUser
     const CIVILITE_H = 'M.';
     const CIVILITE_F = 'Mme';
     
+    const ACTIF = 'actif';
+    const BANNI = 'banni';
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -87,12 +90,8 @@ class User extends BaseUser
 
 
     /**
-     * @var \Etat
-     *
-     * @ORM\ManyToOne(targetEntity="Odysseus\FrontBundle\Entity\Etat")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat", nullable=true)
-     * })
+     * @var string
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
     
@@ -124,9 +123,6 @@ class User extends BaseUser
         $this->commentaireAcheteur = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    function getCommande() {
-        return $this->commande;
-    }
 
     function getCommentaireVendeur() {
         return $this->commentaireVendeur;
@@ -181,7 +177,25 @@ class User extends BaseUser
         return $this->dateModification;
     }
 
-    function getEtat() {
+       /**
+     * Set etat
+     *
+     * @return User
+     */
+    public function setEtat($value)
+    {
+        $this->etat = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
         return $this->etat;
     }
 
@@ -219,10 +233,6 @@ class User extends BaseUser
 
     function setDateModification(\DateTime $dateModification) {
         $this->dateModification = $dateModification;
-    }
-
-    function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat) {
-        $this->etat = $etat;
     }
     
     
@@ -295,5 +305,51 @@ class User extends BaseUser
     public function getCommande()
     {
         return $this->commande;
+    }
+
+    /**
+     * Add commentaireVendeur
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commentaireclient $commentaireVendeur
+     * @return User
+     */
+    public function addCommentaireVendeur(\Odysseus\FrontBundle\Entity\Commentaireclient $commentaireVendeur)
+    {
+        $this->commentaireVendeur[] = $commentaireVendeur;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaireVendeur
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commentaireclient $commentaireVendeur
+     */
+    public function removeCommentaireVendeur(\Odysseus\FrontBundle\Entity\Commentaireclient $commentaireVendeur)
+    {
+        $this->commentaireVendeur->removeElement($commentaireVendeur);
+    }
+
+    /**
+     * Add commentaireAcheteur
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commentaireclient $commentaireAcheteur
+     * @return User
+     */
+    public function addCommentaireAcheteur(\Odysseus\FrontBundle\Entity\Commentaireclient $commentaireAcheteur)
+    {
+        $this->commentaireAcheteur[] = $commentaireAcheteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaireAcheteur
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commentaireclient $commentaireAcheteur
+     */
+    public function removeCommentaireAcheteur(\Odysseus\FrontBundle\Entity\Commentaireclient $commentaireAcheteur)
+    {
+        $this->commentaireAcheteur->removeElement($commentaireAcheteur);
     }
 }

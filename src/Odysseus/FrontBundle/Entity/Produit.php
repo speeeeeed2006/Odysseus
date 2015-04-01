@@ -7,11 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Produit
  * 
- * @ORM\Table(name="produit", indexes={@ORM\Index(name="IDX_29A5EC27BCF5E72D", columns={"categorie_id"}), @ORM\Index(name="fk_Produit_SousCategorie1_idx", columns={"sous_categorie_id"}), @ORM\Index(name="fk_Produit_Etat1_idx", columns={"etat_id"})})
+ * @ORM\Table(name="produit", indexes={@ORM\Index(name="IDX_29A5EC27BCF5E72D", columns={"categorie_id"}), @ORM\Index(name="fk_Produit_SousCategorie1_idx", columns={"sous_categorie_id"})})
  * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\ProduitRepository");
  */
 class Produit
 {
+    
+    const A_VALIDER = 'à valider';
+    const VALIDE    = 'validé';
+    const REFUSE    = 'refusé';
+    const DESACTIVE = 'désactivé';
     /**
      * @var integer
      *
@@ -71,12 +76,8 @@ class Produit
     private $alaune;
 
     /**
-     * @var \Etat
-     *
-     * @ORM\ManyToOne(targetEntity="Etat", inversedBy="produit")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
-     * })
+     * @var string
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
 
@@ -276,12 +277,11 @@ class Produit
     /**
      * Set etat
      *
-     * @param \Odysseus\FrontBundle\Entity\Etat $etat
      * @return Produit
      */
-    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    public function setEtat($value)
     {
-        $this->etat = $etat;
+        $this->etat = $value;
 
         return $this;
     }
@@ -289,7 +289,7 @@ class Produit
     /**
      * Get etat
      *
-     * @return \Odysseus\FrontBundle\Entity\Etat 
+     * @return string
      */
     public function getEtat()
     {

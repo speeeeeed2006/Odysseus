@@ -14,7 +14,8 @@ class ImageSliderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('file', 'file');
+        $builder->add('nom', 'text')
+                ->add('file', 'file');
     }
     
     /**
@@ -23,7 +24,7 @@ class ImageSliderType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Odysseus\BackBundle\Entity\ImageSlider'
+            'data_class' => 'Odysseus\FrontBundle\Entity\ImageSlider'
         ));
     }
 

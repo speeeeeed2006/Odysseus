@@ -7,11 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commande
  *
- * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement_id"}), @ORM\Index(name="fk_Commande_etat1_idx", columns={"etat_id"}), @ORM\Index(name="fk_Commande_User1_idx", columns={"user_id"})})
+ * @ORM\Table(name="commande", indexes={@ORM\Index(name="fk_Commande_modePaiement1_idx", columns={"mode_paiement_id"}), @ORM\Index(name="fk_Commande_User1_idx", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\CommandeRepository");
  */
 class Commande
 {
+    const EN_ATTENTE_PAIEMENT = 'en attente paiement';
+    const PAYE = 'payé';
+    const EN_LIVRAISON = 'en livraison';
+    const LIVRE = 'livré';
+    
     /**
      * @var integer
      *
@@ -84,12 +89,8 @@ class Commande
     private $modePaiement;
 
     /**
-     * @var \Etat
-     *
-     * @ORM\ManyToOne(targetEntity="Etat", inversedBy="commande")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
-     * })
+     * @var string
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
 
@@ -314,12 +315,11 @@ class Commande
     /**
      * Set etat
      *
-     * @param \Odysseus\FrontBundle\Entity\Etat $etat
      * @return Commande
      */
-    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    public function setEtat($value)
     {
-        $this->etat = $etat;
+        $this->etat = $value;
 
         return $this;
     }
@@ -327,7 +327,7 @@ class Commande
     /**
      * Get etat
      *
-     * @return \Odysseus\FrontBundle\Entity\Etat 
+     * @return string
      */
     public function getEtat()
     {

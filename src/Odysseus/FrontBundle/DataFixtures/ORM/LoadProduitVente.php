@@ -16,7 +16,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente1 = new ProduitVente();   
     $produitVente1->setProduit($this->getReference('produit1'));
     $produitVente1->setUser($this->getReference('user2'));
-    $produitVente1->setEtat($this->getReference('etat4'));
+    $produitVente1->setEtat(ProduitVente::A_VALIDER);
     $produitVente1->setStock(3);
     $produitVente1->setRemarque('En très bon état');
     $produitVente1->setPrix('55,00');
@@ -26,7 +26,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente2= new ProduitVente();   
     $produitVente2->setProduit($this->getReference('produit2'));
     $produitVente2->setUser($this->getReference('user2'));
-    $produitVente2->setEtat($this->getReference('etat4'));
+    $produitVente2->setEtat(ProduitVente::A_VALIDER);
     $produitVente2->setStock(10);
     $produitVente2->setRemarque('Une rayure sur le côté');
     $produitVente2->setPrix('23,00');
@@ -36,7 +36,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente3 = new ProduitVente();   
     $produitVente3->setProduit($this->getReference('produit3'));
     $produitVente3->setUser($this->getReference('user3'));
-    $produitVente3->setEtat($this->getReference('etat4'));
+    $produitVente3->setEtat(ProduitVente::A_VALIDER);
     $produitVente3->setStock(3);
     $produitVente3->setRemarque('Bon état');
     $produitVente3->setPrix('10,00');
@@ -46,7 +46,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente4 = new ProduitVente();   
     $produitVente4->setProduit($this->getReference('produit4'));
     $produitVente4->setUser($this->getReference('user2'));
-    $produitVente4->setEtat($this->getReference('etat4'));
+    $produitVente4->setEtat(ProduitVente::A_VALIDER);
     $produitVente4->setStock(3);
     $produitVente4->setRemarque('Rien à dire');
     $produitVente4->setPrix('52,00');
@@ -56,7 +56,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente5 = new ProduitVente();   
     $produitVente5->setProduit($this->getReference('produit5'));
     $produitVente5->setUser($this->getReference('user4'));
-    $produitVente5->setEtat($this->getReference('etat4'));
+    $produitVente5->setEtat(ProduitVente::A_VALIDER);
     $produitVente5->setStock(1);
     $produitVente5->setRemarque('Parfait');
     $produitVente5->setPrix('562,00');

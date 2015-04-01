@@ -21,14 +21,13 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface, Co
   // Dans l'argument de la méthode load, l'objet $manager est l'EntityManager
   public function load(ObjectManager $manager)
   {
-        var_dump($this->getReference('user1')->getId());
         
         $em = $this->container->get('doctrine')->getManager('default');
         $repository = $em->getRepository('OdysseusUserBundle:User');
         $user = $repository->findById($this->getReference('user1')->getId());
        
         $adresse1 = new Adresse();
-        $adresse1->setEtat($this->getReference('etat7'));
+        $adresse1->setEtat(Adresse::VALIDE);
         
         $adresse1->setUser($this->getReference('user1'));
         $adresse1->setType('livraison');
@@ -39,7 +38,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface, Co
         $manager->persist($adresse1);  
         
         $adresse2 = new Adresse();
-        $adresse2->setEtat($this->getReference('etat7'));
+        $adresse2->setEtat(Adresse::VALIDE);
         $adresse2->setUser($this->getReference('user2'));
         $adresse2->setType('livraison');
         $adresse2->setAdresse('35 rue de la mare');
@@ -49,7 +48,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface, Co
         $manager->persist($adresse2);  
         
         $adresse3 = new Adresse();
-        $adresse3->setEtat($this->getReference('etat7'));
+        $adresse3->setEtat(Adresse::VALIDE);
         $adresse3->setUser($this->getReference('user3'));
         $adresse3->setType('livraison');
         $adresse3->setAdresse('52 avenue de la gare');
@@ -59,7 +58,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface, Co
         $manager->persist($adresse3);  
         
         $adresse4 = new Adresse();
-        $adresse4->setEtat($this->getReference('etat7'));
+        $adresse4->setEtat(Adresse::VALIDE);
         $adresse4->setUser($this->getReference('user4'));
         $adresse4->setType('livraison');
         $adresse4->setAdresse('51 rue Saint Anne');
