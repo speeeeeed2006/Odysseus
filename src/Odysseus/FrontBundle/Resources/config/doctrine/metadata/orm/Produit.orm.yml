@@ -2,6 +2,9 @@ Produit:
     type: entity
     table: produit
     indexes:
+        IDX_29A5EC27BCF5E72D:
+            columns:
+                - categorie_id
         fk_Produit_SousCategorie1_idx:
             columns:
                 - sous_categorie_id
@@ -20,7 +23,7 @@ Produit:
     fields:
         reference:
             type: string
-            nullable: false
+            nullable: true
             length: 45
             fixed: false
         nom:
@@ -28,17 +31,12 @@ Produit:
             nullable: false
             length: 45
             fixed: false
-        description:
+        marque:
             type: string
             nullable: false
             length: 45
             fixed: false
-        categorieId:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: categorie_id
-        image:
+        description:
             type: string
             nullable: false
             length: 45
@@ -53,6 +51,15 @@ Produit:
             type: boolean
             nullable: false
     manyToOne:
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
         sousCategorie:
             targetEntity: Souscategorie
             cascade: {  }
@@ -62,13 +69,13 @@ Produit:
                 sous_categorie_id:
                     referencedColumnName: id_sous_categorie
             orphanRemoval: false
-        etat:
-            targetEntity: Etat
+        categorie:
+            targetEntity: Categorie
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                etat_id:
-                    referencedColumnName: id_etat
+                categorie_id:
+                    referencedColumnName: id_categorie
             orphanRemoval: false
     lifecycleCallbacks: {  }

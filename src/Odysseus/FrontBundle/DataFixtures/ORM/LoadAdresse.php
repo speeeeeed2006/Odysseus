@@ -6,15 +6,30 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Odysseus\FrontBundle\Entity\Adresse;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface
+class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+     private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
   // Dans l'argument de la méthode load, l'objet $manager est l'EntityManager
   public function load(ObjectManager $manager)
   {
+        var_dump($this->getReference('user1')->getId());
+        
+        $em = $this->container->get('doctrine')->getManager('default');
+        $repository = $em->getRepository('OdysseusUserBundle:User');
+        $user = $repository->findById($this->getReference('user1')->getId());
        
         $adresse1 = new Adresse();
         $adresse1->setEtat($this->getReference('etat7'));
+        
         $adresse1->setUser($this->getReference('user1'));
         $adresse1->setType('livraison');
         $adresse1->setAdresse('22 rue de la carpe');
@@ -58,7 +73,7 @@ class LoadAdresse extends AbstractFixture implements OrderedFixtureInterface
   
   public function getOrder()
   {
-      return 8;
+      return 7;
   }
 }
 

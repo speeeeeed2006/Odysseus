@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Produit
- *
- * @ORM\Table(name="produit", indexes={@ORM\Index(name="fk_Produit_SousCategorie1_idx", columns={"sous_categorie_id"}), @ORM\Index(name="fk_Produit_Etat1_idx", columns={"etat_id"})})
- * @ORM\Entity
+ * 
+ * @ORM\Table(name="produit", indexes={@ORM\Index(name="IDX_29A5EC27BCF5E72D", columns={"categorie_id"}), @ORM\Index(name="fk_Produit_SousCategorie1_idx", columns={"sous_categorie_id"}), @ORM\Index(name="fk_Produit_Etat1_idx", columns={"etat_id"})})
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\ProduitRepository");
  */
 class Produit
 {
@@ -24,16 +24,23 @@ class Produit
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=40, nullable=false)
+     * @ORM\Column(name="reference", type="string", length=45, nullable=true)
      */
     private $reference;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="nom", type="integer", nullable=false)
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
      */
     private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marque", type="string", length=45, nullable=false)
+     */
+    private $marque;
 
     /**
      * @var string
@@ -43,25 +50,35 @@ class Produit
     private $description;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="stock", type="integer", nullable=false)
+     * @ORM\Column(name="promotion", type="boolean", nullable=false)
      */
-    private $stock;
+    private $promotion;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="categorie_id", type="integer", nullable=false)
+     * @ORM\Column(name="nouveaute", type="boolean", nullable=false)
      */
-    private $categorieId;
+    private $nouveaute;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="image", type="string", length=45, nullable=false)
+     * @ORM\Column(name="alaune", type="boolean", nullable=false)
      */
-    private $image;
+    private $alaune;
+
+    /**
+     * @var \Etat
+     *
+     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
+     * })
+     */
+    private $etat;
 
     /**
      * @var \Souscategorie
@@ -74,30 +91,15 @@ class Produit
     private $sousCategorie;
 
     /**
-     * @var \Etat
+     * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\ManyToOne(targetEntity="Categorie")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
+     *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id_categorie")
      * })
      */
-    private $etat;
-    
+    private $categorie;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="produitProduit")
-     */
-    private $commandeCommande;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commandeCommande = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -136,7 +138,7 @@ class Produit
     /**
      * Set nom
      *
-     * @param integer $nom
+     * @param string $nom
      * @return Produit
      */
     public function setNom($nom)
@@ -149,11 +151,34 @@ class Produit
     /**
      * Get nom
      *
-     * @return integer 
+     * @return string 
      */
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set marque
+     *
+     * @param string $marque
+     * @return Produit
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * Get marque
+     *
+     * @return string 
+     */
+    public function getMarque()
+    {
+        return $this->marque;
     }
 
     /**
@@ -178,170 +203,6 @@ class Produit
     {
         return $this->description;
     }
-
-    /**
-     * Set stock
-     *
-     * @param integer $stock
-     * @return Produit
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock
-     *
-     * @return integer 
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
-     * Set categorieId
-     *
-     * @param integer $categorieId
-     * @return Produit
-     */
-    public function setCategorieId($categorieId)
-    {
-        $this->categorieId = $categorieId;
-
-        return $this;
-    }
-
-    /**
-     * Get categorieId
-     *
-     * @return integer 
-     */
-    public function getCategorieId()
-    {
-        return $this->categorieId;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return Produit
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set sousCategorie
-     *
-     * @param \Odysseus\FrontBundle\Entity\Souscategorie $sousCategorie
-     * @return Produit
-     */
-    public function setSousCategorie(\Odysseus\FrontBundle\Entity\Souscategorie $sousCategorie = null)
-    {
-        $this->sousCategorie = $sousCategorie;
-
-        return $this;
-    }
-
-    /**
-     * Get sousCategorie
-     *
-     * @return \Odysseus\FrontBundle\Entity\Souscategorie 
-     */
-    public function getSousCategorie()
-    {
-        return $this->sousCategorie;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param \Odysseus\FrontBundle\Entity\Etat $etat
-     * @return Produit
-     */
-    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return \Odysseus\FrontBundle\Entity\Etat 
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-    
-
-    /**
-     * Add commandeCommande
-     *
-     * @param \Odysseus\FrontBundle\Entity\Commande $commandeCommande
-     * @return Produit
-     */
-    public function addCommandeCommande(\Odysseus\FrontBundle\Entity\Commande $commandeCommande)
-    {
-        $this->commandeCommande[] = $commandeCommande;
-
-        return $this;
-    }
-
-    /**
-     * Remove commandeCommande
-     *
-     * @param \Odysseus\FrontBundle\Entity\Commande $commandeCommande
-     */
-    public function removeCommandeCommande(\Odysseus\FrontBundle\Entity\Commande $commandeCommande)
-    {
-        $this->commandeCommande->removeElement($commandeCommande);
-    }
-
-    /**
-     * Get commandeCommande
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCommandeCommande()
-    {
-        return $this->commandeCommande;
-    }
-    /**
-     * @var boolean
-     */
-    private $promotion;
-
-    /**
-     * @var boolean
-     */
-    private $nouveaute;
-
-    /**
-     * @var boolean
-     */
-    private $alaune;
-
 
     /**
      * Set promotion
@@ -411,5 +272,73 @@ class Produit
     {
         return $this->alaune;
     }
-   
+
+    /**
+     * Set etat
+     *
+     * @param \Odysseus\FrontBundle\Entity\Etat $etat
+     * @return Produit
+     */
+    public function setEtat(\Odysseus\FrontBundle\Entity\Etat $etat = null)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return \Odysseus\FrontBundle\Entity\Etat 
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set sousCategorie
+     *
+     * @param \Odysseus\FrontBundle\Entity\Souscategorie $sousCategorie
+     * @return Produit
+     */
+    public function setSousCategorie(\Odysseus\FrontBundle\Entity\Souscategorie $sousCategorie = null)
+    {
+        $this->sousCategorie = $sousCategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get sousCategorie
+     *
+     * @return \Odysseus\FrontBundle\Entity\Souscategorie 
+     */
+    public function getSousCategorie()
+    {
+        return $this->sousCategorie;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \Odysseus\FrontBundle\Entity\Categorie $categorie
+     * @return Produit
+     */
+    public function setCategorie(\Odysseus\FrontBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Odysseus\FrontBundle\Entity\Categorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
 }

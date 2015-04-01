@@ -29,6 +29,13 @@ class Categorie
     private $nom;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="alaune", type="boolean", nullable=false)
+     */
+    private $alaune;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Attributproduit", inversedBy="categorieCategorie")
@@ -51,16 +58,7 @@ class Categorie
         $this->attributProduitAttributProduit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-    * Transform to string
-    *
-    * @return string
-    */
-    public function __toString()
-    {
-        return (string) $this->getIdCategorie();
-    }
-    
+
     /**
      * Get idCategorie
      *
@@ -95,6 +93,29 @@ class Categorie
     }
 
     /**
+     * Set alaune
+     *
+     * @param boolean $alaune
+     * @return Categorie
+     */
+    public function setAlaune($alaune)
+    {
+        $this->alaune = $alaune;
+
+        return $this;
+    }
+
+    /**
+     * Get alaune
+     *
+     * @return boolean 
+     */
+    public function getAlaune()
+    {
+        return $this->alaune;
+    }
+
+    /**
      * Add attributProduitAttributProduit
      *
      * @param \Odysseus\FrontBundle\Entity\Attributproduit $attributProduitAttributProduit
@@ -125,33 +146,5 @@ class Categorie
     public function getAttributProduitAttributProduit()
     {
         return $this->attributProduitAttributProduit;
-    }
-    /**
-     * @var boolean
-     */
-    private $alaune;
-
-
-    /**
-     * Set alaune
-     *
-     * @param boolean $alaune
-     * @return Categorie
-     */
-    public function setAlaune($alaune)
-    {
-        $this->alaune = $alaune;
-
-        return $this;
-    }
-
-    /**
-     * Get alaune
-     *
-     * @return boolean 
-     */
-    public function getAlaune()
-    {
-        return $this->alaune;
     }
 }

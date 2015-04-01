@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Pagestatique
  *
  * @ORM\Table(name="pagestatique")
- * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\PageStatiqueRepository");
+ * @ORM\Entity
  */
 class Pagestatique
 {

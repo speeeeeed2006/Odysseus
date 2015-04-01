@@ -29,6 +29,13 @@ class Categorie
     private $nom;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="alaune", type="boolean", nullable=false)
+     */
+    private $alaune;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Attributproduit", inversedBy="categorieCategorie")
@@ -83,6 +90,29 @@ class Categorie
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set alaune
+     *
+     * @param boolean $alaune
+     * @return Categorie
+     */
+    public function setAlaune($alaune)
+    {
+        $this->alaune = $alaune;
+
+        return $this;
+    }
+
+    /**
+     * Get alaune
+     *
+     * @return boolean 
+     */
+    public function getAlaune()
+    {
+        return $this->alaune;
     }
 
     /**

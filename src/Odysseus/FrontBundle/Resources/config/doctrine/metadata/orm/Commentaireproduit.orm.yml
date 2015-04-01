@@ -5,9 +5,9 @@ Commentaireproduit:
         fk_CommentaireProduit_Produit1_idx:
             columns:
                 - produit_id
-        fk_CommentaireProduit_Client1_idx:
+        fk_CommentaireProduit_User1_idx:
             columns:
-                - client_id
+                - user_id
     id:
         idCommentaireProduit:
             type: integer
@@ -37,6 +37,15 @@ Commentaireproduit:
             nullable: false
             column: date_modification
     manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
         produit:
             targetEntity: Produit
             cascade: {  }
@@ -45,14 +54,5 @@ Commentaireproduit:
             joinColumns:
                 produit_id:
                     referencedColumnName: id_produit
-            orphanRemoval: false
-        client:
-            targetEntity: Client
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                client_id:
-                    referencedColumnName: id_client
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -5,9 +5,9 @@ Adresse:
         fk_Adresse_Etat1_idx:
             columns:
                 - etat_id
-        fk_Adresse_Client1_idx:
+        fk_Adresse_User1_idx:
             columns:
-                - client_id
+                - user_id
     id:
         idAdresse:
             type: integer
@@ -41,6 +41,15 @@ Adresse:
             length: 45
             fixed: false
     manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
         etat:
             targetEntity: Etat
             cascade: {  }
@@ -49,14 +58,5 @@ Adresse:
             joinColumns:
                 etat_id:
                     referencedColumnName: id_etat
-            orphanRemoval: false
-        client:
-            targetEntity: Client
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                client_id:
-                    referencedColumnName: id_client
             orphanRemoval: false
     lifecycleCallbacks: {  }

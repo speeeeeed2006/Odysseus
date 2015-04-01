@@ -34,27 +34,25 @@
                 </tr>
             </thead>
             <tbody>
-                {% if (liste_clients | length) > 0 %}
-                    {% for client in liste_clients %}
-                    
-                    {{ liste_adresses|ladybug_dump }}
+                {% if (liste_clients_adresses | length) > 0 %}
+                    {% for data in liste_clients_adresses %}
                         <tr>
-                            <td> {# client.user.username #} </td>
-                            <td> {# if (client.civilite != null )%} {# client.user.civilite #} {# endif #}</td>
-                            <td> {# if (client.nom != null )%} {# client.user.nom #} {# endif #}</td>
-                            <td> {# if (client.prenom != null )%} {# client.user.prenom #} {# endif #}</td>
-                            <td> {# client.user.dateNaissance|date("d/m/Y") #} </td>
-                            <td> {# adresse.id.adresse #} </td>
-                            <td> {# client.cp #} </td>
-                            <td> {# client.ville #} </td>
-                            <td> {# client.pays #} </td>
-                            <td> {# if (client.user.telephone != null )%} {# client.user.telephone #} {# endif %}</td>
-                            <td> {# client.user.email #} </td>
-                            <td> {# if (client.user.dateCreation != null )%} {# client.user.dateCreation|date("d/m/Y") #} {# endif %}</td>
-                            <td> {# if (client.user.dateModification != null )%} {# client.user.dateModification|date("d/m/Y") #} {# endif #} </td></td>
-                            <td> {# if (client.user.etat != null )%} {# client.user.etat.nom #} {# endif #}</td> 
+                            <td> {{ data['client'].username }} </td>
+                            <td> {% if (data['client'].civilite != null ) %} {{ data['client'].civilite }} {% endif %}</td>
+                            <td> {% if (data['client'].nom != null )%} {{ data['client'].nom }} {% endif %}</td>
+                            <td> {% if (data['client'].prenom != null )%} {{ data['client'].prenom }} {% endif %}</td>
+                            <td> {{ data['client'].dateNaissance|date("d/m/Y") }} </td>
+                            <td> {{ data['adresse'].adresse }} </td>
+                            <td> {{ data['adresse'].cp }} </td>
+                            <td> {{ data['adresse'].ville }} </td>
+                            <td> {{ data['adresse'].pays  }} </td>
+                            <td> {% if (data['client'].telephone != null )%} {{ data['client'].telephone }} {% endif %}</td>
+                            <td> {{ data['client'].email }} </td>
+                            <td> {% if (data['client'].dateCreation != null )%} {{ data['client'].dateCreation|date("d/m/Y") }} {% endif %}</td>
+                            <td> {% if (data['client'].dateModification != null )%} {{ data['client'].dateModification|date("d/m/Y") }} {% endif %} </td></td>
+                            <td> {% if (data['client'].etat != null )%} {{ data['client'].etat.nom }} {% endif %}</td> 
                             <td>
-                                <a href="{# path('odysseus_back_bannir_client', {id: client.id}) #}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
+                                <a href="{{ path('odysseus_back_bannir_client', {id: data['client'].id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a> 
                             </td>
                         </tr>
                     {% endfor %}

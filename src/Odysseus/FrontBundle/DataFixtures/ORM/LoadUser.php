@@ -97,15 +97,14 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user4->setDateNaissance(new \DateTime('1990-02-29'));
         $user4->setDateCreation(new \DateTime('now'));
         $user4->setEtat($this->getReference('etat1'));
+        
         $manager->persist($user4);
-           
-        $manager->flush();
         
         $this->addReference('user1', $user1);
         $this->addReference('user2', $user2);
         $this->addReference('user3', $user3);
         $this->addReference('user4', $user4);
-
+        $manager->flush();
    }
   
     public function getOrder()

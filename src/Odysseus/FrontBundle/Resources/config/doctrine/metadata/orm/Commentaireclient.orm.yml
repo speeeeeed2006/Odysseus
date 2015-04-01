@@ -2,12 +2,12 @@ Commentaireclient:
     type: entity
     table: commentaireclient
     indexes:
-        fk_CommentaireProduit_Client1_idx:
+        IDX_C8F020D57DF81F10:
             columns:
-                - acheteur_client_id
-        fk_CommentaireClient_Client1_idx:
+                - vendeur_user_id
+        fk_CommentaireClient_User1_idx:
             columns:
-                - vendeur_client_id
+                - acheteur_user_id
     id:
         idCommentaireClient:
             type: integer
@@ -37,22 +37,22 @@ Commentaireclient:
             nullable: false
             column: date_modification
     manyToOne:
-        acheteurClient:
-            targetEntity: Client
+        vendeurUser:
+            targetEntity: User
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                acheteur_client_id:
-                    referencedColumnName: id_client
+                vendeur_user_id:
+                    referencedColumnName: id
             orphanRemoval: false
-        vendeurClient:
-            targetEntity: Client
+        acheteurUser:
+            targetEntity: User
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                vendeur_client_id:
-                    referencedColumnName: id_client
+                acheteur_user_id:
+                    referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

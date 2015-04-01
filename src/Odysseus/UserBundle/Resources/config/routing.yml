@@ -34,3 +34,7 @@ odysseus_front_profile:
 odysseus_front_profile_view:
     path:     /profile
     defaults: { _controller: OdysseusUserBundle:Profile:show }
+    
+odysseus_front_profile_adresse:
+    path:     /profile/adresse
+    defaults: { _controller: OdysseusUserBundle:Profile:adresse }

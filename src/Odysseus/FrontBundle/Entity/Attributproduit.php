@@ -22,9 +22,9 @@ class Attributproduit
     private $idAttributProduit;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="nom", type="integer", nullable=false)
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
      */
     private $nom;
 
@@ -64,7 +64,7 @@ class Attributproduit
     /**
      * Set nom
      *
-     * @param integer $nom
+     * @param string $nom
      * @return Attributproduit
      */
     public function setNom($nom)
@@ -77,7 +77,7 @@ class Attributproduit
     /**
      * Get nom
      *
-     * @return integer 
+     * @return string 
      */
     public function getNom()
     {

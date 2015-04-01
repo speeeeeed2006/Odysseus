@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Souscategorie
  *
  * @ORM\Table(name="souscategorie", indexes={@ORM\Index(name="fk_SousCategorie_Categorie1_idx", columns={"categorie_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\SouscategorieRepository");
  */
 class Souscategorie
 {
@@ -39,15 +39,6 @@ class Souscategorie
     private $categorie;
 
 
-    /**
-    * Transform to string
-    *
-    * @return string
-    */
-    public function __toString()
-    {
-        return (string) $this->getIdSousCategorie();
-    }
 
     /**
      * Get idSousCategorie
@@ -57,18 +48,6 @@ class Souscategorie
     public function getIdSousCategorie()
     {
         return $this->idSousCategorie;
-    }
-    
-    /**
-     * Set idSousCategorie
-     *
-     * @param integer $idSousCategorie
-     * @return Souscategorie
-     */
-    function setIdSousCategorie($idSousCategorie) {
-        $this->idSousCategorie = $idSousCategorie;
-        
-        return $this;
     }
 
     /**
@@ -116,8 +95,4 @@ class Souscategorie
     {
         return $this->categorie;
     }
-    
-    
-
-
 }
