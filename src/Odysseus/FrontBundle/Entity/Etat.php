@@ -3,6 +3,7 @@
 namespace Odysseus\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Etat
@@ -39,9 +40,22 @@ class Etat
      * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commande", mappedBy="etat")
      */
     protected $commande;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\ImageSlider", mappedBy="etat")
+     */
+    protected $imageSlider;
 
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->imageSlider = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+   
     /**
      * Get idEtat
      *
@@ -96,5 +110,38 @@ class Etat
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Add commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commande
+     * @return Etat
+     */
+    public function addCommande(\Odysseus\FrontBundle\Entity\Commande $commande)
+    {
+        $this->commande[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commande
+     */
+    public function removeCommande(\Odysseus\FrontBundle\Entity\Commande $commande)
+    {
+        $this->commande->removeElement($commande);
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommande()
+    {
+        return $this->commande;
     }
 }

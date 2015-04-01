@@ -242,4 +242,37 @@ class User extends BaseUser
     {
         $this->adresse->removeElement($adresse);
     }
+
+    /**
+     * Add commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commande
+     * @return User
+     */
+    public function addCommande(\Odysseus\FrontBundle\Entity\Commande $commande)
+    {
+        $this->commande[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commande
+     */
+    public function removeCommande(\Odysseus\FrontBundle\Entity\Commande $commande)
+    {
+        $this->commande->removeElement($commande);
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommande()
+    {
+        return $this->commande;
+    }
 }
