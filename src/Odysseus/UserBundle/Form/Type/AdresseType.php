@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 namespace Odysseus\UserBundle\Form\Type;
-=======
-namespace Odysseus\BackBundle\Form\Type;
->>>>>>> origin/predev2
+
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,6 +17,7 @@ class AdresseType extends AbstractType
     {
         $builder
             ->add('adresse',    'text')
+            ->add('type',    'text')
             ->add('cp', 'integer', array('max_length' => 5))
             ->add('ville','text')
             ->add('pays','text');

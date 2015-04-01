@@ -106,16 +106,37 @@ class User extends BaseUser
      */
     protected $commande;
     
+    /**  
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commentaireclient", mappedBy="user")
+     */
+    protected $commentaireVendeur;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commentaireclient", mappedBy="user")
+     */
+    protected $commentaireAcheteur;
     
-    public function __construct()
-    {
+    function __construct() {
         parent::__construct();
         $this->adresse = new \Doctrine\Common\Collections\ArrayCollection();
         $this->commande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commentaireVendeur = new \Doctrine\Common\Collections\ArrayCollection();;
+        $this->commentaireAcheteur = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    /**
+    function getCommande() {
+        return $this->commande;
+    }
+
+    function getCommentaireVendeur() {
+        return $this->commentaireVendeur;
+    }
+
+    function getCommentaireAcheteur() {
+        return $this->commentaireAcheteur;
+    }
+
+        /**
     *
     * @return string String representation of this class
     */

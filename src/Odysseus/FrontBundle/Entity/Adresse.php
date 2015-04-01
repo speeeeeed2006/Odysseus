@@ -67,7 +67,7 @@ class Adresse
     /**
      * @var \Etat
      *
-     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\ManyToOne(targetEntity="Etat", inversedBy="adresse")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="etat_id", referencedColumnName="id_etat")
      * })

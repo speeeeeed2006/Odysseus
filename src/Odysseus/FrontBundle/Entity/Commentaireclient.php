@@ -52,7 +52,7 @@ class Commentaireclient
     /**
      * @var \Odysseus\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User", inversedBy="commentaireVendeur")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="vendeur_user_id", referencedColumnName="id")
      * })
@@ -62,7 +62,7 @@ class Commentaireclient
     /**
      * @var \Odysseus\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="\Odysseus\UserBundle\Entity\User", inversedBy="commentaireAcheteur")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="acheteur_user_id", referencedColumnName="id")
      * })

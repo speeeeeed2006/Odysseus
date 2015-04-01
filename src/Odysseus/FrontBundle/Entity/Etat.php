@@ -40,23 +40,39 @@ class Etat
      * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Commande", mappedBy="etat")
      */
     protected $commande;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Adresse", mappedBy="etat")
+     */
+    protected $adresse;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Produit", mappedBy="etat")
+     */
+    protected $produit;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\ProduitVente", mappedBy="etat")
+     */
+    protected $produitVente;
     
     /**
      * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\ImageSlider", mappedBy="etat")
      */
     protected $imageSlider;
-
-
+    
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->commande = new \Doctrine\Common\Collections\ArrayCollection();
+    function __construct() {
+        $this->commande = new ArrayCollection();
+        $this->adresse = new ArrayCollection();
+        $this->produit = new ArrayCollection();
+        $this->produitVente = new ArrayCollection();
         $this->imageSlider = new \Doctrine\Common\Collections\ArrayCollection();
     }
-   
-    /**
+
+        /**
      * Get idEtat
      *
      * @return integer 
