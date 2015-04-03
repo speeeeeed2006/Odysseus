@@ -1,0 +1,19 @@
+{% if  (nouveaute | length) > 0 %}
+<h2>Nouveau</h2>
+<img src="{{ asset('images/image_liste.jpg') }}" alt="">
+<span class="marque"> {{ nouveaute.produit.marque }}</span>
+<span class="nom_produit">{{ nouveaute.produit.nom }}</span>
+<p class="descriptif">{{ nouveaute.produit.description  }}</p>	
+<span class="prix">{{ nouveaute.prix }}€</span>
+<a href="{{ path ('odysseus_front_produit_presentation', { id : nouveaute.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
+
+{% else %}
+<h2>Nouveau</h2>
+<img src="{{ asset('images/image_liste.jpg') }}" alt="">
+<span class="marque">Marque</span>
+<span class="nom_produit">Nom produit</span>
+<p class="descriptif">Lorem ipsum dolor sit amet, consectetur adipisicing elistrud ullamco.</p>	
+<span class="prix">159 €</span>
+
+<a href="{{ path ('odysseus_front_produit_presentation', { id : nouveaute.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
+{% endif %}

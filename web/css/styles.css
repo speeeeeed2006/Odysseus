@@ -224,24 +224,23 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 
 #wrap #bas #a_la_une { background: #ebe4de; width: 570px; margin-right: 40px; padding: 0 25px; }
 #wrap #bas #a_la_une .produit { width: 250px; }
-#wrap #bas #a_la_une .produit:nth-of-type(1) { margin-right: 70px; }
+#wrap #bas #a_la_une .produit:nth-of-type(1) { margin-right: 65px; }
 #wrap #bas #a_la_une .produit { margin:  0 0px 15px 0;}
 #wrap #bas #a_la_une .produit img,
-#wrap #bas #nouveau img { width: 250px; height: 140px; background: #cccccc; display: block;  margin-bottom: 16px;}
+#wrap #bas #nouveau img { width: 250px; height: 200px; background: #cccccc; display: block;  margin-bottom: 16px;}
 
 
 #wrap #bas #a_la_une #plus_produits { background: #d3c5b9 url('../images/sprite.png') 6px -204px no-repeat;  width: 128px; height: 24px; line-height: 24px; padding: 0px 0 0px 36px; float: right;}
 #wrap #bas #a_la_une #plus_produits span a { color: #ffffff; text-align: right; }
 #wrap #bas #a_la_une #plus_produits span a:hover { color: #000000;}
 
-#wrap #bas #nouveau { background: #ebe4de; width: 262px; padding: 0 20px 20px; border: 4px solid #5fb7c6; height: 362px;}
+#wrap #bas #nouveau { background: #ebe4de; width: 262px; padding: 0 20px 20px; border: 4px solid #5fb7c6; /* height: 362px;*/}
 #wrap #bas #nouveau h2 { background: #5fb7c6; color: #ffffff ; display: block; width: 270px; height: 44px; line-height: 44px; letter-spacing: 2px; margin: 0 0 38px -20px; text-indent: 20px; text-transform: uppercase; border: none; }
 #wrap #bas #nouveau h2:before {content: '';}
 
 /* ----------------------------- */
 /* Contenu connexion
 /* ----------------------------- */
-#wrap .sous-titre {  }
 #wrap .fond {  }
 .fond ul li { background: #C9302C; color: #ffffff; padding:5px 10px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; list-style:none;}
 #wrap form {  }

@@ -61,19 +61,6 @@ class Produit
      */
     private $promotion;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="nouveaute", type="boolean", nullable=false)
-     */
-    private $nouveaute;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="alaune", type="boolean", nullable=false)
-     */
-    private $alaune;
 
     /**
      * @var string
@@ -228,51 +215,7 @@ class Produit
         return $this->promotion;
     }
 
-    /**
-     * Set nouveaute
-     *
-     * @param boolean $nouveaute
-     * @return Produit
-     */
-    public function setNouveaute($nouveaute)
-    {
-        $this->nouveaute = $nouveaute;
 
-        return $this;
-    }
-
-    /**
-     * Get nouveaute
-     *
-     * @return boolean 
-     */
-    public function getNouveaute()
-    {
-        return $this->nouveaute;
-    }
-
-    /**
-     * Set alaune
-     *
-     * @param boolean $alaune
-     * @return Produit
-     */
-    public function setAlaune($alaune)
-    {
-        $this->alaune = $alaune;
-
-        return $this;
-    }
-
-    /**
-     * Get alaune
-     *
-     * @return boolean 
-     */
-    public function getAlaune()
-    {
-        return $this->alaune;
-    }
 
     /**
      * Set etat

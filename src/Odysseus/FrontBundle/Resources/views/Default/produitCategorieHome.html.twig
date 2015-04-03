@@ -1,0 +1,42 @@
+{% if (liste_produits| length) > 0 %}
+
+<h2>{{ categorie.nom }}</h2>
+
+{% for produit in liste_produits %}
+<div class="produit">
+    <img src="{{ asset('images/image_liste.jpg') }}" alt="" />
+    <span class="marque">{{ produit.produit.marque }}</span>
+    <span class="nom_produit">{{ produit.produit.nom }}</span>
+    <p class="descriptif">{{ produit.produit.description }}</p>
+    <span class="prix">{{ produit.prix }} €</span>
+    <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
+</div><!-- fin .produit -->
+{% endfor %}
+<div id="plus_produits">
+    <span><a href="" title="">Voir + de produits</span></a>
+</div> <!-- fin .#plus_produits -->
+
+{% else %}
+
+<h2>Catégorie à la une</h2>
+<div class="produit">
+    <img src="{{ asset('images/image_liste.jpg') }}" alt="" />
+    <span class="marque">Marque</span>
+    <span class="nom_produit">Nom produit</span>
+    <p class="descriptif">Lorem ipsum dolor sit amet, consectetur adipisicing elistrud ullamco, consectetur adipisicing elistrud ullamco.</p>
+    <span class="prix">159 €</span>
+    <a href="" title=""><span class="infos">+ Plus d'infos</span></a>
+</div><!-- fin .produit --><!--
+--><div class="produit">
+    <img src="{{ asset('images/image_liste.jpg') }}" alt="" />
+    <span class="marque">Marque</span>
+    <span class="nom_produit">Nom produit</span>
+    <p class="descriptif">Lorem ipsum dolor sit amet, consectetur adipisicing elistrud ullamco.</p>
+    <span class="prix">159 €</span>
+    <a href="" title=""><span class="infos">+ Plus d'infos</span></a>
+</div><!-- fin .produit -->
+<div id="plus_produits">
+    <span><a href="" title="">Voir + de produits</span></a>
+</div> <!-- fin .#plus_produits -->
+
+{% endif %}

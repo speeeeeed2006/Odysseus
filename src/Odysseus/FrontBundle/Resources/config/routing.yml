@@ -20,6 +20,10 @@ odysseus_front_mentions:
 odysseus_front_home:
     path:     /home
     defaults: { _controller: OdysseusFrontBundle:Main:home }
+    
+odysseus_front_nouveaute:
+    path:     /nouveaute
+    defaults: { _controller: OdysseusFrontBundle:Main:nouveaute }
        
  #------------ fin Main  
  

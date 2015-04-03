@@ -96,4 +96,23 @@ class ProduitVenteRepository extends EntityRepository
                      ->getQuery()
                      ->getResult();  
      }
+     
+    public function getProduitVenteCategorieALaUne()
+    {
+         return $this->createQueryBuilder('pv')
+                     //->join('pv.idProduit', 'p')
+                     ->where('pv.alaune = 1')
+                     ->getQuery()
+                     ->getResult();  
+     }
+     
+    public function getProduitVenteNouveauteALaUne()
+    {
+         return $this->createQueryBuilder('pv')
+                     ->where('pv.nouveaute = 1')
+                     ->getQuery()
+                     ->getSingleResult();  
+     }
+     
+     
 }

@@ -170,3 +170,7 @@ odysseus_back_supprimer_image_slider:
 #odysseus_back_categorie_a_la_une:
     #path:     choisir-produits-a-la-une
     #defaults: { _controller: OdysseusBackBundle:Home:choisirCategorie }
+    
+odysseus_back_nouveaute:
+    path:     /nouveaute
+    defaults: { _controller: OdysseusBackBundle:Home:choisirNouveaute }

@@ -21,6 +21,8 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente1->setRemarque('En très bon état');
     $produitVente1->setPrix('55,00');
     $produitVente1->setDateAjout(new \DateTime('now'));
+    $produitVente1->setNouveaute(0);
+    $produitVente1->setAlaune(1); 
     $manager->persist($produitVente1);
     
     $produitVente2= new ProduitVente();   
@@ -31,6 +33,8 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente2->setRemarque('Une rayure sur le côté');
     $produitVente2->setPrix('23,00');
     $produitVente2->setDateAjout(new \DateTime('now'));
+    $produitVente2->setNouveaute(0);
+    $produitVente2->setAlaune(0);
     $manager->persist($produitVente2);
             
     $produitVente3 = new ProduitVente();   
@@ -41,6 +45,8 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente3->setRemarque('Bon état');
     $produitVente3->setPrix('10,00');
     $produitVente3->setDateAjout(new \DateTime('now'));
+    $produitVente3->setNouveaute(0);
+    $produitVente3->setAlaune(0);
     $manager->persist($produitVente3);
     
     $produitVente4 = new ProduitVente();   
@@ -51,6 +57,8 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente4->setRemarque('Rien à dire');
     $produitVente4->setPrix('52,00');
     $produitVente4->setDateAjout(new \DateTime('now'));
+    $produitVente4->setNouveaute(0);
+    $produitVente4->setAlaune(0);
     $manager->persist($produitVente4);
     
     $produitVente5 = new ProduitVente();   
@@ -61,6 +69,8 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente5->setRemarque('Parfait');
     $produitVente5->setPrix('562,00');
     $produitVente5->setDateAjout(new \DateTime('now'));
+    $produitVente5->setNouveaute(0);
+    $produitVente5->setAlaune(0);
     $manager->persist($produitVente5);
     
     $manager->flush();

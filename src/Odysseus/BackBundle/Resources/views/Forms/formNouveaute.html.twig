@@ -1,0 +1,18 @@
+
+<div class="well">
+	<form method="post" action="" {{ form_enctype(form) }} id="form_produits">
+
+		{# les erreurs générales du form #}
+                {{ form_errors(form) }}
+
+                <div class="row show-grid">
+                    <div class="col-md-3"> {{ form_label(form.produit, "Choisir le Produit") }} </div>
+                    <div class="col-md-6"> {{ form_errors(form.produit) }} </div>
+                    <div class="col-md-6"> {{ form_widget(form.produit) }} </div>
+		</div>
+                <br/>
+                
+		<input type="submit" value="Valider" class="btn btn-success">
+                {{ form_rest(form) }}
+	</form>
+</div>	

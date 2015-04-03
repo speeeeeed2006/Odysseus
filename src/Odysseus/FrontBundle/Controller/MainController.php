@@ -53,6 +53,36 @@ class MainController extends Controller
         );
         
     }
+    
+    public function afficherNouveauteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+       
+        $nouveaute = $em->getRepository('OdysseusFrontBundle:ProduitVente')
+                        ->getProduitVenteNouveauteALaUne();
+        
+        return $this->render('OdysseusFrontBundle:Default:nouveaute.html.twig',
+        	array('nouveaute' => $nouveaute) 
+        );
+        
+    }
+    
+    public function afficherProduitCategorieAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+       
+        $listeProduits = $em->getRepository('OdysseusFrontBundle:ProduitVente')
+                            ->getProduitVenteCategorieALaUne();
+        
+        $categorieALaUne = $em->getRepository('OdysseusFrontBundle:Categorie')
+                              ->getCategorieALaUne();
+        
+        return $this->render('OdysseusFrontBundle:Default:produitCategorieHome.html.twig',
+        	array('liste_produits' => $listeProduits,
+                      'categorie' => $categorieALaUne ) 
+        );
+        
+    }
      
     public function panierAction()
     {
