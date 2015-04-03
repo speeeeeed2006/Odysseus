@@ -28,7 +28,7 @@
                     <td> {{ page.slug }} </td>
                     <td> {{ page.titre }} </td>
                     <td> {{ page.contenu | truncate(200, true, '...') }}</td>
-                    <td><a href="{{ path('odysseus_back_modifier_pages', {id: page.id}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                    <td><a href="{{ path('odysseus_back_modifier_pages', {id: page.idPageStatique}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
                 </tr>
                 {% endfor %}
             {% else %}

@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Commande
 {
     const EN_ATTENTE_PAIEMENT = 'en attente paiement';
-    const PAYE = 'payé';
+    const PAYE = 'payée';
     const EN_LIVRAISON = 'en livraison';
-    const LIVRE = 'livré';
+    const LIVRE = 'livrée';
     
     /**
      * @var integer

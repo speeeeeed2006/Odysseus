@@ -11,21 +11,32 @@ class CommandeController extends Controller
 {
     public function commandeEnAttenteAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        
         $listeCommandes =  $this->getDoctrine()
                                  ->getManager()
                                  ->getRepository('OdysseusFrontBundle:Commande')
                                  ->getCommandeEnAttentePaiement();   
+
+        $listeCommandesAdresse = array();
         
-//        $listeCommandesClient = array();
-//        foreach($listeCommandes as $commande){ 
-//            $client = $em->getRepository('OdysseusUserBundle:User')->getClientCommande($commande);
-//            
-//            array_push($listeCommandesClient, array('commande'=> $commande,'client' => $client));
-//           
-//        }
+        foreach($listeCommandes as $commande){  
+            $adresseF = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($commande->getUser());     
+            //$adresseL = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseLivraison($commande->getUser());     
+
+//            if(empty($adresseL))
+//               array_push($listeCommandesAdresse, array('adresseL' => $adresseL));
+//            else 
+//              array_push($listeCommandesAdresse, array('adresseL' => '-'));  
+                
+            array_push($listeCommandesAdresse, array('commande'=> $commande,
+                                                     'adresseF' => $adresseF,
+                                                     //'adresseL' => $adresseL
+                ));  
+        }
         
         return $this->render('OdysseusBackBundle:Commande:listerCommandeEnAttente.html.twig',
-        	array('liste_commandes' => $listeCommandes)
+                array('liste_commandes' => $listeCommandesAdresse)
         );
     }
     
@@ -35,14 +46,11 @@ class CommandeController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         
-        $commande = $em->getRepository('OdysseusFrontBundle:Commande')
-                      ->find($id);
+        $commande = $em->getRepository('OdysseusFrontBundle:Commande')->find($id);
         
         if (!$commande) {
             throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
         }
-        
-        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
         $commande->setEtat(Commande::PAYE);
         $em->flush();
@@ -50,22 +58,29 @@ class CommandeController extends Controller
         //on affiche un message flash
         $this->get('session')->getFlashBag()->add('commande', 'La commande est passée "payée"');
 
-        return $this->redirect($this->generateUrl('odysseus_back_lister_commande_payee'/*, array('page' => 1)*/));       
+        return $this->redirect($this->generateUrl('odysseus_back_lister_commande_payee'));       
     }
     
 
     
     public function commandePayeeAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        
         $listeCommandes =  $this->getDoctrine()
                                  ->getManager()
                                  ->getRepository('OdysseusFrontBundle:Commande')
                                  ->getCommandePayee();
         
-        //$this->get('ladybug')->log($listeCommandes);
+        $listeCommandesAdresse = array();
+        
+        foreach($listeCommandes as $commande){  
+            $adresseF = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($commande->getUser());     
+            array_push($listeCommandesAdresse, array('commande'=> $commande,'adresseF' => $adresseF));  
+        }
         
         return $this->render('OdysseusBackBundle:Commande:listerCommandePayee.html.twig',
-        	array('liste_commandes' => $listeCommandes)
+        	array('liste_commandes' => $listeCommandesAdresse)
         );
     }
     
@@ -81,28 +96,33 @@ class CommandeController extends Controller
             throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
         }
         
-        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
-        
         $commande->setEtat(Commande::EN_LIVRAISON);
         $em->flush();
         
         //on affiche un message flash
         $this->get('session')->getFlashBag()->add('commande', 'La commande est passée "en cours de livraison"');
 
-        return $this->redirect($this->generateUrl('odysseus_back_lister_commande_en_cours_livraison'/*, array('page' => 1)*/));       
+        return $this->redirect($this->generateUrl('odysseus_back_lister_commande_en_cours_livraison'));       
     }
     
     public function commandeEnCoursDeLivraisonAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        
         $listeCommandes =  $this->getDoctrine()
                                  ->getManager()
                                  ->getRepository('OdysseusFrontBundle:Commande')
                                  ->getCommandeEnCoursDeLivraison();
         
-        //$this->get('ladybug')->log($listeCommandes);
+        $listeCommandesAdresse = array();
+        
+        foreach($listeCommandes as $commande){  
+            $adresseF = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($commande->getUser());     
+            array_push($listeCommandesAdresse, array('commande'=> $commande,'adresseF' => $adresseF));  
+        }
         
         return $this->render('OdysseusBackBundle:Commande:listerCommandeEnCoursDeLivraison.html.twig',
-        	array('liste_commandes' => $listeCommandes)
+        	array('liste_commandes' => $listeCommandesAdresse)
         );
     }
     
@@ -118,26 +138,33 @@ class CommandeController extends Controller
             throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
         }
         
-        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
-        
         $commande->setEtat(Commande::LIVRE);
         $em->flush();
         
         //on affiche un message flash
         $this->get('session')->getFlashBag()->add('commande', 'La commande est passée "livrée"');
 
-        return $this->redirect($this->generateUrl('odysseus_back_lister_commande_livree'/*, array('page' => 1)*/));       
+        return $this->redirect($this->generateUrl('odysseus_back_lister_commande_livree'));       
     }
     
     public function commandeLivreeAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        
         $listeCommandes =  $this->getDoctrine()
                                  ->getManager()
                                  ->getRepository('OdysseusFrontBundle:Commande')
                                  ->getCommandeLivree();
-                
+         
+        $listeCommandesAdresse = array();
+        
+        foreach($listeCommandes as $commande){  
+            $adresseF = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($commande->getUser());     
+            array_push($listeCommandesAdresse, array('commande'=> $commande,'adresseF' => $adresseF));  
+        }
+        
         return $this->render('OdysseusBackBundle:Commande:listerCommandeLivree.html.twig',
-        	array('liste_commandes' => $listeCommandes)
+        	array('liste_commandes' => $listeCommandesAdresse)
         );
     }
     

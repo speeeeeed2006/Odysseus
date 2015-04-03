@@ -284,8 +284,8 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 /* ----------------------------- */
 
 #wrap #photos {   }
-#wrap #photos img {  background: #cccccc; width: 590px; height: 310px; display: inline-block; vertical-align: bottom;  margin-right: 10px;}
-#wrap #photos .vignette { display: inline-block; background: #cccccc; width: 104px; height: 104px; }
+#wrap #photos img {  background: #cccccc; width: 500px; height: 400px; display: inline-block; vertical-align: bottom;  margin-right: 10px; overflow: hidden;}
+/*#wrap #photos .vignette { display: inline-block; background: #cccccc; width: 104px; height: 104px; }*/
 
 #wrap #photos, #wrap #details { margin-bottom: 40px; }
 #wrap #details #gauche, #wrap #details #droite,

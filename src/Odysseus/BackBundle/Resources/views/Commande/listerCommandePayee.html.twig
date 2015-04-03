@@ -17,7 +17,7 @@
                 <tr>
                     <th>Client</th>    
                     <th>Client ip</th>
-                    <th>Vendeur</th>
+                    <th>Vendeur ???</th>
                     <th>Date de commande</th>
                     <th>Date de paiement</th>
                     <th>Montant</th>
@@ -32,18 +32,23 @@
                 {% if (liste_commandes | length) > 0 %}
                     {% for commande in liste_commandes %} 
                         <tr>
-                            <td> {# client.user.username #} </td>
-                            <td> {{ commande.clientIp }} </td>
-                            <td>  </td>
-                            <td> {{ commande.dateCommande|date("d/m/Y") }} </td>
-                            <td> {{ commande.datePaiement|date("d/m/Y") }} </td>
-                            <td> {{ commande.montant }} </td>
-                            <td> {# commande.adresseLivraison #} </td>
-                            <td> {# commande.adresseFacturation #} </td>
-                            <td> {# commande.modePaiement #} </td>
-                            <td> {{ commande.etat }} </td>
+                            <td> {{ commande['commande'].user.username }} </td>
+                            <td> {{ commande['commande'].clientIp }} </td>
+                            <td> ??? </td>
+                            <td> {{ commande['commande'].dateCommande|date("d/m/Y") }} </td>
+                            <td> {{ commande['commande'].datePaiement|date("d/m/Y") }} </td>
+                            <td> {{ commande['commande'].montant }} </td>
+                            <td> 
+                                 {% if (commande['adresseL'].adresse | length) > O %}
+                                   {{ commande['adresseL'].adresse ~ ' - ' ~ commande['adresseL'].cp ~ ' ' ~ commande['adresse'].ville }} 
+                                 {% else %}
+                                    -
+                                 {% endif %} </td>
+                            <td> {{ commande['adresseF'].adresse ~ ' - ' ~ commande['adresseF'].cp ~ ' ' ~ commande['adresseF'].ville }} </td>
+                            <td> {{ commande['commande'].modePaiement.nom }} </td>
+                            <td> {{ commande['commande'].etat }} </td>
                             <td>
-                                <a href="{{ path('odysseus_back_lister_commande_valider_en_cours_livraison', {id: commande.idCommande}) }}"><i class="glyphicon glyphicon-road"></i></a> 
+                                <a href="{{ path('odysseus_back_lister_commande_valider_en_cours_livraison', {id: commande['commande'].idCommande}) }}"><i class="glyphicon glyphicon-road"></i></a> 
                             </td>
                         </tr>
                     {% endfor %}

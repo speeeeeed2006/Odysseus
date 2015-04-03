@@ -15,12 +15,13 @@ class CommandeRepository extends EntityRepository
                     ->getQuery()
                     ->getResult();
     }
+   
     
     public function getCommandePayee()
     {
         return $this->createQueryBuilder('c')
                     ->where('c.etat = :etat')
-                    ->setParameter('etat', 'payé')
+                    ->setParameter('etat', 'payée')
                     ->getQuery()
                     ->getResult();
     }
@@ -29,7 +30,7 @@ class CommandeRepository extends EntityRepository
     {
         return $this->createQueryBuilder('c')
                     ->where('c.etat = :etat')
-                    ->setParameter('etat', 'en cours livraison')
+                    ->setParameter('etat', 'en livraison')
                     ->getQuery()
                     ->getResult();
     }
@@ -38,9 +39,23 @@ class CommandeRepository extends EntityRepository
     {
         return $this->createQueryBuilder('c')
                     ->where('c.etat = :etat')
-                    ->setParameter('etat', 'livre')
+                    ->setParameter('etat', 'livrée')
                     ->getQuery()
                     ->getResult();
     }
+    
+    
+    public function getClientCommande($commande)
+    {   
+        return $this->createQueryBuilder('c')
+                    ->join('c.user', 'u')
+                    ->addSelect('u')
+                    ->where('c.idCommande = :commande' )
+                    ->setParameter('commande' , $commande) 
+                    ->getQuery()
+                    ->getResult();
+    }
+    
+    
     
 }

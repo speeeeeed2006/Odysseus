@@ -17,7 +17,7 @@ use Odysseus\FrontBundle\Entity\Etat;
 class ImageSlider
 {
     
-    const ACTIVE = 'active';
+    const ACTIVEE = 'activée';
     const DESACTIVEE = 'désactivée';
     /**
      * @var integer

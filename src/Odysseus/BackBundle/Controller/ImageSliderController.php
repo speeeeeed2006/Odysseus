@@ -13,25 +13,25 @@ class ImageSliderController extends Controller
     
     public function listerAction()
     {
-        $listeImages = $this->getDoctrine()
+        $listeImagesSlider = $this->getDoctrine()
                             ->getManager()
                             ->getRepository('OdysseusFrontBundle:ImageSlider')
                              //revoir la méthode
                             ->findAll();
         
-        $this->get('ladybug')->log($listeImages);
+        $this->get('ladybug')->log($listeImagesSlider);
         
         return $this->render('OdysseusBackBundle:ImageSlider:lister.html.twig',
-        	array('liste_images' => $listeImages)
+        	array('liste_imagesSlider' => $listeImagesSlider)
         );
     }
     
     public function ajouterAction() {
 
-        $image = new ImageSlider();
+        $imageSlider = new ImageSlider();
 
         //le form builder
-        $form = $this->createFormBuilder($image)
+        $form = $this->createFormBuilder($imageSlider)
                      ->add('nom')
                      ->add('file')
                      ->getForm();
@@ -45,7 +45,9 @@ class ImageSliderController extends Controller
                 //on en registre notre objet ds la bdd
                 $em = $this->getDoctrine()->getManager();
                 
-                $em->persist($image);
+                $em->persist($imageSlider);
+                
+                $imageSlider->setEtat(ImageSlider::ACTIVEE);
                 $em->flush();    
             
                 //on affiche un message flash
@@ -74,7 +76,7 @@ class ImageSliderController extends Controller
 
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $imageSlider->setEtat($etat->getEtatActive());
+        $imageSlider->setEtat(ImageSlider::ACTIVEE);
            
         $em->flush();
         
@@ -96,7 +98,7 @@ class ImageSliderController extends Controller
 
         $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
-        $imageSlider->setEtat($etat->getEtatDesactive());
+        $imageSlider->setEtat(ImageSlider::DESACTIVEE);
            
         $em->flush();
         
@@ -138,11 +140,5 @@ class ImageSliderController extends Controller
       ));
         
     }
-    
-    public function isActiveAction(ImageSlider $image)
-    {
-        return ;
-    }
-  
     
 }

@@ -37,8 +37,8 @@ class PageStatiqueController extends Controller
                 //on affiche un message flash
                 $this->get('session')->getFlashBag()->add('page', 'Page bien créée');
 
-                //on redirige vers la page de visualisation des catégories
-                //return $this->redirect($this->generateUrl('odysseus_back_'));
+                //on redirige vers la page de visualisation des pages
+                return $this->redirect($this->generateUrl('odysseus_back_lister_pages'));
             }   
         }
 
@@ -80,10 +80,10 @@ class PageStatiqueController extends Controller
                 $em->flush();
                 
                 //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('page', 'page bien modifiée');
+                $this->get('session')->getFlashBag()->add('page', 'Page bien modifiée');
 
                 //on redirige vers la page liste des etats
-                //return $this->redirect($this->generateUrl(''));
+                return $this->redirect($this->generateUrl('odysseus_back_lister_pages'));
             }   
         }
         return $this->render('OdysseusBackBundle:PageStatique:modifier.html.twig', array(

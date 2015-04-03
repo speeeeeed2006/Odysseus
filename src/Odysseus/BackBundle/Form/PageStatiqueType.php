@@ -16,7 +16,7 @@ class PageStatiqueType extends AbstractType
     {
         $builder
             ->add('titre',    'text')
-            ->add('contenu', 'textarea')
+            ->add('contenu', 'textarea', array('attr' => array('class' => 'ckeditor')))
             ->add('slug', 'text');
     }
     

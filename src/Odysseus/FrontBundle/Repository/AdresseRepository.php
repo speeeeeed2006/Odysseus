@@ -17,4 +17,14 @@ class AdresseRepository extends EntityRepository
                     ->getSingleResult();
     }
     
+    public function getListeAdresseLivraison($user)
+    {   
+        return $this->createQueryBuilder('a')
+                    ->where('a.type = :type')
+                    ->setParameter('type', 1)
+                    ->andWhere('a.user = :user')
+                    ->setParameter('user' , $user->getId()) 
+                    ->getQuery()
+                    ->getSingleResult();
+    }
 }
