@@ -102,11 +102,17 @@ class ProduitVente
     private $commandeCommande;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Image", mappedBy="produitVente")
+     */
+    protected $image;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->commandeCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commandeCommande =   new \Doctrine\Common\Collections\ArrayCollection();
+        $this->image            =   new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -238,7 +244,7 @@ class ProduitVente
     /**
      * Set etat
      *
-     * @return Produit
+     * @return ProduitVente
      */
     public function setEtat($value)
     {
@@ -317,7 +323,7 @@ class ProduitVente
      * Set nouveaute
      *
      * @param boolean $nouveaute
-     * @return Produit
+     * @return ProduitVente
      */
     public function setNouveaute($nouveaute)
     {
@@ -357,5 +363,39 @@ class ProduitVente
     public function getAlaune()
     {
         return $this->alaune;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \Odysseus\FrontBundle\Entity\Image $image
+     *
+     * @return ProduitVente
+     */
+    public function addImage(\Odysseus\FrontBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \Odysseus\FrontBundle\Entity\Image $image
+     */
+    public function removeImage(\Odysseus\FrontBundle\Entity\Image $image)
+    {
+        $this->image->removeElement($image);
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

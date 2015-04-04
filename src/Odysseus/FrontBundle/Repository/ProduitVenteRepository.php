@@ -3,6 +3,7 @@ namespace Odysseus\FrontBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Odysseus\FrontBundle\Entity\ProduitVente;
 
 class ProduitVenteRepository extends EntityRepository
 {
@@ -132,6 +133,19 @@ class ProduitVenteRepository extends EntityRepository
                      ->setMaxResults(3)
                      ->getQuery()
                      ->getResult();  
+    }
+    
+    //Fonctions du profile
+
+    public function getUserProduitVente($user)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.etat <> :etat')
+            ->setParameter('etat',ProduitVente::REFUSE)
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
     }
      
 }

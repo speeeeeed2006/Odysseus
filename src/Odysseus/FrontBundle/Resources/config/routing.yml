@@ -61,8 +61,30 @@ odysseus_front_categorieProduit:
     
 odysseus_front_produit_presentation:    
     path:     /produit-detail/{id}
-    defaults: { _controller: OdysseusFrontBundle:ProduitVente:presentation }
+    defaults: { _controller: OdysseusFrontBundle:OdysseusFrontBundle:presentation }
     
 odysseus_front_recherche:
     path:     /recherche
     defaults: { _controller: OdysseusFrontBundle:ProduitVente:rechercheTraitement }
+#------------ fin ProduitVente
+
+#------------ debut Produit
+odysseus_ajax_profil_produit:
+    pattern: /produit/recherche/{categorie}_{sousCategorie}_{marque}
+    defaults: { _controller: OdysseusFrontBundle:Produit:ajaxRecherche }
+    options:
+        expose: true
+
+odysseus_ajax_profil_marque:
+    pattern: /produit/recherche_marque/{categorie}_{sousCategorie}
+    defaults: { _controller: OdysseusFrontBundle:Produit:ajaxRechercheMarque }
+    options:
+        expose: true
+#------------ fin Produit
+#------------ debut SousCategorie
+odysseus_ajax_Sous_categorie:
+    pattern: /sous_categorie/recherche/{categorie}
+    defaults: { _controller: OdysseusFrontBundle:SousCategorie:rechercheByCategorie }
+    options:
+        expose: true
+#------------ fin SousCategorie

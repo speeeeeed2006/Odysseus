@@ -26,15 +26,41 @@ odysseus_front_home:
 odysseus_back_home:
     path:     /
     defaults: { _controller: OdysseusBackBundle:Back:index }
-    
-odysseus_front_profile:
+
+#-------------- Profile
+odysseus_front_profile_edit:
     path:     /profile/edit
     defaults: { _controller: OdysseusUserBundle:Profile:edit }
-    
+
 odysseus_front_profile_view:
     path:     /profile
     defaults: { _controller: OdysseusUserBundle:Profile:show }
-    
+
+#-------------- fin
+
+#-------------- Profile Adresse
 odysseus_front_profile_adresse:
     path:     /profile/adresse
     defaults: { _controller: OdysseusUserBundle:Profile:adresse }
+
+odysseus_front_adresse_edit:
+    path:     /profile/adresse/edit/{id}
+    defaults: { _controller: OdysseusUserBundle:Profile:adresseEdit }
+
+odysseus_front_adresse_supp:
+    path:     /profile/adresse/supression/{id}
+    defaults: { _controller: OdysseusUserBundle:Profile:adresseSuppression }
+#-------------- fin
+
+#-------------- Profile article
+odysseus_front_profile_article:
+    path:     /profile/produit
+    defaults: { _controller: OdysseusUserBundle:Profile:article }
+
+odysseus_front_profile_article_ajout:
+    path:     /profile/produit/ajouter
+    defaults: { _controller: OdysseusUserBundle:Profile:ajouterArticle }
+
+odysseus_front_profile_article_ajout_info:
+    path:     /profile/article/ajouter/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:ajouterArticleInfo }

@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Odysseus\BackBundle\OdysseusBackBundle(),
             new Odysseus\UserBundle\OdysseusUserBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

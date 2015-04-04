@@ -16,18 +16,16 @@ class ClientType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('civilite', 'choice', array(
-                                            'choices'   => array('0' => 'M.', '1' => 'Mme' ),
-                                            'expanded'  => true,
-                                            'required'  => true))
-                ->add('prenom','text')
-                ->add('nom','text')
-                ->add('dateNaissance','datetime')
-                ->add('telephone', 'text', array('max_length' => 10))
-                ->add('email', 'email')
-                ->add('adresse', 'collection', array('type' => new AdresseType()));
+        $builder->add('civilite', 'choice', array(  'choices'   => array('0' => 'M.', '1' => 'Mme' ),
+                                                    'required'  => true))
+            ->add('prenom','text')
+            ->add('nom','text')
+            ->add('dateNaissance','birthday')
+            ->add('telephone', 'text', array('max_length' => 10))
+            ->add('email', 'email')
+            ->add('adresse', 'collection', array('type' => new AdresseType()));
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

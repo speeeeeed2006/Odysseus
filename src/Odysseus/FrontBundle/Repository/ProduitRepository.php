@@ -3,6 +3,7 @@ namespace Odysseus\FrontBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Odysseus\FrontBundle\Entity\Produit;
 
 class ProduitRepository extends EntityRepository
 {
@@ -72,5 +73,50 @@ class ProduitRepository extends EntityRepository
         // Enfin, on retourne l'objet Paginator correspondant à la requête construite
         return new Paginator($query);
     }
-    
+
+    //Front
+
+    public function getProduitAjaxRechercheMarque($categorie, $sousCategorie)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->where('p.etat = :etat')
+            ->setParameter('etat', Produit::VALIDE )
+            ->andWhere('p.categorie = :categorie_id')
+            ->setParameter('categorie_id', $categorie)
+            ->andWhere('p.sousCategorie = :sous_categorie_id')
+            ->setParameter('sous_categorie_id', $sousCategorie)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
+    }
+
+    public function getProduitAjaxRecherche($categorie, $sousCategorie, $marque)
+    {
+        if($marque == ""){
+            $query = $this->createQueryBuilder('p')
+                ->where('p.etat = :etat')
+                ->setParameter('etat', Produit::VALIDE )
+                ->andWhere('p.categorie = :categorie_id')
+                ->setParameter('categorie_id', $categorie)
+                ->andWhere('p.sousCategorie = :sous_categorie_id')
+                ->setParameter('sous_categorie_id', $sousCategorie)
+                ->getQuery()
+                ->getResult();
+        }
+        else {
+            $query = $this->createQueryBuilder('p')
+                ->where('p.etat = :etat')
+                ->setParameter('etat', Produit::VALIDE)
+                ->andWhere('p.categorie = :categorie_id')
+                ->setParameter('categorie_id', $categorie)
+                ->andWhere('p.sousCategorie = :sous_categorie_id')
+                ->setParameter('sous_categorie_id', $sousCategorie)
+                ->andWhere('p.marque = :marque')
+                ->setParameter('marque', $marque)
+                ->getQuery()
+                ->getResult();
+        }
+        return $query;
+    }
 }

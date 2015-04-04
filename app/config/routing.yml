@@ -9,3 +9,6 @@ odysseus_front:
 odysseus_back:
     resource: "@OdysseusBackBundle/Resources/config/routing.yml"
     prefix:   /back
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
