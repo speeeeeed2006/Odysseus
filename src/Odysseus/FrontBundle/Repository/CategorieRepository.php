@@ -9,7 +9,7 @@ class CategorieRepository extends EntityRepository
     public function getCategorieALaUne()
     {   
         return $this->createQueryBuilder('c')
-                    ->where('c.alaune = 1') 
+                    ->where('c.alaune = 1')
                     ->getQuery()
                     ->getSingleResult();
     }

@@ -76,7 +76,7 @@ class MainController extends Controller
         
         $categorieALaUne = $em->getRepository('OdysseusFrontBundle:Categorie')
                               ->getCategorieALaUne();
-        
+
         return $this->render('OdysseusFrontBundle:Default:produitCategorieHome.html.twig',
         	array('liste_produits' => $listeProduits,
                       'categorie' => $categorieALaUne ) 
