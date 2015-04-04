@@ -5,8 +5,8 @@
 {% block body %}
     <div id="wrap">
         <div id="categories">
-            <h2>Liste des produits de la Catégorie :  {{ categorie.nom }} </h2>       
-            
+            <h2>Liste des produits de la Catégorie :  {{ categorie.nom }} </h2>    
+
             {% if (produits | length) > 0 %}
                 {% for produit in produits %}
 
@@ -19,7 +19,9 @@
 
                         <div class="boutons">
                             <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
-                            <a href="{{ path ('odysseus_front_ajouter_panier', { id : produit.idProduitVente}) }}" title=""><span class="infos panier">Ajouter au panier</span></a>
+                            {% if panier[produit.idProduitVente] is not defined %}
+                                <a href="{{ path ('odysseus_front_ajouter_panier', { id : produit.idProduitVente}) }}" title=""><span class="infos panier">Ajouter au panier</span></a>
+                            {% endif %}
                         </div>
                 </div> <!--#details-->
                 {% endfor %}

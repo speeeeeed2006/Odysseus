@@ -11,22 +11,38 @@ class ProduitVenteController extends Controller
     public function categorieAction($categorie)
     { 
         $em = $this->getDoctrine()->getManager();
-        $produits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->getProduitValidebyCategorie($categorie);
-         
+        $session = $this->getRequest()->getSession();
+          
+        $produits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->getProduitValidebyCategorie($categorie);        
         $categorie = $em->getRepository('OdysseusFrontBundle:Categorie')->find($categorie);
+        
+        if($session->has('panier'))
+            $panier = $session->get('panier');
+        else
+            $panier = false;
         
         return $this->render('OdysseusFrontBundle:ProduitVente:produits.html.twig',
                 array('produits'  => $produits,
-                      'categorie' => $categorie));
+                      'categorie' => $categorie,
+                      'panier'    => $panier));
     }
     
     public function presentationAction($id)
     { 
         $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+        
         $produit = $em->getRepository('OdysseusFrontBundle:ProduitVente')->find($id);
         
+        if(!$produit) throw $this->createNotFoundException('La page demandée n\'existe pas.');
         
-        return $this->render('OdysseusFrontBundle:ProduitVente:presentationProduit.html.twig', array('produit'  => $produit));
+        if($session->has('panier'))
+            $panier = $session->get('panier');
+        else
+            $panier = false;
+        
+        return $this->render('OdysseusFrontBundle:ProduitVente:presentationProduit.html.twig', array('produit'  => $produit,
+                                                                                                     'panier'    => $panier));
     }
     
     public function rechercheAction()

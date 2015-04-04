@@ -9,32 +9,27 @@
             <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" />
         {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
     </head>
     <body>
     	<div id="container">
             <header>
                 <div id="top">
                     <div id="logo">
-                            <img src="" alt="Logo société" />
+                            <img src="{{ asset('images/logo_societe.png') }}" alt="Logo société" />
                     </div><!--
                     --><div id="recherche">
                        {% render(controller('OdysseusFrontBundle:ProduitVente:recherche')) %}     
                     </div><!--
-                --><div id="droite">
-                            <div id="liens">
-                                    <ul>
-                                            <li><a href="{{ path('odysseus_front_plan')}}" title="Plan du site">Plan du site </a></li> 
-                                            <li><a href="{{ path('odysseus_front_contact')}}" title="Contact">Contact</a></li>
-                                    </ul><!--
-                                    --><!--<div id="flux_rss"><a href="#" title="Flux RSS"></a></div>-->
-                            </div>
-                            <div id="panier">
-                                {% include ('OdysseusFrontBundle:Default:panierHeader.html.twig') %} 
-                            </div>
-                            <div id="connexion">
-                                {% include ('OdysseusFrontBundle:Default:connexion.html.twig') %}    
-                            </div>
+                --><div id="droite">      
+                        <!--<div id="flux_rss"><a href="#" title="Flux RSS"></a></div>-->
+
+                        <div id="panier">
+                            {% render(controller ('OdysseusFrontBundle:Panier:afficherNombreArticlePanier')) %} 
+                        </div>
+                        <div id="connexion">
+                            {% include ('OdysseusFrontBundle:Default:connexion.html.twig') %}    
+                        </div>
                  </div>
                 </div> <!-- fin #top-->
                 <nav>
@@ -59,7 +54,6 @@
                 <div id="produits">
                         <h3>Produits</h3>
                         <ul>
-                            <li><a href="#" title="">Meilleures ventes</a></li>
                             <li><a href="#" title="">Nouveautés</a></li>
                             <li><a href="#" title="">Catégorie1</a></li>
                             <li><a href="#" title="">Catégorie2</a></li>
@@ -82,16 +76,13 @@
                         <div id="infos">
                             <h3>Informations</h3>
                             <ul>
-                                    <li><a href="#" title="">Livraison</a></li>
-                                    <li><a href="#" title="">Paiement</a></li>
-                                    <li><a href="{{ path ('odysseus_front_mentions', {id : 1})}}" title="">Mentions légales</a></li>
-                                    <li><a href="{{ path ('odysseus_front_cgv', {id : 2})}}" title="">Conditions générales de vente</a></li>
+                                <li><a href="{{ path ('odysseus_front_mentions', {id : 1})}}" title="">Mentions légales</a></li>
+                                <li><a href="{{ path ('odysseus_front_cgv', {id : 2})}}" title="">Conditions générales de vente</a></li>
+                                <li><a href="{{ path('odysseus_front_plan')}}" title="Plan du site">Plan du site </a></li> 
+                                <li><a href="{{ path('odysseus_front_contact')}}" title="Contact">Contact</a></li>
                             </ul>
                         </div><!--
-                        --><div id="pictos">
-                                <span class="paypal"></span>
-                                <span class="visa"></span>
-                        </div>
+                       
                 </div> <!--fin #informations-->
             </div>	<!--fin #footer-->
 	</footer>

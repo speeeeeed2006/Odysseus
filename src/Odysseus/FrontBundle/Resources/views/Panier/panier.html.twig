@@ -13,6 +13,11 @@
 
     {# include "OdysseusFrontBundle:Default:menuPanier.html.twig" #}
     
+    {% for flashMessage in app.session.flashbag.get('panier') %}
+    <div class="success">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
     <div id="panier">
     <p>Votre panier contient :</p>
         <table>
@@ -71,8 +76,8 @@
                         <div class="cell bold">{{ totalAvecCom  | number_format(2, ',', ' ') }} €</div>           
                     </div>
                 </div>
-                <button type="button" class="precedent continuer">Continuer mes achats</button>
-                <button type="button" class="suivant">Valider mon panier</button>
+                <a href="{{ path('odysseus_front_home') }}" class="precedent continuer"><< Continuer mes achats</a>
+                <a href="{{ path('odysseus_front_livraison') }}" class="suivant">Valider mon panier >></a>
         
             {% else %}
                 <tr>

@@ -25,7 +25,7 @@
                         --><div id="droite">
                                 <span class="prix">{{ produit.prix | number_format(2, ',', ' ') }} €</span>
                                 <span class="nb">(Nombre d'articles restants : {{ produit.stock }})</span>
-                                
+                                {% if panier[produit.idProduitVente] is not defined %}
                                 <form action="{{ path('odysseus_front_ajouter_panier', {id: produit.idProduitVente}) }}" method="get">
                                     <p>Choissisez la quantité désirée :</p>
                                     <select name="qte">
@@ -33,11 +33,16 @@
                                         <option value="{{ i }}">{{ i }}</option>
                                         {% endfor %}
                                     </select>
+                                    <br/>
                                    <div>
                                        <button type="submit">Ajouter au panier</button>
-                                   </div>
-                                    
+                                   </div> 
                                 </form>
+                                {% else %}
+                                    <div>
+                                        <a href="{{ path('odysseus_front_panier') }}" class="infos">Le produit est déjà dans votre panier.</a>
+                                   </div>
+                                {% endif %}
                         </div>
                 </div> <!--#details-->
 
