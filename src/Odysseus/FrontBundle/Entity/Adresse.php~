@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Adresse
  *
  * @ORM\Table(name="adresse", indexes={@ORM\Index(name="fk_Adresse_User1_idx", columns={"user_id"})})
- * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\AdresseRepository");
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\AdresseRepository")
  */
 class Adresse
 {

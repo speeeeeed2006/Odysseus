@@ -1,0 +1,27 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+<div id="profil">
+    
+    {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+    
+    <div id="detail">
+        {{ ladybug_dump(liste_article) }}
+        <h2>Mes Produit</h2>
+        {% if (liste_article is empty) %}
+            <span>
+                        Vous n'avez ajouter aucun article
+            </span>
+        {% else %}
+            {% for article in liste_article %}
+                {{ article.getProduit.getNom}}
+                <br/>
+            {% endfor %}
+        {% endif %}
+        <br />
+        <a href="{{ path('odysseus_front_profile_article_ajout') }}">Vendre un article</a>
+    </div>   
+</div>
+
+{% endblock fos_user_content %}

@@ -17,12 +17,12 @@ class AdresseType extends AbstractType
     {
         $builder
             ->add('adresse',    'text')
-            ->add('type',    'text')
+            ->add('type',    'hidden')
             ->add('cp', 'integer', array('max_length' => 5))
             ->add('ville','text')
             ->add('pays','text');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

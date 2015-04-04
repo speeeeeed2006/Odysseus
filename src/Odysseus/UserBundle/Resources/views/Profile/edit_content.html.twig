@@ -22,15 +22,57 @@
                 {{ form_widget(form.prenom) }}
             </div>
             <div>
+                {{ form_errors(form.nom) }}
+                {{ form_label(form.nom, "Votre nom :") }}
+                {{ form_widget(form.nom) }}
+            </div>
+            <div>
                 {{ form_errors(form.civilite) }}
                 {{ form_label(form.civilite, "Votre prénom :") }}
                 {{ form_widget(form.civilite) }}
             </div>
             <div>
-                {{ form_errors(form.adresse) }}
-                {{ form_label(form.adresse, "Votre adresse :") }}
-                {{ form_widget(form.adresse) }}
+                {{ form_errors(form.telephone) }}
+                {{ form_label(form.telephone, "Votre numéro de téléphone :") }}
+                {{ form_widget(form.telephone) }}
             </div>
+            <div>
+                {{ form_errors(form.dateNaissance) }}
+                {{ form_label(form.dateNaissance, "Votre date de naissance :") }}
+                {{ form_widget(form.dateNaissance) }}
+            </div>
+            <div>
+                {% for adr in form.adresse %}
+                    <div>
+                        {% if (adr.type.vars.value != 0) %} 
+                            <span>Votre adresse de facturation :</span>
+                        {% else %}
+                            <span>Votre adresse de livraison :</span>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {{ form_errors(adr.adresse) }}
+                        {{ form_label(adr.adresse, "Voie (numero de rue, voie) :") }}
+                        {{ form_row(adr.adresse) }}
+                    </div>
+                    <div>
+                        {{ form_errors(adr.cp) }}
+                        {{ form_label(adr.cp, "Code postale :") }}
+                        {{ form_widget(adr.cp) }}
+                    </div>
+                    <div>
+                        {{ form_errors(adr.ville) }}
+                        {{ form_label(adr.ville, "Ville :") }}
+                        {{ form_widget(adr.ville) }}
+                    </div>
+                    <div>
+                        {{ form_errors(adr.pays) }}
+                        {{ form_label(adr.pays, "Pays :") }}
+                        {{ form_widget(adr.pays) }}
+                    </div>
+                {% endfor %}
+            </div>
+                <span style="visibility: hidden"> {{ form_rest(form) }} </span>
             <div>
                 {# form_row(form._token) #}
                 <button type="submit">{{ 'profile.edit.submit'|trans }}</button>

@@ -1,0 +1,8 @@
+<option value="" selected>Choisir une marque</option>
+{% if(liste_produit| length) > 0 %}
+    {% for produit in liste_produit %}
+        <option value="{{ produit.marque }}">{{ produit.marque }}</option>
+    {% endfor %}
+{% else %}
+    <option value="">--Marque--</option>
+{% endif %}

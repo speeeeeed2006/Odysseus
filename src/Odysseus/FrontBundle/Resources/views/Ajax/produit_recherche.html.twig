@@ -1,0 +1,35 @@
+<div id="liste_produit">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Marque</th>
+            <th>Référence</th>
+            <th>Déscription</th>
+            <th>Catégorie</th>
+            <th>Sous catégorie</th>
+            <th>Choisir</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if (liste_produit | length) > 0 %}
+            <tr>
+                {% for produit in liste_produit %}
+                    <td> {{ produit.nom }} </td>
+                    <td> {{ produit.marque }} </td>
+                    <td> {{ produit.reference }} </td>
+                    <td> {{ produit.description }} </td>
+                    <td> {{ produit.getCategorie.getNom }} </td>
+                    <td> {{ produit.sousCategorie.getNom }} </td>
+                    <td><a href="{{ path('odysseus_front_profile_article_ajout_info', {id: produit.idProduit})  }}">choisir mlazd ahzdv</a></td>
+                {% endfor %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">Aucun produit trouvé</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+

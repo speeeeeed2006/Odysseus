@@ -91,6 +91,7 @@ class User extends BaseUser
 
     /**
      * @var string
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
     

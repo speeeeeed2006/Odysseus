@@ -5,16 +5,50 @@
     {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
     
     <div id="detail">
-        <h2>Mes informations</h2>
-        
-        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-        <p> Civilité : {{ user.civilite }}</p>
-        <p> Nom : {{ user.nom }}</p>
-        <p> Prénom : {{ user.prenom }}</p>
-        <p> Téléphone : {{ user.telephone }}</p>
-        <p>Date de naissance : {{ user.dateNaissance|date("d/m/Y") }}</p>
-        <p> Adresse de livraison : {{ adresse.adresse }} {{ adresse.cp }} {{ adresse.pays }}</p>
+        <h2>Mes adresses</h2>
+        <div id="adresses">
+            {% if (liste_adresse is empty) %}
+                <span>
+                        Vous n'avez renseigné aucune adresse
+                </span>
+                <br />
+                <button>Ajouter une adresse</button>
+            {% else %} 
+                {% for adr in liste_adresse %}
+                    <div class="cartouche">
+                        <span class="type">
+                            {% if (adr.type != 0) %} 
+                                Votre adresse de facturation :
+                            {% else %}
+                                Votre adresse de livraison :
+                            {% endif %}
+                        </span>
+                        <br />
+                        <div class="donne_adresse">
+                            Adresse : {{ adr.adresse}}
+                        </div>
+                         <div class="donne_adresse">
+                            Code postal : {{ adr.cp}}
+                        </div>
+                         <div class="donne_adresse">
+                            Ville : {{ adr.ville}}
+                        </div>
+                        <div class="donne_adresse">
+                            Pays : {{ adr.pays}}
+                        </div>
+                        <span class="edition_adresse">
+                            <a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}">modifier cette adresse</a>
+                        </span>
+                        <br />
+                        <span class="supp_adresse">
+                            <a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}">supprimer cette adresse</a>
+                        </span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <span class="supp_adresse">
+            </span>
+        </div>
                 
     </div>   
 </div>

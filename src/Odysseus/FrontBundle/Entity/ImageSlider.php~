@@ -17,7 +17,7 @@ use Odysseus\FrontBundle\Entity\Etat;
 class ImageSlider
 {
     
-    const ACTIVE = 'active';
+    const ACTIVEE = 'activée';
     const DESACTIVEE = 'désactivée';
     /**
      * @var integer
@@ -58,7 +58,7 @@ class ImageSlider
 
     /**
      * @var string
-     * 
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
 

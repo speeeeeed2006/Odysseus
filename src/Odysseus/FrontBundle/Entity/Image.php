@@ -24,37 +24,37 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=255, nullable=false)
+     * @ORM\Column(name="extension", type="string", length=255, nullable=true)
      */
     private $extension;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=255, nullable=false)
+     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
      */
     private $alt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="file", type="string", length=255, nullable=false)
+     * @ORM\Column(name="file", type="string", length=255, nullable=true)
      */
     private $file;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tempFileName", type="string", length=255, nullable=false)
+     * @ORM\Column(name="tempFileName", type="string", length=255, nullable=true)
      */
     private $tempfilename;
 
     /**
      * @var \ProduitVente
      *
-     * @ORM\ManyToOne(targetEntity="ProduitVente")
+     * @ORM\ManyToOne(targetEntity="ProduitVente",  inversedBy="image")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="produit_vente_id", referencedColumnName="id_produit_vente")
+     *   @ORM\JoinColumn(name="produit_vente_id", referencedColumnName="id_produit_vente", nullable=false)
      * })
      */
     private $produitVente;
