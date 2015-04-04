@@ -6,11 +6,10 @@ use Doctrine\ORM\EntityRepository;
 class SouscategorieRepository extends EntityRepository
 {
     
-    public function getListeSouscategorieparCategorie($id)
-    {
-        return $this->createQueryBuilder('s')
-                    ->join('s.categorie', 'c')
-                    ->where('s.categorie = :id')
+    public function getSousCategorie($id)
+    {   
+        return $this->createQueryBuilder('sc')
+                    ->where('sc.idCategorie = :id')
                     ->setParameter('id', $id)
                     ->getQuery()
                     ->getResult();

@@ -52,13 +52,7 @@
         <footer>
             <div id="footer">
                 <div id="produits">
-                        <h3>Produits</h3>
-                        <ul>
-                            <li><a href="#" title="">Nouveautés</a></li>
-                            <li><a href="#" title="">Catégorie1</a></li>
-                            <li><a href="#" title="">Catégorie2</a></li>
-                            <li><a href="#" title="">Catégorie3</a></li>
-                        </ul>
+                    {{ render (controller ('OdysseusFrontBundle:Main:afficherMenuCategoriesFooter')) }}    
                 </div><!--
                 --><div id="reseaux">
                         <h3>Suivez-nous</h3>
@@ -74,13 +68,7 @@
                 </div><!--
                 --><div id="informations">
                         <div id="infos">
-                            <h3>Informations</h3>
-                            <ul>
-                                <li><a href="{{ path ('odysseus_front_mentions', {id : 1})}}" title="">Mentions légales</a></li>
-                                <li><a href="{{ path ('odysseus_front_cgv', {id : 2})}}" title="">Conditions générales de vente</a></li>
-                                <li><a href="{{ path('odysseus_front_plan')}}" title="Plan du site">Plan du site </a></li> 
-                                <li><a href="{{ path('odysseus_front_contact')}}" title="Contact">Contact</a></li>
-                            </ul>
+                            {{ render(controller('OdysseusFrontBundle:Statique:afficher')) }}
                         </div><!--
                        
                 </div> <!--fin #informations-->

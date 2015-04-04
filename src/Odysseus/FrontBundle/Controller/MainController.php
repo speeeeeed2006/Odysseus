@@ -89,4 +89,20 @@ class MainController extends Controller
         return $this->render('OdysseusFrontBundle:Main:panier.html.twig');
     }
     
+    public function afficherMenuCategoriesFooterAction(){
+        
+        $categories = $this->getDoctrine()->getManager()
+                           ->getRepository('OdysseusFrontBundle:Categorie')
+                           ->findAll(); 
+        
+        $nouveautes = $this->getDoctrine()->getManager()
+                           ->getRepository('OdysseusFrontBundle:ProduitVente')
+                           ->getProduitVenteDerniersAjoutes();
+        
+        return $this->render('OdysseusFrontBundle:Default:menuProduitsFooter.html.twig',
+                array('liste_categories' => $categories,
+                      'liste_nouveautes' => $nouveautes));
+        
+    }
+    
 }

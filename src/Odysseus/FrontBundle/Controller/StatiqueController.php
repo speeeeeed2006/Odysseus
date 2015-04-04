@@ -11,6 +11,16 @@ use Odysseus\FrontBundle\Form\ContactForm;
 class StatiqueController extends Controller
 {
     
+    public function afficherAction()
+    {
+        $em =  $this->getDoctrine()->getManager();
+        
+        $pages = $em->getRepository('OdysseusFrontBundle:Pagestatique')->findAll();
+        
+        return $this->render('OdysseusFrontBundle:Default:menuInfosFooter.html.twig', array('pages' => $pages));
+    }
+    
+    
     public function pageAction($id)
     {
         $em =  $this->getDoctrine()->getManager();
@@ -19,22 +29,10 @@ class StatiqueController extends Controller
         
         return $this->render('OdysseusFrontBundle:Statique:pageStatique.html.twig', array('page' => $page));
     }
-    
-
-    
+   
     public function planSiteAction()
     {
         return $this->render('OdysseusFrontBundle:Statique:planSite.html.twig');
-    }
-
-    public function mentionsLegalesAction()
-    {
-        return $this->render('OdysseusFrontBundle:Statique:mentionsLegales.html.twig');
-    }
-
-    public function conditionsVentesAction()
-    {
-        return $this->render('OdysseusFrontBundle:Statique:conditionsVentes.html.twig');
     }
 
     /**

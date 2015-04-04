@@ -125,5 +125,13 @@ class ProduitVenteRepository extends EntityRepository
                      ->getResult();  
      }
      
+    public function getProduitVenteDerniersAjoutes()
+    {
+         return $this->createQueryBuilder('pv')
+                     ->orderBy('pv.dateAjout', 'DESC')
+                     ->setMaxResults(3)
+                     ->getQuery()
+                     ->getResult();  
+    }
      
 }

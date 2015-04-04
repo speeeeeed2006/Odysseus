@@ -6,14 +6,14 @@ odysseus_front_plan:
 odysseus_front_contact:   
     path:     /contact
     defaults: { _controller: OdysseusFrontBundle:Statique:contact }
-
-odysseus_front_cgv:    
-    path:     /conditions-de-vente/{id}
+    
+odysseus_front_page_statique:   
+    path:     /{id}/{slug}
     defaults: { _controller: OdysseusFrontBundle:Statique:page }
-
-odysseus_front_mentions:    
-    path:     /mentions-legales/{id}
-    defaults: { _controller: OdysseusFrontBundle:Statique:page } 
+    
+odysseus_front_menu_page_statique:   
+    path:     /menu
+    defaults: { _controller: OdysseusFrontBundle:Statique:afficher }
 
 #------------ debut Main
 odysseus_front_home:

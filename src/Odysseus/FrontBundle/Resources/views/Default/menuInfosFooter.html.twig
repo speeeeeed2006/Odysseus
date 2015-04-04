@@ -1,0 +1,9 @@
+<h3>Informations</h3>
+    <ul>
+        {% for page in pages %}
+            <li><a href="{{ path ('odysseus_front_page_statique', {'slug' : page.slug, 'id': page.idPageStatique})}}" title="">{{ page.titre }}</a></li>
+        {% endfor%}
+            
+        <li><a href="{{ path('odysseus_front_plan')}}" title="Plan du site">Plan du site </a></li> 
+        <li><a href="{{ path('odysseus_front_contact')}}" title="Contact">Contact</a></li>
+    </ul>

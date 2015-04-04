@@ -1,0 +1,18 @@
+<h3>Produits</h3>
+    <ul>
+        <li>Quelques nouveautés
+            <ul>
+                {% for nouveaute in liste_nouveautes %}
+                   <li><a href="{{ path ('odysseus_front_produit_presentation', { id : nouveaute.idProduitVente}) }}" title="">{{ nouveaute.produit.nom }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        
+        <li>Catégories
+            <ul>
+            {% for categorie in liste_categories %}
+                <li><a href="{{ path('odysseus_front_categorieProduit', {'categorie' : categorie.idCategorie }) }}" title="">{{ categorie.nom }}</a></li>
+            {% endfor %}
+            </ul>
+        </li>
+    </ul>

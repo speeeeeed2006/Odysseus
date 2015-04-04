@@ -45,6 +45,7 @@ class ProduitVenteController extends Controller
                                                                                                      'panier'    => $panier));
     }
     
+    //pour le form de recherche
     public function rechercheAction()
     { 
         $form = $this->createForm(new RechercheType());

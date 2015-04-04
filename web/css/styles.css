@@ -450,6 +450,10 @@ footer h3 { font: 30px 'league_gothicregular', sans-serif; }
 footer p, footer ul { margin-top: 1em;}
 footer ul li { list-style: none; margin-bottom: 5px; }
 
+#produits li { font-weight: bold; margin-bottom: 10px;}
+#produits li > ul li { font-weight: normal; margin-bottom: 0;}
+
+
 #produits,
 #reseaux, #reseaux #fb_twitter, #reseaux #fb_twitter .facebook, #reseaux #fb_twitter .twitter,
 #informations, #informations #pictos .paypal, #informations #pictos .visa { display: inline-block; vertical-align: top; }
