@@ -61,7 +61,7 @@ odysseus_front_categorieProduit:
     
 odysseus_front_produit_presentation:    
     path:     /produit-detail/{id}
-    defaults: { _controller: OdysseusFrontBundle:OdysseusFrontBundle:presentation }
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:presentation }
     
 odysseus_front_recherche:
     path:     /recherche

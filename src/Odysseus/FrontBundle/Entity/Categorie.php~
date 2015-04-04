@@ -50,12 +50,19 @@ class Categorie
      */
     private $attributProduitAttributProduit;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Produit", mappedBy="categorie")
+     */
+    protected $categorie;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->attributProduitAttributProduit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->attributProduitAttributProduit   = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorie                        = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 

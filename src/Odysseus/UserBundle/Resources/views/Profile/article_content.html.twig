@@ -2,26 +2,35 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block fos_user_content %}
-<div id="profil">
-    
-    {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
-    
-    <div id="detail">
-        {{ ladybug_dump(liste_article) }}
-        <h2>Mes Produit</h2>
-        {% if (liste_article is empty) %}
-            <span>
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Mes Produit</h2>
+            {% if (liste_article is empty) %}
+                <span>
                         Vous n'avez ajouter aucun article
             </span>
-        {% else %}
-            {% for article in liste_article %}
-                {{ article.getProduit.getNom}}
-                <br/>
-            {% endfor %}
-        {% endif %}
-        <br />
-        <a href="{{ path('odysseus_front_profile_article_ajout') }}">Vendre un article</a>
-    </div>   
-</div>
+            {% else %}
+                {% for article in liste_article %}
+                    <div class="cartouche">
+                        <span class="nomProduitVente">{{ article.getProduit.getNom}}</span>
+                        <br/>
+                        <span class="label">Marque :</span><span class="data">{{ article.getProduit.getMarque}}</span>
+                        <br/>
+                        <span class="label">Référence :</span><span class="data">{{ article.getProduit.getReference}}</span>
+                        <br/>
+                        <span class="label">Prix de vente :</span><span class="data">{{ article.prix}}</span>
+                        <br/>
+                        <span class="label">Votre stock :</span><span class="data">{{ article.stock}}</span>
+                    </div>
+                    <br/>
+                {% endfor %}
+            {% endif %}
+            <br />
+            <a href="{{ path('odysseus_front_profile_article_ajout') }}">Vendre un article</a>
+        </div>
+    </div>
 
 {% endblock fos_user_content %}

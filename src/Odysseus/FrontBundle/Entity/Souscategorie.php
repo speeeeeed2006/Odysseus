@@ -3,6 +3,7 @@
 namespace Odysseus\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Souscategorie
@@ -37,6 +38,16 @@ class Souscategorie
      * })
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Produit", mappedBy="sousCategorie")
+     */
+    protected $produit;
+
+    function __construct()
+    {
+        $this->produit   = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
 
@@ -94,5 +105,39 @@ class Souscategorie
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Add produit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $produit
+     *
+     * @return Souscategorie
+     */
+    public function addProduit(\Odysseus\FrontBundle\Entity\Produit $produit)
+    {
+        $this->produit[] = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\Odysseus\FrontBundle\Entity\Produit $produit)
+    {
+        $this->produit->removeElement($produit);
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduit()
+    {
+        return $this->produit;
     }
 }

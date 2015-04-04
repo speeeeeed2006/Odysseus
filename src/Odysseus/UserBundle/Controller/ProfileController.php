@@ -31,9 +31,6 @@ class ProfileController extends Controller
                     $em->persist($adresse);
                     $em->flush();
                 }
-
-
-
                 //on affiche un message flash
                 $this->get('session')->getFlashBag()->add('categorie', 'Profil bien ajouté');
 
