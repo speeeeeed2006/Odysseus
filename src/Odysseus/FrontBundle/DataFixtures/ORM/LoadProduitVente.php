@@ -34,7 +34,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente2->setPrix('23,00');
     $produitVente2->setDateAjout(new \DateTime('now'));
     $produitVente2->setNouveaute(0);
-    $produitVente2->setAlaune(0);
+    $produitVente2->setAlaune(1);
     $manager->persist($produitVente2);
             
     $produitVente3 = new ProduitVente();   
@@ -45,7 +45,7 @@ class LoadProduitVente extends AbstractFixture implements OrderedFixtureInterfac
     $produitVente3->setRemarque('Bon état');
     $produitVente3->setPrix('10,00');
     $produitVente3->setDateAjout(new \DateTime('now'));
-    $produitVente3->setNouveaute(0);
+    $produitVente3->setNouveaute(1);
     $produitVente3->setAlaune(0);
     $manager->persist($produitVente3);
     
