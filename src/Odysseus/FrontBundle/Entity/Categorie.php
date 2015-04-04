@@ -50,12 +50,19 @@ class Categorie
      */
     private $attributProduitAttributProduit;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Produit", mappedBy="categorie")
+     */
+    protected $categorie;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->attributProduitAttributProduit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->attributProduitAttributProduit   = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorie                        = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -146,5 +153,39 @@ class Categorie
     public function getAttributProduitAttributProduit()
     {
         return $this->attributProduitAttributProduit;
+    }
+
+    /**
+     * Add categorie
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $categorie
+     *
+     * @return Categorie
+     */
+    public function addCategorie(\Odysseus\FrontBundle\Entity\Produit $categorie)
+    {
+        $this->categorie[] = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Remove categorie
+     *
+     * @param \Odysseus\FrontBundle\Entity\Produit $categorie
+     */
+    public function removeCategorie(\Odysseus\FrontBundle\Entity\Produit $categorie)
+    {
+        $this->categorie->removeElement($categorie);
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

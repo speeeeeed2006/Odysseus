@@ -3,6 +3,7 @@
 namespace Odysseus\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Souscategorie
@@ -37,6 +38,16 @@ class Souscategorie
      * })
      */
     private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Produit", mappedBy="sousCategorie")
+     */
+    protected $produit;
+
+    function __construct()
+    {
+        $this->produit   = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
 

@@ -71,7 +71,7 @@ class Produit
     /**
      * @var \Souscategorie
      *
-     * @ORM\ManyToOne(targetEntity="Souscategorie")
+     * @ORM\ManyToOne(targetEntity="Souscategorie", inversedBy="produit")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="sous_categorie_id", referencedColumnName="id_sous_categorie")
      * })
@@ -81,7 +81,7 @@ class Produit
     /**
      * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="produit")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id_categorie")
      * })
