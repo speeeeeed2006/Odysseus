@@ -1,1 +1,9 @@
-<a href="./panier" title="Votre panier">Panier (0)</a>
+<a href="{{ path('odysseus_front_panier')}}" title="Votre panier">
+   {% if nbArticle == 0 %} 
+       Aucun article 
+   {% elseif  nbArticle == 1 %}
+       1 article
+   {% else %}   
+       {{ nbArticle }} articles
+   {% endif %}
+</a>

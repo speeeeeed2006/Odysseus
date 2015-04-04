@@ -14,7 +14,7 @@
                     <div class="detail">
                         <img src="{# produit.image.path#}" alt="" class="vignette" style=" "/>
                         <span class="nom_produit">{{ produit.produit.nom }}</span>
-                        <span class="prix">{{ produit.prix }}€ HT </span>
+                        <span class="prix">{{ produit.prix | number_format(2, ',', ' ') }}€ </span>
                     </div>
 
                     <div class="boutons">
