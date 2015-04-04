@@ -112,6 +112,17 @@ class ProduitVenteRepository extends EntityRepository
                      ->where('pv.nouveaute = 1')
                      ->getQuery()
                      ->getSingleResult();  
+    }
+     
+    //récupère les produits en session panier
+    public function findArray($array)
+    {
+         return $this->createQueryBuilder('pv')
+                     ->select('pv')
+                     ->where('pv.idProduitVente IN (:array)')
+                     ->setParameter('array', $array)
+                     ->getQuery()
+                     ->getResult();  
      }
      
      

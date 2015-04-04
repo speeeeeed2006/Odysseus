@@ -29,8 +29,16 @@ odysseus_front_nouveaute:
  
  #------------ debut Panier
 odysseus_front_panier:    
-    path:     /panier
+    path:     /panier/
     defaults: { _controller: OdysseusFrontBundle:Panier:panier }
+    
+odysseus_front_ajouter_panier:    
+    path:     /panier/ajouter/{id}
+    defaults: { _controller: OdysseusFrontBundle:Panier:ajouter }
+    
+odysseus_front_supprimer_panier:    
+    path:     /panier/supprimer/{id}
+    defaults: { _controller: OdysseusFrontBundle:Panier:supprimer }
     
 odysseus_front_livraison:    
     path:     /panier/livraison

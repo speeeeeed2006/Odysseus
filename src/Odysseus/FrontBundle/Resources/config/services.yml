@@ -1,0 +1,7 @@
+services:      
+    commission:
+        class: Odysseus\FrontBundle\Twig\Extension\CommissionExtension
+        tags:
+          - { name: twig.extension }
+          
+    

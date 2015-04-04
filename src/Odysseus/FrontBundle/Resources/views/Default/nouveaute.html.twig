@@ -4,7 +4,7 @@
 <span class="marque"> {{ nouveaute.produit.marque }}</span>
 <span class="nom_produit">{{ nouveaute.produit.nom }}</span>
 <p class="descriptif">{{ nouveaute.produit.description  }}</p>	
-<span class="prix">{{ nouveaute.prix }}€</span>
+<span class="prix">{{ nouveaute.prix | number_format(2, ',', ' ') }}€</span>
 <a href="{{ path ('odysseus_front_produit_presentation', { id : nouveaute.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
 
 {% else %}

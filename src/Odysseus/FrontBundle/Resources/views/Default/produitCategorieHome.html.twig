@@ -8,7 +8,7 @@
     <span class="marque">{{ produit.produit.marque }}</span>
     <span class="nom_produit">{{ produit.produit.nom }}</span>
     <p class="descriptif">{{ produit.produit.description }}</p>
-    <span class="prix">{{ produit.prix }} €</span>
+    <span class="prix">{{ produit.prix | number_format(2, ',', ' ')}} €</span>
     <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
 </div><!-- fin .produit -->
 {% endfor %}
@@ -24,7 +24,7 @@
     <span class="marque">Marque</span>
     <span class="nom_produit">Nom produit</span>
     <p class="descriptif">Lorem ipsum dolor sit amet, consectetur adipisicing elistrud ullamco, consectetur adipisicing elistrud ullamco.</p>
-    <span class="prix">159 €</span>
+    <span class="prix">0,00 €</span>
     <a href="" title=""><span class="infos">+ Plus d'infos</span></a>
 </div><!-- fin .produit --><!--
 --><div class="produit">
@@ -32,7 +32,7 @@
     <span class="marque">Marque</span>
     <span class="nom_produit">Nom produit</span>
     <p class="descriptif">Lorem ipsum dolor sit amet, consectetur adipisicing elistrud ullamco.</p>
-    <span class="prix">159 €</span>
+    <span class="prix">0,00 €</span>
     <a href="" title=""><span class="infos">+ Plus d'infos</span></a>
 </div><!-- fin .produit -->
 <div id="plus_produits">

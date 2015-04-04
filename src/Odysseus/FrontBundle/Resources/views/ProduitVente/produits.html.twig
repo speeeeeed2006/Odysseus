@@ -14,14 +14,12 @@
                         <div class="detail">
                             <img src="{{ asset('images/image_detail.jpg') }}" alt="" class="vignette" style=" "/>
                             <span class="nom_produit">{{ produit.produit.nom }}</span>
-                            <span class="prix">{{ produit.prix }}€ HT </span>
+                            <span class="prix">{{ produit.prix | number_format(2, ',', ' ')}}€ </span>
                         </div>
 
                         <div class="boutons">
-                            <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">Plus d'infos</span></a>
-                            <form action="{{ path('odysseus_front_panier')}}" method="post">
-                                <button type="button">Ajouter au panier</button>
-                            </form>
+                            <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
+                            <a href="{{ path ('odysseus_front_ajouter_panier', { id : produit.idProduitVente}) }}" title=""><span class="infos panier">Ajouter au panier</span></a>
                         </div>
                 </div> <!--#details-->
                 {% endfor %}
