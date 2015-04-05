@@ -12,7 +12,7 @@ class SousCategorieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $listeSousCategorie      = $em->getRepository('OdysseusFrontBundle:Souscategorie')->getListeSouscategorieparCategorie($categorie);
+        $listeSousCategorie      = $em->getRepository('OdysseusFrontBundle:Souscategorie')->getSousCategorie($categorie);
 
         return $this->render('OdysseusFrontBundle:Ajax:souscategorie_recherche.html.twig', array('liste_souscategorie'  => $listeSousCategorie));
     }

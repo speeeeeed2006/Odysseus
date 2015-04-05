@@ -1,7 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div id="profil">
-    
     {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
     
     <div id="detail">
@@ -37,7 +36,7 @@
                             Pays : {{ adr.pays}}
                         </div>
                         <span class="edition_adresse">
-                            <a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}">modifier cette adresse</a>
+                            <a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><img src="/odysseus/web/images/glyphicons_edit.png"> modifier cette adresse</a>
                         </span>
                         <br />
                         <span class="supp_adresse">

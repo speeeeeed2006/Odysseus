@@ -8,7 +8,7 @@ odysseus_front_contact:
     defaults: { _controller: OdysseusFrontBundle:Statique:contact }
     
 odysseus_front_page_statique:   
-    path:     /{id}/{slug}
+    path:     /page/{id}/{slug}
     defaults: { _controller: OdysseusFrontBundle:Statique:page }
     
 odysseus_front_menu_page_statique:   
@@ -58,11 +58,11 @@ odysseus_front_connexion:
 odysseus_front_categorieProduit:
     path:     /categorie/{categorie}
     defaults: { _controller: OdysseusFrontBundle:ProduitVente:categorie }
-    
-odysseus_front_produit_presentation:    
+
+odysseus_front_produit_presentation:
     path:     /produit-detail/{id}
     defaults: { _controller: OdysseusFrontBundle:ProduitVente:presentation }
-    
+
 odysseus_front_recherche:
     path:     /recherche
     defaults: { _controller: OdysseusFrontBundle:ProduitVente:rechercheTraitement }

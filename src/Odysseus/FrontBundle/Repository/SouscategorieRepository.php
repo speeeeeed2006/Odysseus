@@ -9,7 +9,7 @@ class SouscategorieRepository extends EntityRepository
     public function getSousCategorie($id)
     {   
         return $this->createQueryBuilder('sc')
-                    ->where('sc.idCategorie = :id')
+                    ->where('sc.categorie = :id')
                     ->setParameter('id', $id)
                     ->getQuery()
                     ->getResult();

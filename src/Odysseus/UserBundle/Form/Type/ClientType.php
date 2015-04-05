@@ -23,7 +23,7 @@ class ClientType extends AbstractType
             ->add('dateNaissance','birthday')
             ->add('telephone', 'text', array('max_length' => 10))
             ->add('email', 'email')
-            ->add('adresse', 'collection', array('type' => new AdresseType()));
+           /* ->add('adresse', 'collection', array('type' => new AdresseType()))*/;
     }
 
     /**

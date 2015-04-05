@@ -41,7 +41,7 @@
                 {{ form_label(form.dateNaissance, "Votre date de naissance :") }}
                 {{ form_widget(form.dateNaissance) }}
             </div>
-            <div>
+            {#<div>
                 {% for adr in form.adresse %}
                     <div>
                         {% if (adr.type.vars.value != 0) %} 
@@ -71,11 +71,10 @@
                         {{ form_widget(adr.pays) }}
                     </div>
                 {% endfor %}
-            </div>
-                <span style="visibility: hidden"> {{ form_rest(form) }} </span>
+            </div> #}
             <div>
-                {# form_row(form._token) #}
-                <button type="submit">{{ 'profile.edit.submit'|trans }}</button>
+                {{  form_row(form._token) }}
+                <button type="submit">Valider</button>
             </div>
         </form>
 
