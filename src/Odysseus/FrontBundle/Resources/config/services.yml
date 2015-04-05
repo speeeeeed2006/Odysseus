@@ -3,5 +3,13 @@ services:
         class: Odysseus\FrontBundle\Twig\Extension\CommissionExtension
         tags:
           - { name: twig.extension }
+
+    redirectionListener:
+        class: Odysseus\FrontBundle\Listener\RedirectionListener 
+        arguments: [ "@service_container","@session"]
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        
+          
           
     

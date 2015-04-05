@@ -74,8 +74,8 @@ class ProduitVenteRepository extends EntityRepository
     {
         return $this->createQueryBuilder('pv')
                     ->select('pv')
-                    ->where('pv.etat = :etat')
-                    ->setParameter('etat', 'valide')
+                    //->where('pv.etat = :etat')
+                    //->setParameter('etat', 'valide')
                     ->join('pv.produit', 'p')
                     ->andWhere('p.categorie = :categorie')
                     ->setParameter('categorie', $categorie) 

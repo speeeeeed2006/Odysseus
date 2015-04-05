@@ -7,13 +7,13 @@ odysseus_front_contact:
     path:     /contact
     defaults: { _controller: OdysseusFrontBundle:Statique:contact }
     
-odysseus_front_page_statique:   
-    path:     /{id}/{slug}
-    defaults: { _controller: OdysseusFrontBundle:Statique:page }
+#odysseus_front_page_statique:   
+    #path:     /{id}/{slug}
+    #defaults: { _controller: OdysseusFrontBundle:Statique:page }
     
-odysseus_front_menu_page_statique:   
-    path:     /menu
-    defaults: { _controller: OdysseusFrontBundle:Statique:afficher }
+#odysseus_front_menu_page_statique:   
+    #path:     /menu
+    #defaults: { _controller: OdysseusFrontBundle:Statique:afficher }
 
 #------------ debut Main
 odysseus_front_home:
@@ -40,10 +40,15 @@ odysseus_front_supprimer_panier:
 odysseus_front_livraison:    
     path:     /panier/livraison
     defaults: { _controller: OdysseusFrontBundle:Panier:livraison }
-
-odysseus_front_frais:    
-    path:     /panier/frais
-    defaults: { _controller: OdysseusFrontBundle:Panier:frais }
+    
+odysseus_front_livraison_adresse_suppression:    
+    path:     /panier/adresse/suppression/{id}
+    defaults: { _controller: OdysseusFrontBundle:Panier:livraisonAdresseObsolete }
+  
+odysseus_front_validation_panier:    
+    path:     /panier/validation
+    defaults: { _controller: OdysseusFrontBundle:Panier:validation }
+    
     
 odysseus_front_payer:    
     path:     /panier/payer
