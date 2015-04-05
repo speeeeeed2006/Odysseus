@@ -359,8 +359,9 @@ form input[type="checkbox"] > label {  margin-left: 10px; display: inline-block;
 #form_register label {width: 222px;}
 #form_register button {margin-left: 175px;}
 
-.error, .success { padding: 5px 10px; color: #ffffff; margin: 20px 0;}
-.error { background: #ff0000; }
+.error, .success, .flash-notification { padding: 5px 10px; color: #ffffff; margin: 20px 0;}
+.error, .flash-notification { background: #ff0000; }
+.flash-notification {max-width: 450px ;}
 .success { background: #DFF0D8; color: #000000; border: 1px solid #d6e9c6; }
 
 /* ----------------------------- */
@@ -403,7 +404,11 @@ form input[type="checkbox"] > label {  margin-left: 10px; display: inline-block;
 #wrap #panier th { padding: 10px; background: #d3c5b9; color: #000000;}
 #wrap #panier tr { border-bottom: 1px solid #cccccc; }
 #wrap #panier td { padding: 10px; text-align: center;}
-#wrap #panier a.trash { width: 20px; height: 20px; display: inline-block; background: url('../images/sprite.png') -92px -122px no-repeat;}
+#wrap #panier a.trash, #wrap #livraison a.trash { width: 20px; height: 20px; display: inline-block; background: url('../images/sprite.png') -92px -120px no-repeat;}
+
+
+
+
 /* ----------------------------- */
 /* sidebar (Colonne droite)
 /* ----------------------------- */

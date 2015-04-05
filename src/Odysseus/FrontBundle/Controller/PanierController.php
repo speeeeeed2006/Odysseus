@@ -4,7 +4,9 @@ namespace Odysseus\FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
+use Odysseus\FrontBundle\Form\AdressePanierType;
+use Odysseus\FrontBundle\Entity\Adresse;
+use Odysseus\UserBundle\Entity\User;
 
 class PanierController extends Controller
 {
@@ -90,13 +92,95 @@ class PanierController extends Controller
     
     public function livraisonAction()
     {
+        //on recupère le user connecté
+        $user = $this->container->get('security.context')->getToken()->getUser();
+              
+        $adresse = new Adresse();
+        $form = $this->createForm(new AdressePanierType(), $adresse);
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $adressesLivraison = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseLivraison($user);
+        
+        //ladybug_dump_die($adressesLivraison);
+        $adressesFacturation = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($user);
+        
+        if($this->get('request')->getMethod() == 'POST'){
+            
+            $form->handleRequest($this->getRequest());
+            
+            if($form->isValid()){
+                
+                $adresse->setUser($user);
+                $adresse->setEtat(Adresse::VALIDE);
+                
+                $em->persist($adresse);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('odysseus_front_livraison'));           
+            }
+        }
+        
+        return $this->render('OdysseusFrontBundle:Panier:livraison.html.twig',
+                array('form' => $form->createView(),
+                      'adresses_livraison' => $adressesLivraison,
+                      'adresses_facturation' => $adressesFacturation));    
+    }
+    
+    public function livraisonAdresseObsoleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+       
+        $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->setAdresseObsolete($id);
+        
         return $this->render('OdysseusFrontBundle:Panier:livraison.html.twig');    
     }
     
-    public function fraisAction()
+    public function setLivraisonSession()
     {
-        return $this->render('OdysseusFrontBundle:Panier:frais.html.twig');    
+        $session = $this->getRequest()->getSession();
+        
+        if(!$session->has('adresse')) $session->set('adresse', array()); 
+        $adresse = $session->get('adresse'); 
+        
+        if($this->getRequest()->request->get('livraison') != null && $this->getRequest()->request->get('facturation') != null){
+            $adresse['livraison'] = $this->getRequest()->request->get('livraison');
+            $adresse['facturation'] = $this->getRequest()->request->get('facturation');
+        } else {
+            return $this->redirect($this->generateUrl('odysseus_front_livraison'));
+        }
+        
+        $session->set('adresse', $adresse);
+       
+        return $this->redirect($this->generateUrl('odysseus_front_validation_panier'));
+        
     }
+    
+    
+    public function validationAction()
+    {
+        if($this->getRequest()->getMethod() == 'POST')
+            $this->setLivraisonSession();
+       
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+        //on recupère les adresses en session
+        $adresse = $session->get('adresse');
+        
+        //les produits du panier
+        $produits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->findArray(array_keys($session->get('panier')));
+        $livraison = $em->getRepository('OdysseusFrontBundle:Adresse')->find($adresse['livraison']);
+        $facturation = $em->getRepository('OdysseusFrontBundle:Adresse')->find($adresse['facturation']);
+        
+       
+        
+        return $this->render('OdysseusFrontBundle:Panier:validation.html.twig',
+                array('produits'            => $produits,
+                      'adresse_livraison'   => $livraison,
+                      'adresse_facturation' => $facturation,
+                      'panier'              => $session->get('panier')));    
+    }
+    
     
     public function payerAction()
     {

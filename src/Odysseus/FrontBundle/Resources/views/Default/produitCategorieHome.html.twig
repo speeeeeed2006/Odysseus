@@ -13,7 +13,7 @@
 </div><!-- fin .produit -->
 {% endfor %}
 <div id="plus_produits">
-    <span><a href="" title="">Voir + de produits</span></a>
+    <span><a href="{{ path ('odysseus_front_categorieProduit', { categorie : categorie.idCategorie }) }}" title="">Voir + de produits</span></a>
 </div> <!-- fin .#plus_produits -->
 
 {% else %}

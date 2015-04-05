@@ -13,9 +13,11 @@ class AdresseRepository extends EntityRepository
                     ->where('a.type = :type')
                     ->setParameter('type', 0)
                     ->andWhere('a.user = :user')
-                    ->setParameter('user' , $user->getId()) 
+                    ->setParameter('user' , $user->getId())
+                    ->andWhere('a.etat = :etat')
+                    ->setParameter('etat', Adresse::VALIDE)
                     ->getQuery()
-                    ->getSingleResult();
+                    ->getResult();
     }
     
     public function getListeAdresseLivraison($user)
@@ -25,8 +27,10 @@ class AdresseRepository extends EntityRepository
                     ->setParameter('type', 1)
                     ->andWhere('a.user = :user')
                     ->setParameter('user' , $user->getId()) 
+                    ->andWhere('a.etat = :etat')
+                    ->setParameter('etat', Adresse::VALIDE)
                     ->getQuery()
-                    ->getSingleResult();
+                    ->getResult();
     }
 
     public function getListeAdresse($user)
@@ -38,5 +42,17 @@ class AdresseRepository extends EntityRepository
             ->setParameter('etat' ,Adresse::VALIDE )
             ->getQuery()
             ->getResult();
+    }
+    
+    public function setAdresseObsolete($id)
+    {
+        $this->createQueryBuilder('a')
+                    ->update('OdysseusFrontBundle:Adresse', 'a')
+                    ->set('a.etat',':etat')
+                    ->setParameter('etat', Adresse::OBSOLETE)
+                    ->where('a.idAdresse = :id')
+                    ->setParameter('id', $id)
+                    ->getQuery()
+                    ->execute();  
     }
 }
