@@ -17,7 +17,8 @@ class AdresseType extends AbstractType
     {
         $builder
             ->add('adresse',    'text')
-            ->add('type',    'hidden')
+            ->add('type',    'choice', array(  'choices'   => array('0' => 'Livraison', '1' => 'Facturation' ),
+                                                    'required'  => true))
             ->add('cp', 'integer', array('max_length' => 5))
             ->add('ville','text')
             ->add('pays','text');

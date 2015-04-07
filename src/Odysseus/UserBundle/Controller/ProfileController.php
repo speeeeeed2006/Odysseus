@@ -66,7 +66,7 @@ class ProfileController extends Controller
             'liste_adresse' => $liste_adresse
         ));
     }
-
+    
     public function adresseEditAction($id)
     {
         $em         = $this->getDoctrine()->getManager();
@@ -90,6 +90,30 @@ class ProfileController extends Controller
         }
 
         return $this->render('OdysseusUserBundle:Profile:adresse_edit.html.twig',array(
+            'form' => $form->createView()));
+    }
+
+    public function adresseAjoutAction()
+    {
+        $em         = $this->getDoctrine()->getManager();
+        $user       = $this->getUser();
+
+        $form = $this->createForm(new AdresseType());
+
+        if ($this->getRequest()->getMethod() == 'POST'){
+            //on fait le lien requete ->form
+            $form->bind($this->get('request'));
+
+            //on verifie que les chps sont corrects
+            if($form->isValid()) {
+
+                $em->flush();
+            }
+            //on redirige vers la page de visualisation du profil
+            return $this->redirect($this->generateUrl('odysseus_front_profile_adresse'));
+        }
+
+        return $this->render('OdysseusUserBundle:Profile:adresse_ajout.html.twig',array(
             'form' => $form->createView()));
     }
 

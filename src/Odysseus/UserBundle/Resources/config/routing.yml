@@ -43,6 +43,10 @@ odysseus_front_profile_adresse:
     path:     /profile/adresse
     defaults: { _controller: OdysseusUserBundle:Profile:adresse }
 
+odysseus_front_adresse_ajout:
+    path:     /profile/adresse/ajout
+    defaults: { _controller: OdysseusUserBundle:Profile:adresseAjout }
+
 odysseus_front_adresse_edit:
     path:     /profile/adresse/edit/{id}
     defaults: { _controller: OdysseusUserBundle:Profile:adresseEdit }
