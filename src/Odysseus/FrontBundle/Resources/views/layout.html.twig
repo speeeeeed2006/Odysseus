@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Odysseus{% endblock %}</title>
+        <title>{% block title %}MégaTechno.com{% endblock %}</title>
         
         {% block stylesheets %}
             <link href="{{ asset('css/coin-slider-styles.css') }}" rel="stylesheet" type="text/css" />
@@ -68,7 +68,7 @@
                 </div><!--
                 --><div id="informations">
                         <div id="infos">
-                            {# render(controller('OdysseusFrontBundle:Statique:afficher')) #}
+                            {{ render(controller('OdysseusFrontBundle:Statique:afficher')) }}
                         </div><!--
                        
                 </div> <!--fin #informations-->

@@ -1,6 +1,6 @@
 {% extends "OdysseusFrontBundle::layout.html.twig" %}
 
-{% block title %} {{ parent() }} - Produit {% endblock %}
+{% block title %} {{ parent() }} - Panier-Livraison {% endblock %}
 
 {% block body %}
 
@@ -8,41 +8,54 @@
         {# include "OdysseusFrontBundle:Default:menuPanier.html.twig" #}
         <div id="livraison">
             <h2>Choisissez votre adresse</h2>
+            
+            {% for message in app.session.flashbag.get('livraison_haut') %}
+                <p class="success">{{ message }}</p>
+            {% endfor %}
 
             <form action="{{ path('odysseus_front_validation_panier')}}" method="POST">
                 
                 <div id="gauche">
-                    <h4>Adresse de livraison</h4>                   
-                    {% for ad_livraison in adresses_livraison %}
-                        <div class="adresse">
-                            <input type="radio" name="livraison" value="{{ ad_livraison.idAdresse }}" {% if loop.last %} checked="checked" {% endif %}/>
-                            <label>{{ ad_livraison.adresse ~' - '~ ad_livraison.cp ~' '~  ad_livraison.ville|capitalize ~' - '~ ad_livraison.pays|capitalize }}
-                                <a href="{{ path('odysseus_front_livraison_adresse_suppression', {id : ad_livraison.idAdresse }) }}" class="trash"></a>
-                            </label>
-                            {{ ad_livraison.user.prenom }}
-                        </div>
+                    <h4>Adresse de livraison</h4> 
+                    {% if (adresses_livraison|length) > 0 %}
+                        {% for ad_livraison in adresses_livraison %}
+                            <div class="adresse">
+                                <input type="radio" name="livraison" value="{{ ad_livraison.idAdresse }}" {% if loop.last %} checked="checked" {% endif %}/>
+                                <label>{{ ad_livraison.adresse ~' - '~ ad_livraison.cp ~' '~  ad_livraison.ville|capitalize ~' - '~ ad_livraison.pays|capitalize }}
+                                    <a href="{{ path('odysseus_front_livraison_adresse_suppression', {id : ad_livraison.idAdresse }) }}" class="trash"></a>
+                                </label>
+                                {{ ad_livraison.user.prenom }}
+                            </div>
+                        {% endfor %}
                     {% else %}
                         <div>Aucune adresse de livraison enregistrée dans votre profil.</div>
-                    {% endfor %}
+                    {% endif %}
                 </div>
                     
                 <div id="droite">
                     <h4>Adresse de facturation </h4>
-                    {% for ad_facturation in adresses_facturation %}
-                        <div class="adresse">
-                            <input type="radio" name="facturation"  value="{{ ad_facturation.idAdresse }}" {% if loop.last %} checked="checked" {% endif %}/>
-                            <label>{{ ad_facturation.adresse  ~' - '~ ad_facturation.cp ~' '~  ad_facturation.ville|capitalize ~' - '~ ad_facturation.pays|capitalize }}
-                            <a href="{{ path('odysseus_front_livraison_adresse_suppression', {id : ad_facturation.idAdresse } ) }}" class="trash"></a>
-                            </label>
-                        </div>
+                    {% if (adresses_facturation|length) > 0 %}
+                        {% for ad_facturation in adresses_facturation %}
+                            <div class="adresse">
+                                <input type="radio" name="facturation"  value="{{ ad_facturation.idAdresse }}" {% if loop.last %} checked="checked" {% endif %}/>
+                                <label>{{ ad_facturation.adresse  ~' - '~ ad_facturation.cp ~' '~  ad_facturation.ville|capitalize ~' - '~ ad_facturation.pays|capitalize }}
+                                <a href="{{ path('odysseus_front_livraison_adresse_suppression', {id : ad_facturation.idAdresse } ) }}" class="trash"></a>
+                                </label>
+                            </div>
+                        {% endfor %}
                     {% else %}
                         <div>Aucune adresse de facturation enregistrée dans votre profil.</div>
-                    {% endfor %} 
+                    {% endif %}
+                    
+                        
                 </div>
                 <br/>
                 <div>
                     <button type="submit">Valider mes adresses </button>
                 </div>
+                {% for message in app.session.flashbag.get('livraison') %}
+                    <p class="error contextual">{{ message }}</p>
+                {% endfor %}
             </form>
 
             <h2> ou Ajouter une adresse</h2>

@@ -13,7 +13,7 @@
 
                 <div id="details">
                         <div id="gauche">	
-                                <span class="marque">{# produit.produit.marque #}</span>
+                                <span class="marque">{{ produit.produit.marque }}</span>
                                 <span class="nom_produit">{{ produit.produit.nom }}</span>
                                 <p class="descriptif">Description : </p>
                                 <p>{{ produit.produit.description }}</p>
@@ -34,10 +34,12 @@
                                         {% endfor %}
                                     </select>
                                     <br/>
+                                    <br/>
                                    <div>
                                        <button type="submit">Ajouter au panier</button>
                                    </div> 
                                 </form>
+    
                                 {% else %}
                                     <div>
                                         <a href="{{ path('odysseus_front_panier') }}" class="infos">Le produit est déjà dans votre panier.</a>

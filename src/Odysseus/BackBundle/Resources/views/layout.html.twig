@@ -25,15 +25,15 @@
                     <span class="icon-bar">2</span>
                     <span class="icon-bar">3</span>
                 </button>
-                <a class="navbar-brand" href="#">Odysseus</a>
+                <a class="navbar-brand" href="{{ path('odysseus_front_home')}}">MégaTechno.com</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                 </ul>
-                <form class="navbar-form navbar-right">
+               <!--<form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Search...">
-                </form>
+                </form>-->
                 </div>
             </div> 
             </nav>      
@@ -120,26 +120,26 @@
                 </div>
                 
                 <!-- Commandes -->
-                <div class="panel panel-primary">
+                <!--<div class="panel panel-primary">
                     <div class="panel-heading titre">
                         <h3 class="panel-title">Gestion des Commandes</h3>
                     </div>
                     <div class="detail">
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_en_attente') }}" title="">Commandes en attente de paiement -> Ad</a>
+                        <a href="{# path('odysseus_back_lister_commande_en_attente') #}" title="">Commandes en attente de paiement -> Ad</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_payee') }}" title="">Commandes payées ->Ad</a>
+                        <a href="{# path('odysseus_back_lister_commande_payee') #}" title="">Commandes payées ->Ad</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_en_cours_livraison') }}" title="">Commandes en cours de livraison ->Ad</a>
+                        <a href="{# path('odysseus_back_lister_commande_en_cours_livraison') #}" title="">Commandes en cours de livraison ->Ad</a>
                         </div>
                         <div class="panel-body">
-                        <a href="{{ path('odysseus_back_lister_commande_livree') }}" title="">Commandes livrées ->Ad</a>
+                        <a href="{# path('odysseus_back_lister_commande_livree') #}" title="">Commandes livrées ->Ad</a>
 
                         </div>
                     </div>
-                </div>
+                </div>-->
                 
                 <!-- Pages statiques -->
                 <div class="panel panel-primary">
