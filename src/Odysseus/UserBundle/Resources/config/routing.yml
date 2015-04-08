@@ -82,3 +82,8 @@ odysseus_front_profile_ajout_produit:
 odysseus_front_profile_commande:
     path:     /profile/liste_commande/
     defaults: { _controller: OdysseusUserBundle:Profile:commandeProfile }
+
+odysseus_front_profile_commande_detail:
+    path:     /profile/commande/{id}
+    defaults: { _controller: OdysseusUserBundle:Profile:commandeDetail }
+

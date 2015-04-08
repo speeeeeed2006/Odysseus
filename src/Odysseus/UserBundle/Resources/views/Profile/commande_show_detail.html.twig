@@ -1,0 +1,21 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Mes Commandes</h2>
+            <p> Référence de la commande : {{ commande.idCommande }}</p>
+            <p> Date de la commande : {{ commande.dateCommande|date("d/m/Y") }}</p>
+            <p> Adresse de livraision : {{ adresse_livraison.adresse }}</p>
+            <p> Adresse de Facturation : {{ adresse_facturation.adresse }}</p>
+            <p> Etat de la commande : {{ commande.etat }}</p>
+            <br />
+        </div>
+    </div>
+
+{% endblock fos_user_content %}
+

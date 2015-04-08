@@ -201,6 +201,24 @@ class ProfileController extends Controller
         ));
     }
 
+    public function commandeDetailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $commande   = $em->getRepository('OdysseusFrontBundle:Commande')->find($id);
+        $adresse_livraison = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
+        if(!is_null($commande->getAdresseFacturationId()))
+        $adresse_facturation = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseFacturationId());
+
+
+        return $this->render('OdysseusUserBundle:Profile:commande_show_detail.html.twig', array(
+            'commande'              => $commande,
+            'adresse_livraison'     => $adresse_livraison,
+            'adresse_facturation'   => $adresse_facturation,
+        ));
+    }
+
     public function ajoutProduitAction()
     {
         $produit = new Produit();

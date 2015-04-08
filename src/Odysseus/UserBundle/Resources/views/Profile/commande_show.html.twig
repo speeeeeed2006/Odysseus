@@ -28,7 +28,7 @@
                                 <td class="tg-031e">{{data['adresse'].adresse}} {{data['adresse'].cp}}</td>
                                 <td class="tg-031e">{{data['commande'].montant}} €</td>
                                 <td class="tg-031e">{{data['commande'].etat}}</td>
-                                <td class="tg-031e"><a href=""><center><span  class="glyphicon glyphicon-edit" style="text-align: center;font-size: 1.4em;"></span></center></a></td>
+                                <td class="tg-031e"><a href="{{ path('odysseus_front_profile_commande_detail' , {'id':data['commande'].idCommande }) }}"><center><span  class="glyphicon glyphicon-edit" style=""></span></center></a></td>
                             </tr>
                         {% endfor %}
                     </table>
