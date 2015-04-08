@@ -356,4 +356,38 @@ class Commande
     {
         return $this->produitVenteProduitVente;
     }
+
+    /**
+     * Add listeProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit
+     *
+     * @return Commande
+     */
+    public function addListeProduit(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit)
+    {
+        $this->listeProduit[] = $listeProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove listeProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit
+     */
+    public function removeListeProduit(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit)
+    {
+        $this->listeProduit->removeElement($listeProduit);
+    }
+
+    /**
+     * Get listeProduit
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getListeProduit()
+    {
+        return $this->listeProduit;
+    }
 }

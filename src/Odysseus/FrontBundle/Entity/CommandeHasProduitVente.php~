@@ -122,5 +122,52 @@ class CommandeHasProduitVente
     {
         return $this->quantite;
     }
-}
 
+    /**
+     * Set commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\Commande $commande
+     *
+     * @return CommandeHasProduitVente
+     */
+    public function setCommande(\Odysseus\FrontBundle\Entity\Commande $commande)
+    {
+        $this->commande = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \Odysseus\FrontBundle\Entity\Commande
+     */
+    public function getCommande()
+    {
+        return $this->commande;
+    }
+
+    /**
+     * Set produitVente
+     *
+     * @param \Odysseus\FrontBundle\Entity\ProduitVente $produitVente
+     *
+     * @return CommandeHasProduitVente
+     */
+    public function setProduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVente)
+    {
+        $this->produitVente = $produitVente;
+
+        return $this;
+    }
+
+    /**
+     * Get produitVente
+     *
+     * @return \Odysseus\FrontBundle\Entity\ProduitVente
+     */
+    public function getProduitVente()
+    {
+        return $this->produitVente;
+    }
+}

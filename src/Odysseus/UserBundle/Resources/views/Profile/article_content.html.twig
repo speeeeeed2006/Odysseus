@@ -11,22 +11,25 @@
             <button><a href="{{ path('odysseus_front_profile_article_ajout') }}">Ajouter un produit à vendre</a></button>
             <br />
             <br />
-            {% if (liste_article is empty) %}
+            {% if (listeArticle_image is empty) %}
                 <span>
                         Vous n'avez ajouter aucun article
             </span>
             {% else %}
-                {% for article in liste_article %}
+                {% for data in listeArticle_image %}
                     <div class="cartouche">
-                        <span class="nomProduitVente">{{ article.getProduit.getNom}}</span>
+                        <div class="cartouche_content">
+                        <span class="nomProduitVente">{{ data['article'].getProduit.getNom}}</span>
                         <br/>
-                        <span class="label">Marque :</span><span class="data">{{ article.getProduit.getMarque}}</span>
+                        <span class="label">Marque :</span><span class="data">{{ data['article'].getProduit.getMarque}}</span>
                         <br/>
-                        <span class="label">Référence :</span><span class="data">{{ article.getProduit.getReference}}</span>
+                        <span class="label">Référence :</span><span class="data">{{ data['article'].getProduit.getReference}}</span>
                         <br/>
-                        <span class="label">Prix de vente :</span><span class="data">{{ article.prix}}</span>
+                        <span class="label">Prix de vente :</span><span class="data">{{ data['article'].prix}}</span>
                         <br/>
-                        <span class="label">Votre stock :</span><span class="data">{{ article.stock}}</span>
+                        <span class="label">Votre stock :</span><span class="data">{{ data['article'].stock}}</span>
+                        </div>
+                        <img src="/odysseus/web/uploads/imageArticle/{{ data['image'][0].getIdImage }}.{{ data['image'][0].path }}">
                     </div>
                     <br/>
                 {% endfor %}

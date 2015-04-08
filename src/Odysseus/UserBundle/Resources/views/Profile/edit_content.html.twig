@@ -17,6 +17,11 @@
                 {{ form_widget(form.email) }}
             </div>
             <div>
+                {{ form_errors(form.civilite) }}
+                {{ form_label(form.civilite, "Civilité :") }}
+                {{ form_widget(form.civilite) }}
+            </div>
+            <div>
                 {{ form_errors(form.prenom) }}
                 {{ form_label(form.prenom, "Votre prénom :") }}
                 {{ form_widget(form.prenom) }}
@@ -25,11 +30,6 @@
                 {{ form_errors(form.nom) }}
                 {{ form_label(form.nom, "Votre nom :") }}
                 {{ form_widget(form.nom) }}
-            </div>
-            <div>
-                {{ form_errors(form.civilite) }}
-                {{ form_label(form.civilite, "Civilité :") }}
-                {{ form_widget(form.civilite) }}
             </div>
             <div>
                 {{ form_errors(form.telephone) }}

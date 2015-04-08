@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Ajout d'un Produits</h2>
+            <br />
+            <br />
+            <form action="{{ path('odysseus_front_profile_ajout_produit') }}" {{ form_enctype(form) }} method="POST">
+                {{ form_rest(form) }}
+                <br />
+                {{ form_row(form._token) }}
+                <button type="submit">Valider</button>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

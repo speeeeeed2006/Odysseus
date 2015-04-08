@@ -102,7 +102,8 @@ class ProduitVente
     private $commande;
 
     /**
-     * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Image", mappedBy="produitVente")
+     * @ORM\OneToOne(targetEntity="Image")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id_image")
      */
     protected $image;
 
@@ -112,7 +113,6 @@ class ProduitVente
     public function __construct()
     {
         $this->commandeCommande =   new \Doctrine\Common\Collections\ArrayCollection();
-        $this->image            =   new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -366,36 +366,60 @@ class ProduitVente
     }
 
     /**
-     * Add image
+     * Get image
      *
-     * @param \Odysseus\FrontBundle\Entity\Image $image
+     * @return \Odysseus\FrontBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande
      *
      * @return ProduitVente
      */
-    public function addImage(\Odysseus\FrontBundle\Entity\Image $image)
+    public function addCommande(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande)
     {
-        $this->image[] = $image;
+        $this->commande[] = $commande;
 
         return $this;
     }
 
     /**
-     * Remove image
+     * Remove commande
      *
-     * @param \Odysseus\FrontBundle\Entity\Image $image
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande
      */
-    public function removeImage(\Odysseus\FrontBundle\Entity\Image $image)
+    public function removeCommande(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande)
     {
-        $this->image->removeElement($image);
+        $this->commande->removeElement($commande);
     }
 
     /**
-     * Get image
+     * Get commande
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getImage()
+    public function getCommande()
     {
-        return $this->image;
+        return $this->commande;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Odysseus\FrontBundle\Entity\Image $image
+     *
+     * @return ProduitVente
+     */
+    public function setImage(\Odysseus\FrontBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

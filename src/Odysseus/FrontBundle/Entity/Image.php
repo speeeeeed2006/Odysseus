@@ -10,14 +10,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Image
  * @ORM\Table(name="image")
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="image", indexes={@ORM\Index(name="fk_Image_ProduitVente1_idx", columns={"produit_vente_id"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\ImageRepository")
  */
 class Image
 {
     const ACTIVEE = 'activée';
     const DESACTIVEE = 'désactivée';
-    
+
     /**
      * @var integer
      *
@@ -26,7 +26,7 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $idImage;
-   
+
 
         /**
      * @var string
@@ -40,7 +40,7 @@ class Image
      * @Assert\File(maxSize="6000000")
      */
     public $file;
-    
+
     /**
      * @var string
      *
@@ -53,25 +53,23 @@ class Image
      * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
-    
+
     /**
      * @var \ProduitVente
      *
-     * @ORM\ManyToOne(targetEntity="ProduitVente",  inversedBy="image")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="produit_vente_id", referencedColumnName="id_produit_vente", nullable=false)
-     * })
+     * @ORM\OneToOne(targetEntity="ProduitVente", inversedBy="image")
+     * @ORM\JoinColumn(name="produitVente_id", referencedColumnName="id_produit_vente")
      */
     private $produitVente;
 
 
     public function __construct(){
-    
+
     }
-   
-    
+
+
     private $filenameForRemove;
-    
+
      public function getNom() {
         return $this->nom;
     }
@@ -95,7 +93,7 @@ class Image
     public function setPath($path) {
         $this->path = $path;
     }
-    
+
        /**
      * Set etat
      *
@@ -117,9 +115,9 @@ class Image
     {
         return $this->etat;
     }
-    
 
-    
+
+
 
     public function getWebPath()
     {
@@ -138,8 +136,8 @@ class Image
         // le document/image dans la vue.
         return 'uploads/imageArticle';
     }
-    
-    
+
+
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -168,7 +166,7 @@ class Image
         $this->file->move($this->getUploadRootDir(), $this->idImage.'.'.$this->file->guessExtension());
         unset($this->file);
     }
-    
+
     /**
      * @ORM\PreRemove()
      */
@@ -186,33 +184,10 @@ class Image
             unlink($this->filenameForRemove);
         }
     }
-    
+
     public function getAbsolutePath() //OK
     {
         return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->idImage.'.'.$this->path;
-    }
-
-    /**
-     * Set filenameForRemove
-     *
-     * @param \Odysseus\FrontBundle\Entity\Etat $filenameForRemove
-     * @return Image
-     */
-    public function setFilenameForRemove(\Odysseus\FrontBundle\Entity\Etat $filenameForRemove = null)
-    {
-        $this->filenameForRemove = $filenameForRemove;
-
-        return $this;
-    }
-
-    /**
-     * Get filenameForRemove
-     *
-     * @return \Odysseus\FrontBundle\Entity\Etat 
-     */
-    public function getFilenameForRemove()
-    {
-        return $this->filenameForRemove;
     }
 
     /**
@@ -224,7 +199,7 @@ class Image
     {
         return $this->idImage;
     }
-    
+
     /**
      * Set produitVente
      *
@@ -239,7 +214,7 @@ class Image
     /**
      * Get produitVente
      *
-     * @return \Odysseus\FrontBundle\Entity\ProduitVente 
+     * @return \Odysseus\FrontBundle\Entity\ProduitVente
      */
     public function getProduitVente()
     {

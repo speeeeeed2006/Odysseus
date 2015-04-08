@@ -6,8 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Odysseus\UserBundle\Form\Type\ProfileFormType;
 use Odysseus\UserBundle\Form\Type\ClientType;
 use Odysseus\UserBundle\Form\Type\AdresseType;
-use Odysseus\UserBundle\Form\Type\CollectionAdresseType;
+use Odysseus\UserBundle\Form\Type\ProduitType;
 use Odysseus\FrontBundle\Entity\Adresse;
+use Odysseus\FrontBundle\Entity\Produit;
 
 class ProfileController extends Controller
 {
@@ -156,10 +157,17 @@ class ProfileController extends Controller
         $user = $this->getUser();
 
         $liste_article  = $em->getRepository('OdysseusFrontBundle:ProduitVente')->getUserProduitVente($user);
+        $listeArticle_image  = array();
+
+        foreach ($liste_article as $article){
+            $image = $em->getRepository('OdysseusFrontBundle:Image')->getImageProduit($article);
+
+            array_push($listeArticle_image, array('article' => $article, 'image' => $image));
+        }
 
         return $this->render('OdysseusUserBundle:Profile:article_content.html.twig', array(
             'user'          => $user,
-            'liste_article' => $liste_article
+            'listeArticle_image' => $listeArticle_image
         ));
     }
 
@@ -185,13 +193,49 @@ class ProfileController extends Controller
         
         foreach ($listeCommande as $commande){
            $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
-           ladybug_dump($commande->getListeProduit());
-           
            array_push($listeCommande_Adresse, array('commande' => $commande, 'adresse' => $adresse));
         }
 
         return $this->render('OdysseusUserBundle:Profile:commande_show.html.twig', array(
             'listeCommande_Adresse'         => $listeCommande_Adresse
+        ));
+    }
+
+    public function ajoutProduitAction()
+    {
+        $produit = new Produit();
+
+        //le form builder
+        $form = $this->createForm(new ProduitType, $produit);
+
+        //on récupère la requete
+        $request = $this->get('request');
+
+        if ($this->getRequest()->getMethod() == 'POST'){
+            //on fait le lien requete ->form
+            $form->bind($request);
+
+            //on vérifie que les chps sont corrects
+            if($form->isValid()) {
+
+                $produit->setEtat(Produit::A_VALIDER)
+                        ->setPromotion(0);
+                //on en registre notre objet ds la bdd
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($produit);
+                $em->flush();
+
+                //on affiche un message flash
+                $this->get('session')->getFlashBag()->add('produit', 'Produit bien ajouté');
+
+                //on redirige vers la page de visualisation des Produit
+                return $this->redirect($this->generateUrl('odysseus_front_profile_article_ajout_info', array('id' => $produit->getIdProduit())));
+            }
+        }
+
+        //on affiche sinon le form avec les données entrées
+        return $this->render('OdysseusUserBundle:Profile:produit_ajout.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 }

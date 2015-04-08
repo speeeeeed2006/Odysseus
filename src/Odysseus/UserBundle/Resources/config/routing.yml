@@ -72,6 +72,10 @@ odysseus_front_profile_article_ajout_info:
 odysseus_front_profile_article_ajout_image:
     path:     /profile/article/ajouter_image/{id}
     defaults: { _controller: OdysseusUserBundle:ArticleProfile:ajouterArticleImage }
+
+odysseus_front_profile_ajout_produit:
+    path:     /profile/ajout_produit/
+    defaults: { _controller: OdysseusUserBundle:Profile:ajoutProduit }
 #-------------- fin
 
 #-------------- Profile commande
