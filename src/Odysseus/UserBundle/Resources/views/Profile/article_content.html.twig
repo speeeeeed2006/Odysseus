@@ -7,7 +7,10 @@
         {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
 
         <div id="detail">
-            <h2>Mes Produit</h2>
+            <h2>Mes Produits</h2>
+            <button><a href="{{ path('odysseus_front_profile_article_ajout') }}">Ajouter un produit à vendre</a></button>
+            <br />
+            <br />
             {% if (liste_article is empty) %}
                 <span>
                         Vous n'avez ajouter aucun article
@@ -29,7 +32,6 @@
                 {% endfor %}
             {% endif %}
             <br />
-            <a href="{{ path('odysseus_front_profile_article_ajout') }}">Vendre un article</a>
         </div>
     </div>
 

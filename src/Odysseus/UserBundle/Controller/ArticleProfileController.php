@@ -21,38 +21,8 @@ class ArticleProfileController extends Controller
 
         $form = $this->createForm(new ProduitVenteType());
 
-        /*$image = new Image();
-
-        //le form builder
-        $formImage = $this->createFormBuilder($image)
-            ->add('nom')
-            ->add('file')
-            ->getForm();
-
-        if($this->getRequest()->isMethod('POST')){
-
-            //$form->bind($request);
-            $form->handleRequest($this->getRequest());
-
-            if ($form->isValid()){
-                //on en registre notre objet ds la bdd
-                $em = $this->getDoctrine()->getManager();
-
-                $em->persist($imageSlider);
-
-                $imageSlider->setEtat(ImageSlider::ACTIVEE);
-                $em->flush();
-
-                //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('imageSlider', 'Image Slider bien téléchargée');
-
-                //on redirige vers la page de visualisation des images
-                return $this->redirect($this->generateUrl('odysseus_back_lister_image_slider'));
-            }
-
-            */
-
-            $request = $this->getRequest();
+        $request = $this->getRequest();
+        
         if ($request->getMethod() == 'POST'){
             //on fait le lien requete ->form
             $form->bind($request);
@@ -77,12 +47,54 @@ class ArticleProfileController extends Controller
                 $this->get('session')->getFlashBag()->add('produitvente', 'Article bien ajouté');
 
                 //on redirige vers la page liste des catégories
-                return $this->redirect($this->generateUrl('odysseus_front_profile_article'));
+                return $this->redirect($this->generateUrl('odysseus_front_profile_article_ajout_image', array('id' => $produitVente->getIdProduitVente())));
             }
         }
         return $this->render('OdysseusUserBundle:Profile:article_ajoutInfo.html.twig', array(
             'form'      => $form->createView(),
             'produit'   => $produit
         ));
+    }
+    
+    public function ajouterArticleImageAction($id)
+    {
+        $em         = $this->getDoctrine()->getManager();
+        $produit    = $em->getRepository('OdysseusFrontBundle:ProduitVente')->find($id);
+        $image      = new \Odysseus\FrontBundle\Entity\Image();
+
+        //le form builder
+        $form = $this->createFormBuilder($image)
+                     ->add('nom')
+                     ->add('file')
+                     ->getForm();
+        
+        if($this->getRequest()->isMethod('POST')){
+            
+            //$form->bind($request);
+            $form->handleRequest($this->getRequest());
+            
+            if ($form->isValid()){
+                //on en registre notre objet ds la bdd
+                $em = $this->getDoctrine()->getManager();
+                
+                $image->setProduitVente($produit);
+                
+                $em->persist($image);
+                
+                $image->setEtat(\Odysseus\FrontBundle\Entity\Image::ACTIVEE);
+                $em->flush();    
+            
+                //on affiche un message flash
+                $this->get('session')->getFlashBag()->add('image', 'Image Slider bien téléchargée');
+
+                //on redirige vers la page de visualisation des images
+                return $this->redirect($this->generateUrl('odysseus_front_profile_article'));              
+            }          
+        }
+ 
+    	//on affiche sinon le form avec les donn√©es entr√©es
+    	return $this->render('OdysseusUserBundle:Profile:article_ajoutImage.html.twig', array(
+            'form' => $form->createView(),
+        ));        
     }
 }

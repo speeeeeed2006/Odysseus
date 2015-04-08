@@ -56,6 +56,14 @@ class CommandeRepository extends EntityRepository
                     ->getResult();
     }
     
-    
+    public function getCommandeOfClient($user)
+    {   
+        return $this->createQueryBuilder('c')
+                    ->join('c.user', 'u')
+                    ->where('c.user = :user' )
+                    ->setParameter('user' , $user->getId())
+                    ->getQuery()
+                    ->getResult();
+    }
     
 }

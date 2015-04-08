@@ -97,9 +97,9 @@ class ProduitVente
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="produitVenteProduitVente")
+     * @ORM\ManyToMany(targetEntity="CommandeHasProduitVente", mappedBy="produitVente")
      */
-    private $commandeCommande;
+    private $commande;
 
     /**
      * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Image", mappedBy="produitVente")

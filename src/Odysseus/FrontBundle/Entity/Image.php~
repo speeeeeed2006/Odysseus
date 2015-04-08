@@ -3,52 +3,57 @@
 namespace Odysseus\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
- *
+ * @ORM\Table(name="image")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="image", indexes={@ORM\Index(name="fk_Image_ProduitVente1_idx", columns={"produit_vente_id"})})
  * @ORM\Entity
  */
 class Image
 {
+    const ACTIVEE = 'activée';
+    const DESACTIVEE = 'désactivée';
+    
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_image", type="integer", nullable=false)
+     * @ORM\Column(name="id_image", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $idImage;
+   
 
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\NotBlank
+     */
+    private $nom;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=255, nullable=true)
+     * @ORM\Column(name="path", type="string", length=255)
      */
-    private $extension;
+    private $path;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
-    private $alt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="file", type="string", length=255, nullable=true)
-     */
-    private $file;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tempFileName", type="string", length=255, nullable=true)
-     */
-    private $tempfilename;
-
+    private $etat;
+    
     /**
      * @var \ProduitVente
      *
@@ -60,109 +65,166 @@ class Image
     private $produitVente;
 
 
+    public function __construct(){
+    
+    }
+   
+    
+    private $filenameForRemove;
+    
+     public function getNom() {
+        return $this->nom;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function getFile() {
+        return $this->file;
+    }
+
+    public function setFile($file) {
+        $this->file = $file;
+    }
+
+    public function getPath() {
+        return $this->path;
+    }
+
+    public function setPath($path) {
+        $this->path = $path;
+    }
+    
+       /**
+     * Set etat
+     *
+     * @return Image
+     */
+    public function setEtat($value)
+    {
+        $this->etat = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+    
+
+    
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()  //OK
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir() //
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/imageArticle';
+    }
+    
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() //OK
+    {
+        if (null !== $this->file) {
+            $this->path = $this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() //OK
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->idImage.'.'.$this->file->guessExtension());
+        unset($this->file);
+    }
+    
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove() //OK
+    {
+        $this->filenameForRemove = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload() //OK
+    {
+        if ($this->filenameForRemove) {
+            unlink($this->filenameForRemove);
+        }
+    }
+    
+    public function getAbsolutePath() //OK
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->idImage.'.'.$this->path;
+    }
+
+    /**
+     * Set filenameForRemove
+     *
+     * @param \Odysseus\FrontBundle\Entity\Etat $filenameForRemove
+     * @return Image
+     */
+    public function setFilenameForRemove(\Odysseus\FrontBundle\Entity\Etat $filenameForRemove = null)
+    {
+        $this->filenameForRemove = $filenameForRemove;
+
+        return $this;
+    }
+
+    /**
+     * Get filenameForRemove
+     *
+     * @return \Odysseus\FrontBundle\Entity\Etat 
+     */
+    public function getFilenameForRemove()
+    {
+        return $this->filenameForRemove;
+    }
 
     /**
      * Get idImage
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdImage()
     {
         return $this->idImage;
     }
-
-    /**
-     * Set extension
-     *
-     * @param string $extension
-     * @return Image
-     */
-    public function setExtension($extension)
-    {
-        $this->extension = $extension;
-
-        return $this;
-    }
-
-    /**
-     * Get extension
-     *
-     * @return string 
-     */
-    public function getExtension()
-    {
-        return $this->extension;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set file
-     *
-     * @param string $file
-     * @return Image
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return string 
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Set tempfilename
-     *
-     * @param string $tempfilename
-     * @return Image
-     */
-    public function setTempfilename($tempfilename)
-    {
-        $this->tempfilename = $tempfilename;
-
-        return $this;
-    }
-
-    /**
-     * Get tempfilename
-     *
-     * @return string 
-     */
-    public function getTempfilename()
-    {
-        return $this->tempfilename;
-    }
-
+    
     /**
      * Set produitVente
      *
@@ -172,10 +234,8 @@ class Image
     public function setProduitVente(\Odysseus\FrontBundle\Entity\ProduitVente $produitVente = null)
     {
         $this->produitVente = $produitVente;
-
         return $this;
     }
-
     /**
      * Get produitVente
      *

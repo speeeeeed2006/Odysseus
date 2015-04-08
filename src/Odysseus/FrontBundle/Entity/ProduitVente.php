@@ -97,9 +97,9 @@ class ProduitVente
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="produitVenteProduitVente")
+     * @ORM\ManyToMany(targetEntity="CommandeHasProduitVente", mappedBy="produitVente")
      */
-    private $commandeCommande;
+    private $commande;
 
     /**
      * @ORM\OneToMany(targetEntity="\Odysseus\FrontBundle\Entity\Image", mappedBy="produitVente")
@@ -397,5 +397,39 @@ class ProduitVente
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande
+     *
+     * @return ProduitVente
+     */
+    public function addCommande(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande)
+    {
+        $this->commande[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande
+     */
+    public function removeCommande(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $commande)
+    {
+        $this->commande->removeElement($commande);
+    }
+
+    /**
+     * Get commande
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommande()
+    {
+        return $this->commande;
     }
 }

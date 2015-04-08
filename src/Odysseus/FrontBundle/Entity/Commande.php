@@ -95,26 +95,16 @@ class Commande
     private $etat;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="ProduitVente", inversedBy="commandeCommande")
-     * @ORM\JoinTable(name="commande_has_produit_vente",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="Commande_id_commande", referencedColumnName="id_commande")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="Produit_Vente_id_Produit_Vente", referencedColumnName="id_produit_vente")
-     *   }
-     * )
-     */
-    private $produitVenteProduitVente;
+    * @ORM\OneToMany(targetEntity="Odysseus\FrontBundle\Entity\CommandeHasProduitVente", mappedBy="commande")
+    */
+    private $listeProduit;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->produitVenteProduitVente = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->listeProduit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -365,5 +355,39 @@ class Commande
     public function getProduitVenteProduitVente()
     {
         return $this->produitVenteProduitVente;
+    }
+
+    /**
+     * Add listeProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit
+     *
+     * @return Commande
+     */
+    public function addListeProduit(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit)
+    {
+        $this->listeProduit[] = $listeProduit;
+
+        return $this;
+    }
+
+    /**
+     * Remove listeProduit
+     *
+     * @param \Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit
+     */
+    public function removeListeProduit(\Odysseus\FrontBundle\Entity\CommandeHasProduitVente $listeProduit)
+    {
+        $this->listeProduit->removeElement($listeProduit);
+    }
+
+    /**
+     * Get listeProduit
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getListeProduit()
+    {
+        return $this->listeProduit;
     }
 }

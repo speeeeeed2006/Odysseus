@@ -6,23 +6,15 @@
     <div id="detail">
         <h2>Mes adresses</h2>
         <div id="adresses">
-            {% if (liste_adresse is empty) %}
+            {% if (liste_adresse_livraison is empty) %}
                 <span>
-                        Vous n'avez renseigné aucune adresse
+                        Vous n'avez renseigné aucune adresse de livraison
                 </span>
                 <br />
-                <button>Ajouter une adresse</button>
             {% else %} 
-                {% for adr in liste_adresse %}
+                <h3>Mes adresse de livraison : </h3>
+                {% for adr in liste_adresse_livraison %}
                     <div class="cartouche">
-                        <span class="type">
-                            {% if (adr.type != 0) %} 
-                                Votre adresse de facturation :
-                            {% else %}
-                                Votre adresse de livraison :
-                            {% endif %}
-                        </span>
-                        <br />
                         <div class="donne_adresse">
                             Adresse : {{ adr.adresse}}
                         </div>
@@ -35,6 +27,7 @@
                         <div class="donne_adresse">
                             Pays : {{ adr.pays}}
                         </div>
+                        <br />
                         <span class="edition_adresse">
                             <a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><img src="/odysseus/web/images/glyphicons_edit.png"> modifier cette adresse</a>
                         </span>
@@ -43,9 +36,48 @@
                             <a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}">supprimer cette adresse</a>
                         </span>
                     </div>
+                        <br />
                 {% endfor %}
             {% endif %}
-            <a href="{{ path('odysseus_front_adresse_ajout')}}">Ajouter  adresse</a>
+            {% if (liste_adresse_facturation is empty) %}
+                <br />
+                <hr />
+                <br />
+                <span>
+                        Vous n'avez renseigné aucune adresse de facturation
+                </span>
+                <br />
+                <br />
+            {% else %} 
+                <h3>Mes adresse de facturation : </h3>
+                {% for adr in liste_adresse_facturation %}
+                    <div class="cartouche">
+                        <div class="donne_adresse">
+                            Adresse : {{ adr.adresse}}
+                        </div>
+                         <div class="donne_adresse">
+                            Code postal : {{ adr.cp}}
+                        </div>
+                         <div class="donne_adresse">
+                            Ville : {{ adr.ville}}
+                        </div>
+                        <div class="donne_adresse">
+                            Pays : {{ adr.pays}}
+                        </div>
+                        <br />
+                        <span class="edition_adresse">
+                            <a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><img src="/odysseus/web/images/glyphicons_edit.png"> modifier cette adresse</a>
+                        </span>
+                        <br />
+                        <span class="supp_adresse">
+                            <a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}">supprimer cette adresse</a>
+                        </span>
+                    </div>
+                        <br />
+                {% endfor %}
+            {% endif %}
+            <a href="{{ path('odysseus_front_adresse_ajout')}}">
+                <button>Ajouter une adresse</button></a>
             <span class="supp_adresse">
             </span>
         </div>

@@ -1,12 +1,9 @@
 <?php
-
 namespace Odysseus\FrontBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Odysseus\FrontBundle\Entity\Etat;
-
 /**
  * ImageSlider
  *
@@ -28,7 +25,6 @@ class ImageSlider
      */
     private $idImageSlider;
    
-
         /**
      * @var string
      *
@@ -36,14 +32,12 @@ class ImageSlider
      * @Assert\NotBlank
      */
     private $nom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255)
      */
     //private $alt;
-
     /**
      * @Assert\File(maxSize="6000000")
      */
@@ -55,13 +49,11 @@ class ImageSlider
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
-
     /**
      * @var string
      * @ORM\Column(name="etat", type="string", length=45, nullable=false)
      */
     private $etat;
-
     
     
     public function __construct(){
@@ -87,23 +79,18 @@ class ImageSlider
      public function getNom() {
         return $this->nom;
     }
-
     public function setNom($nom) {
         $this->nom = $nom;
     }
-
     public function getFile() {
         return $this->file;
     }
-
     public function setFile($file) {
         $this->file = $file;
     }
-
     public function getPath() {
         return $this->path;
     }
-
     public function setPath($path) {
         $this->path = $path;
     }
@@ -116,10 +103,8 @@ class ImageSlider
     public function setEtat($value)
     {
         $this->etat = $value;
-
         return $this;
     }
-
     /**
      * Get etat
      *
@@ -130,20 +115,16 @@ class ImageSlider
         return $this->etat;
     }
     
-
     
-
     public function getWebPath()
     {
         return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
     }
-
     protected function getUploadRootDir()  //OK
     {
         // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
-
     protected function getUploadDir() //
     {
         // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
@@ -162,7 +143,6 @@ class ImageSlider
             $this->path = $this->file->guessExtension();
         }
     }
-
     /**
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
@@ -172,13 +152,11 @@ class ImageSlider
         if (null === $this->file) {
             return;
         }
-
         // s'il y a une erreur lors du déplacement du fichier, une exception
         // va automatiquement être lancée par la méthode move(). Cela va empêcher
         // proprement l'entité d'être persistée dans la base de données si
         // erreur il y a
         $this->file->move($this->getUploadRootDir(), $this->idImageSlider.'.'.$this->file->guessExtension());
-
         unset($this->file);
     }
     
@@ -189,7 +167,6 @@ class ImageSlider
     {
         $this->filenameForRemove = $this->getAbsolutePath();
     }
-
     /**
      * @ORM\PostRemove()
      */
@@ -204,7 +181,6 @@ class ImageSlider
     {
         return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->idImageSlider.'.'.$this->path;
     }
-
     /**
      * Set filenameForRemove
      *
@@ -214,10 +190,8 @@ class ImageSlider
     public function setFilenameForRemove(\Odysseus\FrontBundle\Entity\Etat $filenameForRemove = null)
     {
         $this->filenameForRemove = $filenameForRemove;
-
         return $this;
     }
-
     /**
      * Get filenameForRemove
      *

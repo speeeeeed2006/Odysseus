@@ -7,6 +7,7 @@ use Odysseus\UserBundle\Form\Type\ProfileFormType;
 use Odysseus\UserBundle\Form\Type\ClientType;
 use Odysseus\UserBundle\Form\Type\AdresseType;
 use Odysseus\UserBundle\Form\Type\CollectionAdresseType;
+use Odysseus\FrontBundle\Entity\Adresse;
 
 class ProfileController extends Controller
 {
@@ -59,11 +60,13 @@ class ProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
-        $liste_adresse= $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresse($user);
+        $liste_adresse_livraison    =   $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseLivraison($user);
+        $liste_adresse_facturation  =   $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($user);
 
         return $this->render('OdysseusUserBundle:Profile:adresse.html.twig', array(
             'user'          => $user,
-            'liste_adresse' => $liste_adresse
+            'liste_adresse_livraison'   => $liste_adresse_livraison,
+            'liste_adresse_facturation' => $liste_adresse_facturation
         ));
     }
     
@@ -97,8 +100,9 @@ class ProfileController extends Controller
     {
         $em         = $this->getDoctrine()->getManager();
         $user       = $this->getUser();
+        $adresse    = new \Odysseus\FrontBundle\Entity\Adresse();
 
-        $form = $this->createForm(new AdresseType());
+        $form = $this->createForm(new AdresseType(),$adresse);
 
         if ($this->getRequest()->getMethod() == 'POST'){
             //on fait le lien requete ->form
@@ -106,7 +110,9 @@ class ProfileController extends Controller
 
             //on verifie que les chps sont corrects
             if($form->isValid()) {
-
+                $adresse->setEtat(Adresse::VALIDE);
+                $adresse->setUser($user);
+                $em->persist($adresse);
                 $em->flush();
             }
             //on redirige vers la page de visualisation du profil
@@ -163,12 +169,29 @@ class ProfileController extends Controller
         $user = $this->getUser();
 
         $listeCategorie      = $em->getRepository('OdysseusFrontBundle:Categorie')->findAll();
-        //$sousCategorie  = $em->getRepository('OdysseusFrontBundle:Souscategorie')->findAll();
-        //$produit        = $em->getRepository('OdysseusFrontBundle:Produit')->findAll();
-
 
         return $this->render('OdysseusUserBundle:Profile:article_ajout.html.twig', array(
             'liste_categorie'         => $listeCategorie
+        ));
+    }
+    
+    public function commandeProfileAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $listeCommande          = $em->getRepository('OdysseusFrontBundle:Commande')->getCommandeOfClient($user);
+        $listeCommande_Adresse  = array();
+        
+        foreach ($listeCommande as $commande){
+           $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
+           ladybug_dump($commande->getListeProduit());
+           
+           array_push($listeCommande_Adresse, array('commande' => $commande, 'adresse' => $adresse));
+        }
+
+        return $this->render('OdysseusUserBundle:Profile:commande_show.html.twig', array(
+            'listeCommande_Adresse'         => $listeCommande_Adresse
         ));
     }
 }

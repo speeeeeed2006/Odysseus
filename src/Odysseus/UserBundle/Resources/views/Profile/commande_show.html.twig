@@ -1,0 +1,41 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Mes Commandes</h2>
+            {{ladybug_dump(listeCommande_Adresse)}}
+            {% if (listeCommande_Adresse is empty) %}
+                <span>
+                        Vous n'avez aucune commande
+            </span>
+            {% else %}
+                <table class="tg">
+                    <tr>
+                        <th class="tg-031e">Date de la commande</th>
+                        <th class="tg-031e">Adresse de livraison</th>
+                        <th class="tg-031e">Montant de la commande</th>
+                        <th class="tg-031e">Etat de la commande</th>
+                        <th class="tg-031e">Plus d'info</th>
+                    </tr>
+                {% for data in listeCommande_Adresse %}
+                        <tr>
+                            <td class="tg-031e">{{data['commande'].dateCommande|date('d/m/Y')}}</td>
+                            <td class="tg-031e">{{data['adresse'].adresse}} {{data['adresse'].cp}}</td>
+                            <td class="tg-031e">{{data['commande'].montant}} €</td>
+                            <td class="tg-031e">{{data['commande'].etat}}</td>
+                            <td class="tg-031e"><a href="">test</a></td>
+                        </tr>
+                {% endfor %}
+                </table>
+            {% endif %}
+            <br />
+            <a href="{{ path('odysseus_front_profile_article_ajout') }}">Vendre un article</a>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}
