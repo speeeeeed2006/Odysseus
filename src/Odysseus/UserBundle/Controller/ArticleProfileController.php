@@ -83,9 +83,6 @@ class ArticleProfileController extends Controller
                 
                 $image->setEtat(\Odysseus\FrontBundle\Entity\Image::ACTIVEE);
                 $em->flush();    
-            
-                //on affiche un message flash
-                $this->get('session')->getFlashBag()->add('image', 'Image Slider bien téléchargée');
 
                 //on redirige vers la page de visualisation des images
                 return $this->redirect($this->generateUrl('odysseus_front_profile_article'));              

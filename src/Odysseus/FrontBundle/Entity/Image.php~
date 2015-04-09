@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="image")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Odysseus\FrontBundle\Repository\ImageRepository")
  */
 class Image
 {
@@ -56,7 +57,7 @@ class Image
     /**
      * @var \ProduitVente
      *
-     * @ORM\OneToOne(targetEntity="ProduitVente")
+     * @ORM\OneToOne(targetEntity="ProduitVente", inversedBy="image")
      * @ORM\JoinColumn(name="produitVente_id", referencedColumnName="id_produit_vente")
      */
     private $produitVente;

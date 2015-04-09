@@ -193,6 +193,7 @@ class ProfileController extends Controller
         
         foreach ($listeCommande as $commande){
            $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
+
            array_push($listeCommande_Adresse, array('commande' => $commande, 'adresse' => $adresse));
         }
 
@@ -206,16 +207,19 @@ class ProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
-        $commande   = $em->getRepository('OdysseusFrontBundle:Commande')->find($id);
-        $adresse_livraison = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
+        $commande               = $em->getRepository('OdysseusFrontBundle:Commande')->find($id);
+        $adresse_livraison      = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
         if(!is_null($commande->getAdresseFacturationId()))
-        $adresse_facturation = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseFacturationId());
-
+        $adresse_facturation    = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseFacturationId());
+        
+        $liste_produit_vente    = $em->getRepository('OdysseusFrontBundle:CommandeHasProduitVente')->getProduitOfCommande($commande);
+       
 
         return $this->render('OdysseusUserBundle:Profile:commande_show_detail.html.twig', array(
             'commande'              => $commande,
             'adresse_livraison'     => $adresse_livraison,
             'adresse_facturation'   => $adresse_facturation,
+            'liste_produit_vente'   => $liste_produit_vente
         ));
     }
 

@@ -11,6 +11,11 @@
 
                 <h2>Modifier l'adresse</h2>
                 <div>
+                    {{ form_errors(form.type) }}
+                    {{ form_label(form.type, "Type d'adresse :") }}
+                    {{ form_widget(form.type) }}
+                </div>
+                <div>
                     {{ form_errors(form.adresse) }}
                     {{ form_label(form.adresse, "Voie (numero de rue, voie) :") }}
                     {{ form_row(form.adresse) }}
@@ -19,11 +24,6 @@
                     {{ form_errors(form.cp) }}
                     {{ form_label(form.cp, "Code postale :") }}
                     {{ form_widget(form.cp) }}
-                </div>
-                <div>
-                    {{ form_errors(form.type) }}
-                    {{ form_label(form.type, "Type d'adresse :") }}
-                    {{ form_widget(form.type) }}
                 </div>
                 <div>
                     {{ form_errors(form.ville) }}

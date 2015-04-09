@@ -277,12 +277,17 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 #profil .fond ul li ul li a { padding: 0;}
 #profil .fond ul li ul li a:before  { color: #000000;}
 #profil #detail{max-width: 670px;}
-#profil #detail .cartouche { background-color: #cccccc;width: 600px;padding: 10px;border: 1px solid black;height: 100px;}
+/* cartouche*/
+#profil #detail .cartouche { background-color: #ebe4de;width: 600px;max-width: 600px;display: block;padding: 10px;border: 1px solid #5fb7c6;height: 100px;}
+#profil #detail .info { width: 600px;max-width: 600px;}
+#profil #detail .cartouche_adresse td { width:300px;}
 #profil #detail .cartouche .nomProduitVente { font-weight:bold;font-size: 18px;}
 #profil #detail .cartouche .label { font-weight:bold;}
 #profil #detail .cartouche .cartouche_content{float: left;max-width: 300px;}
 #profil #detail .cartouche img{max-height: 100px;right: 0px;float: right;}
-
+/*cartouche tableau */
+#profil #detail .cartouche_adresse { background-color: #ebe4de;width: 600px;max-width: 600px;display: block;padding: 10px;border: 1px solid #5fb7c6;}
+#profil #detail .cartouche_article { background-color: #ebe4de;width: 600px;max-width: 600px;display: block;padding: 10px;border: 1px solid #5fb7c6;height: 100px;}
 
 
 #odysseus_edition_profile_civilite { display: inline-block;}
