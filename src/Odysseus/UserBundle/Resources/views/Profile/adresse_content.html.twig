@@ -22,7 +22,7 @@
                         <td>Code postal :</td><td>{{ adr.cp}}</td>
                         </tr>
                         <tr>
-                        <td>Ville :</td><td>{{ adr.cp}}</td>
+                        <td>Ville :</td><td>{{ adr.ville}}</td>
                         </tr>
                         <tr>
                             <td>Pays :</td><td><span>{{ adr.pays}}</span></td>
@@ -31,7 +31,7 @@
                             <td>Modifier l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-edit"></span></a></center></td>
                         </tr>
                         <tr>
-                            <td>supprimer l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-remove"></span></a></center></a></td>
+                            <td>supprimer l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-remove"></span></a></center></td>
                         </tr>
                     </table>
                         <br />
@@ -57,7 +57,7 @@
                         <td>Code postal :</td><td>{{ adr.cp}}</td>
                         </tr>
                         <tr>
-                        <td>Ville :</td><td>{{ adr.cp}}</td>
+                        <td>Ville :</td><td>{{ adr.ville}}</td>
                         </tr>
                         <tr>
                             <td>Pays :</td><td><span>{{ adr.pays}}</span></td>
@@ -66,7 +66,7 @@
                             <td>Modifier l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-edit"></span></a></center></td>
                         </tr>
                         <tr>
-                            <td>supprimer l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-remove"></span></a></center></td>
+                            <td>supprimer l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-remove"></span></a></center></td>
                         </tr>
                     </table>
                         <br />

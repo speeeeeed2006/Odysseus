@@ -6,12 +6,28 @@
     
     <div id="detail">
         <h2>Mes informations</h2>
-        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-        <p> Civilité : {{ user.civilite }}</p>
-        <p> Nom : {{ user.nom }}</p>
-        <p> Prénom : {{ user.prenom }}</p>
-        <p> Téléphone : {{ user.telephone }}</p>
-        <p>Date de naissance : {{ user.dateNaissance|date("d/m/Y") }}</p>
+        <table class="">
+            <tr>
+                <td>{{ 'profile.show.username'|trans }}:</td><td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'profile.show.email'|trans }}:</td><td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>Civilité :</td><td>{{ user.civilite }}</td>
+            </tr>
+            <tr>
+                <td>Nom :</td><td>{{ user.nom }}</td>
+            </tr>
+            <tr>
+                <td>Prénom :</td><td>{{ user.prenom }}</td>
+            </tr>
+            <tr>
+                <td>Téléphone :</td><td>{{ user.telephone }}</td>
+            </tr>
+            <tr>
+                <td>Date de naissance :</td><td>{{ user.dateNaissance|date("d/m/Y") }}</td>
+            </tr>
+        </table>
     </div>   
 </div>

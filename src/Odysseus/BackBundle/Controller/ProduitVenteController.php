@@ -87,7 +87,6 @@ class ProduitVenteController extends Controller
             throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
         }
 
-        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
         $produit->setEtat(ProduitVente::VALIDE);
         $em->flush();
@@ -126,8 +125,6 @@ class ProduitVenteController extends Controller
         if (!$produit) {
             throw $this->createNotFoundException('Aucun produit trouvé pour cet id : '.$id);
         }
-
-        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
         
         $produit->setEtat(ProduitVente::REFUSE);
         $em->flush();

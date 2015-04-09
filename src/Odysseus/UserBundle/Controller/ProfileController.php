@@ -70,7 +70,7 @@ class ProfileController extends Controller
             'liste_adresse_facturation' => $liste_adresse_facturation
         ));
     }
-    
+
     public function adresseEditAction($id)
     {
         $em         = $this->getDoctrine()->getManager();
@@ -171,6 +171,67 @@ class ProfileController extends Controller
         ));
     }
 
+    public function articleEnVenteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $liste_article  = $em->getRepository('OdysseusFrontBundle:ProduitVente')->getUserProduitVenteEnVente($user);
+        $listeArticle_image  = array();
+
+        foreach ($liste_article as $article){
+            $image = $em->getRepository('OdysseusFrontBundle:Image')->getImageProduit($article);
+
+            array_push($listeArticle_image, array('article' => $article, 'image' => $image));
+        }
+
+        return $this->render('OdysseusUserBundle:Profile:article_envente.html.twig', array(
+            'user'          => $user,
+            'listeArticle_image' => $listeArticle_image
+        ));
+    }
+
+    public function articleRefuserAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $liste_article  = $em->getRepository('OdysseusFrontBundle:ProduitVente')->getUserProduitVenteRefuser($user);
+        ladybug_dump($liste_article);
+        $listeArticle_image  = array();
+
+        foreach ($liste_article as $article){
+            $image = $em->getRepository('OdysseusFrontBundle:Image')->getImageProduit($article);
+
+            array_push($listeArticle_image, array('article' => $article, 'image' => $image));
+        }
+
+        return $this->render('OdysseusUserBundle:Profile:article_refuser.html.twig', array(
+            'user'          => $user,
+            'listeArticle_image' => $listeArticle_image
+        ));
+    }
+
+    public function articleEnAttenteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $liste_article  = $em->getRepository('OdysseusFrontBundle:ProduitVente')->getUserProduitVenteAttente($user);
+        $listeArticle_image  = array();
+
+        foreach ($liste_article as $article){
+            $image = $em->getRepository('OdysseusFrontBundle:Image')->getImageProduit($article);
+
+            array_push($listeArticle_image, array('article' => $article, 'image' => $image));
+        }
+
+        return $this->render('OdysseusUserBundle:Profile:article_enattente.html.twig', array(
+            'user'          => $user,
+            'listeArticle_image' => $listeArticle_image
+        ));
+    }
+
     public function ajouterArticleAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -182,7 +243,7 @@ class ProfileController extends Controller
             'liste_categorie'         => $listeCategorie
         ));
     }
-    
+
     public function commandeProfileAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -190,11 +251,11 @@ class ProfileController extends Controller
 
         $listeCommande          = $em->getRepository('OdysseusFrontBundle:Commande')->getCommandeOfClient($user);
         $listeCommande_Adresse  = array();
-        
-        foreach ($listeCommande as $commande){
-           $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
 
-           array_push($listeCommande_Adresse, array('commande' => $commande, 'adresse' => $adresse));
+        foreach ($listeCommande as $commande){
+            $adresse = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
+
+            array_push($listeCommande_Adresse, array('commande' => $commande, 'adresse' => $adresse));
         }
 
         return $this->render('OdysseusUserBundle:Profile:commande_show.html.twig', array(
@@ -210,10 +271,10 @@ class ProfileController extends Controller
         $commande               = $em->getRepository('OdysseusFrontBundle:Commande')->find($id);
         $adresse_livraison      = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseLivraisonId());
         if(!is_null($commande->getAdresseFacturationId()))
-        $adresse_facturation    = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseFacturationId());
-        
+            $adresse_facturation    = $em->getRepository('OdysseusFrontBundle:Adresse')->find($commande->getAdresseFacturationId());
+
         $liste_produit_vente    = $em->getRepository('OdysseusFrontBundle:CommandeHasProduitVente')->getProduitOfCommande($commande);
-       
+
 
         return $this->render('OdysseusUserBundle:Profile:commande_show_detail.html.twig', array(
             'commande'              => $commande,
@@ -241,7 +302,7 @@ class ProfileController extends Controller
             if($form->isValid()) {
 
                 $produit->setEtat(Produit::A_VALIDER)
-                        ->setPromotion(0);
+                    ->setPromotion(0);
                 //on en registre notre objet ds la bdd
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($produit);

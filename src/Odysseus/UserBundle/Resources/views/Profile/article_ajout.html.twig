@@ -7,6 +7,10 @@
         {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
 
         <div id="detail">
+            <div>Si vous ne trouver pas votre produit vous pouvez l'ajouter <a href="{{path( 'odysseus_front_profile_ajout_produit') }}">ICI</a></div>
+            <br />
+            <br />
+            <br />
             <div id="select_form" >
                 {% if(liste_categorie| length) > 0 %}
                     <select id="categorieAjax" name="categorieAjax">
@@ -26,11 +30,13 @@
                     <span>Il n'y a pas de categorie ajouter</span>
                 {% endif %}
             </div>
+            <br />
+            <br />
+            <br />
             <div id="produit_recherche">
 
             </div>
             <br/>
-            <div>Si vous ne trouver pas votre produitvous pouvez l'ajouter <a href="{{path( 'odysseus_front_profile_ajout_produit') }}">ICI</a></div>
         </div>
     </div>
 

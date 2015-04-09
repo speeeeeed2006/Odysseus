@@ -22,7 +22,7 @@ class ArticleProfileController extends Controller
         $form = $this->createForm(new ProduitVenteType());
 
         $request = $this->getRequest();
-        
+
         if ($request->getMethod() == 'POST'){
             //on fait le lien requete ->form
             $form->bind($request);
@@ -31,14 +31,14 @@ class ArticleProfileController extends Controller
             if($form->isValid()) {
                 $produitVente = new ProduitVente();
                 $produitVente   ->setUser($user)
-                                ->setDateAjout(new \DateTime())
-                                ->setEtat(ProduitVente::A_VALIDER)
-                                ->setProduit($produit)
-                                ->setPrix($form->get('prix')->getData())
-                                ->setStock($form->get('stock')->getData())
-                                ->setNouveaute(0)
-                                ->setAlaune(0)
-                                ->setRemarque($form->get('remarque')->getData());
+                    ->setDateAjout(new \DateTime())
+                    ->setEtat(ProduitVente::A_VALIDER)
+                    ->setProduit($produit)
+                    ->setPrix($form->get('prix')->getData())
+                    ->setStock($form->get('stock')->getData())
+                    ->setNouveaute(0)
+                    ->setAlaune(0)
+                    ->setRemarque($form->get('remarque')->getData());
 
                 $em->persist($produitVente);
                 $em->flush();
@@ -55,7 +55,7 @@ class ArticleProfileController extends Controller
             'produit'   => $produit
         ));
     }
-    
+
     public function ajouterArticleImageAction($id)
     {
         $em         = $this->getDoctrine()->getManager();
@@ -64,34 +64,107 @@ class ArticleProfileController extends Controller
 
         //le form builder
         $form = $this->createFormBuilder($image)
-                     ->add('nom')
-                     ->add('file')
-                     ->getForm();
-        
+            ->add('nom')
+            ->add('file')
+            ->getForm();
+
         if($this->getRequest()->isMethod('POST')){
-            
+
             //$form->bind($request);
             $form->handleRequest($this->getRequest());
-            
+
             if ($form->isValid()){
                 //on en registre notre objet ds la bdd
                 $em = $this->getDoctrine()->getManager();
-                
+
                 $image->setProduitVente($produit);
-                
+
+
                 $em->persist($image);
-                
+                $produit->setImage($image);
+                $em->persist($produit);
+
                 $image->setEtat(\Odysseus\FrontBundle\Entity\Image::ACTIVEE);
-                $em->flush();    
+                $em->flush();
 
                 //on redirige vers la page de visualisation des images
-                return $this->redirect($this->generateUrl('odysseus_front_profile_article'));              
-            }          
+                return $this->redirect($this->generateUrl('odysseus_front_profile_article'));
+            }
         }
- 
-    	//on affiche sinon le form avec les donn√©es entr√©es
-    	return $this->render('OdysseusUserBundle:Profile:article_ajoutImage.html.twig', array(
+
+        //on affiche sinon le form avec les donn√©es entr√©es
+        return $this->render('OdysseusUserBundle:Profile:article_ajoutImage.html.twig', array(
             'form' => $form->createView(),
-        ));        
+        ));
+    }
+
+    public function articleDetailAction($id)
+    {
+        $em         = $this->getDoctrine()->getManager();
+        $user       = $this->getUser();
+
+        $article    = $em->getRepository('OdysseusFrontBundle:ProduitVente')->find($id);
+        $image      = $em->getRepository('OdysseusFrontBundle:Image')->getImageProduit($article);
+        $produit    = $em->getRepository('OdysseusFrontBundle:Produit')->find($article->getProduit());
+
+        $article->setProduit($produit);
+        $article->setImage($image[0]);
+
+        return $this->render('OdysseusUserBundle:Profile:article_detail.html.twig', array(
+            'user'          => $user,
+            'article' => $article
+        ));
+    }
+
+
+
+    public function articleModifierAction($id)
+    {
+        $em             = $this->getDoctrine()->getManager();
+        $user           = $this->getUser();
+        $produitvente   = $em->getRepository('OdysseusFrontBundle:ProduitVente')->find($id);
+
+        $form = $this->createForm(new ProduitVenteType(),$produitvente);
+
+        $request = $this->getRequest();
+
+        if ($request->getMethod() == 'POST'){
+            //on fait le lien requete ->form
+            $form->bind($request);
+
+            //on vérifie que les chps sont corrects
+            if($form->isValid()) {
+                $produitvente   ->setEtat(ProduitVente::A_VALIDER)
+                    ->setPrix($form->get('prix')->getData())
+                    ->setStock($form->get('stock')->getData())
+                    ->setNouveaute(0)
+                    ->setAlaune(0)
+                    ->setRemarque($form->get('remarque')->getData());
+
+                $em->persist($produitvente);
+                $em->flush();
+
+                //on redirige vers la page liste des catégories
+                return $this->redirect($this->generateUrl('odysseus_front_profile_article_detail', array('id' => $produitvente->getIdProduitVente())));
+            }
+        }
+        return $this->render('OdysseusUserBundle:Profile:article_edit.html.twig', array(
+            'form'      => $form->createView()
+        ));
+    }
+
+    public function articleSupprimerAction($id)
+    {
+
+        $em         = $this->getDoctrine()->getManager();
+        $user       = $this->getUser();
+
+        $article    = $em->getRepository('OdysseusFrontBundle:ProduitVente')->find($id);
+
+        $article->setEtat(ProduitVente::DESACTIVE);
+        $em->persist($article);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('odysseus_front_profile_article'));
     }
 }

@@ -88,6 +88,18 @@ class Produit
      */
     private $categorie;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="ProduitVente", mappedBy="produit")
+     */
+    protected  $produitVente;
+
+
+    function __construct()
+    {
+        $this->produitVente =  new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -283,5 +295,24 @@ class Produit
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduitVente()
+    {
+        return $this->produitVente;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $produitVente
+     * @return Produit
+     */
+    public function setProduitVente($produitVente)
+    {
+        $this->produitVente = $produitVente;
+        return $this;
     }
 }
