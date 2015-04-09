@@ -24,6 +24,7 @@
             <tr>
                 <th>Référence</th>
                 <th>Produit</th>
+                <th>Vendeur</th>
                 <th>Quantité</th>
                 <th>Prix unitaire</th>
                 <th>Total</th>
@@ -35,6 +36,7 @@
                         <form action="{{ path('odysseus_front_ajouter_panier', {id: produit.idProduitVente })}}" method="get" >
                             <td>{{ produit.produit.reference }}</td>
                             <td>{{ produit.produit.nom }}</td>
+                            <td>{{ user[0]['vendeur'].username }}</td>  
                             <td>
                                 <select name="qte" class="" onchange="this.form.submit()">
                                     {% for i in 1.. produit.stock %}

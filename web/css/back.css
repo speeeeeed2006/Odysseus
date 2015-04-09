@@ -50,3 +50,6 @@ input[type="submit"] {
 .panel-body { padding: 5px;}
 .panel-heading { padding: 8px 15px; }
 .panel-heading.titre h3 i {float:right;}
+
+
+.bold {font-weight: bold;}

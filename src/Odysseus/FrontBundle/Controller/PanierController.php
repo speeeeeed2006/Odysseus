@@ -22,8 +22,19 @@ class PanierController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         $produits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->findArray(array_keys($session->get('panier')));
+       
+        $user = array();
+        foreach($produits as $produit){
+            $id = $em->getRepository('OdysseusUserBundle:User')->find($produit->getUser());
+            $vendeur = $em->getRepository('OdysseusUserBundle:User')->find($id);
+            array_push($user, array('vendeur'=> $vendeur));
+            
+        }
         
-        return $this->render('OdysseusFrontBundle:Panier:panier.html.twig', array('produits'=> $produits,
+       // $this->get('ladybug')->log($listeProduits);
+        
+        return $this->render('OdysseusFrontBundle:Panier:panier.html.twig', array('user'=> $user,
+                                                                                  'produits'=> $produits,
                                                                                   'panier' => $session->get('panier')));    
     }
     

@@ -37,9 +37,7 @@ class ProduitType extends AbstractType
                                                       'validé'    => 'validé',
                                                       'refusé'    => 'refusé',
                                                       'désactivé' => 'désactivé')))
-                ->add('promotion', 'checkbox', array('required' => false))
-                ->add('nouveaute', 'checkbox', array('required' => false))
-                ->add('alaune', 'checkbox', array('required' => false));
+                ->add('promotion', 'checkbox', array('required' => false));
         
     }
     
