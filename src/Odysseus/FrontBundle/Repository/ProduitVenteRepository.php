@@ -141,11 +141,43 @@ class ProduitVenteRepository extends EntityRepository
     {
         return $this->createQueryBuilder('p')
             ->where('p.etat <> :etat')
+            ->setParameter('etat',ProduitVente::DESACTIVE)
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getUserProduitVenteRefuser($user)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.etat = :etat')
             ->setParameter('etat',ProduitVente::REFUSE)
             ->andWhere('p.user = :user')
             ->setParameter('user', $user)
             ->getQuery()
             ->getResult();
     }
-     
+
+    public function getUserProduitVenteAttente($user)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.etat = :etat')
+            ->setParameter('etat',ProduitVente::A_VALIDER)
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getUserProduitVenteEnVente($user)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.etat = :etat')
+            ->setParameter('etat',ProduitVente::VALIDE)
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 }

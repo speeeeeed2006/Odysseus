@@ -61,9 +61,33 @@ odysseus_front_profile_article:
     path:     /profile/produit
     defaults: { _controller: OdysseusUserBundle:Profile:article }
 
+odysseus_front_profile_article_liste_en_vente:
+    path:     /profile/produit_en_vente
+    defaults: { _controller: OdysseusUserBundle:Profile:articleEnVente }
+
+odysseus_front_profile_article_liste_refuser:
+    path:     /profile/produit_refuser
+    defaults: { _controller: OdysseusUserBundle:Profile:articleRefuser }
+
+odysseus_front_profile_article_en_attente:
+    path:     /profile/produit_en_attente
+    defaults: { _controller: OdysseusUserBundle:Profile:articleEnAttente }
+
+odysseus_front_profile_article_detail:
+    path:     /profile/produit/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:articleDetail }
+
 odysseus_front_profile_article_ajout:
-    path:     /profile/produit/ajouter
+    path:     /profile/produit_ajouter/
     defaults: { _controller: OdysseusUserBundle:Profile:ajouterArticle }
+
+odysseus_front_profile_article_modifier:
+    path:     /profile/produit_modifier/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:articleModifier }
+
+odysseus_front_profile_article_supprimer:
+    path:     /profile/produit_supprimer/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:articleSupprimer }
 
 odysseus_front_profile_article_ajout_info:
     path:     /profile/article/ajouter/{id}

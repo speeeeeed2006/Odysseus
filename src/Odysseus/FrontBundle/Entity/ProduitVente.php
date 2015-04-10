@@ -87,7 +87,7 @@ class ProduitVente
     /**
      * @var \Produit
      *
-     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="produitVente")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="produit_id", referencedColumnName="id_produit")
      * })
@@ -102,6 +102,7 @@ class ProduitVente
     private $commande;
 
     /**
+     * @var Image
      * @ORM\OneToOne(targetEntity="Image", mappedBy="produitVente")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id_image")
      */

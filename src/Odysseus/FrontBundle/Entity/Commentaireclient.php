@@ -176,10 +176,10 @@ class Commentaireclient
     /**
      * Set vendeurUser
      *
-     * @param \Odysseus\FrontBundle\Entity\User $vendeurUser
+     * @param \Odysseus\UserBundle\Entity\User $vendeurUser
      * @return Commentaireclient
      */
-    public function setVendeurUser(\Odysseus\FrontBundle\Entity\User $vendeurUser = null)
+    public function setVendeurUser(\Odysseus\UserBundle\Entity\User $vendeurUser = null)
     {
         $this->vendeurUser = $vendeurUser;
 
@@ -199,10 +199,10 @@ class Commentaireclient
     /**
      * Set acheteurUser
      *
-     * @param \Odysseus\FrontBundle\Entity\User $acheteurUser
+     * @param \Odysseus\UserBundle\Entity\User $acheteurUser
      * @return Commentaireclient
      */
-    public function setAcheteurUser(\Odysseus\FrontBundle\Entity\User $acheteurUser = null)
+    public function setAcheteurUser(\Odysseus\UserBundle\Entity\User $acheteurUser = null)
     {
         $this->acheteurUser = $acheteurUser;
 

@@ -288,6 +288,7 @@ nav ul li a:hover { color: #ffffff; background: #2c93a4;}
 /*cartouche tableau */
 #profil #detail .cartouche_adresse { background-color: #ebe4de;width: 600px;max-width: 600px;display: block;padding: 10px;border: 1px solid #5fb7c6;}
 #profil #detail .cartouche_article { background-color: #ebe4de;width: 600px;max-width: 600px;display: block;padding: 10px;border: 1px solid #5fb7c6;height: 100px;}
+#profil #detail .presentation{border: 1px solid #5fb7c6;}
 
 
 #odysseus_edition_profile_civilite { display: inline-block;}

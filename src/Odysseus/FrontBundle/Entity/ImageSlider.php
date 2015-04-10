@@ -61,8 +61,7 @@ class ImageSlider
         
         
     }
-   
-    
+
     // propriété utilisé temporairement pour la suppression
     private $filenameForRemove;
     
@@ -187,7 +186,7 @@ class ImageSlider
      * @param \Odysseus\FrontBundle\Entity\Etat $filenameForRemove
      * @return ImageSlider
      */
-    public function setFilenameForRemove(\Odysseus\FrontBundle\Entity\Etat $filenameForRemove = null)
+    public function setFilenameForRemove( $filenameForRemove = null)
     {
         $this->filenameForRemove = $filenameForRemove;
         return $this;
@@ -195,7 +194,7 @@ class ImageSlider
     /**
      * Get filenameForRemove
      *
-     * @return \Odysseus\FrontBundle\Entity\Etat 
+     * @return string
      */
     public function getFilenameForRemove()
     {

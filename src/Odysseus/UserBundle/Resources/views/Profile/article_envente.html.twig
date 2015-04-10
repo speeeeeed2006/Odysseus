@@ -7,13 +7,13 @@
         {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
 
         <div id="detail">
-            <h2>Mes Produits</h2>
+            <h2>Mes Produits en vente</h2>
             <button><a href="{{ path('odysseus_front_profile_article_ajout') }}">Ajouter un produit à vendre</a></button>
             <br />
             <br />
             {% if (listeArticle_image is empty) %}
                 <span>
-                        Vous n'avez ajouter aucun article
+                        Vous n'avez aucun produit en vente
             </span>
             {% else %}
                 {% for data in listeArticle_image %}

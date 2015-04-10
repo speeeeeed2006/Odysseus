@@ -20,7 +20,7 @@ $(document).ready(function(){
             $.ajax({
                 type: 'get',
                 url: Routing.generate('odysseus_ajax_profil_marque', {  categorie       :   categorie,
-                                                                        sousCategorie   :   val})
+                    sousCategorie   :   val})
             }).done(function (data) {
                 $("#marqueAjax").html(data);
             });
@@ -36,10 +36,19 @@ function AjaxProduitRecherche(categorie,sousCategorie,marque) {
     $.ajax({
         type: 'get',
         url: Routing.generate('odysseus_ajax_profil_produit', { categorie       :   categorie,
-                                                                sousCategorie   :   sousCategorie,
-                                                                marque          :   marque})
-        }).done(function( data ) {
+            sousCategorie   :   sousCategorie,
+            marque          :   marque})
+    }).done(function( data ) {
         $("div #produit_recherche").html(data);
     });
 };
 
+function SuppressionProduitVente(id) {
+    if (confirm("Vous désirez vraiment effacer ce produit")) {
+        alert( Routing.generate('odysseus_front_profile_article_supprimer', {id: id}));
+        window.location.href = Routing.generate('odysseus_front_profile_article_supprimer', {id: id});
+    }
+    else {
+        alert(no);
+    }
+}

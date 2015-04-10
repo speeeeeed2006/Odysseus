@@ -43,8 +43,7 @@ class ClientController extends Controller
         if (!$client) {
             throw $this->createNotFoundException('Aucun client trouvé pour cet id : '.$id);
         }
-        
-        $etat = $em->getRepository('OdysseusFrontBundle:Etat');
+
         
         $client->setEtat(User::BANNI);
         $client->setDateModification(new \DateTime('now'));
