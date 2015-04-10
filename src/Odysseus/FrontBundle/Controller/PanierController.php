@@ -23,6 +23,7 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $produits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->findArray(array_keys($session->get('panier')));
        
+        //user = vendeur
         $user = array();
         foreach($produits as $produit){
             $id = $em->getRepository('OdysseusUserBundle:User')->find($produit->getUser());
@@ -195,11 +196,21 @@ class PanierController extends Controller
         //les produits du panier
         $produits = $em->getRepository('OdysseusFrontBundle:ProduitVente')->findArray(array_keys($session->get('panier')));
         
+        //vendeur
+        $user = array();
+        foreach($produits as $produit){
+            $id = $em->getRepository('OdysseusUserBundle:User')->find($produit->getUser());
+            $vendeur = $em->getRepository('OdysseusUserBundle:User')->find($id);
+            array_push($user, array('vendeur'=> $vendeur));
+            
+        }
+        
         $livraison = $em->getRepository('OdysseusFrontBundle:Adresse')->find($adresse['livraison']);
         $facturation = $em->getRepository('OdysseusFrontBundle:Adresse')->find($adresse['facturation']);
 
         return $this->render('OdysseusFrontBundle:Panier:validation.html.twig',
-                array('produits'            => $produits,
+                array('user'                => $user,
+                      'produits'            => $produits,
                       'adresse_livraison'   => $livraison,
                       'adresse_facturation' => $facturation,
                       'panier'              => $session->get('panier')));    

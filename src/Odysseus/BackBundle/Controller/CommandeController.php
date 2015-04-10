@@ -22,13 +22,8 @@ class CommandeController extends Controller
         
         foreach($listeCommandes as $commande){  
             $adresseF = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseFacturation($commande->getUser());     
-            //$adresseL = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseLivraison($commande->getUser());     
-
-//            if(empty($adresseL))
-//               array_push($listeCommandesAdresse, array('adresseL' => $adresseL));
-//            else 
-//              array_push($listeCommandesAdresse, array('adresseL' => '-'));  
-                
+            //$adresseL = $em->getRepository('OdysseusFrontBundle:Adresse')->getListeAdresseLivraison($commande->getUser());
+            
             array_push($listeCommandesAdresse, array('commande'=> $commande,
                                                      'adresseF' => $adresseF,
                                                      //'adresseL' => $adresseL

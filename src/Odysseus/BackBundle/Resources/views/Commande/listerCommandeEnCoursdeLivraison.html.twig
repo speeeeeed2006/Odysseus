@@ -15,9 +15,9 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>N° Commande</th>
                     <th>Client</th>    
                     <th>Client ip</th>
-                    <th>Vendeur ??</th>
                     <th>Date de commande</th>
                     <th>Date de paiement</th>
                     <th>Montant</th>
@@ -32,14 +32,14 @@
                 {% if (liste_commandes | length) > 0  %}
                     {% for commande in liste_commandes %} 
                         <tr>
+                            <td> {{ commande['commande'].idCommande }} </td>
                             <td> {{ commande['commande'].user.username }} </td>
                             <td> {{ commande['commande'].clientIp }} </td>
-                            <td> ??? </td>
                             <td> {{ commande['commande'].dateCommande|date("d/m/Y") }} </td>
                             <td> {{ commande['commande'].datePaiement|date("d/m/Y") }} </td>
                             <td> {{ commande['commande'].montant }} </td>
-                            <td>  </td>
-                            <td> {{ commande['adresseF'].adresse ~ ' - ' ~ commande['adresseF'].cp ~ ' ' ~ commande['adresseF'].ville }} </td>
+                            <td> {{ commande['adresseF'][0].adresse ~ ' - ' ~ commande['adresseF'][0].cp ~ ' ' ~ commande['adresseF'][0].ville }} </td>
+                            <td> {{ commande['adresseF'][0].adresse ~ ' - ' ~ commande['adresseF'][0].cp ~ ' ' ~ commande['adresseF'][0].ville }} </td>
                             <td> {{ commande['commande'].modePaiement.nom }} </td>
                             <td> {{ commande['commande'].etat }} </td>
                             <td>
