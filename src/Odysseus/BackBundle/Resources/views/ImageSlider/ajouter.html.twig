@@ -1,0 +1,19 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajouter une image sur le slider - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+        <h2 class="page-header">Ajouter une image sur le slider</h2>
+
+        <p>La taille de l'image doit être de 970x380px. </p>
+	{%  include "OdysseusBackBundle:Forms:formImageSlider.html.twig" %}
+	<p>
+            <a href="{{ path('odysseus_back_lister_image_slider') }}" class="btn btn-info">
+                <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des images slider
+            </a>
+	</p>
+	
+{% endblock %}

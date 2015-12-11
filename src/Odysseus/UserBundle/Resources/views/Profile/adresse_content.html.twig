@@ -1,0 +1,82 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div id="profil">
+    {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+    
+    <div id="detail">
+        <h2>Mes adresses</h2>
+        <div id="adresses">
+            {% if (liste_adresse_livraison is empty) %}
+                <span>
+                        Vous n'avez renseigné aucune adresse de livraison
+                </span>
+                <br />
+            {% else %} 
+                <h3>Mes adresse de livraison : </h3>
+                {% for adr in liste_adresse_livraison %}
+                    <table class="cartouche_adresse">
+                        <tr>
+                        <td>Adresse :</td><td>{{ adr.adresse}}</td>
+                        </tr>
+                        <tr>
+                        <td>Code postal :</td><td>{{ adr.cp}}</td>
+                        </tr>
+                        <tr>
+                        <td>Ville :</td><td>{{ adr.ville}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pays :</td><td><span>{{ adr.pays}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Modifier l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-edit"></span></a></center></td>
+                        </tr>
+                        <tr>
+                            <td>supprimer l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-remove"></span></a></center></td>
+                        </tr>
+                    </table>
+                        <br />
+                {% endfor %}
+            {% endif %}
+            {% if (liste_adresse_facturation is empty) %}
+                <br />
+                <hr />
+                <br />
+                <span>
+                        Vous n'avez renseigné aucune adresse de facturation
+                </span>
+                <br />
+                <br />
+            {% else %} 
+                <h3>Mes adresse de facturation : </h3>
+                {% for adr in liste_adresse_facturation %}
+                    <table class="cartouche_adresse">
+                        <tr>
+                        <td>Adresse :</td><td>{{ adr.adresse}}</td>
+                        </tr>
+                        <tr>
+                        <td>Code postal :</td><td>{{ adr.cp}}</td>
+                        </tr>
+                        <tr>
+                        <td>Ville :</td><td>{{ adr.ville}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pays :</td><td><span>{{ adr.pays}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Modifier l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_edit', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-edit"></span></a></center></td>
+                        </tr>
+                        <tr>
+                            <td>supprimer l'adresse :</td><td><center><a href="{{ path('odysseus_front_adresse_supp', {'id': adr.idAdresse})}}"><span class="glyphicon glyphicon-remove"></span></a></center></td>
+                        </tr>
+                    </table>
+                        <br />
+                {% endfor %}
+            {% endif %}
+            <a href="{{ path('odysseus_front_adresse_ajout')}}">
+                <button>Ajouter une adresse</button></a>
+            <span class="supp_adresse">
+            </span>
+        </div>
+                
+    </div>   
+</div>

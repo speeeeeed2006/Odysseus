@@ -1,0 +1,20 @@
+Blocmodule:
+    type: entity
+    table: blocmodule
+    id:
+        idBlocModule:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_bloc_module
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomModule:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: nom_module
+    lifecycleCallbacks: {  }

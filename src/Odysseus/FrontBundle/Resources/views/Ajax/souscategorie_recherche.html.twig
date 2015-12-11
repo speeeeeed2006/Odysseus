@@ -1,0 +1,8 @@
+<option value="" selected>Choisir une sous-catégorie</option>
+{% if(liste_souscategorie| length) > 0 %}
+    {% for souscategorie in liste_souscategorie %}
+        <option value="{{ souscategorie.getidsouscategorie }}">{{ souscategorie.nom }}</option>
+    {% endfor %}
+{% else %}
+    <option value="">--Sous Categorie--</option>
+{% endif %}

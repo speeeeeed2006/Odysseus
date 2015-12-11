@@ -1,0 +1,43 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Mes Produits refuser</h2>
+            <button><a href="{{ path('odysseus_front_profile_article_ajout') }}">Ajouter un produit à vendre</a></button>
+            <br />
+            <br />
+            {% if (listeArticle_image is empty) %}
+                <span>
+                        Vous n'avez aucun produit refuser
+            </span>
+            {% else %}
+                {% for data in listeArticle_image %}
+                    <a href="{{ path('odysseus_front_profile_article_detail',{id:data['article'].idProduitVente}) }}">
+                        <div class="cartouche">
+                            <div class="cartouche_content">
+                                <span class="nomProduitVente">{{ data['article'].getProduit.getNom}}</span>
+                                <br/>
+                                <span class="label">Marque :</span><span class="data">{{ data['article'].getProduit.getMarque}}</span>
+                                <br/>
+                                <span class="label">Référence :</span><span class="data">{{ data['article'].getProduit.getReference}}</span>
+                                <br/>
+                                <span class="label">Prix de vente :</span><span class="data">{{ data['article'].prix}}</span>
+                                <br/>
+                                <span class="label">Votre stock :</span><span class="data">{{ data['article'].stock}}</span>
+                            </div>
+                            <img src="/odysseus/web/uploads/imageArticle/{{ data['image'][0].getIdImage }}.{{ data['image'][0].path }}">
+                        </div>
+                    </a>
+                    <br/>
+                {% endfor %}
+            {% endif %}
+            <br />
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

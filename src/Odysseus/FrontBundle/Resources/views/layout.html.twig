@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}MégaTechno.com{% endblock %}</title>
+        
+        {% block stylesheets %}
+            <link href="{{ asset('css/coin-slider-styles.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
+    </head>
+    <body>
+    	<div id="container">
+            <header>
+                <div id="top">
+                    <div id="logo">
+                            <img src="{{ asset('images/logo_societe.png') }}" alt="Logo société" />
+                    </div><!--
+                    --><div id="recherche">
+                       {% render(controller('OdysseusFrontBundle:ProduitVente:recherche')) %}     
+                    </div><!--
+                --><div id="droite">      
+                        <!--<div id="flux_rss"><a href="#" title="Flux RSS"></a></div>-->
+
+                        <div id="panier">
+                            {% render(controller ('OdysseusFrontBundle:Panier:afficherNombreArticlePanier')) %} 
+                        </div>
+                        <div id="connexion">
+                            {% include ('OdysseusFrontBundle:Default:connexion.html.twig') %}    
+                        </div>
+                 </div>
+                </div> <!-- fin #top-->
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('odysseus_front_home')}}" title="">Accueil</a></li>
+                        {{ render (controller("OdysseusFrontBundle:Main:menu")) }}
+                    </ul>
+                </nav>
+
+            </header>
+            <div id="content">
+
+                {% block body %}
+                {% endblock %}
+
+            </div> <!-- fin #content -->
+
+	</div> <!-- fin #container -->
+
+        <footer>
+            <div id="footer">
+                <div id="produits">
+                    {{ render (controller ('OdysseusFrontBundle:Main:afficherMenuCategoriesFooter')) }}    
+                </div><!--
+                --><div id="reseaux">
+                        <h3>Suivez-nous</h3>
+                        <div id="fb_twitter">
+                            <a href="#" title=""><span class="facebook"></span></a>
+                            <a href="#" title=""><span class="twitter"></span></a>
+                        </div><!--#fb_twitter-->
+                        <p>Les derniers tweets</p>
+                        <ul>
+                            <li class="tweet">Lorem ipsum tsea ei vidisse legendos, ne habemus deterruisset cum. Stet possim eloquentiam qui no  [...] </li>
+                            <li class="tweet">Lorem ipsum tsea ei vidisse legendos set cum. Stet possim eloquentiam qui no  Lorem ipsum sea  [...] </li>
+                        </ul>	
+                </div><!--
+                --><div id="informations">
+                        <div id="infos">
+                            {{ render(controller('OdysseusFrontBundle:Statique:afficher')) }}
+                        </div><!--
+                       
+                </div> <!--fin #informations-->
+            </div>	<!--fin #footer-->
+	</footer>
+	{% block javascripts %}
+            <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+            <script src="{{ asset('js/coin-slider.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% endblock %}
+    </body>
+</html>
+

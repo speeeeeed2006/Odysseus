@@ -1,0 +1,22 @@
+Options:
+    type: entity
+    table: options
+    id:
+        idOption:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_option
+            generator:
+                strategy: IDENTITY
+    fields:
+        attribut:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        valeur:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

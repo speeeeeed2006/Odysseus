@@ -1,0 +1,81 @@
+Produit:
+    type: entity
+    table: produit
+    indexes:
+        IDX_29A5EC27BCF5E72D:
+            columns:
+                - categorie_id
+        fk_Produit_SousCategorie1_idx:
+            columns:
+                - sous_categorie_id
+        fk_Produit_Etat1_idx:
+            columns:
+                - etat_id
+    id:
+        idProduit:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_produit
+            generator:
+                strategy: IDENTITY
+    fields:
+        reference:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+        nom:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        marque:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        description:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        promotion:
+            type: boolean
+            nullable: false
+        nouveaute:
+            type: boolean
+            nullable: false
+        alaune:
+            type: boolean
+            nullable: false
+    manyToOne:
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+        sousCategorie:
+            targetEntity: Souscategorie
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sous_categorie_id:
+                    referencedColumnName: id_sous_categorie
+            orphanRemoval: false
+        categorie:
+            targetEntity: Categorie
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categorie_id:
+                    referencedColumnName: id_categorie
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

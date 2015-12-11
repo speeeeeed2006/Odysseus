@@ -1,0 +1,30 @@
+<!--<h3>Formulaire imag Slider</h3>-->
+
+<div class="well">
+
+    <form action="#" method="post" {{ form_enctype(form) }}>
+        {# form_widget(form) #}
+    
+        {# les erreurs générales du form #}
+        {{ form_errors(form) }}
+
+        <div class="row show-grid">
+            <div class="col-md-2"> {{ form_label(form.nom, "Titre de l'image") }} </div>
+            <div class="col-md-6"> {{ form_errors(form.nom) }} </div>
+            <div class="col-md-6"> {{ form_widget(form.nom) }} </div>
+        </div>
+        <br/>
+        <div class="row show-grid">
+            <div class="col-md-2"> {{ form_label(form.file, "Chemin de l'image") }} </div>
+            <div class="col-md-6"> {{ form_errors(form.file) }} </div>
+            <div class="col-md-6"> {{ form_widget(form.file) }} </div>
+        </div>
+
+        <br/>
+        
+        {{ form_rest(form) }}
+        
+        <input type="submit" value="Télécharger"  class="btn btn-success"/>
+    </form>
+    
+</div>	

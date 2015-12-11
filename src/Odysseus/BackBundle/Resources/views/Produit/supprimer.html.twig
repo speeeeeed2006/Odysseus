@@ -1,0 +1,23 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Supprimer un produit - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+	<h2> Supprimer un produit </h2>
+
+	<p>Etes-vous certain(e) de vouloir supprimer le produit "{{ produit.nom }}" ?</p>
+        
+        <form method="post" action="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}" >
+
+              <a href="{{ path('odysseus_back_lister_produit_catalogue', {page: 1}) }}" class="btn btn-info">
+                <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des produits
+              </a>
+             
+		<input type="submit" value="Supprimer" class="btn btn-danger">
+            {{ form_rest(form) }}
+	</form>
+	
+{% endblock %}

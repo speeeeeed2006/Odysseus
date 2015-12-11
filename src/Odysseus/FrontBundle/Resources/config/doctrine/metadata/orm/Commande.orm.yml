@@ -1,0 +1,97 @@
+Commande:
+    type: entity
+    table: commande
+    indexes:
+        fk_Commande_modePaiement1_idx:
+            columns:
+                - mode_paiement_id
+        fk_Commande_etat1_idx:
+            columns:
+                - etat_id
+        fk_Commande_User1_idx:
+            columns:
+                - user_id
+    id:
+        idCommande:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_commande
+            generator:
+                strategy: IDENTITY
+    fields:
+        clientIp:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            column: client_ip
+        dateCommande:
+            type: datetime
+            nullable: false
+            column: date_commande
+        datePaiement:
+            type: datetime
+            nullable: false
+            column: date_paiement
+        montant:
+            type: integer
+            nullable: false
+            unsigned: false
+        adresseLivraisonId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: adresse_livraison_id
+        adresseFacturationId:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: adresse_facturation_id
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        modePaiement:
+            targetEntity: Modepaiement
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mode_paiement_id:
+                    referencedColumnName: id_mode_paiement
+            orphanRemoval: false
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+    manyToMany:
+        produitVenteProduitVente:
+            targetEntity: ProduitVente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: commandeCommande
+            joinTable:
+                name: commande_has_produit_vente
+                joinColumns:
+                    -
+                        name: Commande_id_commande
+                        referencedColumnName: id_commande
+                inverseJoinColumns:
+                    -
+                        name: Produit_Vente_id_Produit_Vente
+                        referencedColumnName: id_produit_vente
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,113 @@
+#------------ debut FOSUser route
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+#------------ fin
+
+odysseus_front_home:
+    path:     /home
+    defaults: { _controller: OdysseusFrontBundle:Main:home }
+    
+odysseus_back_home:
+    path:     /
+    defaults: { _controller: OdysseusBackBundle:Back:index }
+
+#-------------- Profile
+odysseus_front_profile_edit:
+    path:     /profile/edit
+    defaults: { _controller: OdysseusUserBundle:Profile:edit }
+
+odysseus_front_profile_view:
+    path:     /profile
+    defaults: { _controller: OdysseusUserBundle:Profile:show }
+
+#-------------- fin
+
+#-------------- Profile Adresse
+odysseus_front_profile_adresse:
+    path:     /profile/adresse
+    defaults: { _controller: OdysseusUserBundle:Profile:adresse }
+
+odysseus_front_adresse_ajout:
+    path:     /profile/adresse/ajout
+    defaults: { _controller: OdysseusUserBundle:Profile:adresseAjout }
+
+odysseus_front_adresse_edit:
+    path:     /profile/adresse/edit/{id}
+    defaults: { _controller: OdysseusUserBundle:Profile:adresseEdit }
+
+odysseus_front_adresse_supp:
+    path:     /profile/adresse/supression/{id}
+    defaults: { _controller: OdysseusUserBundle:Profile:adresseSuppression }
+#-------------- fin
+
+#-------------- Profile article
+odysseus_front_profile_article:
+    path:     /profile/produit
+    defaults: { _controller: OdysseusUserBundle:Profile:article }
+
+odysseus_front_profile_article_liste_en_vente:
+    path:     /profile/produit_en_vente
+    defaults: { _controller: OdysseusUserBundle:Profile:articleEnVente }
+
+odysseus_front_profile_article_liste_refuser:
+    path:     /profile/produit_refuser
+    defaults: { _controller: OdysseusUserBundle:Profile:articleRefuser }
+
+odysseus_front_profile_article_en_attente:
+    path:     /profile/produit_en_attente
+    defaults: { _controller: OdysseusUserBundle:Profile:articleEnAttente }
+
+odysseus_front_profile_article_detail:
+    path:     /profile/produit/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:articleDetail }
+
+odysseus_front_profile_article_ajout:
+    path:     /profile/produit_ajouter/
+    defaults: { _controller: OdysseusUserBundle:Profile:ajouterArticle }
+
+odysseus_front_profile_article_modifier:
+    path:     /profile/produit_modifier/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:articleModifier }
+
+odysseus_front_profile_article_supprimer:
+    path:     /profile/produit_supprimer/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:articleSupprimer }
+
+odysseus_front_profile_article_ajout_info:
+    path:     /profile/article/ajouter/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:ajouterArticleInfo }
+
+odysseus_front_profile_article_ajout_image:
+    path:     /profile/article/ajouter_image/{id}
+    defaults: { _controller: OdysseusUserBundle:ArticleProfile:ajouterArticleImage }
+
+odysseus_front_profile_ajout_produit:
+    path:     /profile/ajout_produit/
+    defaults: { _controller: OdysseusUserBundle:Profile:ajoutProduit }
+#-------------- fin
+
+#-------------- Profile commande
+odysseus_front_profile_commande:
+    path:     /profile/liste_commande/
+    defaults: { _controller: OdysseusUserBundle:Profile:commandeProfile }
+
+odysseus_front_profile_commande_detail:
+    path:     /profile/commande/{id}
+    defaults: { _controller: OdysseusUserBundle:Profile:commandeDetail }
+

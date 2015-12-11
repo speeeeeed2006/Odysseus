@@ -1,0 +1,45 @@
+{% extends "OdysseusUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <form action="{{ path('odysseus_front_adresse_ajout') }}" {{ form_enctype(form) }} method="POST">
+
+                <h2>Ajouter une adresse</h2>
+                 <div>
+                    {{ form_errors(form.type) }}
+                    {{ form_label(form.type, "Type d'adresse :") }}
+                    {{ form_widget(form.type) }}
+                </div>
+                <div>
+                    {{ form_errors(form.adresse) }}
+                    {{ form_label(form.adresse, "Voie (numero de rue, voie) :") }}
+                    {{ form_row(form.adresse) }}
+                </div>
+                <div>
+                    {{ form_errors(form.cp) }}
+                    {{ form_label(form.cp, "Code postale :") }}
+                    {{ form_widget(form.cp) }}
+                </div>
+                <div>
+                    {{ form_errors(form.ville) }}
+                    {{ form_label(form.ville, "Ville :") }}
+                    {{ form_widget(form.ville) }}
+                </div>
+                <div>
+                    {{ form_errors(form.pays) }}
+                    {{ form_label(form.pays, "Pays :") }}
+                    {{ form_widget(form.pays) }}
+                </div>
+                <div>
+                    {{ form_row(form._token) }}
+                    <button type="submit">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock fos_user_content %}

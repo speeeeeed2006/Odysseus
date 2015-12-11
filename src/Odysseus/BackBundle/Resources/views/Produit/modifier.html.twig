@@ -1,0 +1,17 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Modifier un produit du Catalogue - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+	<h2 class="page-header">Modifier un produit Vente</h2>
+
+	{%  include "OdysseusBackBundle:Forms:formProduitCatalogue.html.twig" %}
+
+	<p>
+            <a href="{{ path('odysseus_back_lister_produit_vente', {page: 1}) }}" class="btn btn-info"> <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des produits Vente</a>
+	</p>
+	
+{% endblock %}

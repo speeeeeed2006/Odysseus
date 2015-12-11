@@ -1,0 +1,78 @@
+ProduitVente:
+    type: entity
+    table: produit_vente
+    indexes:
+        IDX_B8164DD8D5E86FF:
+            columns:
+                - etat_id
+        fk_Produit_Vente_Produit1_idx:
+            columns:
+                - produit_id
+        fk_Produit_Vente_User1_idx:
+            columns:
+                - user_id
+    id:
+        idProduitVente:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_produit_vente
+            generator:
+                strategy: IDENTITY
+    fields:
+        stock:
+            type: integer
+            nullable: false
+            unsigned: false
+        remarque:
+            type: text
+            nullable: true
+            length: 255
+            fixed: false
+        prix:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        dateAjout:
+            type: datetime
+            nullable: false
+            column: date_ajout
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        etat:
+            targetEntity: Etat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                etat_id:
+                    referencedColumnName: id_etat
+            orphanRemoval: false
+        produit:
+            targetEntity: Produit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                produit_id:
+                    referencedColumnName: id_produit
+            orphanRemoval: false
+    manyToMany:
+        commandeCommande:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: produitVenteProduitVente
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

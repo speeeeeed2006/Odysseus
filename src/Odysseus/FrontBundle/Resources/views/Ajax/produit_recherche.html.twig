@@ -1,0 +1,30 @@
+<div class="CSSTableGenerator" style="overflow-y:scroll; max-height: 600px;">
+    <table class="tg">
+        <tr>
+            <td class="tg-031e"> Nom</td>
+            <td class="tg-031e"> Marque</td>
+            <td class="tg-031e"> Référence</td>
+            <td class="tg-031e"> Déscription</td>
+            <td class="tg-031e"> Catégorie</td>
+            <td class="tg-031e"> Sous catégorie</td>
+            <td class="tg-031e"> Choisir</td>
+        </tr>
+        {% if (liste_produit | length) > 0 %}
+            <tr>
+                {% for produit in liste_produit %}
+                    <td class="tg-031e"> {{ produit.nom }} </td>
+                    <td class="tg-031e"> {{ produit.marque }} </td>
+                    <td class="tg-031e"> {{ produit.reference }} </td>
+                    <td class="tg-031e"> {{ produit.description }} </td>
+                    <td class="tg-031e"> {{ produit.getCategorie.getNom }} </td>
+                    <td class="tg-031e"> {{ produit.sousCategorie.getNom }} </td>
+                    <td class="tg-031e"><a href="{{ path('odysseus_front_profile_article_ajout_info', {id: produit.idProduit})  }}"><center><span style="font-size: 1.5em;color: green;" class="glyphicon glyphicon-ok"></span></center></a></td>
+                {% endfor %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">Aucun produit trouvé</td>
+            </tr>
+        {% endif %}
+    </table>
+</div>

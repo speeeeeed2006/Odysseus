@@ -1,0 +1,56 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Fiche Produit</h2>
+            <h3>{{ article.getProduit.getNom }} ({{ article.getProduit.getMarque }})</h3>
+            <div class="presentation">
+                <img src="/odysseus/web/uploads/imageArticle/{{ article.image.getIdImage }}.{{ article.image.path }}">
+                <div>
+                    <br />
+                    <table class="">
+                        <tr>
+                            <td>Nom :</td><td>{{ article.getProduit.getNom }}</td>
+                        </tr>
+                        <tr>
+                            <td>Marque :</td><td>{{ article.getProduit.getMarque }}</td>
+                        </tr>
+                        <tr>
+                            <td>Référence :</td><td>{{ article.getProduit.getReference }}</td>
+                        </tr>
+                        <tr>
+                            <td>Déscription :</td><td>{{ article.getProduit.getDescription }}</td>
+                        </tr>
+                        <tr>
+                            <td>Vos remarques :</td><td>{{ article.remarque }}</td>
+                        </tr>
+                        <tr>
+                            <td>le prix :</td><td>{{ article.prix }}€</td>
+                        </tr>
+                        <tr>
+                            <td>Date d'ajout</td><td>{{ article.dateAjout|date("d/m/Y") }}</td>
+                        </tr>
+                        <tr>
+                            <td>Votre stock :</td><td>{{ article.stock }} unité(s)</td>
+                        </tr>
+                        <tr>
+                            <td>Validation du produit:</td><td>{{ article.etat }}</td>
+                        </tr>
+                        <tr>
+                            <td>Modifier vos informations :</td><td><center><a href="{{ path('odysseus_front_profile_article_modifier', {'id': article.idProduitVente})}}"><span class="glyphicon glyphicon-edit"></span></a></center></td>
+                        </tr>
+                        <tr>
+                            <td>supprimer le produit :</td><td><center><a onclick="return confirm('êtes-vous sûre?')" href="{{ path('odysseus_front_profile_article_supprimer', {'id': article.idProduitVente})}}"><span class="glyphicon glyphicon-remove"></span></a></center></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

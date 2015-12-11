@@ -1,0 +1,58 @@
+Commentaireproduit:
+    type: entity
+    table: commentaireproduit
+    indexes:
+        fk_CommentaireProduit_Produit1_idx:
+            columns:
+                - produit_id
+        fk_CommentaireProduit_User1_idx:
+            columns:
+                - user_id
+    id:
+        idCommentaireProduit:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_commentaire_produit
+            generator:
+                strategy: IDENTITY
+    fields:
+        texte:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        note:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        dateCreation:
+            type: datetime
+            nullable: false
+            column: date_creation
+        dateModification:
+            type: datetime
+            nullable: false
+            column: date_modification
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        produit:
+            targetEntity: Produit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                produit_id:
+                    referencedColumnName: id_produit
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

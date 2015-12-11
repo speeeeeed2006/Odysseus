@@ -1,0 +1,29 @@
+Pagestatique:
+    type: entity
+    table: pagestatique
+    id:
+        idPageStatique:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_page_statique
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        contenu:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        slug:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,176 @@
+odysseus_back_homepage:
+    path:     /
+    defaults: { _controller: OdysseusBackBundle:Back:index }
+
+# --------- Categorie ----------------------- #      
+odysseus_back_lister_categorie:
+    path:     /lister-categorie
+    defaults: { _controller: OdysseusBackBundle:Categorie:lister }
+    
+odysseus_back_ajouter_categorie:
+    path:     /ajouter-categorie
+    defaults: { _controller: OdysseusBackBundle:Categorie:ajouter }
+    
+odysseus_back_modifier_categorie:
+    path:     /modifier-categorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Categorie:modifier }
+    
+odysseus_back_supprimer_categorie:
+    path:     /supprimer-categorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Categorie:supprimer }
+    
+# --------- Sous-categorie ----------------------- #      
+odysseus_back_lister_souscategorie:
+    path:     /lister-souscategorie
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:lister }
+    
+odysseus_back_ajouter_souscategorie:
+    path:     /ajouter-souscategorie
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:ajouter }
+    
+odysseus_back_modifier_souscategorie:
+    path:     /modifier-souscategorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:modifier }
+    
+odysseus_back_supprimer_souscategorie:
+    path:     /supprimer-souscategorie/{id}
+    defaults: { _controller: OdysseusBackBundle:Souscategorie:supprimer }
+    
+# --------- Produits Catalogue ----------------------- #   
+odysseus_back_lister_produit_catalogue:
+    path:     /lister-produit-catalogue/{page}
+    defaults: { _controller: OdysseusBackBundle:Produit:lister }
+    
+odysseus_back_lister_prod_catalogue_refuse:
+    path:     /lister-produit-catalogue-refuse/{page}
+    defaults: { _controller: OdysseusBackBundle:Produit:listeProduitsRefuse }
+    
+odysseus_back_ajouter_produit_catalogue:
+    path:     /ajouter-produit-catalogue
+    defaults: { _controller: OdysseusBackBundle:Produit:ajouter }
+    
+odysseus_back_modifier_produit_catalogue:
+    path:     /modifier-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:modifier }
+    
+odysseus_back_supprimer_produit_catalogue:
+    path:     /supprimer-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:supprimer }
+#nb de produit catalogue à valider   
+odysseus_back_lister_prod_cat_a_valider:
+    path:     /lister-produit-catalogue-a-valider/{page}
+    defaults: { _controller: OdysseusBackBundle:Produit:listeProduitsAValider }
+    
+odysseus_back_valider_produit_catalogue:
+    path:     /valider-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:valider }
+    
+odysseus_back_refuser_produit_catalogue:
+    path:     /refuser-produit-catalogue/{id}
+    defaults: { _controller: OdysseusBackBundle:Produit:refuser }
+    
+# --------- Produits Vente ----------------------- #  
+odysseus_back_lister_produit_vente:
+    path:     /lister-produit-vente/{page}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:lister }
+odysseus_back_modifier_produit_vente:
+    path:     /modifier-produit-vente/{id}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:modifier }
+   
+#nb de produit catalogue à valider   
+odysseus_back_lister_prod_vente_a_valider:
+    path:     /lister-produit-vente-a-valider/{page}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:listeProduitsAValider }
+    
+odysseus_back_valider_produit_vente:
+    path:     /valider-produit-vente/{id}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:valider }
+
+odysseus_back_lister_prod_vente_refuse:
+    path:     /lister-produit-vente-refuse/{page}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:listeProduitsRefuse }
+    
+odysseus_back_refuser_produit_vente:
+    path:     /refuser-produit-vente/{id}
+    defaults: { _controller: OdysseusBackBundle:ProduitVente:refuser }
+    
+# --------- Clients ----------------------- #   
+odysseus_back_lister_client:
+    path:     /lister-client
+    defaults: { _controller: OdysseusBackBundle:Client:lister }
+     
+odysseus_back_bannir_client:
+    path:     /bannir-client/{id}
+    defaults: { _controller: OdysseusBackBundle:Client:bannir } 
+    
+# --------- Commandes ----------------------- #   
+odysseus_back_lister_commande_en_attente:
+    path:     /lister-commande-en-attente-de-paiement
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeEnAttente }
+    
+odysseus_back_lister_commande_valider_payee:
+    path:     /lister-commande-a-valider-payee/{id}
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeValiderPayee }    
+
+odysseus_back_lister_commande_payee:
+    path:     /lister-commande-payee
+    defaults: { _controller: OdysseusBackBundle:Commande:commandePayee }
+    
+odysseus_back_lister_commande_valider_en_cours_livraison:
+    path:     /lister-commande-a-valider-en-cours-de-livraison/{id}
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeValiderEnCoursLivraison }
+
+odysseus_back_lister_commande_en_cours_livraison:
+    path:     /lister-commande-en-cours-de-livraison
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeEnCoursDeLivraison }
+    
+odysseus_back_lister_commande_valider_livre:
+    path:     /lister-commande-valider-livree/{id}
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeValiderLivre }
+    
+odysseus_back_lister_commande_livree:
+    path:     /lister-commande-livree
+    defaults: { _controller: OdysseusBackBundle:Commande:commandeLivree }
+    
+# --------- Pages statiques ----------------------- #
+odysseus_back_creer_pages:
+    path:     /creer-pages
+    defaults: { _controller: OdysseusBackBundle:PageStatique:creer }
+    
+odysseus_back_lister_pages:
+    path:     /lister-pages
+    defaults: { _controller: OdysseusBackBundle:PageStatique:lister }
+
+odysseus_back_modifier_pages:
+    path:     /modifier-pages/{id}
+    defaults: { _controller: OdysseusBackBundle:PageStatique:modifier }
+
+# --------- Slider ----------------------- #
+odysseus_back_ajouter_image_slider:
+    path:     /ajouter-image-slider
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:ajouter }
+    
+odysseus_back_lister_image_slider:
+    path:     /lister-image-slider
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:lister }
+    
+odysseus_back_activer_image_slider:
+    path:     /activer-image-slider/{id}
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:activer }
+    
+odysseus_back_desactiver_image_slider:
+    path:     /desactiver-image-slider/{id}
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:desactiver }
+    
+odysseus_back_supprimer_image_slider:
+    path:     /supprimer-image-slider/{id}
+    defaults: { _controller: OdysseusBackBundle:ImageSlider:supprimer }
+    
+# --------- Home ----------------------- #
+#odysseus_back_categorie_a_la_une:
+    #path:     choisir-produits-a-la-une
+    #defaults: { _controller: OdysseusBackBundle:Home:choisirCategorie }
+    
+odysseus_back_nouveaute:
+    path:     /nouveaute
+    defaults: { _controller: OdysseusBackBundle:Home:choisirNouveaute }

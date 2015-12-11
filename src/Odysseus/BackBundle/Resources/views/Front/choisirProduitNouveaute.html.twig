@@ -1,0 +1,17 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Choisir produit Vente nouveauté sur la home - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Choisir produit Vente nouveauté sur la home</h2>  
+        
+    {% for message in app.session.flashbag.get('produitNouveaute') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
+    {%  include "OdysseusBackBundle:Forms:formNouveaute.html.twig" %}
+      
+{% endblock %}

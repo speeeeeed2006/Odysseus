@@ -1,16 +1,18 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@OdysseusFrontBundle/Resources/config/services.yml" }
+    - { resource: "@OdysseusUserBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: ~
+    csrf_protection: true
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
@@ -52,6 +54,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        mapping_types:
+            enum: string
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
@@ -70,3 +74,25 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Odysseus\UserBundle\Entity\User
+    registration:
+        form:
+            type: odysseus_user_registration
+    profile:
+        form:
+            type: odysseus_edition_profile
+            
+raul_fraile_ladybug:
+    theme: modern # select the theme: base, modern or custom themes
+    expanded: false # true to expand all the variables tree by default
+    silenced: false # true to ignore all ladybug calls
+       
+services:
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }

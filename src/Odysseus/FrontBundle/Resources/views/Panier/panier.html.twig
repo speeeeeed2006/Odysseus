@@ -1,0 +1,97 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% set total = 0 %}
+{% set montantCom = 0 %}
+{% set totalAvecCom = 0 %}
+
+{% block title %} {{ parent() }} - Panier {% endblock %}
+
+{% block body %}
+<div id="wrap">
+
+    <h2>Récapitulatif de votre commande</h2>
+
+    {# include "OdysseusFrontBundle:Default:menuPanier.html.twig" #}
+    
+    {% for flashMessage in app.session.flashbag.get('panier') %}
+    <div class="success">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    <div id="panier">
+    <p>Votre panier contient :</p>
+        <table>
+            <tr>
+                <th>Référence</th>
+                <th>Produit</th>
+                <th>Vendeur</th>
+                <th>Quantité</th>
+                <th>Prix unitaire</th>
+                <th>Total</th>
+                <th>Supprimer</th>
+            </tr>
+            {% if (produits | length) > 0 %}
+                {% for produit in produits %}
+                    <tr>
+                        <form action="{{ path('odysseus_front_ajouter_panier', {id: produit.idProduitVente })}}" method="get" >
+                            <td>{{ produit.produit.reference }}</td>
+                            <td>{{ produit.produit.nom }}</td>
+                            <td>{{ user[0]['vendeur'].username }}</td>  
+                            <td>
+                                <select name="qte" class="" onchange="this.form.submit()">
+                                    {% for i in 1.. produit.stock %}
+                                        <option value="{{ i }}" {%if i == panier[produit.idProduitVente] %} selected="selected" {% endif %}> {{ i }}</option>
+                                    {% endfor%}
+                                </select>
+                            </td>          
+                            <td>{{ produit.prix | number_format(2, ',', ' ')}} €</td>
+                            <td>{{ (produit.prix * panier[produit.idProduitVente]) | number_format(2, ',', ' ') }} €</td>
+
+                            <td>
+                                <a href="{{ path('odysseus_front_supprimer_panier', {id: produit.idProduitVente })}}" class="trash"></a>
+                            </td>
+                        </form>   
+                    </tr>
+
+                    {% set total = total + (produit.prix * panier[produit.idProduitVente]) %}
+                    {% set montantCom  = montantCom + (produit.prix * panier[produit.idProduitVente]) | commission(0.05) %}
+                    {% set totalAvecCom = totalAvecCom + (produit.prix * panier[produit.idProduitVente]) | commission(1 + 0.05) %}
+                
+                {% endfor%}
+                    
+                </table>
+                <div class="table">
+                    <div class="row">
+                        <div class="cell">Total </div>
+                        <div class="cell">{{ total | number_format(2, ',', ' ') }} €</div>                        
+                    </div>
+                    <div class="row">
+                        <div class="cell">Commission (5%)</div> 
+                        <div class="cell">{{ montantCom | number_format(2, ',', ' ') }} €</div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="cell">Frais de port</div>
+                        <div class="cell">1,50 €</div>            
+                    </div>-->
+                    <div class="row">
+                        <div class="cell bold">Total avec Commission</div>
+                        <div class="cell bold">{{ totalAvecCom  | number_format(2, ',', ' ') }} €</div>           
+                    </div>
+                </div>
+                <a href="{{ path('odysseus_front_home') }}" class="precedent continuer"><< Continuer mes achats</a>
+                <a href="{{ path('odysseus_front_livraison') }}" class="suivant">Valider mon panier >></a>
+        
+            {% else %}
+                <tr>
+                    <td>Aucun produit dans votre panier.</td> 
+                </tr>
+            </table>
+            {% endif %}
+
+    </div><!--#panier-->
+    
+</div><!--#wrap -->
+    
+    {% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+			
+{% endblock %}

@@ -1,0 +1,49 @@
+Image:
+    type: entity
+    table: image
+    indexes:
+        fk_Image_ProduitVente1_idx:
+            columns:
+                - produit_vente_id
+    id:
+        idImage:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: id_image
+            generator:
+                strategy: IDENTITY
+    fields:
+        extension:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        alt:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        file:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        tempfilename:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: tempFileName
+    manyToOne:
+        produitVente:
+            targetEntity: ProduitVente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                produit_vente_id:
+                    referencedColumnName: id_produit_vente
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

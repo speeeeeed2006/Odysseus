@@ -1,0 +1,14 @@
+odysseus_user:
+    resource: "@OdysseusUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+odysseus_front:
+    resource: "@OdysseusFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
+odysseus_back:
+    resource: "@OdysseusBackBundle/Resources/config/routing.yml"
+    prefix:   /back
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

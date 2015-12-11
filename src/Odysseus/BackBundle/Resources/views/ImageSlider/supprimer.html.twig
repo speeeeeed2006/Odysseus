@@ -1,0 +1,23 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Supprimer une image Slider - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+	<h2> Supprimer une image Slider </h2>
+
+	<p>Etes-vous certain(e) de vouloir supprimer l'image slider "{{ image.nom }}" ?</p>
+        
+        <form method="post" action="{{ path('odysseus_back_supprimer_image_slider', {id: image.idImageSlider}) }}" >
+
+              <a href="{{ path('odysseus_back_lister_image_slider') }}" class="btn btn-info">
+                <i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste des images slider
+              </a>
+             
+		<input type="submit" value="Supprimer" class="btn btn-danger">
+            {{ form_rest(form) }}
+	</form>
+	
+{% endblock %}

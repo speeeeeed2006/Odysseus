@@ -1,0 +1,27 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Accueil {% endblock %}
+
+
+{% block body %}
+
+    <div id="wrap">
+
+        <div id="haut">
+          {{ render (controller("OdysseusFrontBundle:Main:afficherSlider")) }}
+        </div><!--#haut-->
+
+        <div id="bas">
+            <div id="a_la_une">
+               {{ render (controller("OdysseusFrontBundle:Main:afficherProduitCategorie")) }} 
+            </div><!--#a_la_une--><!--
+        --><div id="nouveau">
+                {{ render (controller("OdysseusFrontBundle:Main:afficherNouveaute")) }}
+            </div><!-- fin #nouveau -->	
+        </div> <!-- fin #bas -->
+
+    </div><!--#wrap -->
+
+{% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+			
+{% endblock %}

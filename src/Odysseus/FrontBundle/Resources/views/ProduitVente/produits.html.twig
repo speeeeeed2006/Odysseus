@@ -1,0 +1,35 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Produit {% endblock %}
+
+{% block body %}
+    <div id="wrap">
+        <div id="categories">
+            <h2>Liste des produits de la Catégorie :  {{ categorie.nom }} </h2>    
+
+            {% if (produits | length) > 0 %}
+                {% for produit in produits %}
+
+                <div class="produit" >
+                        <div class="detail">
+                            <img src="{{ asset('images/image_detail.jpg') }}" alt="" class="vignette" style=" "/>
+                            <span class="nom_produit">{{ produit.produit.nom }}</span>
+                            <span class="prix">{{ produit.prix | number_format(2, ',', ' ')}}€ </span>
+                        </div>
+
+                        <div class="boutons">
+                            <a href="{{ path ('odysseus_front_produit_presentation', { id : produit.idProduitVente}) }}" title=""><span class="infos">+ Plus d'infos</span></a>
+                            {% if panier[produit.idProduitVente] is not defined %}
+                                <a href="{{ path ('odysseus_front_ajouter_panier', { id : produit.idProduitVente}) }}" title=""><span class="infos panier">Ajouter au panier</span></a>
+                            {% endif %}
+                        </div>
+                </div> <!--#details-->
+                {% endfor %}
+            {% else %}
+                <div >Pas de produits dans cette catégorie.</div>
+            {% endif %}
+        </div> <!--#produit-->
+    </div><!--#wrap -->
+    {% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les produits Catalogue - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des produits Catalogue</h2>  
+    
+    {% for message in app.session.flashbag.get('produit') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+    
+    <p>
+        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_produit_catalogue') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit au Catalogue</a>
+    </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Réf.</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Catégorie</th>
+                <th>Sous-catégorie</th>
+                <th>Description</th>
+                <th>Etat</th> 
+                <th>Modifier</th>
+                <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if (liste_produits | length) > 0 %}
+                    {% for produit in liste_produits %} 
+                    <tr>
+                        <td> {{ produit.reference }} </td>
+                        <td> {{ produit.nom }} </td>
+                        <td> {{ produit.marque }} </td>
+                        <td> {{ produit.categorie.nom }} </td>
+                        <td> {{ produit.sousCategorie.nom }} </td>
+                        <td> {{ produit.description }} </td>
+                        <td> {{ produit.etat }} </td>                    
+                        <td><a href="{{ path('odysseus_back_modifier_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                        <td><a href="{{ path('odysseus_back_supprimer_produit_catalogue', {id: produit.idProduit}) }}"><i class="glyphicon glyphicon-trash"> </i></a></td>
+                    </tr>
+                    {% endfor %}              
+                {% else %}
+                    <tr> 
+                        <td colspan="9">Pas de produits Catalogue.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    
+        {% if (liste_produits | length) >= 15 %}
+            <ul class="pagination">
+            {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+            {% for p in range(1, nombrePage) %}
+                <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('odysseus_back_lister_produit_catalogue', {'page': p}) }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+    	{% endif %}
+{% endblock %}

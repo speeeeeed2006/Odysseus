@@ -1,0 +1,40 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %}
+	Bienvenue sur le back-office de votre site - {{ parent() }}</h2>
+{% endblock %}
+
+{% block odysseusback_body %}
+
+        <h2 class="page-header">Bienvenue sur le back-office de votre site !</h2>
+        
+        <p>Pour commencer rapidement, utilisez les menus ci-dessous</p>
+        <h5>Gestion des ajouts</h5>
+        <div class="row show-grid">
+            <div class="col-md-3"> <a href="{{ path('odysseus_back_ajouter_categorie')}}" title="" class="btn btn-info">Ajouter une catégorie</a> </div>
+            <div class="col-md-3"> <a href="{{ path('odysseus_back_ajouter_souscategorie')}}" title="" class="btn btn-info">Ajouter une sous-catégorie</a> </div>
+            <div class="col-md-3"> <a href="{{ path('odysseus_back_ajouter_produit_catalogue') }}" title="" class="btn btn-info">Ajouter un produit au Catologue</a></div>
+        </div>
+        <h5>Gestion des produits</h5>
+        <div class="row show-grid">
+            <div class="col-md-3">
+                <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="" class="btn btn-info">Liste Produits Catalogue à valider</a>
+                <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="" style="position:absolute; left:245px;top:5px" >{{ render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) }}</a>
+            </div>
+            <div class="col-md-3">
+                <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="" class="btn btn-info">Liste Produits Vente à valider</a>
+                <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="" style="position:absolute; left:217px;top:5px"> {{ render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) }}</a>
+            </div>
+            <div class="col-md-3"> <a href="{{ path('odysseus_back_lister_client') }}" title="" class="btn btn-info">Liste des clients</a> </div>
+        </div>
+        <h5>Gestion du site</h5>
+        <div class="row show-grid">
+            <div class="col-md-3"> <a href="{{ path('odysseus_back_creer_pages') }}" title="" class="btn btn-info">Créer page Statique</a> </div>
+            <div class="col-md-3"> <a href="{{ path('odysseus_back_ajouter_image_slider') }}" title="" class="btn btn-info">Ajouter image pour le slider</a> </div>
+            <div class="col-md-3"> </div>
+        </div>
+
+{% endblock %}
+
+
+

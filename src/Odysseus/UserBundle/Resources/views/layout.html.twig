@@ -1,0 +1,22 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Formulaire d'inscription {% endblock %}
+
+{% block body %}
+   
+
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="flash-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+        <div id="wrap">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+        </div>
+    
+{% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+{% endblock %}

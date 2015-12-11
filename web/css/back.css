@@ -1,0 +1,55 @@
+
+.panel-body {
+    padding: 7px;
+    border-bottom: 1px dotted #cccccc;
+}
+
+.panel-body:last-child {
+    border-bottom: none;
+}
+
+
+thead th {
+    background-color: #337AB7;
+    color: white;
+}
+
+/* tableaux */
+th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+thead th:first-child, tbody td:first-child {
+    text-align: left;
+}
+
+/* nombre dans les menus */
+span.nombre { 
+    width:auto;
+    color: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 1px 8px;
+    float: right;
+}
+
+.contextual {
+    padding : 15px;
+    font-weight: bold;
+}
+
+
+input[type="submit"] { 
+    margin-left: 150px;
+}
+
+.panel { margin-bottom: 10px; }
+.panel-body { padding: 5px;}
+.panel-heading { padding: 8px 15px; }
+.panel-heading.titre h3 i {float:right;}
+
+
+.bold {font-weight: bold;}

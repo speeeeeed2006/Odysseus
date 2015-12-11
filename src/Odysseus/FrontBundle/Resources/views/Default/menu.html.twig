@@ -1,0 +1,3 @@
+{% for categorie in liste_categories %}
+    <li><a href="{{ path('odysseus_front_categorieProduit', {'categorie' : categorie.idCategorie }) }}" title="">{{ categorie.nom }}</a></li>
+{% endfor %}  

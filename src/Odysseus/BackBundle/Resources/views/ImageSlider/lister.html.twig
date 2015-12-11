@@ -1,0 +1,64 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les images du slider - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des images du slider </h2>  
+        
+    {% for message in app.session.flashbag.get('imageSlider') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Vignette</th>
+                <th>Titre de l'image</th>
+                <th>Nom de l'image</th>
+                <th>Activer</th>
+                <th>Désactiver</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if (liste_imagesSlider | length) > 0 %}
+                {% for image in liste_imagesSlider %} 
+                <tr>
+                    <td> <img src="{{ asset('uploads/slider/' ~ image.idImageSlider ~ "." ~ image.path) }}" alt="" style="height:50px;" /> </td>
+                    <td> {{ image.nom}} </td>
+                    <td> {{ image.idImageSlider ~ "." ~ image.path }} </td>                   
+                    <td>
+                        {% if (image.etat == 'activée') %}
+                            -
+                        {% else %}
+                            <a href="{{ path('odysseus_back_activer_image_slider', {id: image.idImageSlider}) }}">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if (image.etat == 'désactivée') %}
+                            -
+                        {% else %}
+                            <a href="{{ path('odysseus_back_desactiver_image_slider', {id: image.idImageSlider }) }}">
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </a>
+                        {% endif %}
+                    </td>    
+                    <td> 
+                        <a href="{{ path('odysseus_back_supprimer_image_slider', {id: image.idImageSlider }) }}"><i class="glyphicon glyphicon-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr> 
+                    <td colspan="7">Pas d'images sur le slider.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+      
+{% endblock %}

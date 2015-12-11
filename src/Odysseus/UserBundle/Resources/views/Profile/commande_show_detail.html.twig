@@ -1,0 +1,42 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    <div id="profil">
+
+        {% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+
+        <div id="detail">
+            <h2>Commande {{ commande.idCommande }}</h2>
+            <p> Référence de la commande : {{ commande.idCommande }}</p>
+            <p> Date de la commande : {{ commande.dateCommande|date("d/m/Y") }}</p>
+            <p> Adresse de livraision : {{ adresse_livraison.adresse }}</p>
+            <p> Adresse de Facturation : {{ adresse_facturation.adresse }}</p>
+            <p> Etat de la commande : {{ commande.etat }}</p>
+            <p>{{ladybug_dump(liste_produit_vente)}}</p>
+            <br />
+            {% for produit_vente in liste_produit_vente %}
+                {{ladybug_dump(produit_vente.getProduitVente)}}
+                {% endfor %}
+            <table class="cartouche_adresse">
+                        <tr>
+                        <td>Référence de la commande :</td><td>{{ commande.idCommande }}</td>
+                        </tr>
+                        <tr>
+                        <td>Date de la commande :</td><td>{{ adresse_livraison.adresse }}</td>
+                        </tr>
+                        <tr>
+                        <td>Adresse de livraision :</td><td>{{ adresse_livraison.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse de Facturation :</td><td><span>{{ adresse_facturation.adresse }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Etat de la commande :</td><td>{{ commande.etat }}</td>
+                        </tr>
+                    </table>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}
+

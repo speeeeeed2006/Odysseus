@@ -1,0 +1,96 @@
+#------------ debut Statique
+odysseus_front_plan:
+    path:     /plan-du-site
+    defaults: { _controller: OdysseusFrontBundle:Statique:planSite }
+
+odysseus_front_contact:   
+    path:     /contact
+    defaults: { _controller: OdysseusFrontBundle:Statique:contact }
+
+odysseus_front_page_statique:   
+    path:     /page/{id}/{slug}
+    defaults: { _controller: OdysseusFrontBundle:Statique:page }
+
+
+#odysseus_front_menu_page_statique:
+    #path:     /menu
+    #defaults: { _controller: OdysseusFrontBundle:Statique:afficher }
+
+#------------ debut Main
+odysseus_front_home:
+    path:     /home
+    defaults: { _controller: OdysseusFrontBundle:Main:home }
+    
+odysseus_front_nouveaute:
+    path:     /nouveaute
+    defaults: { _controller: OdysseusFrontBundle:Main:nouveaute }
+        
+ #------------ debut Panier
+odysseus_front_panier:    
+    path:     /panier/
+    defaults: { _controller: OdysseusFrontBundle:Panier:panier }
+    
+odysseus_front_ajouter_panier:    
+    path:     /panier/ajouter/{id}
+    defaults: { _controller: OdysseusFrontBundle:Panier:ajouter }
+    
+odysseus_front_supprimer_panier:    
+    path:     /panier/supprimer/{id}
+    defaults: { _controller: OdysseusFrontBundle:Panier:supprimer }
+    
+odysseus_front_livraison:    
+    path:     /panier/livraison
+    defaults: { _controller: OdysseusFrontBundle:Panier:livraison }
+    
+odysseus_front_livraison_adresse_suppression:    
+    path:     /panier/adresse/suppression/{id}
+    defaults: { _controller: OdysseusFrontBundle:Panier:livraisonAdresseObsolete }
+  
+odysseus_front_validation_panier:    
+    path:     /panier/validation
+    defaults: { _controller: OdysseusFrontBundle:Panier:validation }
+    
+    
+odysseus_front_payer:    
+    path:     /panier/payer
+    defaults: { _controller: OdysseusFrontBundle:Panier:payer }  
+
+#------------ debut Client
+odysseus_front_connexion:
+    path:     /connexion
+    defaults: { _controller: OdysseusFrontBundle:Client:connexion }
+
+#------------ debut ProduitVente
+odysseus_front_categorieProduit:
+    path:     /categorie/{categorie}
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:categorie }
+
+odysseus_front_produit_presentation:
+    path:     /produit-detail/{id}
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:presentation }
+
+odysseus_front_recherche:
+    path:     /recherche
+    defaults: { _controller: OdysseusFrontBundle:ProduitVente:rechercheTraitement }
+#------------ fin ProduitVente
+
+#------------ debut Produit
+odysseus_ajax_profil_produit:
+    pattern: /produit/recherche/{categorie}_{sousCategorie}_{marque}
+    defaults: { _controller: OdysseusFrontBundle:Produit:ajaxRecherche }
+    options:
+        expose: true
+
+odysseus_ajax_profil_marque:
+    pattern: /produit/recherche_marque/{categorie}_{sousCategorie}
+    defaults: { _controller: OdysseusFrontBundle:Produit:ajaxRechercheMarque }
+    options:
+        expose: true
+#------------ fin Produit
+#------------ debut SousCategorie
+odysseus_ajax_Sous_categorie:
+    pattern: /sous_categorie/recherche/{categorie}
+    defaults: { _controller: OdysseusFrontBundle:SousCategorie:rechercheByCategorie }
+    options:
+        expose: true
+#------------ fin SousCategorie

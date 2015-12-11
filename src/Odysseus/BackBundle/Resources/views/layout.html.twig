@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %} Back-office {% endblock %}</title>
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/back.css') }}" />
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
+    </head>
+    <body>      
+
+    <div class="container-fluid">
+              
+        <div class="row">
+          <nav class="navbar navbar-inverse col-md-12">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Barre de navigation</span>
+                    <span class="icon-bar">1</span>
+                    <span class="icon-bar">2</span>
+                    <span class="icon-bar">3</span>
+                </button>
+                <a class="navbar-brand" href="{{ path('odysseus_front_home')}}">MégaTechno.com</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                </ul>
+               <!--<form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>-->
+                </div>
+            </div> 
+            </nav>      
+        </div>
+        
+        <div class="row">
+            
+            <!-- colonne gauche -->
+            <div class="col-md-3">
+   
+                
+                <!-- Catégories -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading titre">
+                        <h3 class="panel-title">Gestion des Catégories</h3>
+                    </div>
+                    <div class="detail">
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_categorie') }}" title="">Liste des catégories</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_ajouter_categorie')}}" title="">Ajouter une catégorie</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sous-Catégories -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading titre">
+                        <h3 class="panel-title">Gestion des Sous-Catégories</h3>
+                    </div>
+                    <div class="detail">
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_souscategorie') }}" title="">Liste des sous-catégories</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_ajouter_souscategorie')}}" title="">Ajouter une sous-catégorie</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produits -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading titre">
+                        <h3 class="panel-title">Gestion des Produits</h3>
+                    </div>
+                    <div class="detail">
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_produit_catalogue', {page: 1}) }}" title="">Liste des produits Catalogue</a> 
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_ajouter_produit_catalogue') }}" title="">Ajouter un produit au Catologue</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">Liste Produits Catalogue à valider</a>
+                            <a href="{{ path('odysseus_back_lister_prod_cat_a_valider', {page: 1}) }}" title="">{{ render (controller("OdysseusBackBundle:Back:afficherNbProdAValider")) }}</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_prod_catalogue_refuse', {page: 1}) }}" title="">Liste Produits Catalogue refusés</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_produit_vente', {page: 1}) }}" title="">Liste des Produits à la vente</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title="">Liste Produits Vente à valider</a>
+                            <a href="{{ path('odysseus_back_lister_prod_vente_a_valider', {page: 1}) }}" title=""> {{ render (controller("OdysseusBackBundle:Back:afficherNbProdVenteAValider")) }}</a>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ path('odysseus_back_lister_prod_vente_refuse', {page: 1}) }}" title="">Liste Produits Vente refusés </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clients -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading titre">
+                        <h3 class="panel-title">Gestion des Clients</h3>
+                    </div>
+                    <div class="detail">
+                        <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_client') }}" title="">Liste des clients</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commandes -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading titre">
+                        <h3 class="panel-title">Gestion des Commandes</h3>
+                    </div>
+                    <div class="detail">
+                        <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_commande_en_attente') }}" title="">Commandes en attente de paiement</a>
+                        </div>
+                        <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_commande_payee') }}" title="">Commandes payées</a>
+                        </div>
+                        <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_commande_en_cours_livraison') }}" title="">Commandes en cours de livraison</a>
+                        </div>
+                        <div class="panel-body">
+                        <a href="{{ path('odysseus_back_lister_commande_livree') }}" title="">Commandes livrées</a>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pages statiques -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Pages statiques</h3>
+                    </div>
+                    <div class="panel-body">
+                       <a href="{{ path('odysseus_back_lister_pages') }}" title="">Liste des pages Statiques</a>
+                    </div>
+                    <div class="panel-body">
+                       <a href="{{ path('odysseus_back_creer_pages') }}" title="">Créer page Statique</a>
+                    </div>
+                </div>
+                
+                <!-- Slider -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion du slider</h3>
+                    </div>
+                    <div class="panel-body">
+                       <a href="{{ path('odysseus_back_ajouter_image_slider') }}" title="">Ajouter image pour le slider</a>
+                    </div>
+                    <div class="panel-body">
+                       <a href="{{ path('odysseus_back_lister_image_slider') }}" title="">Lister images Slider </a>
+                    </div>
+                    
+                </div>
+            
+                <!-- Produit à la une -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gestion des Produits de la home</h3>
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Catégorie à la une<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                       <!--<a href="" title="">-->Choisir produits Catégorie à la une<!--</a>-->
+                    </div>
+                    <div class="panel-body">
+                      <!-- <a href="{# path('odysseus_back_nouveaute')#}" title="">-->Produit nouveauté<!--</a>-->
+                    </div>
+                </div>
+
+            </div> <!-- fin colonne gauche -->
+  
+            <!-- colonne droite -->
+            <div class="col-md-9">
+                {% block odysseusback_body %}
+                
+                {% endblock %}
+            </div> <!-- fin colonne droite -->
+        
+        </div>       
+            
+<footer>
+    <p>© {{ "now"|date("Y") }} - Odysseus</p>
+</footer>
+        </div> <!-- fin #container -->
+        <hr> 
+	
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/back.js') }}"></script>
+            <script src="{{ asset('bundles/odysseusback/ckeditor/ckeditor.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

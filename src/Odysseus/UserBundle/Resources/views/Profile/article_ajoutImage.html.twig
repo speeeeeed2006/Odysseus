@@ -1,0 +1,39 @@
+{% extends "OdysseusUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+<div id="profil">
+    
+{% include "OdysseusUserBundle:Default:menuProfile.html.twig" %}
+    
+    <div id="detail">
+        <form action="#" method="post" {{ form_enctype(form) }}>
+            {# form_widget(form) #}
+
+            {# les erreurs générales du form #}
+            {{ form_errors(form) }}
+
+            <div class="row show-grid">
+                <div class="">  {{ form_label(form.nom, "Titre de l'image") }}
+                                {{ form_errors(form.nom) }}
+                                {{ form_widget(form.nom) }} 
+                </div>
+            </div>
+            <br/>
+            <div class="row show-grid">
+                <div class="">
+                    {{ form_label(form.file, "Chemin de l'image") }}
+                    {{ form_errors(form.file) }}
+                    {{ form_widget(form.file) }} 
+                </div>
+            </div>
+
+            <br/>
+
+            {{ form_rest(form) }}
+
+            <input type="submit" value="Télécharger"  class="btn btn-success"/>
+        </form>
+    </div>
+</div>
+{% endblock fos_user_content %}

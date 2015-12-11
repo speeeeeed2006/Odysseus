@@ -1,0 +1,27 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Contact {% endblock %}
+
+{% block body %}
+
+	<div id="form_contact" class="bloc">
+		<h2>Formulaire de Contact</h2>
+
+                <p>Si vous désirez nous exprimer une demande, n'hésitez pas à utiliser ce formulaire :  </p>
+
+		{% for label, flashes in app.session.flashbag.all %}
+			{% for flash in flashes %}
+				<div class="alert alert-{{ label }}">
+					{{ flash }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+
+		<form action="" method="post">
+			{{ form_widget(form) }}
+			<button type="submit">Envoyer</button>
+
+		</form>
+	</div>
+	
+{% endblock %}

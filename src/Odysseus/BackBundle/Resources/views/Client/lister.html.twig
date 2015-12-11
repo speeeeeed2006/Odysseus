@@ -1,0 +1,68 @@
+    {% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister des clients - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des clients</h2>  
+        
+        {% for message in app.session.flashbag.get('client') %}
+            <p class="bg-success contextual">{{ message }}</p>
+        {% endfor %}
+            
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Pseudo</th>    
+                <th>Civilité</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Naissance</th>
+                <th>Adresse</th>
+                <th>Cp</th>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Créa.</th>
+                <th>Etat</th>
+                <th>Bannir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if (liste_clients_adresses | length) > 0 %}
+                    {% for data in liste_clients_adresses %}
+                        <tr>
+                            <td> {{ data['client'].username }} </td>
+                            <td> {% if (data['client'].civilite != null ) %} {{ data['client'].civilite }} {% endif %}</td>
+                            <td> {% if (data['client'].nom != null )%} {{ data['client'].nom }} {% endif %}</td>
+                            <td> {% if (data['client'].prenom != null )%} {{ data['client'].prenom }} {% endif %}</td>
+                            <td> {{ data['client'].dateNaissance|date("d/m/Y") }} </td>
+                            <td> {{ data['adresse'].adresse }} </td>
+                            <td> {{ data['adresse'].cp }} </td>
+                            <td> {{ data['adresse'].ville }} </td>
+                            <td> {{ data['adresse'].pays  }} </td>
+                            <td> {% if (data['client'].telephone != null )%} {{ data['client'].telephone }} {% endif %}</td>
+                            <td> {{ data['client'].email }} </td>
+                            <td> {% if (data['client'].dateCreation != null )%} {{ data['client'].dateCreation|date("d/m/Y") }} {% endif %}</td>
+                            <td> {% if (data['client'].etat != null )%} {{ data['client'].etat }} {% endif %}</td>
+                            <td>
+                                {% if (data['client'].etat != 'banni') %}
+                                    <a href="{{ path('odysseus_back_bannir_client', {id: data['client'].id}) }}"><i class="glyphicon glyphicon-warning-sign"></i></a>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr> 
+                        <td colspan="15">Pas de clients.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+           	
+{% endblock %}

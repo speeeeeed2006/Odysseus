@@ -1,0 +1,45 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister les sous-catégories - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des sous-catégories</h2>  
+    
+    {% for message in app.session.flashbag.get('souscategorie') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
+    <p>
+        <a class="btn btn-info" href="{{ path('odysseus_back_ajouter_souscategorie') }}"><i class="glyphicon glyphicon-plus"></i> Ajouter une sous-catégorie</a> 
+    </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th class=" panel-heading">Nom de la sous-catégorie</th>
+                <th class="">Rattachée à la catégorie</th>
+                <th class="">Modifier</th>
+                <th class="">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if (liste_souscategories | length) > 0 %}
+                    {% for sousCategorie in liste_souscategories %} 
+                    <tr>
+                        <td>{{ sousCategorie.nom }} </td>
+                        <td> {{ sousCategorie.categorie.nom }} </td>
+                        <td><a href=" {{ path('odysseus_back_modifier_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-edit"></i></a></td> 
+                        <td><a href=" {{ path('odysseus_back_supprimer_souscategorie', {'id': sousCategorie.idSousCategorie}) }} "><i class="glyphicon glyphicon-trash"> </i></a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr> 
+                        <td colspan="4">Pas de sous-catégories.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+            	
+{% endblock %}

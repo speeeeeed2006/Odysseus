@@ -1,0 +1,59 @@
+{% extends "OdysseusBackBundle::layout.html.twig" %}
+
+{% block title %} 
+	Lister des commandes en attente de paiement - {{ parent() }}
+{% endblock %}
+
+{% block odysseusback_body %}
+	
+    <h2 class="page-header">Liste des commandes en attente de paiement</h2>  
+        
+    {% for message in app.session.flashbag.get('commande') %}
+        <p class="bg-success contextual">{{ message }}</p>
+    {% endfor %}
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>N° Commande</th>
+                    <th>Client</th>    
+                    <th>Client ip</th>
+                    <th>Date de commande</th>
+                    <th>Date de paiement</th>
+                    <th>Montant</th>
+                    <th>Adresse de livraison</th>
+                    <th>Adresse de facturation</th>
+                    <th>Mode de paiement</th>
+                    <th>Etat</th> <!-- à retirer qd ok -->
+                    <th>Valider payée</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% if (liste_commandes | length) > 0 %}
+                    {% for commande in liste_commandes %} 
+                        <tr>
+                            <td> {{ commande['commande'].idCommande }} </td>
+                            <td> {{ commande['commande'].user.username }} </td>
+                            <td> {{ commande['commande'].clientIp }} </td>
+                            <td> {{ commande['commande'].dateCommande|date("d/m/Y") }} </td>
+                            <td> {{ commande['commande'].datePaiement|date("d/m/Y") }} </td>
+                            <td> {{ commande['commande'].montant }} </td>
+                            <td> {{ commande['adresseF'][0].adresse ~ ' - ' ~ commande['adresseF'][0].cp ~ ' ' ~ commande['adresseF'][0].ville }}</td>
+                            <td> {{ commande['adresseF'][0].adresse ~ ' - ' ~ commande['adresseF'][0].cp ~ ' ' ~ commande['adresseF'][0].ville }} </td>
+                            <td> {{ commande['commande'].modePaiement.nom }} </td>
+                            <td> {{ commande['commande'].etat }} </td>
+                            <td>
+                                <a href="{{ path('odysseus_back_lister_commande_valider_payee', {id: commande['commande'].idCommande}) }}"><i class="glyphicon glyphicon-usd"></i></a> 
+                            </td>
+                        </tr>
+                    {% endfor %}
+                        
+               {% else %}
+                    <tr> 
+                            <td colspan="11">Pas de commandes en attente de paiement.</td>
+                    </tr>
+               {% endif %}
+            </tbody>
+        </table>
+           	
+{% endblock %}

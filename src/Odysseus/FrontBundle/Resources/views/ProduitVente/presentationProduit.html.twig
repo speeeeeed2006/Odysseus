@@ -1,0 +1,70 @@
+{% extends "OdysseusFrontBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Produit {% endblock %}
+
+{% block body %}
+    <div id="wrap">
+        <div id="produit">
+                <h2>{{ produit.produit.categorie.nom }} > {{ produit.produit.marque }} > {{ produit.produit.nom }}</h2>
+
+                <div id="photos">
+                    <img src="{{ asset('images/image_liste.jpg') }}" alt="" class=""> 
+                </div> <!--#photos-->
+
+                <div id="details">
+                        <div id="gauche">	
+                                <span class="marque">{{ produit.produit.marque }}</span>
+                                <span class="nom_produit">{{ produit.produit.nom }}</span>
+                                <p class="descriptif">Description : </p>
+                                <p>{{ produit.produit.description }}</p>
+                                
+                                <p class="descriptif">Remarque : </p>
+                                <p>{{ produit.remarque }}</p>
+                                
+                        </div><!--
+                        --><div id="droite">
+                                <span class="prix">{{ produit.prix | number_format(2, ',', ' ') }} €</span>
+                                <span class="nb">(Nombre d'articles restants : {{ produit.stock }})</span>
+                                {% if panier[produit.idProduitVente] is not defined %}
+                                <form action="{{ path('odysseus_front_ajouter_panier', {id: produit.idProduitVente}) }}" method="get">
+                                    <p>Choissisez la quantité désirée :</p>
+                                    <select name="qte">
+                                        {% for i in 1.. produit.stock %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br/>
+                                    <br/>
+                                   <div>
+                                       <button type="submit">Ajouter au panier</button>
+                                   </div> 
+                                </form>
+    
+                                {% else %}
+                                    <div>
+                                        <a href="{{ path('odysseus_front_panier') }}" class="infos">Le produit est déjà dans votre panier.</a>
+                                   </div>
+                                {% endif %}
+                        </div>
+                </div> <!--#details-->
+
+               <!-- <div id="complement">
+                       <!-- <div id="savoir">
+                                <span class="titre">En savoir plus</span>
+                                <p><span class="coloris">Coloris disponibles : </span> accusantium, doloremque,  laudantium</p>
+                                <p><span class="dimension">Dimensions :</span> 124x345cm</p> 
+                        </div>--><!--
+                        --><!--<div id="avis">
+                             à faire remonter en dynamique !!!
+                                <span class="titre">Avis (2) </span>
+                                <p><span class="pseudo">Monsieur X</span><span class="note">4,5/5</span></p>
+                                <p class="commentaire">Tunde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore ratione voluptatem sequi nesciunt.</p>				
+                        </div>
+
+                </div>--><!--#complement-->					
+
+        </div> <!--#produit-->
+    </div><!--#wrap -->
+    {% include "OdysseusFrontBundle:Default:sidebar.html.twig" %}
+
+{% endblock %}
